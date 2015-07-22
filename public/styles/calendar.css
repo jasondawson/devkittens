@@ -1,3 +1,42 @@
 .cal {
-	background-color: #eee;
+	width: 1000px;
+	min-height: 100px;
+	margin: 0 auto;
+	padding: 20px;
+	border-radius: 2px;
+	background-color: #fff;
+	border: 1px solid #C3C3C3;
 }
+
+	.cal h3 {
+		margin: 0;
+		margin-bottom: 20px;
+	}
+
+	.cal .day {
+		border-bottom: 1px solid #eee;
+		min-height: 100px;
+		padding: 20px;
+		position: relative;
+		border-left: 2px solid transparent;
+		cursor: pointer;
+	}
+
+		.cal .day:hover {
+			border-left: 2px solid #C3C3C3;
+		}
+
+	.cal .day-date {
+		color: #A4A4A4;
+	}
+
+	.cal .active-date {
+		border-left: 2px solid #1a75ff !important;
+	}
+		.cal .active-date .day-date {
+			color: #1a75ff;
+		}
+
+	.cal .weekend {
+		background-color: rgba(250, 250, 250, 0.35);
+	}
