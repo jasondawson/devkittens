@@ -1,3 +1,7 @@
+/*
+	*	Container for dashboard boxes on ng-repeat
+*/
+
 .repeat-container {
 	width: 100%;
 }
@@ -27,6 +31,21 @@
 	font-size: 3.5em;
 }
 
+/*
+ * Modal Section
+*/
+
+
+.backdrop {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.75);
+}
+
 .add-cohort-modal {
 	height: 70%;
 	width: 50%;
@@ -46,7 +65,33 @@
 	float: right;
 }
 
+
 .calendar-link {
 	text-decoration: none;
 	color: #000;
+}
+
+.new-cohort-form {
+  width: 75%;
+  margin: 5% auto;
+	display: flex;
+  flex-direction: column;
+}
+
+.form-input {
+	height: 3em;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+/* needs to be fixed. 70 is crazy */
+.form-btn-container {
+	margin: 0 70px 0 0;
+	float: right;
+}
+
+.form-btn {
+	height: 3em;
+	width: 8em;
+	margin: 20px;
 }

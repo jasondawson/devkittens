@@ -17,8 +17,19 @@
 
 </div> <!-- End of 'container' -->
 
+<div class="backdrop" ng-show="backdropVisible"></div>
 
 <div class="add-cohort-modal" ng-show="toggleAddCohort">
 	<h2 class="text-dashboard left">Enter New Cohort Information</h2>
 	<i class="close-modal fa fa-times" ng-click="addCohortView()"></i>
+
+	<form class="new-cohort-form">
+		<input class="form-input" type="text" placeholder="Type - dropdown" />
+		<input class="form-input" type="text" placeholder="dates - datepicker" />
+		<input class="form-input" type="text" placeholder="Location - dropdown" />
+	</form>
+	<div class="form-btn-container">
+		<button class="form-btn" type="submit" ng-click="addCohortView()">Cancel</button>
+		<button class="form-btn" type="submit">Save</button>
+	</div>
 </div>
