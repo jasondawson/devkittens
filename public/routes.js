@@ -15,7 +15,14 @@ angular.module('devKittens')
 
 	.when('/dashboard', {
 		templateUrl: '/public/templates/dashboard.html',
-		controller: 'DashboardController'
+		controller: 'DashboardController',
+		resolve: {
+			cohortData: function(dashboardService) {
+				var cohortData = dashboardService.getCohortData();
+				console.log('resolve ', cohortData);
+				return cohortData;
+			}
+		}
 	})
 
 	.otherwise('/');
