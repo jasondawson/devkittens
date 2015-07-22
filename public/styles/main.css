@@ -1,0 +1,51 @@
+/*COLORS*/
+/*#2ecc71 // Green*/
+/*#1a75ff // Blue*/
+/*#ff611a // Orange*/
+/*#FFD700 // Yellow*/
+
+/*rgba(0, 0, 0, 0.8) // Black*/
+/*#DEDEDE // Border Gray*/
+
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+	box-sizing: border-box;
+	background-color: #f6f6ef !important;
+	font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, p {
+	font-family: 'Open Sans', sans-serif;
+}
+
+a {
+	cursor: pointer;
+}
+
+a:hover, a:focus, a:active, a:visited {
+	text-decoration: none;
+}
+
+
+/*ANGULAR STUFF*/
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+/*APP STYLING*/
+* {
+	box-sizing: border-box;
+}
+
+/*HIGHLIGHT COLOR*/
+::-moz-selection {
+	background-color: #1481e3;
+	color: #fff;
+}
+
+::selection {
+	background-color: #1481e3;
+	
