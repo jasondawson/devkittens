@@ -13,5 +13,10 @@ angular.module('devKittens')
 		controller: 'CalendarController'
 	})
 
+	.when('/dashboard', {
+		templateUrl: '/public/templates/dashboard.html',
+		controller: 'DashboardController'
+	})
+
 	.otherwise('/');
 })
