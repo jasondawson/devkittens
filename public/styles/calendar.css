@@ -70,45 +70,48 @@
 			display: inline-block;
 		}
 
-	  /*.cal .gradient {
-			height: 20px;
-			width: 100%;
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			background: -webkit-linear-gradient(transparent, #fff);
-			background: -o-linear-gradient(transparent, #fff);
-			background: -moz-linear-gradient(transparent, #fff);
-			background: linear-gradient(transparent, #fff);
+		/*COURSE BODY*/
+		.cal .course-body {
+			display: none;
+			padding: 0 10px;
 		}
 
-		.cal .weekend .gradient {
-			background: -webkit-linear-gradient(transparent, rgba(251, 249, 248, 1));
-			background: -o-linear-gradient(transparent, rgba(251, 249, 248, 1));
-			background: -moz-linear-gradient(transparent, rgba(251, 249, 248, 1));
-			background: linear-gradient(transparent, rgba(251, 249, 248, 1));
-		}*/
+		/*COURSE TITLE*/
+		.cal .course-title {
+			padding: 0 10px;
+		}
 
 	/*DAY TYPES*/
 	.cal .day-date {
 		color: #A4A4A4;
 	}
 
+
 	.cal .active-date {
 		border-left: 2px solid #1a75ff !important;
+		background-color: #FDFEFF;
 		min-height: 100px;
 		height: auto;
 	}
 		.cal .active-date .day-date {
 			color: #1a75ff !important;
 		}
-
 		.cal .active-date .instructor-wrapper img {
 			opacity: 0.9;
 		}
 
 		.cal .active-date p {
 			color: #333;
+		}
+
+		/*COURSE TITLE*/
+		.cal .active-date .course-title {
+			font-weight: 600;
+		}
+
+		/*COURSE BODY*/
+		.cal .active-date .course-body {
+			display: inherit;
 		}
 
 	.cal .weekend {
@@ -122,13 +125,6 @@
 	.cal .last-day {
 		border-bottom: 1px solid #D5D5D5;
 	}
-
-
-
-	.cal .card {
-
-	}
-
 
 
 /*BOTTOM AFTER EFFECTS*/

@@ -12,7 +12,7 @@ angular.module('devKittens')
 			topic: 'Orientation - Git',
 			date: new Date(),
 			lessonPlan: 'https://docs.google.com/a/devmounta.in/document/d/1d',
-			objectives: 'Students will be able to use Chrome Dev Tools to inspect their HTML/CSS.',
+			objectives: 'Bacon ipsum dolor amet prosciutto strip steak cupim ham. Capicola turducken shank pork belly. Ball tip cow jerky, sirloin turkey pork belly frankfurter doner pork loin. Porchetta pancetta picanha fatback beef ribs salami andouille bacon tongue biltong cupim jerky meatball pork. Venison turkey shankle beef sausage tenderloin ball tip swine.',
 			projects:  'https://github.com/DevMountain/learn-git',
 			instructorName: 'Tyler McGinnis',
 			instructorImg: 'https://avatars0.githubusercontent.com/u/2933430?v=3&s=460'
@@ -28,6 +28,7 @@ angular.module('devKittens')
 			topic: 'HTML & CSS Positioning',
 			date: new Date('2015-07-25'),
 			lessonPlan: 'https://docs.google.com/a/devmounta.in/document/d/1d',
+			objectives: 'Bacon ipsum dolor amet prosciutto strip steak cupim ham. Capicola turducken shank pork belly. Ball tip cow jerky, sirloin turkey pork belly frankfurter doner pork loin.',
 			projects:  'https://github.com/DevMountain/learn-git',
 			instructorName: 'Tyler McGinnis',
 			instructorImg: 'https://avatars0.githubusercontent.com/u/2933430?v=3&s=460'
