@@ -2,10 +2,12 @@
 	width: 1000px;
 	min-height: 100px;
 	margin: 0 auto;
+	margin-bottom: 100px;
 	padding: 20px;
 	border-radius: 2px;
 	background-color: #fff;
 	border: 1px solid #C3C3C3;
+	position: relative;
 }
 
 	.cal h3 {
@@ -18,25 +20,62 @@
 		min-height: 100px;
 		padding: 20px;
 		position: relative;
-		border-left: 2px solid transparent;
+		border-left: 2px solid #eee;
 		cursor: pointer;
 	}
 
 		.cal .day:hover {
 			border-left: 2px solid #C3C3C3;
 		}
+/*
+			.cal .day:hover .day-date {
+				color: #000;
+			}
+*/
+	.cal .first-day {
+		border-top: 1px solid #eee;
+	}
 
 	.cal .day-date {
 		color: #A4A4A4;
+	}
+
+	.cal .last-day {
+		border-bottom: 1px solid #D5D5D5;
 	}
 
 	.cal .active-date {
 		border-left: 2px solid #1a75ff !important;
 	}
 		.cal .active-date .day-date {
-			color: #1a75ff;
+			color: #1a75ff !important;
 		}
 
 	.cal .weekend {
-		background-color: rgba(250, 250, 250, 0.35);
+		background-color: rgba(255, 97, 26, 0.01);
+	}
+
+
+
+
+
+.after-cal {
+	position: absolute;
+	bottom: -5px;
+	margin: 0 2px;
+	left: 0;
+	width: 994px;
+	height: 4px;
+	border: 1px solid red;
+	border-radius: 2px;
+	border: 1px solid #C3C3C3;
+	border-top: 0;
+	background-color: #fff;
+}
+	.smaller-after {
+		bottom: -9px;
+		margin: 0 4px;
+		left: 0;
+		width: 990px;
+		height: 4px;
 	}

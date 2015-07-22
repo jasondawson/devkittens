@@ -1,20 +1,27 @@
 <header-directive></header-directive>
 
+<h3 class="page-title">{{course.name}}</h3>
+
 <section class="cal">
 
-	<h3 class="month">June 2015</h3>
+	<!-- <h3 class="month">June 2015</h3> -->
 
 
 	<div class="day"
 		ng-repeat="event in events" id="day{{event._id}}"
 		ng-class="{
 			'weekend' : (event.date.getDay() === 0) || (event.date.getDay() === 6),
-			'active-date' : (event.date.getDay() === 3)
+			'active-date' : (event.date.getDay() === 3),
+			'last-day' : event.date.getDay() === 0,
+			'first-day' : $index === 0,
 		}">
 		<p class="day-date">
 			{{event.date | date:'EEE'}}, {{event.date | date:'longDate'}}
 		</p>
 	</div>
 
+	
 
+	<div class="after-cal"></div>
+	<div class="after-cal smaller-after"></div>
 </section>
