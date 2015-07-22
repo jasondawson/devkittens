@@ -31,12 +31,17 @@
 			border-left: 2px solid #C3C3C3;
 		}
 
+
+			.cal .day:hover p {
+				color: #333;
+			}
+
 			.cal .day:hover .instructor-wrapper img {
 				opacity: 0.9;
 			}
 
 		.cal .day p {
-			/*color: #333;*/
+			color: #A4A4A4;
 		}
 
 
@@ -100,6 +105,10 @@
 
 		.cal .active-date .instructor-wrapper img {
 			opacity: 0.9;
+		}
+
+		.cal .active-date p {
+			color: #333;
 		}
 
 	.cal .weekend {
