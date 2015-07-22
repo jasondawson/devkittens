@@ -6,18 +6,44 @@
 
 	<!-- <h3 class="month">June 2015</h3> -->
 
-
 	<div class="day"
-		ng-repeat="event in events" id="day{{event._id}}"
-		ng-class="{
+		  activate-day
+		  ng-repeat="event in events" id="day{{event._id}}"
+		  ng-class="{
 			'weekend' : (event.date.getDay() === 0) || (event.date.getDay() === 6),
 			'active-date' : (event.date.getDay() === 3),
 			'last-day' : event.date.getDay() === 0,
 			'first-day' : $index === 0,
-		}">
+		  }">
+
+		<!-- DATE -->
 		<p class="day-date">
 			{{event.date | date:'EEE'}}, {{event.date | date:'longDate'}}
 		</p>
+
+		<!-- TITLE -->
+		<p class="course-title">{{event.topic}}</p>
+
+		<!-- INSTRUCTOR -->
+		<div class="instructor-wrapper">
+			<p>{{event.instructorName}}</p>
+			<img ng-src="{{event.instructorImg}}">
+		</div>
+
+
+
+		<!-- OBJECTIVES -->
+		<p>{{event.objectives}}</p>
+		<p>{{event.objectives}}</p>
+		<p>{{event.objectives}}</p>
+		<p>{{event.objectives}}</p>
+		<p>{{event.objectives}}</p>
+		<p>{{event.objectives}}</p>
+		<p>{{event.objectives}}</p>
+		<p>{{event.objectives}}</p>
+		<p>{{event.objectives}}</p>
+
+		<div class="gradient"></div>
 	</div>
 
 	

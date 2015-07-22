@@ -8,6 +8,6 @@ angular.module('devKittens')
 	}
 
 	$scope.events = calendarService.get();
-	console.log($scope.events);
+	// console.log($scope.events);
 
 });

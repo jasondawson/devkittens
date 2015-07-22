@@ -16,49 +16,113 @@
 	}
 
 	.cal .day {
-		border-bottom: 1px solid #eee;
-		min-height: 100px;
+		height: 100px;
+		/*max-height: 100px;*/
 		padding: 20px;
-		position: relative;
 		border-left: 2px solid #eee;
+		border-bottom: 1px solid #eee;
+		position: relative;
 		cursor: pointer;
+
+		overflow: hidden;
 	}
 
 		.cal .day:hover {
 			border-left: 2px solid #C3C3C3;
 		}
-/*
-			.cal .day:hover .day-date {
-				color: #000;
-			}
-*/
-	.cal .first-day {
-		border-top: 1px solid #eee;
-	}
 
+			.cal .day:hover .instructor-wrapper img {
+				opacity: 0.9;
+			}
+
+		.cal .day p {
+			/*color: #333;*/
+		}
+
+
+		/*INTRUCTOR*/
+		.cal .day .instructor-wrapper {
+			position: absolute;
+			top: 20px;
+			right: 20px;
+
+			display: flex;
+			align-itmes: flex-start;
+		}
+
+		.cal .day .instructor-wrapper p {
+			display: inline-block;
+			padding: 20px;
+			padding-top: 0;
+			margin: 0;
+		}
+
+		.cal .day .instructor-wrapper img {
+			max-width: 40px;
+			max-height: 40px;
+			border-radius: 1px;
+			opacity: 0.6;
+			display: inline-block;
+		}
+
+	  /*.cal .gradient {
+			height: 20px;
+			width: 100%;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			background: -webkit-linear-gradient(transparent, #fff);
+			background: -o-linear-gradient(transparent, #fff);
+			background: -moz-linear-gradient(transparent, #fff);
+			background: linear-gradient(transparent, #fff);
+		}
+
+		.cal .weekend .gradient {
+			background: -webkit-linear-gradient(transparent, rgba(251, 249, 248, 1));
+			background: -o-linear-gradient(transparent, rgba(251, 249, 248, 1));
+			background: -moz-linear-gradient(transparent, rgba(251, 249, 248, 1));
+			background: linear-gradient(transparent, rgba(251, 249, 248, 1));
+		}*/
+
+	/*DAY TYPES*/
 	.cal .day-date {
 		color: #A4A4A4;
 	}
 
-	.cal .last-day {
-		border-bottom: 1px solid #D5D5D5;
-	}
-
 	.cal .active-date {
 		border-left: 2px solid #1a75ff !important;
+		min-height: 100px;
+		height: auto;
 	}
 		.cal .active-date .day-date {
 			color: #1a75ff !important;
+		}
+
+		.cal .active-date .instructor-wrapper img {
+			opacity: 0.9;
 		}
 
 	.cal .weekend {
 		background-color: rgba(255, 97, 26, 0.01);
 	}
 
+	.cal .first-day {
+		border-top: 1px solid #eee;
+	}
+
+	.cal .last-day {
+		border-bottom: 1px solid #D5D5D5;
+	}
 
 
 
+	.cal .card {
 
+	}
+
+
+
+/*BOTTOM AFTER EFFECTS*/
 .after-cal {
 	position: absolute;
 	bottom: -5px;

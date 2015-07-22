@@ -12,8 +12,10 @@ angular.module('devKittens')
 			topic: 'Orientation - Git',
 			date: new Date(),
 			lessonPlan: 'https://docs.google.com/a/devmounta.in/document/d/1d',
+			objectives: 'Students will be able to use Chrome Dev Tools to inspect their HTML/CSS.',
 			projects:  'https://github.com/DevMountain/learn-git',
-			instructor: 'Tyler McGinnis'
+			instructorName: 'Tyler McGinnis',
+			instructorImg: 'https://avatars0.githubusercontent.com/u/2933430?v=3&s=460'
 		},
 		{
 			_id: '12312qweq3',
@@ -23,11 +25,12 @@ angular.module('devKittens')
 		{
 			_id: 'asodias9d90',
 			day: 3,
-			topic: 'Orientation - Git',
+			topic: 'HTML & CSS Positioning',
 			date: new Date('2015-07-25'),
 			lessonPlan: 'https://docs.google.com/a/devmounta.in/document/d/1d',
 			projects:  'https://github.com/DevMountain/learn-git',
-			instructor: 'Tyler McGinnis'
+			instructorName: 'Tyler McGinnis',
+			instructorImg: 'https://avatars0.githubusercontent.com/u/2933430?v=3&s=460'
 		},
 		{
 			_id: '12312qweq3',
