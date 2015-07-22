@@ -4,12 +4,12 @@ angular.module('devKittens')
 
 	$routeProvider
 	.when('/home', {
-		templateUrl: '/templates/home.html',
+		templateUrl: '/public/templates/home.html',
 		controller: 'HomeController'
 	})
 
 	.when('/calendar', {
-		templateUrl: '/templates/calendar.html',
+		templateUrl: '/public/templates/calendar.html',
 		controller: 'CalendarController'
 	})
 
