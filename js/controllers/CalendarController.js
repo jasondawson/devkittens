@@ -1,5 +1,7 @@
 angular.module('devKittens')
 
-.controller('CalendarController', function ($scope) {
-	alert('connected');
+.controller('CalendarController', function ($scope, calendarService) {
+	
+	$scope.events = calendarService.get();
+
 });
