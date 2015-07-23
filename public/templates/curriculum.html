@@ -2,13 +2,64 @@
 <timeline>
 </timeline>
 
-<form>
-	<input ng-model="topic" placeholder="Topic" requireds/>
-	<textarea ng-model="objectives" placeholder="objectives"/>
-	<input ng-model="preReading" placeholder="pre-readings"/>
-	<input ng-model="miniProject" placeholder="mini project URL"/>
-	<input ng-model="project" placeholder="project URL"/>
-	<input ng-model="additionalReadings" placeholder="additional readings"/>
-	<input ng-model="teacher" placeholder="teacher"/>
+<div class="flex-column align-items-center">
+	<input ng-model="topic" placeholder="Topic" required/>
+	<br />
+	<div>
+		<p>Objectives:</p>
+		<div class="flex-row space-between" ng-repeat="objective in objectives track by $index">
+			<p>{{objective}}</p><p ng-click="removeObjective($index)">x</p>
+		</div>
+
+
+		<form ng-submit="addObjective()">
+			<input type="text" ng-model="text" placeholder="new objective"/>
+			<!-- <input type="submit" id="submit" value="Submit"/> -->
+			<!-- <button ng-click="addObjective()">submit</button> -->
+		</form>
+
+
+	</div>
+	<br />
+
+
+	<div>
+		<p>Pre-Readings:</p>
+		<div class="flex-row space-between" ng-repeat="obj in preReadings track by $index">
+			<a href="{{obj.url}}"><p>{{obj.title}}</p></a><p ng-click="removeObjective($index)">x</p>
+		</div>
+		<form ng-submit="addPreReading(title, url)">
+			<input type="text" ng-model="title" placeholder="title"/>
+			<input type="text" ng-model="url" placeholder="url"/>
+			<input type="submit" id="submit" value="Submit"/>
+		</form>
+	</div>
+	<br />
+
+
+	<div>
+		<p>Mini-Project:</p>
+		<input ng-model="mini" placeholder="name"/>
+		<input ng-model="miniUrl" placeholder="url"/>
+	</div>
+	<br />
+	<div>
+		<p>Project:</p>
+		<input ng-model="project" placeholder="name"/>
+		<input ng-model="projectUrl" placeholder="url"/>
+	</div>
+	<br />
+	<div>
+		<p>Additional Readings:</p>
+		<div class="flex-row space-between" ng-repeat="objective in objectives track by $index">
+			<p>{{objective}}</p><p ng-click="removeObjective($index)">x</p>
+		</div>
+		<form ng-submit="addReading(readTitle, readUrl)">
+			<input ng-model="title" placeholder="title"/>
+			<input ng-model="readUrl" placeholder="url"/>
+		</form>
+	</div>
+	<br />
+	<!-- <input ng-model="teacher" placeholder="teacher"/> -->
 	<button ng-click="createLesson(topic, objectives, preReadings, miniProject, project, additionalReadings, teacher)">submit</button>
-</form>
+</div>
