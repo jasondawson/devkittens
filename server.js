@@ -43,9 +43,12 @@ app.delete('/api/lessons', Lesson.delete);
 
 
 // Users
-app.get('/api/user/:id', User.get);
+app.get('/api/users', User.getAll);
 app.post('/api/user', User.post);
 app.put('/api/user/:id', User.put);
+
+// DEPRECATED
+// app.get('/api/user/:id', User.get);
 
 
 ////////////////////////////////////

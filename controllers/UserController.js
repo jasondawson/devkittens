@@ -3,14 +3,13 @@ var exports = module.exports = {};
 // Dependencies
 var User = require('../models/User.js');
 
-exports.get = function (req, res) {
-	var id = req.params.id;
 
-	User.findOne({ '_id' : id }, function (err, user) {
+exports.getAll = function (req, res) {
+	User.find({}, function (err, users) {
 		if (err) return res.status(500).send(err);
-		user.local.password = 'hidden';
-
-		return res.json(user);
+		
+		// TODO: remove passwords
+		return res.json(users);
 	})
 }
 
@@ -61,6 +60,18 @@ exports.post = function (req, res) {
 		console.log(err, result);
 		if (err) return res.status(500).send(err);
 		return res.json(result);
+	})
+}
+
+// DEPRECATED
+exports.get = function (req, res) {
+	var id = req.params.id;
+
+	User.findOne({ '_id' : id }, function (err, user) {
+		if (err) return res.status(500).send(err);
+		user.local.password = 'hidden';
+
+		return res.json(user);
 	})
 }
 
