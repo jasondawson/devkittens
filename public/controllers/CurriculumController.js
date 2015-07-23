@@ -41,18 +41,86 @@ angular.module('devKittens')
 		$scope.preReadings.splice(index,1);
 	}
 
+
+	////additional readings
+
+
+	$scope.readings = [];
+
+	$scope.addReading = function(title, url){
+		if(title && url){
+			$scope.readings.push({
+				title: title,
+				url: url
+			})
+			$scope.readTitle = '';
+			$scope.readUrl = '';
+		}
+	}
+
+	$scope.removeReading = function(index){
+		$scope.readings.splice(index,1);
+	}
+
+	//// mini projects
+
+
+	$scope.miniProjects = [];
+
+	$scope.addMiniProject = function(name, url){
+		console.log(11111)
+		if(name && url){
+			$scope.miniProjects.push({
+				name: name,
+				url: url
+			})
+			$scope.miniProject = '';
+			$scope.miniProjectUrl = '';
+		}
+	}
+
+	$scope.removeMiniProject = function(index){
+		$scope.miniProjects.splice(index,1);
+	}
+
+
+	//// projects
+
+
+	$scope.projects = [];
+
+	$scope.addProject = function(name, url){
+		console.log(11111)
+		if(name && url){
+			$scope.projects.push({
+				name: name,
+				url: url
+			})
+			$scope.project = '';
+			$scope.projectUrl = '';
+		}
+	}
+
+	$scope.removeProject = function(index){
+		$scope.projects.splice(index,1);
+	}
+
+
+
+
+
+
 	// $scope.events = lessonService.get();
 	// console.log($scope.events);
 
-	$scope.createLesson = function(topic, objectives, preReading, miniProject, project, additionalReadings, teacher){
+	$scope.createLesson = function(topic){
 		data = {
 			topic: topic, 
-			preReading: preReading,
-			objectives: objectives,
-			miniProject: miniProject,
-			project: project,
-			additionReading: additionalReadings,
-			teacher: teacher,
+			preReading: $scope.preReadings,
+			objectives: $scope.objectives,
+			miniProject: $scope.miniProject,
+			project: $scope.project,
+			additionReading: $scope.readings
 		}
 
 		lessonService.createLesson(data).then(function(response){
