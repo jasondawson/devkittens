@@ -4,6 +4,7 @@ var exports = module.exports = {};
 var User = require('../models/User.js');
 
 exports.get = function (req, res) {
+	return console.log(req.body);
 	var id = req.params.id;
 
 	User.findOne({ '_id' : id }, function (err, user) {
@@ -47,14 +48,30 @@ exports.post = function (req, res) {
 	var data = req.body;
 	var newUser = new User();
 
-	newUser.local.email = data.email;
-	newUser.local.password = data.password;
+	newUser.local.email = data.local.email;
+	newUser.local.password = data.local.password;
 	newUser.name = data.name;
-	newUser.permissions.isAdmin = true;
-	newUser.permissions.isStudent = false;
+	newUser.permissions.isAdmin = data.permissions.isAdmin;
+	newUser.permissions.isStudent = data.permissions.isStudent;
+
 
 	newUser.save(function (err, result) {
+		console.log(err, result);
 		if (err) return res.status(500).send(err);
 		return res.json(result);
 	})
 }
+
+
+// DUMMY DATA TO CREATE USER:
+// {
+//     "local": {
+//         "email" : "jeremy@gmail.com",
+//         "password" : "McAndCheese"
+//     },
+//     "name" : "Jeremy",
+//     "permissions": {
+//         "isAdmin": "true",
+//         "isStudent": "false"
+//     }
+// }
