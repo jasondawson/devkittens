@@ -5,15 +5,16 @@
 <div class="cal">
 
 	<div class="day" ng-repeat="mentor in mentors">
-		<img class="image" ng-src="{{mentor.img}}"</img>
-		<h4 class="title"> {{ mentor.name }}</h4>
-		
-		<div class="toggle-container">
-			<i class="toggle fa fa-toggle-on"></i>
-			<h6 class="right">Admin Privledges</h6>
-		</div>
-
-	</div>
+		<div ng-click="setMentor(mentor)" class="false-btn">
+			<img class="image" ng-src="{{mentor.img}}"</img>
+			<h4 class="title"> {{ mentor.name }}</h4>
+			
+			<div class="toggle-container">
+				<i class="toggle fa fa-toggle-on"></i>
+				<h6 class="right">Admin Privledges</h6>
+			</div>
+		</div> <!-- End of 'false-btn' -->
+	</div> <!-- End of 'day' -->
 
 	<div class="day">
 		<input type="text" class="form-input" placeholder="Enter new mentor" />
@@ -21,7 +22,15 @@
 			<i class="toggle-off fa fa-toggle-off"></i>
 			<h6 class="right">Admin Privledges</h6>
 		</div>
-</div>
+	</div> <!-- End of 'day' -->
+
+</div> <!-- End of 'cal' -->
+
+<mentor-modal
+	ng-show="mentorModalVisible"
+	mentor="mentor"
+	set-mentor="setMentor(mentor)">
+</mentor-modal>
 
 <!-- <timeline events="mentors"></timeline> -->
 
