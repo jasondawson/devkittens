@@ -11,4 +11,4 @@ var LessonSchema = mongoose.Schema({
 })
 
 
-module.exports = mongoose.model('Lesson', CustomerSchema);
+module.exports = mongoose.model('Lesson', LessonSchema);
