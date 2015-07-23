@@ -3,12 +3,6 @@ var mongoose = require('mongoose');
 var LessonSchema = mongoose.Schema({
 	name: { type: String, required: true },
 	preReading: { type: String, required: true },
-	toyProblem: {
-        name: { type: String, required: true },
-        startTime: { type: String, required: true},
-        endTime
-    },
-	
 	objectives: [],
 	miniProject: { type: String, required: true },
 	Project: { type: String, required: true },
