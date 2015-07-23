@@ -4,18 +4,19 @@ var exports = module.exports = {};
 var User = require('../models/User.js');
 
 exports.get = function (req, res) {
-	return console.log(req.body);
 	var id = req.params.id;
 
 	User.findOne({ '_id' : id }, function (err, user) {
 		if (err) return res.status(500).send(err);
+		user.local.password = 'hidden';
+
 		return res.json(user);
 	})
 }
 
 exports.put = function (req, res) {
 	var id = req.params.id;
-	var permission = req.body.permission;
+	var permission = req.body.permissions;
 
 	User.findOne({ '_id' : id }, function (err, user) {
 		if (err) res.status(500).send(err);
@@ -25,6 +26,7 @@ exports.put = function (req, res) {
 				user.permissions.isAdmin = permission.status;
 				break;
 			case 'isMentor':
+				console.log(permission.status, permission.type);
 				user.permissions.isMentor = permission.status;
 				break;
 			case 'isInstructor':
