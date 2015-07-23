@@ -41,9 +41,15 @@ angular.module('devKittens')
 	})
 
 
-	.when('/curriculum', {
+	.when('/curriculum/:courseId?', {
 		templateUrl: '/public/templates/curriculum.html',
-		controller: 'CurriculumController'
+		controller: 'CurriculumController',
+		resolve: {
+			courseRef: function(courseServices, $route) {
+				console.log($route.current.params.courseId)
+				return courseServices.getCourse($route.current.params.courseId);
+			}
+		}
 	})
 
 	.otherwise('/');
