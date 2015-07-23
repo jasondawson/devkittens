@@ -1,2 +1,14 @@
 <header-directive></header-directive>
-<timeline></timeline>
+<timeline>
+</timeline>
+
+<form>
+	<input ng-model="topic" placeholder="Topic" requireds/>
+	<textarea ng-model="objectives" placeholder="objectives"/>
+	<input ng-model="preReading" placeholder="pre-readings"/>
+	<input ng-model="miniProject" placeholder="mini project URL"/>
+	<input ng-model="project" placeholder="project URL"/>
+	<input ng-model="additionalReadings" placeholder="additional readings"/>
+	<input ng-model="teacher" placeholder="teacher"/>
+	<button ng-click="createLesson(topic, objectives, preReadings, miniProject, project, additionalReadings, teacher)">submit</button>
+</form>

@@ -31,13 +31,13 @@ var Lesson = require('./controllers/LessonController.js')
 //////////// REST API //////////////
 ////////////////////////////////////
 
-// app.post('/api/lessons', Lesson.create);
+app.post('/api/lessons', Lesson.create);
 
-// app.get('/api/lessons', Lesson.get);
+app.get('/api/lessons', Lesson.get);
 
-// app.put('/api/lessons', Lesson.update);
+app.put('/api/lessons', Lesson.update);
 
-// app.delete('/api/lessons', Lesson.delete);
+app.delete('/api/lessons', Lesson.delete);
 
 
 
