@@ -28,7 +28,6 @@
     "css-loader": "^0.15.5",
     "jsx-loader": "^0.13.2",
     "less": "^2.5.1",
-    "less-loader": "^2.2.0",
-    "webpack": "^1.10.3"
+    "less-loader": "^2.2.0"
   }
 }
