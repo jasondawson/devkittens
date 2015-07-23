@@ -26,11 +26,13 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 // Controllers
 var Calendar = require('./controllers/CalendarController.js');
 var Lesson = require('./controllers/LessonController.js')
+var User = require('./controllers/UserController.js')
 
 ////////////////////////////////////
 //////////// REST API //////////////
 ////////////////////////////////////
 
+// Lessons
 app.post('/api/lessons', Lesson.create);
 
 app.get('/api/lessons', Lesson.get);
@@ -39,6 +41,11 @@ app.put('/api/lessons', Lesson.update);
 
 app.delete('/api/lessons', Lesson.delete);
 
+
+// Users
+app.get('/api/user/:id', User.get);
+app.post('/api/user', User.post);
+app.put('/api/user/:id', User.put);
 
 
 ////////////////////////////////////
