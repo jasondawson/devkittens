@@ -25,7 +25,7 @@ module.exports = {
 				res.send(data);
 			}
 		})
-	}
+	},
 
 	update: function(req, res){
 		Lesson.findByIdAndUpdate(req.query.id, req.body, function(err, data){
