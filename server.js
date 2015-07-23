@@ -25,13 +25,12 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 // Controllers
 var Calendar = require('./controllers/CalendarController.js');
+var Lesson = require('./controllers/LessonController.js')
 
 ////////////////////////////////////
 //////////// REST API //////////////
 ////////////////////////////////////
 
-// Metrics
-app.get('/api/metrics', Calendar.get);
 
 
 
