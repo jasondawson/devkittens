@@ -95,3 +95,50 @@
 	width: 8em;
 	margin: 20px;
 }
+
+.image {
+	max-width: 60px;
+	float: left;
+	margin: 0 20px 0 0;
+}
+
+.title {
+	float: left;
+}
+
+.toggle-container {
+	float: right;
+}
+
+.toggle {
+	display: flex;
+	justify-content: center;
+	font-size: 3em;
+	color: #29c210;
+}
+
+.toggle-off {
+	float: right;
+	margin: 0 20px 0 0;
+	font-size: 3em;
+	color: #000;
+}
+
+.right {
+	/*float: right;*/
+	margin: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

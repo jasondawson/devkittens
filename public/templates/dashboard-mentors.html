@@ -1,0 +1,27 @@
+<header-directive></header-directive>
+
+<h3 class="page-title">Mentors</h3>
+
+<div class="cal">
+
+	<div class="day" ng-repeat="mentor in mentors">
+		<img class="image" ng-src="{{mentor.img}}"</img>
+		<h4 class="title"> {{ mentor.name }}</h4>
+		
+		<div class="toggle-container">
+			<i class="toggle fa fa-toggle-on"></i>
+			<h6 class="right">Admin Privledges</h6>
+		</div>
+
+	</div>
+
+	<div class="day">
+		<input type="text" class="form-input" placeholder="Enter new mentor" />
+		<div class="toggle-container">
+			<i class="toggle-off fa fa-toggle-off"></i>
+			<h6 class="right">Admin Privledges</h6>
+		</div>
+</div>
+
+<!-- <timeline events="mentors"></timeline> -->
+
