@@ -24,6 +24,10 @@ angular.module('devKittens')
 			}
 		}
 	})
+	.when('curriculum', {
+		templateUrl: '/public/templates/curriculum.htm;',
+		controller: 'CurriculumController'
+	})
 
 	.otherwise('/');
 })
