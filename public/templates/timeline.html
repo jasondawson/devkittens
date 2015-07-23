@@ -1,0 +1,76 @@
+<section class="cal">
+
+	<!-- <h3 class="month">June 2015</h3> -->
+
+	<div class="day"
+		  activate-day
+		  ng-repeat="event in events" id="day{{event._id}}"
+		  ng-class="{
+			'weekend' : (event.date.getDay() === 0) || (event.date.getDay() === 6),
+			'active-date' : (event.date.getDay() === 3),
+			'last-day' : event.date.getDay() === 0,
+			'first-day' : $index === 0,
+		  }">
+
+		<!-- DATE -->
+		<p class="day-date">
+			{{event.date | date:'EEE'}}, {{event.date | date:'longDate'}}
+		</p>
+
+		<!-- TITLE -->
+		<p class="course-title">{{event.topic}}</p>
+
+		<!-- INSTRUCTOR -->
+		<div class="instructor-wrapper">
+			<p>{{event.instructorName}}</p>
+			<img ng-src="{{event.instructorImg}}">
+		</div>
+
+		<span class="course-body">
+
+			<!-- OBJECTIVES -->
+			<p>{{event.objectives}}</p>
+			<p>{{event.objectives}}</p>
+
+			<div class="space-top">
+				<!-- PRE-READINGS -->
+				<div class="inline" ng-repeat="preReading in event.preReading track by $index">
+					<div class="card">
+						<div class="card-title">
+							<h4>Pre-reading</h4>
+							<span class="actions">
+								<div class="action"><span class="glyphicon glyphicon-thumbs-down"></span></div>
+								<div class="action"><span class="glyphicon glyphicon-ok"></span></div>
+							</span>
+						</div>
+
+						<a ng-href="{{preReading}}" target="_blank">{{preReading}}</a>
+					</div>
+				</div>
+				<!-- PROJECTS -->
+				<div class="inline" ng-repeat="project in event.projects track by $index">
+					<div class="card">
+						<div class="card-title">
+							<h4>Project</h4>
+							<span class="actions">
+								<div class="action"><span class="glyphicon glyphicon-thumbs-down"></span></div>
+								<div class="action"><span class="glyphicon glyphicon-ok"></span></div>
+							</span>
+						</div>
+
+						<a ng-href="{{project}}" target="_blank">{{project}}</a>
+					</div>
+				</div>
+
+			</div>
+
+		</span>
+
+		<div class="gradient"></div>
+	</div>
+
+	
+
+	<div class="after-cal"></div>
+	<div class="after-cal smaller-after"></div>
+</section>

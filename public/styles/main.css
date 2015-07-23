@@ -59,3 +59,12 @@ a:hover, a:focus, a:active, a:visited {
 	text-align: center;
 	margin: 120px 0 60px 0;
 }
+
+.space-top {
+	margin-top: 20px;
+}
+
+.inline {
+	display: inline-block;
+	float: left;
+}

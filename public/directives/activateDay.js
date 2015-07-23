@@ -6,7 +6,7 @@ angular.module('devKittens')
 		scope: true,
 		link: function (scope, elem, attrs) {
 			var expandDay = function () {
-				if (elem.hasClass('active-date')) return collapseDay();
+				if (elem.hasClass('active-date')) return //collapseDay();
 
 				// remove all active classes
 				$('.day').each(function (thing, other) {

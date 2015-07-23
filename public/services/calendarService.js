@@ -13,7 +13,8 @@ angular.module('devKittens')
 			date: new Date(),
 			lessonPlan: 'https://docs.google.com/a/devmounta.in/document/d/1d',
 			objectives: 'Bacon ipsum dolor amet prosciutto strip steak cupim ham. Capicola turducken shank pork belly. Ball tip cow jerky, sirloin turkey pork belly frankfurter doner pork loin. Porchetta pancetta picanha fatback beef ribs salami andouille bacon tongue biltong cupim jerky meatball pork. Venison turkey shankle beef sausage tenderloin ball tip swine.',
-			projects:  'https://github.com/DevMountain/learn-git',
+			projects:  ['https://github.com/DevMountain/learn-git', 'https://github.com/DevMountain/The-Pomodoro'],
+			preReading: ['https://medium.com/javascript-jquery-angular-firebase-and-mongodb/angular-s-q-defer-and-q-all-are-cool-i-promise-992bfd401f11'],
 			instructorName: 'Tyler McGinnis',
 			instructorImg: 'https://avatars0.githubusercontent.com/u/2933430?v=3&s=460'
 		},
@@ -29,7 +30,7 @@ angular.module('devKittens')
 			date: new Date('2015-07-25'),
 			lessonPlan: 'https://docs.google.com/a/devmounta.in/document/d/1d',
 			objectives: 'Bacon ipsum dolor amet prosciutto strip steak cupim ham. Capicola turducken shank pork belly. Ball tip cow jerky, sirloin turkey pork belly frankfurter doner pork loin.',
-			projects:  'https://github.com/DevMountain/learn-git',
+			projects:  ['https://github.com/DevMountain/learn-git'],
 			instructorName: 'Tyler McGinnis',
 			instructorImg: 'https://avatars0.githubusercontent.com/u/2933430?v=3&s=460'
 		},
