@@ -39,13 +39,11 @@ app.get('/api/lessons', Lesson.get);
 app.put('/api/lessons', Lesson.update);
 app.delete('/api/lessons', Lesson.delete);
 
-//courses
 
+//Courses
 app.post('/api/course', CourseController.createNewCourse);
 app.get('/api/course/:courseId', CourseController.getCourse);
-
 app.get('/api/all-courses', CourseController.getAllCourses);
-
 app.put('/api/course/:curriculumId', CourseController.updateCourseCurriculum);
 
 
