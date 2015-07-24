@@ -75,6 +75,11 @@ a:visited {
   outline: none;
   padding: 20px 15px;
 }
+.mentor-image {
+  max-width: 60px;
+  float: left;
+  margin: 0 20px 0 0;
+}
 header {
   position: fixed;
   top: 0;
@@ -240,11 +245,6 @@ section.dashboard .form-btn {
   height: 3em;
   width: 8em;
   margin: 20px;
-}
-section.dashboard .image {
-  max-width: 60px;
-  float: left;
-  margin: 0 20px 0 0;
 }
 section.dashboard .title {
   float: left;

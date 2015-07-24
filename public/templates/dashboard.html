@@ -11,6 +11,8 @@
 		<button ng-click="activateCohorts()" class="btn btn-default"
 				ng-class="{ active: activeTab === 'cohorts' }">Cohorts</button>
 
+		<button ng-click="activateMentors()" class="btn btn-default"
+				ng-class="{ active: activeTab === 'mentors' }">Mentors</button>
 	</div>
 
 	
@@ -51,9 +53,6 @@
 	</div>
 
 
-
-
-
 	<div class="container" ng-show="toggleViewToCohorts">
 
 		<div class="display-box add-new" ng-click="addCohortView()">
@@ -68,36 +67,77 @@
 				<span class="text-dashboard center">{{ cohort.location }}</span>
 			</div> <!-- End of 'display-box' -->
 		</a>
-
 	</div> <!-- End of 'container' -->
 
 
 
-</div>
+	<div ng-show="toggleViewToCohorts" class="shift-wrapper">
 
+		<div class="backdrop" ng-show="backdropVisible"></div>
 
+		<div class="add-cohort-modal" ng-show="toggleAddCohort">
+			<h2 class="text-dashboard left">Enter New Cohort Information</h2>
+			<i class="close-modal fa fa-times" ng-click="addCohortView()"></i>
 
-<div ng-show="toggleViewToCohorts" class="shift-wrapper">
-
-
-
-	<div class="backdrop" ng-show="backdropVisible"></div>
-
-	<div class="add-cohort-modal" ng-show="toggleAddCohort">
-		<h2 class="text-dashboard left">Enter New Cohort Information</h2>
-		<i class="close-modal fa fa-times" ng-click="addCohortView()"></i>
-
-		<form class="new-cohort-form">
-			<input class="form-input" type="text" placeholder="Type - dropdown" />
-			<input class="form-input" type="text" placeholder="dates - datepicker" />
-			<input class="form-input" type="text" placeholder="Location - dropdown" />
-		</form>
-		<div class="form-btn-container">
-			<button class="form-btn" type="submit" ng-click="addCohortView()">Cancel</button>
-			<button class="form-btn" type="submit">Save</button>
+			<form class="new-cohort-form">
+				<input class="form-input" type="text" placeholder="Type - dropdown" />
+				<input class="form-input" type="text" placeholder="dates - datepicker" />
+				<input class="form-input" type="text" placeholder="Location - dropdown" />
+			</form>
+			<div class="form-btn-container">
+				<button class="form-btn" type="submit" ng-click="addCohortView()">Cancel</button>
+				<button class="form-btn" type="submit">Save</button>
+			</div>
 		</div>
 	</div>
-</div>
+
+
+
+	<div class="container" ng-show="toggleViewToMentors">
+
+		<div class="display-box add-new" ng-click="addMentorView()">
+			<span class="text-dashboard">Add a new mentor</span> <br />
+			<i class="icon-dashboard fa fa-plus-circle"></i>
+		</div>
+
+		<a class="mentors-link" href="#dashboard">
+			<div class="display-box" ng-repeat="mentor in usersArray">
+				<img class="mentor-image center" ng-src="{{mentor.avatar}}"</img>
+				<span class="text-dashboard center">{{ mentor.name }}</span>
+				<span class="text-dashboard name center">{{ mentor.location }}</span>
+				<span class="text-dashboard name center">{{ mentor.mentorType }}</span>
+			</div> <!-- End of 'display-box' -->
+	</div> <!-- End of 'container' -->
+
+	<div class="shift-wrapper" ng-show="toggleViewToMentors">
+		<div class="backdrop" ng-show="backdropVisible"></div>
+
+		<div class="add-cohort-modal" ng-show="toggleAddMentor">
+			<h2 class="text-dashboard left">Enter New Mentor Information</h2>
+			<i class="close-modal fa fa-times" ng-click="addMentorView()"></i>
+
+			<form class="new-mentor-form">
+				<input class="form-input" type="text" placeholder="Enter Mentor's name" />
+				<input class="form-input" type="text" placeholder="Enter Mentor's type" />
+				<input class="form-input" type="text" placeholder="Enter Mentor's cohort" />
+			</form>
+			<div class="form-btn-container">
+				<button class="form-btn" type="submit" ng-click="addMentorView()">Cancel</button>
+				<button class="form-btn" type="submit">Save</button>
+			</div>
+		</div>
+	</div> <!-- End of 'shift-wrapper' -->
+
+
+
+
+
+
+
+
+
+
+
 
 
 </section>

@@ -2,9 +2,9 @@
 <div class="add-cohort-modal strict-modal" current-mentor="currentMentor">
 	<i class="close-mini-modal close-modal fa fa-times" ng-click="toggleMentorModal()"></i>
 	<br />
-	<img class="image" ng-src="{{ currentMentor.img }}" />
+	<img class="mentor-image" ng-src="{{ currentMentor.avatar }}">
 	<h2>{{ currentMentor.name }}</h2>
-	<h4>{{ currentMentor.title }}</h4>
+	<h4>{{ currentMentor.mentorType }}</h4>
 	<h5>{{ currentMentor.duties }}</h5>
 	<div class="mini-modal-cal cal">
 
@@ -14,7 +14,7 @@
 
 		<div class="mini-modal-day day"  make-active>
 			<h5 ng-click="showStudents()">Mentos</h5>
-			<div ng-repeat="student in currentMentor.mentos">
+			<div ng-repeat="student in currentMentor.mentorData.mentos">
 				<h5 ng-show="studentSection">
 					{{ student.name }} - 
 					{{ student.heartbeat }} - 

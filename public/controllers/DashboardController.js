@@ -1,11 +1,12 @@
 angular.module('devKittens')
 
-.controller('DashboardController', function($scope, $location, cohortData, courseData, courseServices) {
+.controller('DashboardController', function($scope, $location, cohortData, courseData, usersData, courseServices) {
 
 	// Init
 	$scope.toggleAddCohort = false;
 	$scope.toggleViewToCohorts = false;
 	$scope.toggleViewToCourses = true;
+	$scope.toggleViewToMentors = false;
 	$scope.activeTab = 'courses';
 	$scope.cohortArray = cohortData;
 	
@@ -18,9 +19,14 @@ angular.module('devKittens')
 	$scope.toggleAddCourse = false;
 
 	$scope.courseArray = courseData;
+	$scope.usersArray = usersData;
 
 	$scope.addCourseView = function() {
 		$scope.toggleAddCourse = !$scope.toggleAddCourse;
+	}
+
+	$scope.addMentorView = function() {
+		$scope.toggleAddMentor = !$scope.toggleAddMentor;
 	}
 
 
@@ -31,13 +37,23 @@ angular.module('devKittens')
 		$scope.toggleViewToCourses = true;
 
 		$scope.toggleViewToCohorts = false;
+		$scope.toggleViewToMentors = false;
 	}
 
 	$scope.activateCohorts = function() {
 		$scope.activeTab = 'cohorts';
 		$scope.toggleViewToCourses = false;
+		$scope.toggleViewToMentors = false;
 
 		$scope.toggleViewToCohorts = true;
+	}
+
+	$scope.activateMentors = function() {
+		$scope.activeTab = 'mentors';
+		$scope.toggleViewToMentors = true;
+
+		$scope.toggleViewToCohorts = false;
+		$scope.toggleViewToCourses = false;
 	}
 
 
