@@ -19,7 +19,7 @@ var LessonSchema = mongoose.Schema({
 		title: { type: String },
 		url: { type: String }
 	}],
-	teacher: { type: String},
+	instructor: { type: String},
 })
 
 

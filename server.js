@@ -35,11 +35,8 @@ var CourseController = require('./controllers/CourseController.js');
 
 // Lessons
 app.post('/api/lessons', Lesson.create);
-
 app.get('/api/lessons', Lesson.get);
-
 app.put('/api/lessons', Lesson.update);
-
 app.delete('/api/lessons', Lesson.delete);
 
 //courses

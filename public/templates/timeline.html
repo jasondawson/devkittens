@@ -1,5 +1,5 @@
 <section class="cal">
-
+<lesson></lesson>
 	<!-- <h3 class="month">June 2015</h3> -->
 
 	<div class="day"
@@ -13,9 +13,21 @@
 		  }">
 
 		<!-- DATE -->
-		<p class="day-date">
+		<p ng-show="event.date" class="day-date">
 			{{event.date | date:'EEE'}}, {{event.date | date:'longDate'}}
 		</p>
+
+		<!-- specific to curriculum page -->
+		<p ng-show="event.day" class="day-date">
+			Day {{event.day}}
+		</p>
+
+		<div ng-show="!event.lesson">
+			<button  ng-click="showModal()">new lesson </button>
+			<button  ng-click="addLesson()">add lesson </button>
+		</div>	
+		<!--  -->
+
 
 		<!-- TITLE -->
 		<p class="course-title">{{event.topic}}</p>
