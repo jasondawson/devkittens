@@ -50,7 +50,6 @@ angular.module('devKittens')
 		controller: 'CurriculumController',
 		resolve: {
 			courseRef: function(courseServices, $route) {
-				console.log($route.current.params.courseId)
 				return courseServices.getCourse($route.current.params.courseId);
 			}
 		}

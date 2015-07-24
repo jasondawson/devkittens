@@ -2,13 +2,11 @@ angular.module('devKittens')
 
 .controller('DashboardController', function($scope, $location, cohortData, courseData, courseServices) {
 
-	console.log('cohortData ctrl ', cohortData);
 	$scope.toggleAddCohort = false;
 
 	$scope.cohortArray = cohortData;
 
 	$scope.addCohortView = function() {
-		console.log('clicked calendarView btn ', $scope.toggleAddCohort);
 		$scope.toggleAddCohort = !$scope.toggleAddCohort;
 		$scope.backdropVisible = !$scope.backdropVisible
 	}
@@ -16,10 +14,8 @@ angular.module('devKittens')
 	$scope.toggleAddCourse = false;
 
 	$scope.courseArray = courseData;
-	console.log(courseData);
 
 	$scope.addCourseView = function() {
-		console.log($scope.toggleAddCourse);
 		$scope.toggleAddCourse = !$scope.toggleAddCourse;
 	}
 

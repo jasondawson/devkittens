@@ -11,20 +11,30 @@
 
 				<div class="flex1">	
 					<form ng-submit="setTopic(topic)"/>
-						<input class="form-control" type="text" ng-model="topic" placeholder="Lesson Topic" />
+						<input class="form-control" type="text" ng-model="topic" placeholder="Lesson topic" />
 					</form>
 
 					<h4>New Section</h4>
 
-					<form ng-submit="addSection(section)">
-						<input type="text" ng-model="section.title"
-							   placeholder="section title"
+					<form ng-submit="addSection(newSection)">
+						<input type="text" ng-model="newSection.title"
+							   placeholder="Section title"
 							   class="form-control"/>
 
-					   <textarea class="form-control" ng-model="section.content"></textarea>
+					   <textarea class="form-control" ng-model="newSection.content"></textarea>
+
+					   <button class="btn btn-default">Create section</button>
 					</form>
 
-					<button class="btn btn-default" ng-click="addSection(title, content)">Create section</button>
+					<br>
+					<div ng-repeat="section in sections">
+						<hr ng-if="$index === 0">
+
+						<h4>Title: {{section.title}}</h4>
+						<p>{{section.content}}</p>
+
+						<hr>
+					</div>
 				</div>
 
 				<br><br>

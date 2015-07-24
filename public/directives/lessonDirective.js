@@ -21,7 +21,7 @@ angular.module('devKittens')
 			$scope.sections = [];
 			$scope.addSection = function(section){
 				$scope.sections.push(section)
-				$scope.section = {};
+				$scope.newSection = {};
 			}
 
 			$scope.addContent = function(i, item){
@@ -67,11 +67,21 @@ angular.module('devKittens')
 			}
 
 			scope.closeModal = function(){
-				$('body').css('overflow', 'auto');
-
-				if(scope.topic || scope.sections){
+				if(scope.topic || scope.sections.length){
 					confirm('Closing without saving your lesson will delete your data.  Are you sure you want to exit without saving?')
+					close();
+				} else {
+					close();
+				}
+
+				function close () {
+					$('body').css('overflow', 'auto');
 					scope.show = !scope.show;
+
+					// Clear the data
+					scope.sections = [];
+					scope.newSection = {};
+					scope.topic = '';
 				}
 			}
 		}
