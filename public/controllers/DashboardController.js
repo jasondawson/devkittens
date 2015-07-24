@@ -1,6 +1,6 @@
 angular.module('devKittens')
 
-.controller('DashboardController', function($scope, $location, cohortData, courseServices) {
+.controller('DashboardController', function($scope, $location, cohortData, courseData, courseServices) {
 
 	console.log('cohortData ctrl ', cohortData);
 	$scope.toggleAddCohort = false;
@@ -10,17 +10,35 @@ angular.module('devKittens')
 	$scope.addCohortView = function() {
 		console.log('clicked calendarView btn ', $scope.toggleAddCohort);
 		$scope.toggleAddCohort = !$scope.toggleAddCohort;
+		$scope.backdropVisible = !$scope.backdropVisible
+	}
+
+	$scope.toggleAddCourse = false;
+
+	$scope.courseArray = courseData;
+	console.log(courseData);
+
+	$scope.addCourseView = function() {
+		console.log($scope.toggleAddCourse);
+		$scope.toggleAddCourse = !$scope.toggleAddCourse;
 	}
 
 
 
+	//toggling between dashboard views
 
+	$scope.toggleViewToCohorts = false;
+	$scope.toggleViewToCourses = false;
 
+	$scope.cohortsToggle = function() {
+		$scope.toggleViewToCohorts = !$scope.toggleViewToCohorts;
+		$scope.toggleViewToCourses = false;
+	}
 
-
-
-
-
+	$scope.coursesToggle = function() {
+		$scope.toggleViewToCohorts = false;
+		$scope.toggleViewToCourses = !$scope.toggleViewToCourses;
+	}
 
 
 

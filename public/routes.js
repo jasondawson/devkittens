@@ -36,6 +36,9 @@ angular.module('devKittens')
 				var cohortData = dashboardService.getCohortData();
 				console.log('resolve ', cohortData);
 				return cohortData;
+			},
+			courseData: function(courseServices) {
+				return courseServices.getAllCourses();
 			}
 		}
 	})

@@ -42,7 +42,8 @@ app.delete('/api/lessons', Lesson.delete);
 //courses
 
 app.post('/api/course', CourseController.createNewCourse);
-app.get('/api/course/:courseId', CourseController.getCourse)
+app.get('/api/course/:courseId', CourseController.getCourse);
+app.get('/api/all-courses', CourseController.getAllCourses);
 
 
 // Users

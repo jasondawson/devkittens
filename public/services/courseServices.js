@@ -23,5 +23,16 @@ angular.module('devKittens')
 			dfrd.resolve(response.data);
 		})
 		return dfrd.promise;
+	},
+
+	this.getAllCourses = function() {
+		var dfrd = $q.defer();
+		$http({
+			method: "GET",
+			url: '/api/all-courses'
+		}).then(function(response) {
+			dfrd.resolve(response.data);
+		})
+		return dfrd.promise;
 	}
 })

@@ -1,43 +1,81 @@
 <header-directive></header-directive>
 
-<div class="container repeat-container">
+<button ng-click="cohortsToggle()">Cohorts</button>
+<button ng-click="coursesToggle()">Courses</button>
 
-	<a class="calendar-link" href="#calendar">
-		<div class="display-box"  ng-repeat="cohort in cohortArray">
-			<span class="text-dashboard center">{{ cohort.name }}</span> <br />
-			<span class="text-dashboard center">{{ cohort.sched }}</span> <br />
-			<span class="text-dashboard center">{{ cohort.location }}</span>
-		</div> <!-- End of 'display-box' -->
-	</a>
+<div ng-show="toggleViewToCohorts">
+	<div class="container repeat-container">
 
-	<div class="display-box" ng-click="addCohortView()">
-		<span class="text-dashboard">Add a new cohort</span> <br />
-		<i class="icon-dashboard fa fa-plus-circle"></i>
-	</div>
+		<a class="calendar-link" href="#calendar">
+			<div class="display-box"  ng-repeat="cohort in cohortArray">
+				<span class="text-dashboard center">{{ cohort.name }}</span> <br />
+				<span class="text-dashboard center">{{ cohort.sched }}</span> <br />
+				<span class="text-dashboard center">{{ cohort.location }}</span>
+			</div> <!-- End of 'display-box' -->
+		</a>
 
-</div> <!-- End of 'container' -->
+		<div class="display-box" ng-click="addCohortView()">
+			<span class="text-dashboard">Add a new cohort</span> <br />
+			<i class="icon-dashboard fa fa-plus-circle"></i>
+		</div>
 
-<div class="backdrop" ng-show="backdropVisible"></div>
+	</div> <!-- End of 'container' -->
 
-<div class="add-cohort-modal" ng-show="toggleAddCohort">
-	<h2 class="text-dashboard left">Enter New Cohort Information</h2>
-	<i class="close-modal fa fa-times" ng-click="addCohortView()"></i>
+	<div class="backdrop" ng-show="backdropVisible"></div>
 
-	<form class="new-cohort-form">
-		<input class="form-input" type="text" placeholder="Type - dropdown" />
-		<input class="form-input" type="text" placeholder="dates - datepicker" />
-		<input class="form-input" type="text" placeholder="Location - dropdown" />
-	</form>
-	<div class="form-btn-container">
-		<button class="form-btn" type="submit" ng-click="addCohortView()">Cancel</button>
-		<button class="form-btn" type="submit">Save</button>
+	<div class="add-cohort-modal" ng-show="toggleAddCohort">
+		<h2 class="text-dashboard left">Enter New Cohort Information</h2>
+		<i class="close-modal fa fa-times" ng-click="addCohortView()"></i>
+
+		<form class="new-cohort-form">
+			<input class="form-input" type="text" placeholder="Type - dropdown" />
+			<input class="form-input" type="text" placeholder="dates - datepicker" />
+			<input class="form-input" type="text" placeholder="Location - dropdown" />
+		</form>
+		<div class="form-btn-container">
+			<button class="form-btn" type="submit" ng-click="addCohortView()">Cancel</button>
+			<button class="form-btn" type="submit">Save</button>
+		</div>
 	</div>
 </div>
 
-<div>
-	<form name="newCourseForm">
-		<input type="text" ng-model="courseInfo.title" placeholder="Course Title" required>
-		<input type="number" ng-model="courseInfo.courseLength" placeholder="Course Length" required>
-		<button ng-click="createNewCourse(courseInfo)" ng-disabled="newCourseForm.$invalid">Create</button>
-	</form>
+<div ng-show="toggleViewToCourses">
+	<!-- <div>
+		<form name="newCourseForm">
+			<input type="text" ng-model="courseInfo.title" placeholder="Course Title" required>
+			<input type="number" ng-model="courseInfo.courseLength" placeholder="Course Length" required>
+			<button ng-click="createNewCourse(courseInfo)" ng-disabled="newCourseForm.$invalid">Create</button>
+		</form>
+	</div> -->
+	<div class="container repeat-container">
+
+		<a class="calendar-link" href="#calendar">
+			<div class="display-box"  ng-repeat="course in courseArray">
+				<span class="text-dashboard center">{{ course.title }}</span> <br />
+				<span class="text-dashboard center">{{ course.courseLength }}</span> <br />
+			</div> <!-- End of 'display-box' -->
+		</a>
+
+		<div class="display-box" ng-click="addCourseView()">
+			<span class="text-dashboard">Add a new course</span> <br />
+			<i class="icon-dashboard fa fa-plus-circle"></i>
+		</div>
+
+	</div> <!-- End of 'container' -->
+
+	<div class="backdrop" ng-show="backdropVisible"></div>
+
+	<div class="add-cohort-modal" ng-show="toggleAddCourse">
+		<h2 class="text-dashboard left">Enter New Course Information</h2>
+		<i class="close-modal fa fa-times" ng-click="addCourseView()"></i>
+
+		<form class="new-cohort-form" name="newCourseForm">
+			<input class="form-input" type="text" placeholder="Course Title" ng-model="courseInfo.title"/>
+			<input class="form-input" type="number" placeholder="Course Length" ng-model="courseInfo.courseLength" />
+		</form>
+		<div class="form-btn-container">
+			<button class="form-btn" type="submit" ng-click="addCourseView()">Cancel</button>
+			<button class="form-btn" type="submit" ng-click="createNewCourse(courseInfo)" ng-disabled="newCourseForm.$invalid">Save</button>
+		</div>
+	</div>
 </div>
