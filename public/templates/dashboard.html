@@ -4,8 +4,13 @@
 
 <div class="shift-wrapper">
 	<div class="menu-bar">
-		<button ng-click="coursesToggle()" class="btn btn-default">Courses</button>
-		<button ng-click="cohortsToggle()" class="btn btn-default inactive">Cohorts</button>
+
+		<button ng-click="activateCourses()" class="btn btn-default"
+				ng-class="{ active: activeTab === 'courses' }">Courses</button>
+		
+		<button ng-click="activateCohorts()" class="btn btn-default"
+				ng-class="{ active: activeTab === 'cohorts' }">Cohorts</button>
+
 	</div>
 
 	

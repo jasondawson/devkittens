@@ -612,12 +612,19 @@ section.dashboard .right {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   width: 90px;
-  height: 40px;
+  background-color: #ECECEC;
   border: none;
 }
-.shift-wrapper .menu-bar .btn.inactive {
-  background-color: #ECECEC;
-}
-.shift-wrapper .menu-bar .btn.inactive:hover {
+.shift-wrapper .menu-bar .btn:hover {
   background-color: #d8d8d8;
+}
+.shift-wrapper .menu-bar .btn.active {
+  background-color: #fff;
+  -webkit-box-shadow: none;
+}
+.shift-wrapper .menu-bar .btn.active:hover {
+  background-color: #fff;
+}
+.shift-wrapper .menu-bar .btn.active:focus {
+  outline: 0;
 }

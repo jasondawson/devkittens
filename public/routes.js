@@ -44,7 +44,6 @@ angular.module('devKittens')
 		}
 	})
 
-
 	.when('/curriculum/:courseId?', {
 		templateUrl: '/public/templates/curriculum.html',
 		controller: 'CurriculumController',

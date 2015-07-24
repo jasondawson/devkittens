@@ -29,16 +29,25 @@
 			border-top-right-radius: 0;
 			border-bottom-right-radius: 0;
 			width: 90px;
-			height: 40px;
+			background-color: #ECECEC;
 
 			border: none;
-		}
-
-		.btn.inactive {
-			background-color: #ECECEC;
 
 			&:hover {
 				background-color: darken(#ECECEC, 8%);
+			}
+		}
+
+		.btn.active {
+			background-color: #fff;
+			-webkit-box-shadow: none;
+
+			&:hover {
+				background-color: #fff;
+			}
+
+			&:focus {
+				outline: 0;
 			}
 		}
 	}

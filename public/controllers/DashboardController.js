@@ -6,8 +6,8 @@ angular.module('devKittens')
 	$scope.toggleAddCohort = false;
 	$scope.toggleViewToCohorts = false;
 	$scope.toggleViewToCourses = true;
+	$scope.activeTab = 'courses';
 	$scope.cohortArray = cohortData;
-
 
 
 	$scope.addCohortView = function() {
@@ -26,18 +26,18 @@ angular.module('devKittens')
 
 
 	// Toggling between dashboard views
-	$scope.cohortsToggle = function() {
-		if ($scope.toggleViewToCohorts === true) return;
-
-		$scope.toggleViewToCourses = false;
-		$scope.toggleViewToCohorts = !$scope.toggleViewToCohorts;
-	}
-
-	$scope.coursesToggle = function() {
-		if ($scope.toggleViewToCourses === true) return;
+	$scope.activateCourses = function() {
+		$scope.activeTab = 'courses';
+		$scope.toggleViewToCourses = true;
 
 		$scope.toggleViewToCohorts = false;
-		$scope.toggleViewToCourses = !$scope.toggleViewToCourses;
+	}
+
+	$scope.activateCohorts = function() {
+		$scope.activeTab = 'cohorts';
+		$scope.toggleViewToCourses = false;
+
+		$scope.toggleViewToCohorts = true;
 	}
 
 
