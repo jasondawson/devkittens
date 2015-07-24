@@ -38,17 +38,18 @@ exports.getAllCourses = function(req, res) {
 
 
 exports.updateCourseCurriculum = function(req, res) {
-	console.log(2222, req.body)
-	var data = req.body.lesson;
-	console.log(3333, req.params);
-	Course.update({'curriculum._id': req.params.curriculumId}, {'$set': { 'curriculum.$.lesson': data }}, function (err, data) {
-			if (err) {
-				console.log(1111, err);
-				res.status(500).json(err);
-			} else {
-				console.log(3333, data)
-				res.json(data);
-			}
+	var data = req.body;
+
+	Course.findOne({ 'curriculum._id' :  req.params.curriculumId}, function (err, course) {
+		if (err) return res.status(500).send(err);
+		course.curriculum[data.index - 1].lesson = data.lesson;
+
+		course.save(function (err, result) {
+			if (err) return res.status(500).send(err);
+
+			// TODO: NEED TO POPULATE THE COURSES
+			return res.json(course);
 		})
+	});
 }
 

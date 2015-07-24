@@ -16,7 +16,8 @@ angular.module('devKittens')
 				
 				// scroll to active day
 				var activeId = '#' + attrs.id;
-				$('html, body').animate({scrollTop:$(activeId).position().top +120}, 350);
+				$('html, body').animate({scrollTop:$(activeId).position().top + 30}, 350);
+				// TODO ^^^^  + 120 works better for course (30 for curriculum)
 
 				//add active class
 				if (elem.height < 60) {

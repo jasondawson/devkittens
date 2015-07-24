@@ -4,45 +4,64 @@ angular.module('devKittens')
 
 	this.createNewCourse = function(obj) {
 		var dfrd = $q.defer();
+		
 		$http({
 			method: "POST",
 			url: "/api/course",
 			data: obj
-		}).then(function(response) {
+		})
+		.then(function (response) {
 			dfrd.resolve(response.data);
 		})
+		.catch(function (err) {
+			dfrd.reject(err);
+		});
+
 		return dfrd.promise;
 	};
 
 	this.getCourse = function(courseId) {
 		var dfrd = $q.defer();
+
 		$http({
 			method: "GET",
 			url: "/api/course/" + courseId
-		}).then(function(response) {
+		})
+		.then(function (response) {
 			dfrd.resolve(response.data);
 		})
+		.catch(function (err) {
+			dfrd.reject(err);
+		});
+
 		return dfrd.promise;
 	},
 
 	this.getAllCourses = function() {
 		var dfrd = $q.defer();
+
 		$http({
 			method: "GET",
 			url: '/api/all-courses'
-		}).then(function(response) {
+		})
+		.then(function (response) {
 			dfrd.resolve(response.data);
 		})
+		.catch(function (err) {
+			dfrd.reject(err);
+		});
+
 		return dfrd.promise;
 	}
 
 
-	this.updateCourseCurriculum = function(curriculumId, lessonId) {
+	this.updateCourseCurriculum = function(event, lessonId) {
 		return $http({
 			method: 'PUT',
-			url: "/api/course/" + curriculumId,
+			url: "/api/course/" + event._id,
 			data: {
-				lesson: lessonId
+				lesson: lessonId,
+				index: event.day
 			}
 		})
 	}

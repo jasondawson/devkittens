@@ -9,6 +9,7 @@ angular.module('devKittens')
 
 			$scope.topic ='';
 			$scope.item ='';
+			$scope.activeDay;
 			
 
 			// ADD TITLE/TOPIC
@@ -32,28 +33,33 @@ angular.module('devKittens')
 
 
 			// STORE LESSON
-			$scope.createLesson = function(topic){
+			$scope.createLesson = function(topic) {
 				data = {
-					topic: topic, 
-					preReading: $scope.preReadings,
-					objectives: $scope.objectives,
-					miniProject: $scope.miniProjects,
-					project: $scope.projects,
-					additionReading: $scope.readings
+					topic: topic,
+					sections: $scope.sections
 				}
 
-				lessonService.createLesson(data).then(function(response){
-					console.log('lesson', response)
-					courseServices.updateCourseCurriculum($scope.currentEvent._id, response.data._id).then(function(response){
-						console.log(response)
+				lessonService.createLesson(data)
+				.then(function(response){
+
+					courseServices.updateCourseCurriculum($scope.currentEvent, response.data._id)
+					.then(function(response){
+						$scope.events = response.data.curriculum;
 					})
-					$scope.topic ='';
+
+
+					// Clear values
+					$scope.closeModal('skip');
+
 					$scope.preReadings = [];
 					$scope.objectives = [];
 					$scope.miniProjects = [];
 					$scope.projects = [];
 					$scope.readings = [];
 				})
+				.catch(function (err) {
+					throw new Error(err);
+				});
 			}
 
 		},
@@ -66,7 +72,9 @@ angular.module('devKittens')
 				scope.show = !scope.show;
 			}
 
-			scope.closeModal = function(){
+			scope.closeModal = function (skip){
+				if (skip) return close();
+
 				if(scope.topic || scope.sections.length){
 					confirm('Closing without saving your lesson will delete your data.  Are you sure you want to exit without saving?')
 					close();
