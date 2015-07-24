@@ -8,10 +8,11 @@ angular.module('devKittens')
 		},
 		templateUrl: '/public/templates/timeline.html',
 		controller: function($scope){
-			$scope.show = false;
-			$scope.showModal = function(){
-				$scope.show = !$scope.show;
-			}
+			// $scope.show = false;
+			// $scope.showModal = function(event){
+			// 	console.log(event._id)
+			// 	$scope.show = !$scope.show;
+			// }
 		}
 	}
 })
@@ -21,9 +22,11 @@ angular.module('devKittens')
 	return {
 		restrict: 'E',
 		templateUrl: '/public/templates/lesson.html',
-		controller: function($scope){
+		controller: function($scope, lessonService, courseServices){
 			$scope.show = false;
-			$scope.showModal = function(){
+			$scope.showModal = function(event){
+				$scope.currentEvent = event;
+				console.log($scope.currentEvent)
 				$scope.show = !$scope.show;
 			}
 
@@ -137,17 +140,27 @@ angular.module('devKittens')
 			// console.log($scope.events);
 
 			$scope.createLesson = function(topic){
+				
 				data = {
 					topic: topic, 
 					preReading: $scope.preReadings,
 					objectives: $scope.objectives,
-					miniProject: $scope.miniProject,
-					project: $scope.project,
+					miniProject: $scope.miniProjects,
+					project: $scope.projects,
 					additionReading: $scope.readings
 				}
 
 				lessonService.createLesson(data).then(function(response){
-					console.log(response)
+					console.log('lesson', response)
+					courseServices.updateCourseCurriculum($scope.currentEvent._id, response.data._id).then(function(response){
+						console.log(response)
+					})
+					$scope.topic ='';
+					$scope.preReadings = [];
+					$scope.objectives = [];
+					$scope.miniProjects = [];
+					$scope.projects = [];
+					$scope.readings = [];
 				})
 			}
 

@@ -35,4 +35,15 @@ angular.module('devKittens')
 		})
 		return dfrd.promise;
 	}
+
+
+	this.updateCourseCurriculum = function(curriculumId, lessonId) {
+		return $http({
+			method: 'PUT',
+			url: "/api/course/" + curriculumId,
+			data: {
+				lesson: lessonId
+			}
+		})
+	}
 })

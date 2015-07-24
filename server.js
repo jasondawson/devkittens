@@ -43,7 +43,10 @@ app.delete('/api/lessons', Lesson.delete);
 
 app.post('/api/course', CourseController.createNewCourse);
 app.get('/api/course/:courseId', CourseController.getCourse);
+
 app.get('/api/all-courses', CourseController.getAllCourses);
+
+app.put('/api/course/:curriculumId', CourseController.updateCourseCurriculum);
 
 
 // Users
