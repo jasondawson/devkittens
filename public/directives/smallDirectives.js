@@ -7,12 +7,8 @@ angular.module('devKittens')
 			events: '='
 		},
 		templateUrl: '/public/templates/timeline.html',
-		controller: function($scope){
-			// $scope.show = false;
-			// $scope.showModal = function(event){
-			// 	console.log(event._id)
-			// 	$scope.show = !$scope.show;
-			// }
+		controller: function($scope, $sce){
+			
 		}
 	}
 })

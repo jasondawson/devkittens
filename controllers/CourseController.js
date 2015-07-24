@@ -17,7 +17,9 @@ exports.createNewCourse = function(req, res) {
 };
 
 exports.getCourse = function(req, res) {
-	Course.findOne({_id: req.params.courseId}, function (err, data) {
+	Course.findOne({_id: req.params.courseId})
+	.populate('curriculum.lesson')
+	.exec(function (err, data) {
 		if (err) {
 			res.status(500).json(err);
 		} else {

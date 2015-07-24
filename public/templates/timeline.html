@@ -29,9 +29,16 @@
 		<!--  -->
 
 
-		<!-- TITLE -->
-		{{event.lesson}}
-		<p class="course-title">{{event.topic}}</p>
+		<!-- Title -->
+
+		<h3>{{event.lesson.topic}}</h3>
+
+		<div ng-repeat="section in event.lesson.sections">
+			<h4>{{section.title}}</h4>
+			<div ng-bind-html="section.content | unsafe"></div>
+			<br />
+		</div>
+		
 
 		<!-- INSTRUCTOR -->
 		<div class="instructor-wrapper">

@@ -31,8 +31,8 @@
 					<div ng-repeat="section in sections">
 						<hr ng-if="$index === 0">
 
-						<h4>Title: {{section.title}}</h4>
-						<p>{{section.content}}</p>
+						<h4>{{section.title}}</h4>
+						<div ng-bind-html="section.content | unsafe"></div>
 
 						<hr>
 					</div>
