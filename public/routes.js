@@ -8,9 +8,14 @@ angular.module('devKittens')
 		controller: 'HomeController'
 	})
 
-	.when('/calendar', {
+	.when('/calendar/:cohortId?', {
 		templateUrl: '/public/templates/calendar.html',
-		controller: 'CalendarController'
+		controller: 'CalendarController',
+		resolve: {
+			specificCohortData: function(cohortServices, $route) {
+				return cohortServices.getCohort($route.current.params.cohortId);
+			}
+		}
 	})
 
 	.when('/dashboard-mentors', {

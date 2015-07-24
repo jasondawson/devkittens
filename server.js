@@ -28,6 +28,7 @@ var Calendar = require('./controllers/CalendarController.js');
 var Lesson = require('./controllers/LessonController.js');
 var User = require('./controllers/UserController.js');
 var CourseController = require('./controllers/CourseController.js');
+var CohortController = require('./controllers/CohortController.js');
 
 ////////////////////////////////////
 //////////// REST API //////////////
@@ -45,6 +46,10 @@ app.post('/api/course', CourseController.createNewCourse);
 app.get('/api/course/:courseId', CourseController.getCourse);
 app.get('/api/all-courses', CourseController.getAllCourses);
 app.put('/api/course/:curriculumId', CourseController.updateCourseCurriculum);
+
+// Cohorts lolz
+app.post('/api/cohort', CohortController.createNewCohort);
+app.get('/api/cohort/:cohortId', CohortController.getCohort);
 
 
 // Users

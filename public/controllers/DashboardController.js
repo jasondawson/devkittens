@@ -1,25 +1,26 @@
 angular.module('devKittens')
 
-.controller('DashboardController', function($scope, $location, cohortData, courseData, usersData, courseServices) {
+
+.controller('DashboardController',
+function($scope, $location, cohortData, courseData, usersData, courseServices, cohortServices) {
 
 	// Init
 	$scope.toggleAddCohort = false;
+	$scope.toggleAddCourse = false;
 	$scope.toggleViewToCohorts = false;
 	$scope.toggleViewToCourses = true;
 	$scope.toggleViewToMentors = false;
 	$scope.activeTab = 'courses';
 	$scope.cohortArray = cohortData;
-	
+	$scope.courseArray = courseData;
+	$scope.usersArray = usersData;
+
 
 	$scope.addCohortView = function() {
 		$scope.toggleAddCohort = !$scope.toggleAddCohort;
 		$scope.backdropVisible = !$scope.backdropVisible
 	}
 
-	$scope.toggleAddCourse = false;
-
-	$scope.courseArray = courseData;
-	$scope.usersArray = usersData;
 
 	$scope.addCourseView = function() {
 		$scope.toggleAddCourse = !$scope.toggleAddCourse;
@@ -28,7 +29,6 @@ angular.module('devKittens')
 	$scope.addMentorView = function() {
 		$scope.toggleAddMentor = !$scope.toggleAddMentor;
 	}
-
 
 
 	// Toggling between dashboard views
@@ -67,6 +67,23 @@ angular.module('devKittens')
 			$scope.courseInfo.title = '';
 			$scope.courseInfo.courseLength = '';
 			$location.path('/curriculum/' + response._id);
+		})
+	}
+
+	// All that biz for creating a new cohort, etc. authored by Kyle, the handsomest hunk to ever use toilet paper.
+
+	$scope.locationOptions = ['Provo', 'Salt Lake City'];
+
+	$scope.createNewCohort = function(obj) {
+		console.log(obj);
+		cohortServices.createNewCohort(obj)
+		.then(function(response) {
+			console.log(response);
+			for (var key in $scope.cohortInfo) {
+				$scope.cohortInfo[key] = "";
+			};
+			$scope.toggleAddCohort = false;
+			$location.path('/calendar/' + response._id);
 		})
 	}
 

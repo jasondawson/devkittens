@@ -125,6 +125,16 @@
 				<button class="form-btn" type="submit" ng-click="addMentorView()">Cancel</button>
 				<button class="form-btn" type="submit">Save</button>
 			</div>
+
+		<form class="new-cohort-form">
+			<input class="form-input" type="text" placeholder="Cohort Name" ng-model="cohortInfo.name" />
+			<select class="form-input" ng-options="item.title for item in courseArray" ng-model="cohortInfo.courseType"></select>
+			<input class="form-input" type="date" placeholder="dates - datepicker" ng-model="cohortInfo.startDate" />
+			<select class="form-input" ng-options="item for item in locationOptions" ng-model="cohortInfo.location"></select>
+		</form>
+		<div class="form-btn-container">
+			<button class="form-btn" type="submit" ng-click="addCohortView()">Cancel</button>
+			<button class="form-btn" type="submit" ng-click="createNewCohort(cohortInfo)">Save</button>
 		</div>
 	</div> <!-- End of 'shift-wrapper' -->
 
