@@ -515,6 +515,7 @@ section.dashboard .right {
   padding-top: 80px;
   position: relative;
   /*top: 100px;*/
+  max-height: 95%;
   min-height: 300px;
   min-width: 600px;
   background: white;
