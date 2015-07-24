@@ -102,7 +102,7 @@
 		</div>
 
 		<a class="mentors-link" href="#dashboard">
-			<div class="display-box" ng-repeat="mentor in usersArray">
+			<div class="display-box" ng-click="toggleMentorModal(); setMentor(mentor)" ng-repeat="mentor in usersArray">
 				<img class="mentor-image center" ng-src="{{mentor.avatar}}"</img>
 				<span class="text-dashboard center">{{ mentor.name }}</span>
 				<span class="text-dashboard name center">{{ mentor.location }}</span>
@@ -140,6 +140,16 @@
 	</div> <!-- End of 'shift-wrapper' -->
 
 
+<!-- Modal for mentor profile -->
+<mentor-modal
+	ng-show="toggleViewToMentorProfile"
+	toggle-view-to-mentor-profile="toggleViewToMentorProfile"
+	current-mentor="currentMentor"
+	options="options"
+	mentor="mentor"
+	set-mentor="setMentor(mentor)"
+	toggle-mentor-modal="toggleMentorModal()">
+</mentor-modal>
 
 
 

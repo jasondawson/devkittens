@@ -10,6 +10,7 @@ function($scope, $location, cohortData, courseData, usersData, courseServices, c
 	$scope.toggleViewToCohorts = false;
 	$scope.toggleViewToCourses = true;
 	$scope.toggleViewToMentors = false;
+	$scope.toggleViewToMentorProfile = false;
 	$scope.activeTab = 'courses';
 	$scope.cohortArray = cohortData;
 	$scope.courseArray = courseData;
@@ -56,6 +57,17 @@ function($scope, $location, cohortData, courseData, usersData, courseServices, c
 
 		$scope.toggleViewToCohorts = false;
 		$scope.toggleViewToCourses = false;
+	}
+
+	$scope.toggleMentorModal = function() {
+		console.log('$scope.toggleViewToMentorProfile ', $scope.toggleViewToMentorProfile)
+		$scope.toggleViewToMentorProfile = !$scope.toggleViewToMentorProfile;
+	}
+
+	// Sets currentMentor through an ng-click on dashboard-mentors.html
+	$scope.setMentor = function(mentor) {
+		$scope.currentMentor = mentor
+		console.log('currentMentor ', $scope.currentMentor);
 	}
 
 
