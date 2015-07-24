@@ -1,44 +1,50 @@
-<div ng-show="show">
+<div ng-show="show" class="modal-wrapper lesson-modal">
 	<div class="modal-cover flex-row content-center align-items-center">
 		<div class="modal flex-column align-items-center">
-			<i class="fa fa-times" ng-click="closeModal()"></i>
+			<div class="modal-header">
+				<h3>Create a new lesson</h3>
+				<i class="fa fa-times" ng-click="closeModal()"></i>
+			</div>
 
 
-			<div class="flex-row space-between width100 align-start">
-				<div class="flex1">
-					<p><strong>preview</strong></p>
-					<h3>{{topic}}</h3>
-					<div ng-repeat="section in sections track by $index">
-						<h5><strong>{{section.title}}</strong></h5>
-						<div ng-repeat="contentItem in section.content">
-							<p>{{contentItem}}</p>
-						</div>
-						<form ng-submit="addContent($index, item)">
-							<input type="text" ng-model="item" placeholder="content item"/>
-						</form>
-					</div>
-				</div>
+			<div class="width100">
 
 				<div class="flex1">	
 					<form ng-submit="setTopic(topic)"/>
-						<input type="text" ng-model="topic" placeholder="Lesson Topic" />
+						<input class="form-control" type="text" ng-model="topic" placeholder="Lesson Topic" />
 					</form>
-					<br />
-					<br />
+
 					<h4>New Section</h4>
-					<form ng-submit="addSection(title)">
-						<input type="text" ng-model="title" placeholder="section title"/>
+
+					<form ng-submit="addSection(section)">
+						<input type="text" ng-model="section.title"
+							   placeholder="section title"
+							   class="form-control"/>
+
+					   <textarea class="form-control" ng-model="section.content"></textarea>
 					</form>
-					<br />
-					<br />
-					<!-- <button ng-click="addSection(title, content)">create section</button> -->
-					<br />
-					<br />
+
+					<button class="btn btn-default" ng-click="addSection(title, content)">Create section</button>
 				</div>
 
+				<br><br>
+				
+				<button ng-click="createLesson(topic)" class="btn btn-success">Save lesson</button>
 			</div>
-
-			<button ng-click="createLesson(topic)">save lesson</button>
 		</div>
 	</div>
 </div>
+
+
+<!-- DEPREACATED -->
+<!-- <div class="flex1">
+	<div ng-repeat="section in sections track by $index">
+		<h5><strong>{{section.title}}</strong></h5>
+		<div ng-repeat="contentItem in section.content">
+			<p>{{contentItem}}</p>
+		</div>
+		<form ng-submit="addContent($index, item)">
+			<input type="text" ng-model="item" placeholder="content item"/>
+		</form>
+	</div>
+</div> -->

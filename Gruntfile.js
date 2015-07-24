@@ -12,7 +12,7 @@ module.exports = function(grunt) {
             }
         },
         watch: {
-            files: "./public/less/*",
+            files: "./public/less/**/*",
             tasks: ["less"]
         }
     });
