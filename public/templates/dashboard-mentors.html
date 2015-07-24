@@ -5,7 +5,7 @@
 <div class="cal">
 
 	<div class="day" ng-repeat="mentor in mentors">
-		<div ng-click="setMentor(mentor)" class="false-btn">
+		<div ng-click="setMentor(mentor); toggleMentorModal()" class="false-btn">
 			<img class="image" ng-src="{{mentor.img}}"</img>
 			<h4 class="title"> {{ mentor.name }}</h4>
 			
@@ -28,8 +28,12 @@
 
 <mentor-modal
 	ng-show="mentorModalVisible"
+	mentor-modal-visible="mentorModalVisible"
+	current-mentor="currentMentor"
+	options="options"
 	mentor="mentor"
-	set-mentor="setMentor(mentor)">
+	set-mentor="setMentor(mentor)"
+	toggle-mentor-modal="toggleMentorModal()">
 </mentor-modal>
 
 <!-- <timeline events="mentors"></timeline> -->

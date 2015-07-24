@@ -4,14 +4,13 @@ angular.module('devKittens')
 
 	return {
 		restrict: 'EA',
-		templateUrl: '../templates/mentorModal.html',
+		templateUrl: './public/templates/mentorModal.html',
 		scope: {
 			setMentor: '&',
-			currentMentor: '='
-		},
-		controller: function($scope) {
-
-			
+			toggleMentorModal: '&',
+			mentor: '=',
+			currentMentor: '=',
+			options: '='
 		}
 	}
 

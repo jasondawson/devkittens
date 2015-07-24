@@ -22,8 +22,9 @@ angular.module('devKittens')
 				console.log('mentorData ', mentorData);
 				return mentorData;
 			},
-			cohortData: function () {
-				return null;
+			optionsData: function (dashboardService) {
+				var options = dashboardService.getOptions();
+				return options
 			}
 		}
 	})
