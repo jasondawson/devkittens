@@ -8,7 +8,7 @@ angular.module('devKittens')
 	$scope.toggleViewToCourses = true;
 	$scope.activeTab = 'courses';
 	$scope.cohortArray = cohortData;
-
+	
 
 	$scope.addCohortView = function() {
 		$scope.toggleAddCohort = !$scope.toggleAddCohort;

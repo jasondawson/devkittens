@@ -2,7 +2,7 @@
 
 <h3 class="page-title">Mentors</h3>
 
-<div class="cal">
+<section class="cal dashboard">
 
 	<div class="day" ng-repeat="mentor in mentors">
 		<div ng-click="setMentor(mentor); toggleMentorModal()" class="false-btn">
@@ -11,7 +11,7 @@
 			
 			<div class="toggle-container">
 				<i class="toggle fa fa-toggle-on"></i>
-				<h6 class="right">Admin Privledges</h6>
+				<h6 class="right">Admin Privileges</h6>
 			</div>
 		</div> <!-- End of 'false-btn' -->
 	</div> <!-- End of 'day' -->
@@ -20,11 +20,11 @@
 		<input type="text" class="form-input" placeholder="Enter new mentor" />
 		<div class="toggle-container">
 			<i class="toggle-off fa fa-toggle-off"></i>
-			<h6 class="right">Admin Privledges</h6>
+			<h6 class="right">Admin Privileges</h6>
 		</div>
 	</div> <!-- End of 'day' -->
 
-</div> <!-- End of 'cal' -->
+</section> <!-- End of 'cal' -->
 
 <mentor-modal
 	ng-show="mentorModalVisible"
