@@ -231,6 +231,25 @@ header {
 .center {
   align-self: center;
 }
+.modal-cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+.modal {
+  padding: 20px;
+  position: relative;
+  /*top: 100px;*/
+  /*height: 500px;*/
+  min-width: 600px;
+  background: white;
+  z-index: 100;
+  box-shadow: 0px 0px 40px 10px rgba(0, 0, 0, 0.7);
+}
 .cal {
   width: 1000px;
   min-height: 100px;
@@ -268,7 +287,6 @@ header {
 .cal .day p {
   color: #A4A4A4;
 }
-/*INTRUCTOR*/
 .cal .day .instructor-wrapper {
   position: absolute;
   top: 20px;
@@ -289,7 +307,6 @@ header {
   opacity: 0.6;
   display: inline-block;
 }
-/*COURSE BODY*/
 .cal .course-body {
   display: none;
   padding: 0 10px;
@@ -304,14 +321,14 @@ header {
   padding: 10px;
   padding-top: 30px;
   /*background-color: rgb(245, 245, 245);
-				border: 1px solid #848484;*/
+			border: 1px solid #848484;*/
   word-break: break-all;
   overflow: hidden;
   background-color: #ffffff;
   border: 1px solid #C8C5C5;
   position: relative;
 }
-.cal .card .card-title {
+.cal .course-body .card .card-title {
   position: absolute;
   top: 0;
   left: 0;
@@ -321,18 +338,18 @@ header {
   background-color: #4A4F68;
   /*#464646;*/
 }
-.card .card-title h4 {
+.cal .course-body .card .card-title h4 {
   line-height: 25px;
   font-size: 14px;
   margin: 0;
   color: #fff;
 }
-.course-body .actions {
+.cal .course-body .actions {
   position: absolute;
   top: 0;
   right: 0;
 }
-.course-body .action {
+.cal .course-body .action {
   width: 25px;
   height: 25px;
   /*float: right;*/
@@ -342,28 +359,22 @@ header {
   border-radius: 1000px;
   cursor: pointer;
 }
-.course-body .action:hover {
-  /*background-color: #FDFEFF;*/
-  /*background-color: #EEF1F3;*/
-}
-.course-body .action:hover .glyphicon-ok {
+.cal .course-body .action:hover .glyphicon-ok {
   color: #09B314;
 }
-.course-body .action:hover .glyphicon-thumbs-down {
+.cal .course-body .action:hover .glyphicon-thumbs-down {
   color: #ff611a;
 }
-.course-body .action .glyphicon {
+.cal .course-body .action .glyphicon {
   color: #CFCFCF;
 }
-.success-card {
+.cal .course-body .success-card {
   background-color: #C5FFDE;
   border: 1px solid #2ecc71;
 }
-/*COURSE TITLE*/
 .cal .course-title {
   padding: 0 10px;
 }
-/*DAY TYPES*/
 .cal .day-date {
   color: #A4A4A4;
 }
@@ -383,11 +394,9 @@ header {
 .cal .active-date p {
   color: #333;
 }
-/*COURSE TITLE*/
 .cal .active-date .course-title {
   font-weight: 600;
 }
-/*COURSE BODY*/
 .cal .active-date .course-body {
   display: inherit;
 }
@@ -401,7 +410,6 @@ header {
 .cal .last-day {
   border-bottom: 1px solid #D5D5D5;
 }
-/*BOTTOM AFTER EFFECTS*/
 .after-cal {
   position: absolute;
   bottom: -5px;
