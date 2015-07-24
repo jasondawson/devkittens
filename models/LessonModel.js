@@ -7,14 +7,14 @@ var LessonSchema = mongoose.Schema({
 		url: { type: String }
 	}],
 	objectives: [],
-	miniProject: { 
+	miniProject: [{ 
 		name: {type: String },
 		url: { type: String }
-	},
-	project: { 
+	}],
+	project: [{ 
 		name: {type: String },
 		url: { type: String }
-	},
+	}],
 	additionReading: [{
 		title: { type: String },
 		url: { type: String }
