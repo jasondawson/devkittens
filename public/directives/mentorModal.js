@@ -11,6 +11,14 @@ angular.module('devKittens')
 			mentor: '=',
 			currentMentor: '=',
 			options: '='
+		},
+		controller: function($scope) {
+			$scope.studentSection = false;
+
+			$scope.showStudents = function() {
+				$scope.studentSection = !$scope.studentSection;
+			};
+
 		}
 	}
 

@@ -6,7 +6,8 @@ var UserSchema = mongoose.Schema({
 	  	  email: { type: String, required: true }
 	  	, password: { type: String, required: true }
 	  }
-	, name: String 
+	, name: String
+	, avatar: String 
 	, permissions: {
 		  isAdmin: { type: Boolean, default: false }
 		, isMentor: { type: Boolean, default: false }
@@ -15,10 +16,18 @@ var UserSchema = mongoose.Schema({
 	}
 	// mentor specific
 	, mentorData: {
-		  mentos: [String]
+		  mentos: [
+		  	{
+		  		name: String
+		  	, heartbeat: String
+		  	,	email: String
+		  	}
+		  ]
 		, mentorType: String
 		, seniority: Number
 		, cohort: String
+		, duties: String
+		, options: String
 	}
 
 	// TODO: Enable github info
