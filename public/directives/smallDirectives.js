@@ -18,6 +18,8 @@ angular.module('devKittens')
 })
 
 
+
+
 .directive('lesson', function () {
 	return {
 		restrict: 'E',
@@ -30,114 +32,38 @@ angular.module('devKittens')
 				$scope.show = !$scope.show;
 			}
 
-					////objectives
+			$scope.closeModal = function(){
+				if($scope.topic || $scope.sections){
+					confirm('Closing without saving your lesson will delete your data.  Are you sure you want to exit without saving?')
+					$scope.show = !$scope.show;
+				}
+			}
 
+			$scope.topic ='';
+			$scope.item ='';
 			
-			$scope.objectives = [];
-
-			$scope.addObjective = function(){
-				if ($scope.text) {
-		          	$scope.objectives.push(this.text);
-		          	$scope.text = '';
-		        }
-			}
-
-			$scope.removeObjective = function(index){
-				$scope.objectives.splice(index,1);
+			$scope.setTopic = function(topic){
+				console.log(topic)
+				$scope.topic = topic
 			}
 
 
-			////pre-readings
-
-			$scope.preReadings = [];
-
-			$scope.addPreReading = function(title, url){
-				console.log(11111)
-				if(title && url){
-					$scope.preReadings.push({
-						title: title,
-						url: url
-					})
-					$scope.title = '';
-					$scope.url = '';
-				}
+			$scope.sections = [];
+			$scope.addSection = function(title){
+				console.log(1111, title)
+				$scope.sections.push({
+					title: title,
+					content: []
+				})
+				$scope.title = '';
 			}
 
-			$scope.removePreReading = function(index){
-				$scope.preReadings.splice(index,1);
+			$scope.addContent = function(i, item){
+				$scope.sections[i].content.push(item)
+				$scope.item = '';
+				item = ''
+
 			}
-
-
-			////additional readings
-
-
-			$scope.readings = [];
-
-			$scope.addReading = function(title, url){
-				if(title && url){
-					$scope.readings.push({
-						title: title,
-						url: url
-					})
-					$scope.readTitle = '';
-					$scope.readUrl = '';
-				}
-			}
-
-			$scope.removeReading = function(index){
-				$scope.readings.splice(index,1);
-			}
-
-			//// mini projects
-
-
-			$scope.miniProjects = [];
-
-			$scope.addMiniProject = function(name, url){
-				console.log(11111)
-				if(name && url){
-					$scope.miniProjects.push({
-						name: name,
-						url: url
-					})
-					$scope.miniProject = '';
-					$scope.miniProjectUrl = '';
-				}
-			}
-
-			$scope.removeMiniProject = function(index){
-				$scope.miniProjects.splice(index,1);
-			}
-
-
-			//// projects
-
-
-			$scope.projects = [];
-
-			$scope.addProject = function(name, url){
-				console.log(11111)
-				if(name && url){
-					$scope.projects.push({
-						name: name,
-						url: url
-					})
-					$scope.project = '';
-					$scope.projectUrl = '';
-				}
-			}
-
-			$scope.removeProject = function(index){
-				$scope.projects.splice(index,1);
-			}
-
-
-
-
-
-
-			// $scope.events = lessonService.get();
-			// console.log($scope.events);
 
 			$scope.createLesson = function(topic){
 				

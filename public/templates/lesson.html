@@ -1,82 +1,44 @@
 <div ng-show="show">
 	<div class="modal-cover flex-row content-center align-items-center">
 		<div class="modal flex-column align-items-center">
-			<i class="fa fa-times" ng-click="showModal()"></i>
+			<i class="fa fa-times" ng-click="closeModal()"></i>
 
 
-
-			<input ng-model="topic" placeholder="Topic" required/>
-			<br />
-			<div>
-				<p>Objectives:</p>
-				<div class="flex-row space-between" ng-repeat="objective in objectives track by $index">
-					<p>{{objective}}</p><p ng-click="removeObjective($index)">x</p>
+			<div class="flex-row space-between width100 align-start">
+				<div class="flex1">
+					<p><strong>preview</strong></p>
+					<h3>{{topic}}</h3>
+					<div ng-repeat="section in sections track by $index">
+						<h5><strong>{{section.title}}</strong></h5>
+						<div ng-repeat="contentItem in section.content">
+							<p>{{contentItem}}</p>
+						</div>
+						<form ng-submit="addContent($index, item)">
+							<input type="text" ng-model="item" placeholder="content item"/>
+						</form>
+					</div>
 				</div>
 
-
-				<form ng-submit="addObjective()">
-					<input type="text" ng-model="text" placeholder="new objective"/>
-					<!-- <input type="submit" id="submit" value="Submit"/> -->
-					<!-- <button ng-click="addObjective()">submit</button> -->
-				</form>
-
-
-			</div>
-			<br />
-
-
-			<div>
-				<p>Pre-Readings:</p>
-				<div class="flex-row space-between" ng-repeat="obj in preReadings track by $index">
-					<a href="{{obj.url}}"><p>{{obj.title}}</p></a><p ng-click="removePreReading($index)">x</p>
+				<div class="flex1">	
+					<form ng-submit="setTopic(topic)"/>
+						<input type="text" ng-model="topic" placeholder="Lesson Topic" />
+					</form>
+					<br />
+					<br />
+					<h4>New Section</h4>
+					<form ng-submit="addSection(title)">
+						<input type="text" ng-model="title" placeholder="section title"/>
+					</form>
+					<br />
+					<br />
+					<!-- <button ng-click="addSection(title, content)">create section</button> -->
+					<br />
+					<br />
 				</div>
-				<form ng-submit="addPreReading(title, url)">
-					<input type="text" ng-model="title" placeholder="title"/>
-					<input type="text" ng-model="url" placeholder="url"/>
-					<input type="submit" id="submit" value="Submit" hidden/>
-				</form>
-			</div>
-			<br />
 
+			</div>
 
-			<div>
-				<p>Mini-Project:</p>
-				<div class="flex-row space-between" ng-repeat="mini in miniProjects track by $index">
-					<a href="{{mini.url}}"><p>{{mini.name}}</p></a><p ng-click="removeMiniProject($index)">x</p>
-				</div>
-				<form ng-submit="addMiniProject(miniProject, miniProjectUrl)">
-					<input ng-model="miniProject" placeholder="name"/>
-					<input ng-model="miniProjectUrl" placeholder="url"/>
-					<input type="submit" id="submit" value="Submit" hidden/>
-				</form>
-			</div>
-			<br />
-			<div>
-				<p>Project:</p>
-				<div class="flex-row space-between" ng-repeat="proj in projects track by $index">
-					<a href="{{proj.url}}"><p>{{proj.name}}</p></a><p ng-click="removeProject($index)">x</p>
-				</div>
-				<form ng-submit="addProject(project, projectUrl)">
-					<input ng-model="project" placeholder="name"/>
-					<input ng-model="projectUrl" placeholder="url"/>
-					<input type="submit" id="submit" value="Submit" hidden/>
-				</form>
-			</div>
-			<br />
-			<div>
-				<p>Additional Readings:</p>
-				<div class="flex-row space-between" ng-repeat="reading in readings track by $index">
-					<a href="{{reading.url}}"><p>{{reading.title}}</p></a><p ng-click="removeReading($index)">x</p>
-				</div>
-				<form ng-submit="addReading(readTitle, readUrl)">
-					<input type="text" ng-model="readTitle" placeholder="title"/>
-					<input type="text" ng-model="readUrl" placeholder="url"/>
-					<input type="submit" id="submit" value="Submit" hidden/>
-				</form>
-			</div>
-			<br />
-			<!-- <input ng-model="teacher" placeholder="teacher"/> -->
-			<button ng-click="createLesson(topic)">submit</button>
+			<button ng-click="createLesson(topic)">save lesson</button>
 		</div>
 	</div>
 </div>

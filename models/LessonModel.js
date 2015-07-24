@@ -2,24 +2,31 @@ var mongoose = require('mongoose');
 
 var LessonSchema = mongoose.Schema({
 	topic: { type: String, required: true },
-	preReading: [{
-		title: { type: String },
-		url: { type: String }
+	sections: [{
+		title: String,
+		content: String,
+		readPermissions: [],
+		updatePermissions: []
 	}],
-	objectives: [],
-	miniProject: [{ 
-		name: {type: String },
-		url: { type: String }
-	}],
-	project: [{ 
-		name: {type: String },
-		url: { type: String }
-	}],
-	additionReading: [{
-		title: { type: String },
-		url: { type: String }
-	}],
-	instructor: { type: String},
+	instructor: { type: String}
+	// preReading: [{
+	// 	title: { type: String },
+	// 	url: { type: String }
+	// }],
+	// objectives: [],
+	// miniProject: [{ 
+	// 	name: {type: String },
+	// 	url: { type: String }
+	// }],
+	// project: [{ 
+	// 	name: {type: String },
+	// 	url: { type: String }
+	// }],
+	// additionReading: [{
+	// 	title: { type: String },
+	// 	url: { type: String }
+	// }],
+	
 })
 
 
