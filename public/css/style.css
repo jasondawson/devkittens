@@ -170,7 +170,7 @@ section.dashboard {
 }
 section.dashboard .display-box {
   float: left;
-  min-width: 27%;
+  width: 27%;
   height: 150px;
   margin: 3%;
   margin-top: 0;
@@ -199,6 +199,9 @@ section.dashboard .display-box.add-new:hover {
 }
 section.dashboard .text-dashboard {
   text-align: center;
+}
+section.dashboard .text-dashboard.name {
+  font-weight: 600;
 }
 section.dashboard .icon-dashboard {
   display: flex;
@@ -512,7 +515,7 @@ section.dashboard .right {
   padding-top: 80px;
   position: relative;
   /*top: 100px;*/
-  height: 90%;
+  min-height: 300px;
   min-width: 600px;
   background: white;
   z-index: 100;
@@ -609,6 +612,7 @@ section.dashboard .right {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   width: 90px;
+  height: 40px;
   border: none;
 }
 .shift-wrapper .menu-bar .btn.inactive {
