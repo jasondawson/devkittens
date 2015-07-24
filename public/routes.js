@@ -3,7 +3,7 @@ angular.module('devKittens')
 .config(function ($routeProvider) {
 
 	$routeProvider
-	.when('/home', {
+	.when('/', {
 		templateUrl: '/public/templates/home.html',
 		controller: 'HomeController'
 	})

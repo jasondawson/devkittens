@@ -24,6 +24,7 @@ p {
 }
 body {
   margin-top: 100px;
+  height: calc(0%);
 }
 a {
   cursor: pointer;
@@ -75,6 +76,12 @@ header {
   background-color: #fff;
   border-bottom: 1px solid #C3C3C3;
   z-index: 100;
+}
+header .left {
+  float: left;
+}
+header .right {
+  float: right;
 }
 /*
 	*	Container for dashboard boxes on ng-repeat
@@ -249,6 +256,7 @@ header {
   background: white;
   z-index: 100;
   box-shadow: 0px 0px 40px 10px rgba(0, 0, 0, 0.7);
+  overflow: scroll;
 }
 .cal {
   width: 1000px;
