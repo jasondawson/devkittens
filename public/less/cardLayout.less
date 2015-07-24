@@ -1,0 +1,44 @@
+.shift-wrapper {
+	overflow: auto;
+	width: 850px;
+	overflow: initial;
+	margin: 0 auto;
+	padding-left: 150px;
+	border-radius: 2px;
+	border-top-left-radius: 0;
+	position: relative;
+
+	.container {
+		width: 100%;
+		background-color: #fff;
+		border-radius: 2px;
+		border-bottom: 2px solid #DFDFDF;
+		padding: 3% 0 0 0;
+	}
+
+	.menu-bar {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 150px;
+		min-height: 100px;
+
+		.btn {
+			float: right;
+			margin-bottom: 3px;
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+			width: 90px;
+
+			border: none;
+		}
+
+		.btn.inactive {
+			background-color: #ECECEC;
+
+			&:hover {
+				background-color: darken(#ECECEC, 8%);
+			}
+		}
+	}
+}

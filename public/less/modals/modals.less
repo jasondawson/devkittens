@@ -1,52 +1,88 @@
-.modal-wrapper {
-	.modal-cover {
-		position: fixed;
+.modal-cover {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: rgba(0, 0, 0, 0.34);
+	z-index: 100;
+}
+
+.modal {
+	border-radius: 2px;
+	padding: 20px;
+	padding-top: 80px;
+	position: relative;
+	/*top: 100px;*/
+	height: 90%;
+	min-width: 600px;
+	background: white;
+	z-index: 100;
+	box-shadow: 0px 0px 40px -10px rgba(0, 0, 0, 0.7);
+	overflow: auto;
+
+	.modal-header {
+		width: 100%;
+		min-height: 30px;
+		position: absolute;
 		top: 0;
 		left: 0;
-		height: 100%;
-		width: 100%;
-		background: rgba(0, 0, 0, 0.34);
-		z-index: 100;
-	}
 
-	.modal {
-		border-radius: 2px;
-		padding: 20px;
-		padding-top: 80px;
-		position: relative;
-		/*top: 100px;*/
-		height: 90%;
-		min-width: 600px;
-		background: white;
-		z-index: 100;
-		box-shadow: 0px 0px 40px -10px rgba(0, 0, 0, 0.7);
-		overflow: auto;
+		h3 {
+			display: inline-block;
+			margin: 0;
+			line-height: 30px;
+		}
 
-		.modal-header {
-			width: 100%;
-			min-height: 30px;
-			position: absolute;
-			top: 0;
-			left: 0;
+		i.fa.fa-times {
+			font-size: 30px;
+			float: right;
+			color: #9B9B9B;
+			cursor: pointer;
 
-			h3 {
-				display: inline-block;
-				margin: 0;
-				line-height: 30px;
-			}
-
-			i.fa.fa-times {
-				font-size: 30px;
-				float: right;
-				color: #9B9B9B;
-				cursor: pointer;
-
-				&:hover {
-					color: @blue;
-				}
+			&:hover {
+				color: @blue;
 			}
 		}
 	}
+}
 
+.add-cohort-modal {
+	min-height: 70%;
+	width: 50%;
+	position: absolute;
+	top: 15%;
+	left: 25%;
+	background: #fff;
+	border: 1px solid #C3C3C3;
+	box-shadow: 0 0 4px 4px rgba(0,0,0,0.2);
+	-webkit-box-shadow: 0 0 4px 4px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0 0 4px 4px rgba(0,0,0,0.2);
+}
 
+	.strict-modal {
+		overflow: hidden;
+	}
+
+	.close-modal {
+		float: right;
+		font-size: 2em;
+		margin: -8% 2%;
+	}
+
+	.close-mini-modal {
+		margin: 5px;
+	}
+
+	.mini-modal-cal {
+		width: 650px;
+		margin-top: 5%;
+	}
+
+	.mini-modal-day.day {
+		height: auto;
+	}
+
+.active-mentor {
+	border-left: 2px solid #1a75ff !important;
 }

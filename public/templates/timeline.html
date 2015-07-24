@@ -22,7 +22,7 @@
 			Day {{event.day}}
 		</p>
 
-		<div ng-show="!event.lesson">
+		<div ng-show="!event.lesson && !event.date">
 			<button class="btn btn-default" ng-click="showModal(event)">new lesson </button>
 			<button class="btn btn-default" ng-click="addLesson()">add lesson </button>
 		</div>	
