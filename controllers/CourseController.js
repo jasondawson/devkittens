@@ -44,12 +44,51 @@ exports.updateCourseCurriculum = function(req, res) {
 		if (err) return res.status(500).send(err);
 		course.curriculum[data.index - 1].lesson = data.lesson;
 
+
 		course.save(function (err, result) {
 			if (err) return res.status(500).send(err);
+			console.log(333333, result)
+			Course
+				.findById({ '_id': course._id })
+				.populate('curriculum.lesson')
+				.exec(function(err, data){
+					console.log(111111, err, 222222, data)
+					return res.json(data);
+				})
 
 			// TODO: NEED TO POPULATE THE COURSES
-			return res.json(course);
+			
 		})
 	});
+
+	// Course.update({ 'curriculum._id' :  req.params.curriculumId}, { $set: {'curriculum.$.lesson': data.lesson}}, function (err, data) {
+	// 	if (err) {
+	// 		console.log(2222, err)
+	// 		return res.status(500).send(err);
+	// 	}
+	// 	Course.find(
+	// 		{ 'curriculum._id' :  req.params.curriculumId },
+	// 		function(err, data){
+	// 			if (err) {
+	// 				return res.status(500).send(err)
+	// 			}
+	// 			console.log(111111, data[0])
+	// 			data[0]
+	// 			.populate('curriculum.lesson')
+	// 			.exec(function(err, result){
+	// 				console.log(33333, result)
+	// 			})
+	// 		}
+	// 	)
+		// .populate('curriculum.lesson')
+		// .exec(function(err, course){
+		// 	if (err) {
+		// 		// console.log(333, err)
+		// 		return res.status(500).send(err)
+		// 	}
+		// 	// console.log(4444, course)
+		// 	return res.json(course)
+		// })
+	// });
 }
 

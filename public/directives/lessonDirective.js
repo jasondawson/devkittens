@@ -45,6 +45,7 @@ angular.module('devKittens')
 					courseServices.updateCourseCurriculum($scope.currentEvent, response.data._id)
 					.then(function(response){
 						$scope.events = response.data.curriculum;
+						console.log(response)
 					})
 
 
