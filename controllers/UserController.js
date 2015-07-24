@@ -7,11 +7,13 @@ var User = require('../models/User.js');
 exports.getAll = function (req, res) {
 	User.find({}, function (err, users) {
 		if (err) return res.status(500).send(err);
-		
+
 		// TODO: remove passwords
+		user.local.password = 'hidden';
 		return res.json(users);
-	})
-}
+	});
+};
+
 
 exports.put = function (req, res) {
 	var id = req.params.id;
@@ -39,29 +41,33 @@ exports.put = function (req, res) {
 		user.save(function (err, result) {
 			if (err) return res.status(500).send(err);
 			return res.json(result);
-		})
+		});
 
-	})
-}
+	});
+};
 
-// TODO: FOR TESTING PURPOSES ONLY -- REPLACE BY ANDREW AUTH
-exports.post = function (req, res) {
-	var data = req.body;
-	var newUser = new User();
+// AUTHENTICATION
+exports.register = function(req, res) {
+	var newUser = new User(req.body);
+	newUser.save(function(err, user) {
+		if(err) return res.send(err);
+		user.password = null;
+		return res.send(user);
+	});
+};
 
-	newUser.local.email = data.local.email;
-	newUser.local.password = data.local.password;
-	newUser.name = data.name;
-	newUser.permissions.isAdmin = data.permissions.isAdmin;
-	newUser.permissions.isStudent = data.permissions.isStudent;
+exports.me = function(req, res) {
+	if (!req.user) return res.send("current user not defined");
+	req.user.password = null;
+	return res.json(req.user);
+};
 
-
-	newUser.save(function (err, result) {
-		console.log(err, result);
-		if (err) return res.status(500).send(err);
-		return res.json(result);
-	})
-}
+exports.update = function(req, res, done) {
+    User.findByIdAndUpdate(req.user._id, req.body, function(err, result) {
+      if (err) done(err);
+      res.sendStatus(200);
+    });
+};
 
 // DEPRECATED
 exports.get = function (req, res) {
@@ -72,8 +78,23 @@ exports.get = function (req, res) {
 		user.local.password = 'hidden';
 
 		return res.json(user);
-	})
-}
+	});
+};
+
+
+
+
+
+// FOR CHANGING PASSWORD LATER
+// exports.update = function(req, res, done) {
+// 	User.findByIdAndUpdate(req.user._id, req.body, function(err, result) {
+// 		if (err) done(err);
+// 		res.sendStatus(200);
+// 	});
+// };
+
+
+
 
 
 // DUMMY DATA TO CREATE USER:

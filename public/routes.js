@@ -46,5 +46,10 @@ angular.module('devKittens')
 		controller: 'CurriculumController'
 	})
 
+	.when('/login', {
+		templateUrl: '/public/templates/login.html',
+		controller: 'LoginController'
+	})
+
 	.otherwise('/');
-})
+});

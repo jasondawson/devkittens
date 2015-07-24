@@ -1,0 +1,18 @@
+<div>
+  <form class="new-user-form">
+      <label>Sign-Up</label>
+  		<input class="form-input" ng-model="newUser.local.email" type="email" placeholder="email" required="true"/>
+  		<input class="form-input" ng-model="newUser.local.password" type="password" placeholder="password" required="true"/>
+      <button class="submit" ng-click="createUser(newUser)">Sign Up</button>
+  </form>
+</div>
+
+<div>  
+  <form>
+      <label>Sign-In</label>
+  		<input class="form-input" ng-model="user.local.email" type="email" placeholder="email" required="true"/>
+  		<input class="form-input" ng-model="user.local.password" type="password" placeholder="password" required="true"/>
+      <button class="submit" ng-click="userLogin(user)">Login</button>
+  </form>
+</div>
+

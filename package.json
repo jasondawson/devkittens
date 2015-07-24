@@ -19,9 +19,13 @@
   "homepage": "https://github.com/dfala/devkittens",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
+    "bcryptjs": "^2.2.0",
     "body-parser": "^1.13.2",
     "cors": "^2.7.1",
     "express": "^4.13.1",
-    "mongoose": "^4.0.8"
+    "express-session": "^1.11.3",
+    "mongoose": "^4.0.8",
+    "passport": "^0.2.2",
+    "passport-local": "^1.0.0"
   }
 }
