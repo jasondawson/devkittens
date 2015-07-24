@@ -8,11 +8,40 @@ header {
 	border-bottom: 1px solid #C3C3C3;
 	z-index: 100;
 
+	.section {
+    	height: 100%;
+    	display: flex;
+    	align-items: center;
+	}
+
 	.left {
 		float: left;
+
+		a {
+			height: 100%;
+			img {
+				height: 100%;
+				padding: 10px;
+			}
+		}
 	}
 
 	.right {
+		@hidden-border: 2px solid transparent;
+		margin-right: 15px;
 		float: right;
+		
+		p {
+			margin: 0;
+			line-height: 4;
+			padding: 0 10px;
+			border-bottom: @hidden-border;
+			border: @hidden-border;
+
+			&:hover {
+				border-bottom: 2px solid @orange;
+				background-color: #FBF9F9;
+			}
+		}
 	}
 }

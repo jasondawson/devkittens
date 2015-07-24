@@ -1,8 +1,3 @@
-/*COLORS*/
-/*#2ecc71 // Green*/
-/*#1a75ff // Blue*/
-/*#ff611a // Orange*/
-/*#FFD700 // Yellow*/
 /*rgba(0, 0, 0, 0.8) // Black*/
 /*#DEDEDE // Border Gray*/
 html,
@@ -22,9 +17,12 @@ h4,
 p {
   font-family: 'Open Sans', sans-serif;
 }
+h1 {
+  font-size: 30px;
+}
 body {
   margin-top: 100px;
-  height: calc(0%);
+  height: calc(100% - 60px);
 }
 a {
   cursor: pointer;
@@ -67,6 +65,13 @@ a:visited {
   display: inline-block;
   float: left;
 }
+.form-control,
+.form-control:focus {
+  border-radius: 2px;
+  box-shadow: none;
+  outline: none;
+  padding: 20px 15px;
+}
 header {
   position: fixed;
   top: 0;
@@ -77,11 +82,69 @@ header {
   border-bottom: 1px solid #C3C3C3;
   z-index: 100;
 }
+header .section {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
 header .left {
   float: left;
 }
+header .left a {
+  height: 100%;
+}
+header .left a img {
+  height: 100%;
+  padding: 10px;
+}
 header .right {
+  margin-right: 15px;
   float: right;
+}
+header .right p {
+  margin: 0;
+  line-height: 4;
+  padding: 0 10px;
+  border-bottom: 2px solid transparent;
+  border: 2px solid transparent;
+}
+header .right p:hover {
+  border-bottom: 2px solid #ff611a;
+  background-color: #FBF9F9;
+}
+section.home {
+  height: 100%;
+}
+section.home .section {
+  width: 100%;
+  background-color: #3686be;
+}
+section.home .banner {
+  margin-top: -40px;
+  height: 100%;
+  background: url("/public/images/kitten.png") 50% 50% no-repeat scroll;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+section.home .banner h1 {
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+}
+section.home .banner .inline {
+  margin: 20px 5px;
+}
+section.home .banner .inline.form-control {
+  width: 250px;
+  padding: 25px 15px;
+}
+section.home .banner .inline.btn-default {
+  line-height: 40px;
+  width: 90px;
+  border: none;
+  border-radius: 2px;
 }
 /*
 	*	Container for dashboard boxes on ng-repeat
