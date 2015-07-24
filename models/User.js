@@ -16,19 +16,11 @@ var UserSchema = mongoose.Schema({
 	}
 	// mentor specific
 	, mentorData: {
-		  mentos: [
-		  	{
-		  		name: String
-		  	, heartbeat: String
-		  	,	email: String
-		  	}
-		  ]
-		, mentorType: String
-		, seniority: Number
-		, cohort: String
-		, duties: String
-		, options: String
-	}
+		  mentos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'UserSchema' }],
+		}
+	, mentorType: String
+	, seniority: Number
+	, cohort: String
 
 	// TODO: Enable github info
 	// , github: {
@@ -52,3 +44,21 @@ UserSchema.methods.validPassword = function(password) {
 
 // exporting model
 module.exports = mongoose.model('User', UserSchema);
+
+// {
+//     "local": {
+//         "email": "yoda@gmail.com",
+//         "password": "theforce"
+//     },
+//     "name": "Master Yoda",
+//     "avatar": "http://www.magnifiedview.com/wp-content/uploads/2013/01/yoda-Avatar-3.jpg",
+//     "permissions": {
+//         "isAdmin": "true"
+//     },
+//     "mentorData": {
+//         "mentos": "123412341234"
+//     },
+//     "mentorType": "Master Mentor",
+//     "seniority": "5 months",
+//     "cohort": "Full Immersive Web DM4"
+// }

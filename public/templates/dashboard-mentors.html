@@ -4,7 +4,7 @@
 
 <section class="cal dashboard">
 
-	<div class="day" ng-repeat="mentor in mentors">
+	<div class="day" ng-repeat="mentor in users">
 		<div ng-click="setMentor(mentor); toggleMentorModal()" class="false-btn">
 			<img class="image" ng-src="{{mentor.img}}"</img>
 			<h4 class="title"> {{ mentor.name }}</h4>

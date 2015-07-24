@@ -154,6 +154,13 @@
 			return mentors;
 		}
 
+		service.getUsers = function() {
+			return $http({
+				method: 'GET',
+				url: '/api/users'
+			})
+		}
+
 		service.getOptions = function() {
 			return options;
 		}

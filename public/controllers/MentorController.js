@@ -1,18 +1,21 @@
 angular.module('devKittens')
 
-.controller('MentorController', function($scope, mentorData, optionsData) {
+.controller('MentorController', function($scope, mentorData, optionsData, usersData) {
 
 	$scope.mentorModalVisible = false;
 
-	console.log('cohortData ctrl ', mentorData);
+	console.log('optionsData ctrl ', optionsData);
+	console.log('mentorData ctrl ', mentorData);
+	console.log('usersData ctrl ', usersData);
 
 	// Data passed in from resolve to have all the mentors loaded before the page displays.
 	$scope.mentors = mentorData;
+	$scope.users = usersData;
 	$scope.options = optionsData;
-	console.log('options ', $scope.options);
+	// console.log('options ', $scope.options);
 
 	$scope.toggleMentorModal = function() {
-		console.log('toggleMentorModal ', $scope.mentorModalVisible)
+		// console.log('toggleMentorModal ', $scope.mentorModalVisible)
 		$scope.mentorModalVisible = !$scope.mentorModalVisible;
 	}
 

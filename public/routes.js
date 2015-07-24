@@ -18,13 +18,21 @@ angular.module('devKittens')
 		controller: 'MentorController',
 		resolve: {
 			mentorData: function(dashboardService) {
-				var mentorData = dashboardService.getMentorData();
-				console.log('mentorData ', mentorData);
-				return mentorData;
+				return dashboardService.getMentorData();
+				// console.log('mentorData ', mentorData);
+				
 			},
 			optionsData: function (dashboardService) {
-				var options = dashboardService.getOptions();
-				return options
+				return dashboardService.getOptions();
+			},
+			usersData: function(dashboardService, $q) {
+				var dfd = $q.defer();
+				dashboardService.getUsers().then(function(response) {
+					dfd.resolve(response.data);
+				}, function(err) {
+					console.log('Houston... ', err);
+				})
+				return dfd.promise;
 			}
 		}
 	})

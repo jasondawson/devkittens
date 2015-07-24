@@ -46,14 +46,15 @@ exports.put = function (req, res) {
 
 // TODO: FOR TESTING PURPOSES ONLY -- REPLACE BY ANDREW AUTH
 exports.post = function (req, res) {
+	console.log('req.body ', req.body);
 	var data = req.body;
-	var newUser = new User();
+	var newUser = new User(req.body);
 
-	newUser.local.email = data.local.email;
-	newUser.local.password = data.local.password;
-	newUser.name = data.name;
-	newUser.permissions.isAdmin = data.permissions.isAdmin;
-	newUser.permissions.isStudent = data.permissions.isStudent;
+	// newUser.local.email = data.local.email;
+	// newUser.local.password = data.local.password;
+	// newUser.name = data.name;
+	// newUser.permissions.isAdmin = data.permissions.isAdmin;
+	// newUser.permissions.isStudent = data.permissions.isStudent;
 
 
 	newUser.save(function (err, result) {
