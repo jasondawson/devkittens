@@ -50,6 +50,7 @@ app.put('/api/course/:curriculumId', CourseController.updateCourseCurriculum);
 // Cohorts lolz
 app.post('/api/cohort', CohortController.createNewCohort);
 app.get('/api/cohort/:cohortId', CohortController.getCohort);
+app.get('/api/all-cohorts', CohortController.getAllCohorts);
 
 
 // Users

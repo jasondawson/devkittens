@@ -24,4 +24,21 @@ angular.module("devKittens")
 		})
 		return dfrd.promise;
 	}
+
+	this.getAllCohorts = function() {
+		var dfrd = $q.defer();
+
+		$http({
+			method: "GET",
+			url: '/api/all-cohorts'
+		})
+		.then(function (response) {
+			dfrd.resolve(response.data);
+		})
+		.catch(function (err) {
+			dfrd.reject(err);
+		});
+
+		return dfrd.promise;
+	}
 })

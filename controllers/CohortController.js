@@ -46,4 +46,14 @@ exports.getCohort = function(req, res) {
 			res.json(data);
 		}
 	})
-}
+};
+
+exports.getAllCohorts = function(req, res) {
+	Cohort.find({}, function(err, data) {
+		if (err) {
+			res.status(500).json(err);
+		} else {
+			res.json(data);
+		}
+	})
+};

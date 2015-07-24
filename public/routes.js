@@ -46,10 +46,8 @@ angular.module('devKittens')
 		templateUrl: '/public/templates/dashboard.html',
 		controller: 'DashboardController',
 		resolve: {
-			cohortData: function(dashboardService) {
-				var cohortData = dashboardService.getCohortData();
-				console.log('resolve ', cohortData);
-				return cohortData;
+			cohortData: function(cohortServices) {
+				return cohortServices.getAllCohorts();
 			},
 			courseData: function(courseServices) {
 				return courseServices.getAllCourses();

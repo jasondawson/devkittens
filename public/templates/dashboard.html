@@ -27,7 +27,7 @@
 		<a class="calendar-link" ng-repeat="course in courseArray"
 		   ng-href="/#/curriculum/{{course._id}}">
 			<div class="display-box">
-				<span class="text-dashboard center">{{ course.title }}</span>
+				<span class="text-dashboard name center">{{ course.title }}</span>
 				<span class="text-dashboard center">{{ course.courseLength }} days</span>
 			</div> <!-- End of 'display-box' -->
 		</a>
@@ -60,8 +60,8 @@
 			<i class="icon-dashboard fa fa-plus-circle"></i>
 		</div>
 
-		<a class="calendar-link" href="#calendar">
-			<div class="display-box"  ng-repeat="cohort in cohortArray">
+		<a class="calendar-link" ng-href="/#/calendar/{{cohort._id}}" ng-repeat="cohort in cohortArray">
+			<div class="display-box">
 				<span class="text-dashboard name center">{{ cohort.name }}</span>
 				<span class="text-dashboard center">{{ cohort.sched }}</span>
 				<span class="text-dashboard center">{{ cohort.location }}</span>
@@ -80,13 +80,14 @@
 			<i class="close-modal fa fa-times" ng-click="addCohortView()"></i>
 
 			<form class="new-cohort-form">
-				<input class="form-input" type="text" placeholder="Type - dropdown" />
-				<input class="form-input" type="text" placeholder="dates - datepicker" />
-				<input class="form-input" type="text" placeholder="Location - dropdown" />
+				<input class="form-input" type="text" placeholder="Cohort Name" ng-model="cohortInfo.name" />
+				<select ng-options="item.title for item in courseArray" ng-model="cohortInfo.courseType"></select>
+				<input class="form-input" type="date" ng-model="cohortInfo.startDate" />
+				<select class="form-input" ng-options="item for item in locationOptions" ng-model="cohortInfo.location"></select>
 			</form>
 			<div class="form-btn-container">
 				<button class="form-btn" type="submit" ng-click="addCohortView()">Cancel</button>
-				<button class="form-btn" type="submit">Save</button>
+				<button class="form-btn" type="submit" ng-click="createNewCohort(cohortInfo)">Save</button>
 			</div>
 		</div>
 	</div>

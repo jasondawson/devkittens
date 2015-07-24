@@ -15,6 +15,8 @@ function($scope, $location, cohortData, courseData, usersData, courseServices, c
 	$scope.courseArray = courseData;
 	$scope.usersArray = usersData;
 
+	console.log(cohortData);
+
 
 	$scope.addCohortView = function() {
 		$scope.toggleAddCohort = !$scope.toggleAddCohort;
