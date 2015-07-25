@@ -31,10 +31,10 @@
 
 		<!-- Title -->
 
-		<h3>{{event.lesson.topic}}</h3>
+		<h4>{{event.lesson.topic}}</h4>
 
 		<div ng-repeat="section in event.lesson.sections">
-			<h4>{{section.title}}</h4>
+			<p>Title: {{section.title}}</p>
 			<div ng-bind-html="section.content | unsafe"></div>
 			<br />
 		</div>

@@ -54,6 +54,9 @@ a:visited {
 ::selection {
   background-color: #1481e3;
 }
+.strong {
+  font-weight: 600;
+}
 .btn {
   border-radius: 2px;
 }

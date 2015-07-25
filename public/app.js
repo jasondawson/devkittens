@@ -12,7 +12,7 @@ angular.module('devKittens', ['textAngular', 'ngRoute'])
 	    // $delegate is the taOptions we are decorating
 	    // here we override the default toolbars and classes specified in taOptions.
 	    taOptions.toolbar = [
-	        ['h3', 'p', 'pre', 'insertLink'],
+	        ['h4', 'p', 'pre', 'insertLink'],
 	        ['bold', 'italics', 'underline', 'ul', 'ol', 'clear']
 	    ];
 
