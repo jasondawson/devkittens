@@ -63,6 +63,12 @@ angular.module('devKittens')
 				});
 			}
 
+			$scope.editLesson = function(){
+				LessonService.editLesson(data).then(function(response){
+					console.log(1111, response);
+				})
+			}
+
 		},
 		link: function (scope, elem, attrs) {
 			//MODAL UX/UI --> move to directive?
