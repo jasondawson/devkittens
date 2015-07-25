@@ -1,7 +1,8 @@
 angular.module('devKittens')
 
-.controller('MentorController', function($scope, mentorData, optionsData, usersData) {
-
+.controller('MentorController', function ($scope, mentorData, optionsData, usersData, user) {
+	
+	$scope.user = user;
 	$scope.mentorModalVisible = false;
 
 	console.log('optionsData ctrl ', optionsData);

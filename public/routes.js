@@ -14,6 +14,18 @@ angular.module('devKittens')
 		resolve: {
 			specificCohortData: function(cohortServices, $route) {
 				return cohortServices.getCohort($route.current.params.cohortId);
+			},
+			user: function($http, $location, $q){
+				var dfd = $q.defer();
+				$http({
+					method: 'GET',
+					url: '/api/auth'
+				}).then(function(response){
+					dfd.resolve(response.data);
+				}, function(err){
+					$location.path('/login')
+				})
+				return dfd.promise;
 			}
 		}
 	})
@@ -38,6 +50,18 @@ angular.module('devKittens')
 					console.log('Houston... ', err);
 				})
 				return dfd.promise;
+			},
+			user: function($http, $location, $q){
+				var dfd = $q.defer();
+				$http({
+					method: 'GET',
+					url: '/api/auth'
+				}).then(function(response){
+					dfd.resolve(response.data);
+				}, function(err){
+					$location.path('/login')
+				})
+				return dfd.promise;
 			}
 		}
 	})
@@ -60,6 +84,18 @@ angular.module('devKittens')
 					console.log('Houston... ', err);
 				})
 				return dfd.promise;
+			},
+			user: function($http, $location, $q){
+				var dfd = $q.defer();
+				$http({
+					method: 'GET',
+					url: '/api/auth'
+				}).then(function(response){
+					dfd.resolve(response.data);
+				}, function(err){
+					$location.path('/login')
+				})
+				return dfd.promise;
 			}
 		}
 	})
@@ -70,6 +106,18 @@ angular.module('devKittens')
 		resolve: {
 			courseRef: function(courseServices, $route) {
 				return courseServices.getCourse($route.current.params.courseId);
+			},
+			user: function($http, $location, $q){
+				var dfd = $q.defer();
+				$http({
+					method: 'GET',
+					url: '/api/auth'
+				}).then(function(response){
+					dfd.resolve(response.data);
+				}, function(err){
+					$location.path('/login')
+				})
+				return dfd.promise;
 			}
 		}
 	})
@@ -77,11 +125,6 @@ angular.module('devKittens')
 	.when('/registration', {
 		templateUrl: '/public/templates/registration.html',
 		controller: 'registrationController'
-	})
-
-	.when('/login', {
-		templateUrl: '/public/templates/login.html',
-		controller: 'loginController'
 	})
 
 	.otherwise('/');

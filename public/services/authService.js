@@ -1,6 +1,6 @@
 angular.module('devKittens')
 
-.service('authService', function($http, $q){
+.service('authService', function ($http, $q) {
 
 	this.createUser = function(name, email, password){
 		return $http({

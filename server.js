@@ -84,18 +84,23 @@ app.post('/api/user', passport.authenticate('local-signup'), function (req, res)
 });
 
 app.post('/auth/login', passport.authenticate('local-login'), function (req, res){
-	console.log('user', req.user)
 	if(!req.user){
 		res.redirect('/#/login');
 	}
-    res.redirect('/#/dashboard'); // redirect to the secure profile section
+    res.send(req.user); // redirect to the secure profile section
 });
+
+
+app.get('/api/auth', isAuth, function(req, res){
+	console.log('user', req.user)
+	res.json(req.user)
+} )
 
 
 // TODO: does this work?
 app.get('/logout', function(req, res) {
     req.logout();
-    res.send(req.user);
+    res.redirect('/#/');
 });
 
 
@@ -131,13 +136,16 @@ app.listen(portNum, function () {
 
 
 
-function isLoggedIn(req, res, next) {
+function isAuth(req, res, next) {
 
     // if user is authenticated in the session, carry on 
-    if (req.isAuthenticated()){
-        return next();
+    if (req.user){
+        next();
+    } else {
+   	// if they aren't redirect them to the home page
+    	res.status(403).send('not allowed');
     }
 
-    // if they aren't redirect them to the home page
-    res.send(false);
+   
+   
 }

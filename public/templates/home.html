@@ -20,7 +20,7 @@
 					   placeholder="password" type="password"
 					   ng-model="user.password" required/>
 
-				<button class="inline btn btn-default">Log in</button>
+				<button class="inline btn btn-default" ng-click="login(user.email, user.password)">Log in</button>
 			</form>
 		</div>
 

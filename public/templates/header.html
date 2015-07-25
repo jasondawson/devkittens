@@ -7,7 +7,8 @@
 
 	<div class="section right">
 		<a href="/#/dashboard"><p>Dashboard</p></a>
-		<a href="/#/login"><p>Login</p></a>
+		<a ng-show="!user" href="/#/"><p>Login</p></a>
+		<a ng-show="user" href="/logout"><p>Logout</p></a>
 	</div>
 
 </header>

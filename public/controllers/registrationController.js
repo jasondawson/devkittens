@@ -4,6 +4,7 @@ angular.module('devKittens')
 function ($scope, authService, $location, infoStorage){
 	
 	// Init
+
 	$scope.errorMessage = '';
 
 

@@ -1,7 +1,9 @@
 angular.module('devKittens')
 
 .controller('DashboardController',
-function($scope, $location, cohortData, courseData, usersData, courseServices, cohortServices) {
+function ($scope, $location, cohortData, courseData, usersData, courseServices, cohortServices, user) {
+
+	$scope.user = user;
 
 	// Init
 	$scope.toggleAddCohort = false;

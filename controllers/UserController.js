@@ -46,6 +46,7 @@ exports.put = function (req, res) {
 
 // TODO: FOR TESTING PURPOSES ONLY -- REPLACE BY ANDREW AUTH
 exports.post = function (req, res) {
+	console.log('req.body ', req.body);
 	var data = req.body;
 	var newUser = new User();
 
@@ -54,11 +55,10 @@ exports.post = function (req, res) {
 	newUser.name = data.name;
 	// newUser.permissions.isAdmin = data.permissions.isAdmin;
 	// newUser.permissions.isStudent = data.permissions.isStudent;
-
-
 	newUser.save(function (err, result) {
 		console.log(err, result);
 		if (err) return res.status(500).send(err);
+		
 		return res.json(result);
 	})
 }
