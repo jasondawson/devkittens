@@ -1,0 +1,58 @@
+var exports = module.exports = {};
+
+var mandrill = require('mandrill-api/mandrill');
+var keys = require('../models/Keys.js');
+var mandrill_client = new mandrill.Mandrill(keys.mandrillTest);
+
+var async = true;
+var ip_pool = "Main Pool";
+
+
+// Heavy lifting
+exports.sendInvite = function (req, res) {
+	var body = req.body;
+
+    if (!body.html && !body.subject) return res.status(500).send('No message to send.');
+
+
+    // Create message:
+    var message = {
+	    text: "Ooops! The original message was not sent correctly.",
+	    html: body.html,
+	    subject: body.subject,
+	    to: body.to,
+	    from_name: body.from_name,
+	    from_email: body.from_email,
+	    headers: {
+	    	'Reply-To': body.from_email
+	    }
+	};
+
+
+    mandrill_client.messages.send({"message": message, "async": async, "ip_pool": ip_pool}, function(result) {
+        console.log(result);
+
+    	res.send('Emails are in queue');
+
+    }, function(e) {
+        console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
+        res.status(500).send(e);
+    });
+};
+
+
+// EXAMPLE EMAIL
+// var message = {
+//     text: "Ooops! The original message was not sent correctly.",
+//     html: 'You are invited to login to DevMountain',
+//     subject: 'This is the subject line, obviously',
+//     to: [{
+//     	email: 'yofala@gmail.com',
+// 		type: "to"
+// 	}],
+//     from_name: 'Daniel Falabella',
+//     from_email: 'yofala@gmail.com',
+//     headers: {
+//     	'Reply-To': 'yofala@gmail.com'
+//     }
+// };

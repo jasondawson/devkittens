@@ -29,6 +29,8 @@ var Lesson = require('./controllers/LessonController.js');
 var User = require('./controllers/UserController.js');
 var CourseController = require('./controllers/CourseController.js');
 var CohortController = require('./controllers/CohortController.js');
+var EmailController = require('./controllers/EmailController.js');
+
 
 ////////////////////////////////////
 //////////// REST API //////////////
@@ -57,6 +59,12 @@ app.get('/api/all-cohorts', CohortController.getAllCohorts);
 app.get('/api/users', User.getAll);
 app.post('/api/user', User.post);
 app.put('/api/user/:id', User.put);
+
+
+// Emails
+app.post('/api/email/invite', EmailController.sendInvite);
+// app.post('/api/email-draft', MainController.sendDraft);
+
 
 // DEPRECATED
 // app.get('/api/user/:id', User.get);
