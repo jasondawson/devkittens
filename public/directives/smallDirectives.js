@@ -1,5 +1,14 @@
 angular.module('devKittens')
 
+.directive('focusHere', function () {
+	return {
+		restrict: 'A',
+		link: function (scope, elem, attrs) {
+			elem.focus();
+		}
+	}
+})
+
 .directive('timeline', function () {
 	return {
 		restrict: 'E',

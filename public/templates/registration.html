@@ -15,7 +15,7 @@
 			<form ng-submit="createUser(name, email, password, confirmPassword)">
 				<div class="alert alert-danger" ng-show="errorMessage">{{errorMessage}}</div>
 				<input type="text" ng-model="name" placeholder="Name"
-					   class="form-control" required/>
+					   class="form-control" focus-here required/>
 				<input type="text" ng-model="email" placeholder="Email"
 					   class="form-control" required/>
 

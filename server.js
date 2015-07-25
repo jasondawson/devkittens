@@ -39,7 +39,12 @@ var EmailController = require('./controllers/EmailController.js');
 
 
 // required for passport
-app.use(session({ secret: 'best secret ever' })); // session secret
+app.use(session({
+    secret: 'best secret ever',
+    resave: true,
+    saveUninitialized: true
+
+}));
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 
@@ -74,7 +79,8 @@ app.put('/api/user/:id', User.put);
 
 // Auth
 app.post('/api/user', passport.authenticate('local-signup'), function (req, res) {
-    res.json(req.user);
+    res.redirect('/#')
+    res.json(req.use);
 });
 
 app.post('/auth/login', passport.authenticate('local-login'), function (req, res){
@@ -102,6 +108,7 @@ app.get('/logout', function(req, res) {
 ////////////////////////////////////
 ////////////////////////////////////
 ////////////////////////////////////
+
 
 
 // Connections
