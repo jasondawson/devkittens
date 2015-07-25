@@ -12,12 +12,15 @@ var UserSchema = mongoose.Schema({
 		  isAdmin: { type: Boolean, default: false }
 		, isMentor: { type: Boolean, default: false }
 		, isInstructor: { type: Boolean, default: false }
-		, isStudent: { type: Boolean, default: true }
+		, isStudent: {
+			  status: { type: Boolean, default: true }
+			, courseId: String
+		}
 	}
 	// mentor specific
 	, mentorData: {
-		  mentos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'UserSchema' }],
-		}
+		mentos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'UserSchema' }],
+	  }
 	, mentorType: String
 	, seniority: Number
 	, cohort: String

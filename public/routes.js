@@ -107,7 +107,7 @@ angular.module('devKittens')
 			courseRef: function(courseServices, $route) {
 				return courseServices.getCourse($route.current.params.courseId);
 			},
-			user: function($http, $location, $q){
+			user: function($http, $location, $q) {
 				var dfd = $q.defer();
 				$http({
 					method: 'GET',
@@ -122,9 +122,24 @@ angular.module('devKittens')
 		}
 	})
 
+	.when('/registration/:courseId', {
+		templateUrl: '/public/templates/registration.html',
+		controller: 'registrationController',
+		resolve: {
+			courseId: function ($route) {
+				return $route.current.params.courseId;
+			}
+		}
+	})
+
 	.when('/registration', {
 		templateUrl: '/public/templates/registration.html',
-		controller: 'registrationController'
+		controller: 'registrationController',
+		resolve: {
+			courseId: function() {
+				return null;
+			}
+		}
 	})
 
 	.otherwise('/');

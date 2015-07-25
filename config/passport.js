@@ -3,6 +3,7 @@ var LocalStrategy = require('passport-local').Strategy;
 
 // load up the user model
 var User = require('../models/User.js');
+var Cohort = require('../models/CohortModel.js');
 
 // expose this function to our app using module.exports
 module.exports = function(passport) {
@@ -87,9 +88,19 @@ module.exports = function(passport) {
                             newUser.local.password = newUser.generateHash(password);
                             newUser.name           = req.body.name;
 
-                            newUser.save(function(err) {
-                                if (err) return done(err);
+                            if (req.body.permissions) {
+                                newUser.permissions = req.body.permissions;
+                            }
 
+                            newUser.save(function (err, result) {
+                                if (err) return done(err);
+                                
+                                if (req.body.permissions && req.body.permissions.isStudent.status === true) {
+                                    Cohort.findOne({'_id': req.body.permissions.isStudent.courseId}, function (err, foundCohort) {
+                                        foundCohort.students.push(result._id);
+                                        foundCohort.save();
+                                    })
+                                }
                                 return done(null, newUser);
                             });
                         }

@@ -72,14 +72,14 @@ angular.module('devKittens')
 		},
 		link: function (scope, elem, attrs) {
 			//MODAL UX/UI --> move to directive?
-			scope.showModal = function(event){
+			scope.showModal = function (event) {
 				$('body').css('overflow', 'hidden');
 
 				scope.currentEvent = event;
 				scope.show = !scope.show;
 			}
 
-			scope.closeModal = function (skip){
+			scope.closeModal = function (skip) {
 				if (skip) return close();
 
 				if(scope.topic || scope.sections.length){

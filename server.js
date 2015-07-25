@@ -91,10 +91,9 @@ app.post('/auth/login', passport.authenticate('local-login'), function (req, res
 });
 
 
-app.get('/api/auth', isAuth, function(req, res){
-	console.log('user', req.user)
+app.get('/api/auth', isAuth, function(req, res) {
 	res.json(req.user)
-} )
+});
 
 
 // TODO: does this work?
