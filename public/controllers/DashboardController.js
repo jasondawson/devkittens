@@ -16,21 +16,25 @@ function($scope, $location, cohortData, courseData, usersData, courseServices, c
 	$scope.courseArray = courseData;
 	$scope.usersArray = usersData;
 
+	$scope.backdropVisible = false;
+
 	console.log(cohortData);
 
 
 	$scope.addCohortView = function() {
 		$scope.toggleAddCohort = !$scope.toggleAddCohort;
-		$scope.backdropVisible = !$scope.backdropVisible
+		$scope.backdropVisible = !$scope.backdropVisible;
 	}
 
 
 	$scope.addCourseView = function() {
 		$scope.toggleAddCourse = !$scope.toggleAddCourse;
+		$scope.backdropVisible = !$scope.backdropVisible;
 	}
 
 	$scope.addMentorView = function() {
 		$scope.toggleAddMentor = !$scope.toggleAddMentor;
+		$scope.backdropVisible = !$scope.backdropVisible;
 	}
 
 
@@ -62,6 +66,7 @@ function($scope, $location, cohortData, courseData, usersData, courseServices, c
 	$scope.toggleMentorModal = function() {
 		console.log('$scope.toggleViewToMentorProfile ', $scope.toggleViewToMentorProfile)
 		$scope.toggleViewToMentorProfile = !$scope.toggleViewToMentorProfile;
+		$scope.backdropVisible = !$scope.backdropVisible;
 	}
 
 	// Sets currentMentor through an ng-click on dashboard-mentors.html

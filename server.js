@@ -74,7 +74,7 @@ app.put('/api/user/:id', User.put);
 
 
 // Emails
-app.post('/api/email/invite', EmailController.sendInvite);
+// app.post('/api/email/invite', EmailController.sendInvite);
 // app.post('/api/email-draft', MainController.sendDraft);
 
 //authentication

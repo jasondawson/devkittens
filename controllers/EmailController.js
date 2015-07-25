@@ -1,10 +1,11 @@
 var exports = module.exports = {};
 
+
 var mandrill = require('mandrill-api/mandrill');
 var keys = require('../models/Keys.js');
 
 var mandrill_client = new mandrill.Mandrill('x6RL-uINxCdZp1ysS41EOg');
-// var mandrill_client = new mandrill.Mandrill(keys.mandrillTest);
+// var keys = require('../models/Keys.js');
 
 var async = true;
 var ip_pool = "Main Pool";
