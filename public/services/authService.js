@@ -8,10 +8,8 @@ angular.module('devKittens')
 			url: '/api/user',
 			data: {
 				name: name,
-				local: {
-					email: email,
-					password: password
-				}
+				email: email,
+				password: password
 			}
 		})
 	}

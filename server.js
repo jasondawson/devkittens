@@ -3,7 +3,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var mongoose = require('mongoose');
-var session = session = require('express-session');
+var session = require('express-session');
 var passport = require('passport');
 // var keys = require('./models/keys.js');
 
@@ -65,20 +65,19 @@ app.post('/api/cohort', CohortController.createNewCohort);
 app.get('/api/cohort/:cohortId', CohortController.getCohort);
 app.get('/api/all-cohorts', CohortController.getAllCohorts);
 
+// Emails
+app.post('/api/email/invite', EmailController.sendInvite);
 
 // Users
 app.get('/api/users', User.getAll);
-app.post('/api/user', User.post);
 app.put('/api/user/:id', User.put);
 
+// Auth
+app.post('/api/user', passport.authenticate('local-signup'), function (req, res) {
+    res.json(req.user);
+});
 
-
-// Emails
-// app.post('/api/email/invite', EmailController.sendInvite);
-// app.post('/api/email-draft', MainController.sendDraft);
-
-//authentication
-app.post('/auth/login', passport.authenticate('local'), function(req, res){
+app.post('/auth/login', passport.authenticate('local-login'), function (req, res){
 	console.log('user', req.user)
 	if(!req.user){
 		res.redirect('/#/login');
@@ -86,6 +85,8 @@ app.post('/auth/login', passport.authenticate('local'), function(req, res){
     res.redirect('/#/dashboard'); // redirect to the secure profile section
 });
 
+
+// TODO: does this work?
 app.get('/logout', function(req, res) {
     req.logout();
     res.send(req.user);
