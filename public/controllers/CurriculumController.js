@@ -5,5 +5,4 @@ angular.module('devKittens')
 	document.body.scrollTop = document.documentElement.scrollTop = 0;
 
 	$scope.events = courseRef.curriculum;
-	console.log($scope.events);
 });

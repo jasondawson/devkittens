@@ -55,7 +55,6 @@ angular.module('devKittens')
 			usersData: function(dashboardService, $q) {
 				var dfd = $q.defer();
 				dashboardService.getUsers().then(function(response) {
-					console.log('resolve usersData ', response.data)
 					dfd.resolve(response.data);
 				}, function(err) {
 					console.log('Houston... ', err);

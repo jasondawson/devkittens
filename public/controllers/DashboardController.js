@@ -1,6 +1,5 @@
 angular.module('devKittens')
 
-
 .controller('DashboardController',
 function($scope, $location, cohortData, courseData, usersData, courseServices, cohortServices) {
 
@@ -15,11 +14,7 @@ function($scope, $location, cohortData, courseData, usersData, courseServices, c
 	$scope.cohortArray = cohortData;
 	$scope.courseArray = courseData;
 	$scope.usersArray = usersData;
-
 	$scope.backdropVisible = false;
-
-	console.log(cohortData);
-
 
 	$scope.addCohortView = function() {
 		$scope.toggleAddCohort = !$scope.toggleAddCohort;
@@ -94,10 +89,8 @@ function($scope, $location, cohortData, courseData, usersData, courseServices, c
 	$scope.locationOptions = ['Provo', 'Salt Lake City'];
 
 	$scope.createNewCohort = function(obj) {
-		console.log(obj);
 		cohortServices.createNewCohort(obj)
 		.then(function(response) {
-			console.log(response);
 			for (var key in $scope.cohortInfo) {
 				$scope.cohortInfo[key] = "";
 			};

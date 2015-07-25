@@ -512,6 +512,38 @@ section.dashboard .right {
   width: 990px;
   height: 4px;
 }
+section.registration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-top: -41px;
+}
+section.registration .unit {
+  height: 100%;
+}
+section.registration .left {
+  background: url("/public/images/welcome.png") 50% 50% no-repeat scroll;
+  background-size: cover;
+  width: 57%;
+}
+section.registration .right {
+  width: 43%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section.registration .right .inner-right {
+  width: 100%;
+  max-width: 380px;
+}
+section.registration .right .inner-right .form-control {
+  margin-bottom: 10px;
+}
+section.registration .right .inner-right .btn {
+  line-height: 2;
+  width: 100px;
+}
 .modal-cover {
   position: fixed;
   top: 0;

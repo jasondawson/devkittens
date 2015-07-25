@@ -1,7 +1,32 @@
-<h2>Register</h2>
-<input type="text" ng-model="name" placeholder="name"/>
-<input type="text" ng-model="email" placeholder="email"/>
+<header-directive></header-directive>
 
-<input type="password" ng-model="password" placeholder="password"/>
-<input type="password" ng-model="confirmPassword" placeholder="confirm password"/><span ng-show="errorMessage">{{errorMessage}}</span>
-<button ng-click="createUser(name, email, password, confirmPassword)">register</button>
+<section class="registration">
+
+	<div class="unit left">
+
+
+	</div>
+
+	<div class="unit right">
+
+		<div class="inner-right">
+			<h3>Create an account</h3>
+
+			<form ng-submit="createUser(name, email, password, confirmPassword)">
+				<div class="alert alert-danger" ng-show="errorMessage">{{errorMessage}}</div>
+				<input type="text" ng-model="name" placeholder="Name"
+					   class="form-control" required/>
+				<input type="text" ng-model="email" placeholder="Email"
+					   class="form-control" required/>
+
+				<input type="password" ng-model="password" placeholder="Password"
+					   class="form-control" required/>
+				<input type="password" ng-model="confirmPassword" placeholder="Confirm password" class="form-control" required/>
+
+				<button class="btn btn-default">Register</button>
+			</form>
+		</div>
+
+	</div>
+
+</section>
