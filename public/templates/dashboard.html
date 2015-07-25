@@ -15,6 +15,9 @@
 
 		<button ng-click="activateMentors()" class="btn btn-default"
 				ng-class="{ active: activeTab === 'mentors' }">Mentors</button>
+
+		<button ng-click="activateTeachers()" class="btn btn-default"
+			ng-class="{active: activeTab === 'teachers' }">Teachers</button>
 	</div> <!-- End of 'menu-bar' -->	
 
 
@@ -78,8 +81,29 @@
 		</a>
 	</div> <!-- End of 'container' -->
 
-	<div class="shift-wrapper" ng-show="toggleViewToMentors">
-	</div> <!-- End of 'shift-wrapper' -->
+	<!-- <div class="shift-wrapper" ng-show="toggleViewToMentors">
+	</div> --> <!-- End of 'shift-wrapper' -->
+
+
+	<div class="container" ng-show="toggleViewToTeachers">
+
+		<div class="display-box add-new" ng-click="addTeacherView()">
+			<span class="text-dashboard">Add a new teacher</span> <br />
+			<i class="icon-dashboard fa fa-plus-circle"></i>
+		</div>
+
+		<a class="mentors-link" href="#dashboard">
+			<div class="display-box" ng-click="toggleTeacherModal(); setTeacher(teacher)" ng-repeat="teacher in usersArray">
+				<img class="mentor-image center" ng-src="{{teacher.avatar}}"</img>
+				<span class="text-dashboard center">{{ teacher.name }}</span>
+				<span class="text-dashboard name center">{{ teacher.location }}</span>
+				<span class="text-dashboard name center">{{ teacher.mentorType }}</span>
+			</div> <!-- End of 'display-box' -->
+		</a>
+	</div> <!-- End of 'container' -->
+
+	<!-- <div class="shift-wrapper" ng-show="toggleViewToTeachers"> -->
+</div> <!-- End of 'shift-wrapper' -->
 
 </section>
 
@@ -138,6 +162,23 @@
 	</div>
 </div> <!-- End of 'add-cohort-modal' -->
 
+
+<!-- 'add-cohort-modal' activates when user clicks on 'Add a new instructor' -->
+<div class="add-cohort-modal" ng-show="toggleAddTeacher">
+	<h2 class="text-dashboard left">Enter New Instructor Information</h2>
+	<i class="close-modal fa fa-times" ng-click="addTeacherView()"></i>
+
+	<form class="new-cohort-form">
+		<input class="form-input center" type="text" placeholder="Enter Instructor's name" />
+		<input class="form-input center" type="text" placeholder="Enter Instructor's type" />
+		<input class="form-input center" type="text" placeholder="Enter Instructor's cohort" />
+	</form>
+	<div class="form-btn-container">
+		<button class="form-btn" type="submit" ng-click="addTeacherView()">Cancel</button>
+		<button class="form-btn" type="submit">Save</button>
+	</div>
+</div> <!-- End of 'add-cohort-modal' -->
+
 <!-- Modal for mentor profile -->
 <mentor-modal
 	ng-show="toggleViewToMentorProfile"
@@ -148,6 +189,15 @@
 	set-mentor="setMentor(mentor)"
 	toggle-mentor-modal="toggleMentorModal()">
 </mentor-modal>
+
+<teacher-modal
+	ng-show="toggleViewToTeacherProfile"
+	toggle-view-to-teacher-profile="toggleViewToTeacherProfile"
+	current-teacher="currentTeacher"
+	teacher="teacher"
+	set-teacher="setTeacher(teacher)"
+	toggle-teacher-modal="toggleTeacherModal()">
+</teacher-modal>
 
 
 

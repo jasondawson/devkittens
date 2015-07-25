@@ -1,0 +1,29 @@
+<!-- TEACHER MODAL VIEW -->
+<div class="add-cohort-modal strict-modal" current-teacher="currentTeacher">
+	<i class="close-mini-modal close-modal fa fa-times" ng-click="toggleTeacherModal()"></i>
+	<br />
+	<img class="mentor-image" ng-src="{{ currentTeacher.avatar }}">
+	<h2 class="name">{{ currentTeacher.name }}</h2>
+	<h4 class="text">{{ currentTeacher.mentorType }}</h4>
+	<h5>{{ currentTeacher.duties }}</h5>
+	<div class="mini-modal-cal cal">
+
+		<div class="mini-modal-day day" make-active>
+			<h5 ng-class="schedule">Schedule</h5>
+		</div>
+
+		<div class="mini-modal-day day"  make-active>
+			<h5 ng-click="showStudents()">Teacher Notes</h5>
+		</div>
+
+		<div class="mini-modal-day day" make-active>
+			<h5 ng-class="extra">Key Words</h5>
+
+		</div>
+
+		<div class="mini-modal-day day" make-active>
+			<h5 ng-class="other">Other</h5>
+		</div>
+
+	</div>
+</div>

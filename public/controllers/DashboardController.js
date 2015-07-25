@@ -9,7 +9,9 @@ function($scope, $location, cohortData, courseData, usersData, courseServices, c
 	$scope.toggleViewToCohorts = false;
 	$scope.toggleViewToCourses = true;
 	$scope.toggleViewToMentors = false;
+	$scope.toggleViewToTeachers = false;
 	$scope.toggleViewToMentorProfile = false;
+	$scope.toggleViewToTeacherProfile = false;
 	$scope.activeTab = 'courses';
 	$scope.cohortArray = cohortData;
 	$scope.courseArray = courseData;
@@ -32,6 +34,11 @@ function($scope, $location, cohortData, courseData, usersData, courseServices, c
 		$scope.backdropVisible = !$scope.backdropVisible;
 	}
 
+	$scope.addTeacherView = function() {
+		$scope.toggleAddTeacher = !$scope.toggleAddTeacher;
+		$scope.backdropVisible = !$scope.backdropVisible;
+	}
+
 
 	// Toggling between dashboard views
 	$scope.activateCourses = function() {
@@ -40,12 +47,14 @@ function($scope, $location, cohortData, courseData, usersData, courseServices, c
 
 		$scope.toggleViewToCohorts = false;
 		$scope.toggleViewToMentors = false;
+		$scope.toggleViewToTeachers = false;
 	}
 
 	$scope.activateCohorts = function() {
 		$scope.activeTab = 'cohorts';
 		$scope.toggleViewToCourses = false;
 		$scope.toggleViewToMentors = false;
+		$scope.toggleViewToTeachers = false;
 
 		$scope.toggleViewToCohorts = true;
 	}
@@ -56,18 +65,41 @@ function($scope, $location, cohortData, courseData, usersData, courseServices, c
 
 		$scope.toggleViewToCohorts = false;
 		$scope.toggleViewToCourses = false;
+		$scope.toggleViewToTeachers = false;
+	}
+
+	$scope.activateTeachers = function() {
+		$scope.activeTab = 'teachers';
+		$scope.toggleViewToTeachers = true;
+
+		$scope.toggleViewToCohorts = false;
+		$scope.toggleViewToCourses = false;
+		$scope.toggleViewToMentors = false;
 	}
 
 	$scope.toggleMentorModal = function() {
-		console.log('$scope.toggleViewToMentorProfile ', $scope.toggleViewToMentorProfile)
+		// console.log('$scope.toggleViewToMentorProfile ', $scope.toggleViewToMentorProfile)
 		$scope.toggleViewToMentorProfile = !$scope.toggleViewToMentorProfile;
 		$scope.backdropVisible = !$scope.backdropVisible;
 	}
 
+	$scope.toggleTeacherModal = function() {
+		console.log('$scope.toggleViewToTeacherProfile ', $scope.toggleViewToTeacherProfile)
+		$scope.toggleViewToTeacherProfile = !$scope.toggleViewToTeacherProfile;
+		$scope.backdropVisible = !$scope.backdropVisible;
+	}
+
+	
+
 	// Sets currentMentor through an ng-click on dashboard-mentors.html
 	$scope.setMentor = function(mentor) {
 		$scope.currentMentor = mentor
-		console.log('currentMentor ', $scope.currentMentor);
+		// console.log('currentMentor ', $scope.currentMentor);
+	}
+
+	$scope.setTeacher = function(teacher) {
+		$scope.currentTeacher = teacher
+		// console.log('currentTeacher ', $scope.currentTeacher);
 	}
 
 
