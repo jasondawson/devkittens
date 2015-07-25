@@ -4,6 +4,9 @@ angular.module('devKittens')
 	return {
 		restrict: 'E',
 		scope: true,
-		templateUrl: '/public/templates/header.html'
+		templateUrl: '/public/templates/header.html',
+		link: function (scope, elem, attrs) {
+			document.body.scrollTop = document.documentElement.scrollTop = 0;
+		}
 	}
 })

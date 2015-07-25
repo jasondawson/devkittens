@@ -71,7 +71,7 @@ app.get('/api/cohort/:cohortId', CohortController.getCohort);
 app.get('/api/all-cohorts', CohortController.getAllCohorts);
 
 // Emails
-app.post('/api/email/invite', EmailController.sendInvite);
+app.post('/api/email', EmailController.sendEmail);
 
 // Users
 app.get('/api/users', User.getAll);

@@ -9,6 +9,14 @@ angular.module('devKittens')
 	}
 })
 
+.directive('loadingGif', function () {
+	return {
+		restrict: 'E',
+		templateUrl: '/public/templates/loadingGif.html'
+	}
+})
+
+
 .directive('timeline', function () {
 	return {
 		restrict: 'E',

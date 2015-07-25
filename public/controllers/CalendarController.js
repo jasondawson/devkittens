@@ -1,24 +1,35 @@
 angular.module('devKittens')
 
-.controller('CalendarController', function ($scope, calendarService, specificCohortData, user) {
+.controller('CalendarController',
+function ($scope, calendarService, specificCohortData, emailsService, user) {
+
 	$scope.user = user;	
-
 	$scope.events = specificCohortData.curriculum;
-
-
-	// TODO: make this a directive
-	document.body.scrollTop = document.documentElement.scrollTop = 0;
 
 	// get active course info
 	$scope.course = {
 		name: specificCohortData.name
 	}
 
-	// $scope.events = calendarService.get();
-	// console.log($scope.events);
+	$scope.sendStudentInvite = function (studentEmails) {
+		$scope.loading = true;
 
-
-	// bringing actual cohort data into the scope
+		if (!studentEmails) return console.warn('Plase add emails');
+		var cohortInfo = {
+			name: specificCohortData.name,
+			id: specificCohortData._id
+		}
+		emailsService.sendStudentInvite(studentEmails, cohortInfo)
+		.then(function (response) {
+			console.log(response);
+			$scope.loading = false;
+			$scope.students = '';
+		})
+		.catch(function (err) {
+			console.error(err);
+			$scope.loading = false;
+		});
+	}
 
 
 });

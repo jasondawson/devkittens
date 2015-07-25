@@ -1,6 +1,15 @@
-<header-directive></header-directive>
+<header-directive scroll-top></header-directive>
+<loading-gif ng-if="loading"></loading-gif>
 
 <h3 class="page-title">{{course.name}}</h3>
 
+
+<form ng-submit="sendStudentInvite(students)">
+	<textarea ng-model="students" class="form-control" placeholder="Comma-separated email(s)"></textarea>
+	<button class="btn btn-default">Submit</button>
+</form>
+
+
+<br><br>
 
 <timeline events="events"></timeline>

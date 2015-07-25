@@ -5,31 +5,32 @@ var mandrill = require('mandrill-api/mandrill');
 // var keys = require('../models/Keys.js');
 
 var mandrill_client = new mandrill.Mandrill('x6RL-uINxCdZp1ysS41EOg');
-// var keys = require('../models/Keys.js');
+// var mandrill_client = new mandrill.Mandrill(keys.mandrill);
 
 var async = true;
 var ip_pool = "Main Pool";
 
 
 // Heavy lifting
-exports.sendInvite = function (req, res) {
+exports.sendEmail = function (req, res) {
 	var body = req.body;
 
     if (!body.html && !body.subject) return res.status(500).send('No message to send.');
 
-
+    // TODO: correct from info once it's live
     // Create message:
     var message = {
 	    text: "Ooops! The original message was not sent correctly.",
 	    html: body.html,
 	    subject: body.subject,
 	    to: body.to,
-	    from_name: body.from_name,
-	    from_email: body.from_email,
-	    headers: {
-	    	'Reply-To': body.from_email
-	    }
+		from_name: 'DevMountain',
+		from_email: 'yofala@gmail.com',
+		headers: {
+			'Reply-To': 'yofala@gmail.com'
+		}
 	};
+
 
 
     mandrill_client.messages.send({"message": message, "async": async, "ip_pool": ip_pool}, function(result) {
@@ -41,6 +42,8 @@ exports.sendInvite = function (req, res) {
         console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
         res.status(500).send(e);
     });
+
+
 };
 
 
