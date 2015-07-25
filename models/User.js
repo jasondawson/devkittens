@@ -39,7 +39,7 @@ UserSchema.methods.generateHash = function(password) {
 
 // validate password
 UserSchema.methods.validPassword = function(password) {
-    return bcrypt.compareSync(password, this.password);
+    return bcrypt.compareSync(password, this.local.password);
 };
 
 // exporting model

@@ -48,11 +48,11 @@ exports.put = function (req, res) {
 exports.post = function (req, res) {
 	console.log('req.body ', req.body);
 	var data = req.body;
-	var newUser = new User(req.body);
+	var newUser = new User();
 
-	// newUser.local.email = data.local.email;
-	// newUser.local.password = data.local.password;
-	// newUser.name = data.name;
+	newUser.local.email = data.local.email;
+	newUser.local.password = newUser.generateHash(req.body.local.password);
+	newUser.name = data.name;
 	// newUser.permissions.isAdmin = data.permissions.isAdmin;
 	// newUser.permissions.isStudent = data.permissions.isStudent;
 

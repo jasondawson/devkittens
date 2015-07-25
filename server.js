@@ -3,6 +3,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var mongoose = require('mongoose');
+var session = session = require('express-session');
+var passport = require('passport');
 // var keys = require('./models/keys.js');
 
 
@@ -12,6 +14,8 @@ var app = express();
 
 // Serving app
 app.use(express.static(__dirname + '/'));
+
+require('./config/passport')(passport); // pass passport for configuration
 
 
 // Middleware
@@ -31,6 +35,13 @@ var CourseController = require('./controllers/CourseController.js');
 var CohortController = require('./controllers/CohortController.js');
 var EmailController = require('./controllers/EmailController.js');
 
+
+
+
+// required for passport
+app.use(session({ secret: 'best secret ever' })); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
 
 ////////////////////////////////////
 //////////// REST API //////////////
@@ -61,9 +72,26 @@ app.post('/api/user', User.post);
 app.put('/api/user/:id', User.put);
 
 
+
 // Emails
 app.post('/api/email/invite', EmailController.sendInvite);
 // app.post('/api/email-draft', MainController.sendDraft);
+
+//authentication
+app.post('/auth/login', passport.authenticate('local'), function(req, res){
+	console.log('user', req.user)
+	if(!req.user){
+		res.redirect('/#/login');
+	}
+    res.redirect('/#/dashboard'); // redirect to the secure profile section
+});
+
+app.get('/logout', function(req, res) {
+    req.logout();
+    res.send(req.user);
+});
+
+
 
 
 // DEPRECATED
@@ -91,3 +119,17 @@ db.once('open', function (callback) {
 app.listen(portNum, function () {
     console.log('Making some pancakes on port:', portNum);
 });
+
+
+
+
+function isLoggedIn(req, res, next) {
+
+    // if user is authenticated in the session, carry on 
+    if (req.isAuthenticated()){
+        return next();
+    }
+
+    // if they aren't redirect them to the home page
+    res.send(false);
+}

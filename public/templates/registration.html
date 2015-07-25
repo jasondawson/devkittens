@@ -1,0 +1,7 @@
+<h2>Register</h2>
+<input type="text" ng-model="name" placeholder="name"/>
+<input type="text" ng-model="email" placeholder="email"/>
+
+<input type="password" ng-model="password" placeholder="password"/>
+<input type="password" ng-model="confirmPassword" placeholder="confirm password"/><span ng-show="errorMessage">{{errorMessage}}</span>
+<button ng-click="createUser(name, email, password, confirmPassword)">register</button>

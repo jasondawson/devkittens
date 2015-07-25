@@ -74,6 +74,14 @@ angular.module('devKittens')
 			}
 		}
 	})
+	.when('/registration', {
+		templateUrl: '/public/templates/registration.html',
+		controller: 'registrationController'
+	})
+	.when('/login', {
+		templateUrl: '/public/templates/login.html',
+		controller: 'loginController'
+	})
 
 	.otherwise('/');
 })
