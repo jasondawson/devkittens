@@ -1,13 +1,12 @@
 <header>
-	<div class="section left-section">
+	<div class="section left">
 		<a href="/#/">
 			<img src="/public/images/logo.png" title="DevKittens Logo">
 		</a>
 	</div>
 
 	<div class="section right">
-		<a href="/#/dashboard"><p>Dashboard</p></a>
-		<a ng-show="!user" href="/#/"><p>Login</p></a>
+		<a ng-show="user" href="/#/dashboard"><p>Dashboard</p></a>
 		<a ng-show="user" href="/logout"><p>Logout</p></a>
 	</div>
 

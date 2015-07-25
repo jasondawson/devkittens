@@ -116,13 +116,13 @@ header .section {
   display: flex;
   align-items: center;
 }
-header .left-section {
+header .left {
   float: left;
 }
-header .left-section a {
+header .left a {
   height: 100%;
 }
-header .left-section a img {
+header .left a img {
   height: 100%;
   padding: 10px;
 }
