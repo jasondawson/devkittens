@@ -19,24 +19,33 @@
 
 		<!-- specific to curriculum page -->
 		<p ng-show="!event.date" class="day-date">
-			Day {{event.day}}
+			{{event.dayName}} Day {{event.day}} 
 		</p>
 
 		<div ng-show="!event.lesson && !event.date">
 			<button class="btn btn-default" ng-click="showModal(event)">new lesson </button>
-			<button class="btn btn-default" ng-click="addLesson()">add lesson </button>
+			<!-- <button class="btn btn-default" ng-click="addLesson()">add lesson </button> -->
 		</div>	
 		<!--  -->
 
 
 		<!-- Title -->
-
-		<h4>{{event.lesson.topic}}</h4>
-
-		<div ng-repeat="section in event.lesson.sections">
-			<p>Title: {{section.title}}</p>
-			<div ng-bind-html="section.content | unsafe"></div>
-			<br />
+		<div ng-show="event.lesson">
+			<i class="fa fa-pencil"></i><h4>{{event.lesson.topic}}</h4> 
+			<div ng-repeat="section in event.lesson.sections">
+				<div ng-show="!editSection">
+					<i class="fa fa-pencil" ng-click="editSection=!editSection"></i><p>Title: {{section.title}}</p> 
+					<div ng-bind-html="section.content | unsafe"></div>
+					
+				</div>
+				<div ng-show="editSection">
+					<input type="text" ng-model="section.title"
+							   placeholder="Section title"
+							   class="form-control"/> 
+					<text-angular ng-model="section.content"></text-angular>
+					<button ng-click="updateLesson(section._id, section.title, section.content)"
+				</div>
+			</div>
 		</div>
 		
 

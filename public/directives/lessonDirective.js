@@ -10,6 +10,7 @@ angular.module('devKittens')
 			$scope.topic ='';
 			$scope.item ='';
 			$scope.activeDay;
+
 			
 
 			// ADD TITLE/TOPIC
@@ -76,6 +77,7 @@ angular.module('devKittens')
 				$('body').css('overflow', 'hidden');
 
 				scope.currentEvent = event;
+				console.log(4444, scope.currentEvent)
 				scope.show = !scope.show;
 			}
 
