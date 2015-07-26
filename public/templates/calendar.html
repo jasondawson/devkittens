@@ -3,10 +3,17 @@
 
 <h3 class="page-title">{{course.name}}</h3>
 
+
+
+
 <div class="user-pics">
 	<div class="width-container">
-		<div class="pic-container" ng-repeat="student in students">
+		<div class="pic-container" ng-repeat="student in students" ng-attr-titletext="{{student.name}}" tio-tooltip>
 			<img ng-src="{{student.avatar}}">
+			<span class="tooltip-wrapper">
+				<p class="tooltip"></p>
+				<span class="arrow-down"></span>
+			</span>
 		</div>
 		<div class="pic-container add-students" ng-click="openModal()">
 			<div class="flex-plus">
@@ -15,7 +22,6 @@
 		</div>
 	</div>
 </div>
-
 
 
 <span class="pic-modal" ng-show="studentModal">

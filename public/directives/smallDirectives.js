@@ -31,6 +31,31 @@ angular.module('devKittens')
 })
 
 
+.directive('tioTooltip', function($timeout){
+	return {
+		restrict:'A',
+		link: function(scope, element, attrs){
+			$timeout(function(){
+
+				var toolTp = element.find('.tooltip-wrapper');
+				var givenTitle = attrs.titletext;
+
+				element.find('.tooltip').text(givenTitle);
+				
+				element.on('mouseenter', function() {
+			    	// element.addClass(scope.hoverClass);
+			    	toolTp.css('visibility', 'visible');
+				});
+				element.on('mouseleave', function() {
+				    // element.removeClass(scope.hoverClass);
+				    toolTp.css('visibility', 'hidden');
+				});
+			}, 0);
+		}
+	};
+})
+
+
 .directive('makeActive', function () {
 	return {
 		restrict: 'A',
