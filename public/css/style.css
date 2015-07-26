@@ -180,18 +180,6 @@ section.dashboard {
   /*
 	 * Modal Section
 	*/
-  /*.add-cohort-modal {
-		height: 70%;
-		width: 50%;
-		position: absolute;
-		top: 15%;
-		left: 25%;
-		background: #fff;
-		border: 1px solid #C3C3C3;
-		box-shadow: 0 0 4px 4px rgba(0,0,0,0.2);
-		-webkit-box-shadow: 0 0 4px 4px rgba(0,0,0,0.2);
-		-moz-box-shadow: 0 0 4px 4px rgba(0,0,0,0.2);
-	}*/
   /* TODO needs to be fixed. 70 is crazy */
 }
 section.dashboard .display-box {
@@ -288,6 +276,9 @@ section.dashboard .toggle-off {
 section.dashboard .right {
   /*float: right;*/
   margin: 0;
+}
+.btn-horizontal {
+  margin-right: -3px;
 }
 .flex-column {
   display: flex;
@@ -622,8 +613,8 @@ section.registration .right .inner-right .btn {
   margin: 5px;
 }
 .mini-modal-cal {
-  width: 375px;
-  margin-top: 5%;
+  width: 650px;
+  margin: 5% auto;
 }
 .mini-modal-day.day {
   height: auto;
@@ -660,6 +651,10 @@ select {
 .dropdown-arrow {
   float: right;
   margin: -38px 153px 0 0;
+}
+.display-box-nonmodal {
+  width: 475px;
+  margin: 0;
 }
 .lesson-modal .flex1 {
   width: 100%;

@@ -1,4 +1,4 @@
-<!-- TEACHER MODAL VIEW -->
+TEACHER MODAL VIEW -->
 <div class="add-cohort-modal strict-modal" current-teacher="currentTeacher">
 	<i class="close-mini-modal close-modal fa fa-times" ng-click="toggleTeacherModal()"></i>
 	<br />
@@ -8,21 +8,74 @@
 	<h5>{{ currentTeacher.duties }}</h5>
 	<div class="mini-modal-cal cal">
 
-		<div class="mini-modal-day day" make-active>
-			<h5 ng-class="schedule">Schedule</h5>
-		</div>
+		<div class="menu-bar-horizontal">
+			<button ng-click="activateMentos(); addMentosView()" class="btn btn-default btn-horizontal"
+				ng-class="{ active: activeTab === 'mentos' }">Mentos</button>
 
-		<div class="mini-modal-day day"  make-active>
-			<h5 ng-click="showStudents()">Teacher Notes</h5>
-		</div>
+			<button ng-click="activateSchedule(); addScheduleView()" class="btn btn-default btn-horizontal"
+				ng-class="{ active: activeTab === 'schedule' }">Schedule</button>
 
-		<div class="mini-modal-day day" make-active>
-			<h5 ng-class="extra">Key Words</h5>
-		</div>
+			<button ng-click="activateCohort(); addCohortView()" class="btn btn-default btn-horizontal"
+				ng-class="{ active: activeTab === 'cohort' }">Cohort</button>
+		</div> <!-- End of 'menu-bar-horizontal' -->
 
-		<div class="mini-modal-day day" make-active>
-			<h5 ng-class="other">Other</h5>
-		</div>
+			<!-- MENTOS SECTION -->
+			<div class="display-box-nonmodal" ng-show="toggleViewToMentos">
+				<h2 class="text-dashboard left">Your mentos</h2>
 
-	</div>
+				<!-- NEEDS AN NG-REPEAT FOR MENTOS LIST -->
+				<div class="mentos-list">
+					<h5>Joe</h5>
+					<h5>Mark</h5>
+					<h5>Daniel</h5>
+					<h5>Bob</h5>
+					<h5>Kyle</h5>
+				</div>
+			</div> <!-- End of 'display-box-nonmodal' -->
+			<!-- END OF MENTOS SECTION -->
+
+			<!-- SCHEDULE SECTION -->
+			<div class="display-box-nonmodal" ng-show="toggleViewToSchedule">
+				<h2 class="text-dashboard left">Your schedule</h2>
+
+				<!-- NEEDS AN NG-REPEAT FOR SCHEDULE DATES -->
+				<div class="mentos-list">
+					<h5>Teach - 7/31</h5>
+					<h5>Meeting - 7/29</h5>
+					<h5>Teach - 8/3</h5>
+				</div>
+			</div> <!-- End of 'display-box-nonmodal' -->
+			<!-- END OF SCHEDULE SECTION -->
+
+			<!-- COHORT SECTION -->
+			<div class="display-box-nonmodal" ng-show="toggleViewToCohort">
+				<h2 class="text-dashboard left">Your cohorts</h2>
+
+				<!-- NEEDS AN NG-REPEAT FOR COHORT LIST -->
+				<div class="mentos-list">
+					<h5>Full Immersive - Web DM4</h5>
+					<h5>Full Immersive - Web DM5</h5>
+					<h5>After Hours Web Dev</h5>
+				</div>
+			</div> <!-- End of 'display-box-nonmodal' -->
+			<!-- END OF COHORT SECTION -->
+			
+	</div> <!-- End of 'mini-modal-cal' -->
+</div> <!-- End of 'add-cohort-modal' -->
+
+
+<!-- <div class="mini-modal-day day" make-active>
+	<h5 ng-class="schedule">Schedule</h5>
+</div>
+
+<div class="mini-modal-day day"  make-active>
+	<h5 ng-click="showStudents()">Teacher Notes</h5>
+</div>
+
+<div class="mini-modal-day day" make-active>
+	<h5 ng-class="extra">Key Words</h5>
+</div>
+
+<div class="mini-modal-day day" make-active>
+	<h5 ng-class="other">Other</h5>
 </div>
