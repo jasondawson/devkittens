@@ -23,13 +23,13 @@ angular.module('devKittens')
 
 			$scope.toggleViewToVocabulary = false;
 			$scope.toggleViewToSchedule = false;
-			$scope.toggleViewToCohort = false;
+			$scope.toggleViewToProjects = false;
 
 			$scope.activateVocabulary = function() {
 				$scope.activeTab = 'Vocabulary';
 				$scope.toggleViewToVocabulary = true;
 
-				$scope.toggleViewToCohort = false;	
+				$scope.toggleViewToProjects = false;	
 				$scope.toggleViewToSchedule = false;
 			}
 
@@ -38,14 +38,13 @@ angular.module('devKittens')
 				$scope.activeTab = 'schedule';
 				$scope.toggleViewToSchedule = true;
 
-				$scope.toggleViewToCohort = false;
+				$scope.toggleViewToProjects = false;
 				$scope.toggleViewToVocabulary = false;
 			}
 
-			$scope.activateCohort = function() {
-				// console.log('activateCohort')
-				$scope.activeTab = 'cohort';
-				$scope.toggleViewToCohort = true;
+			$scope.activateProjects = function() {
+				$scope.activeTab = 'projects';
+				$scope.toggleViewToProjects = true;
 
 				$scope.toggleViewToVocabulary = false;
 				$scope.toggleViewToSchedule = false;
@@ -59,8 +58,8 @@ angular.module('devKittens')
 				$scope.toggleAddSchedule = !$scope.toggleAddSchedule;
 			}
 
-			$scope.addCohortView = function() {
-				$scope.toggleAddCohort = !$scope.toggleAddCohort;
+			$scope.addProjectsView = function() {
+				$scope.toggleAddProjects = !$scope.toggleAddProjects;
 			}
 
 		}

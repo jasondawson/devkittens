@@ -16,8 +16,8 @@ TEACHER MODAL VIEW -->
 			<button ng-click="activateSchedule(); addScheduleView()" class="btn btn-default btn-horizontal"
 				ng-class="{ active: activeTab === 'schedule' }">Schedule</button>
 
-			<button ng-click="activateCohort(); addCohortView()" class="btn btn-default btn-horizontal"
-				ng-class="{ active: activeTab === 'cohort' }">Cohort</button>
+			<button ng-click="activateProjects(); addProjectsView()" class="btn btn-default btn-horizontal"
+				ng-class="{ active: activeTab === 'projects' }">Mini Projects</button>
 		</div> <!-- End of 'menu-bar-horizontal' -->
 
 			<!-- Vocabulary SECTION -->
@@ -49,7 +49,7 @@ TEACHER MODAL VIEW -->
 			<!-- END OF SCHEDULE SECTION -->
 
 			<!-- MINI-PROBLEM SECTION -->
-			<div class="display-box-nonmodal" ng-show="toggleViewToCohort">
+			<div class="display-box-nonmodal" ng-show="toggleViewToProjects">
 				<h2 class="text-dashboard left">Students Mini-problem for the day</h2>
 
 				<!-- NEEDS AN NG-REPEAT FOR COHORT LIST -->
