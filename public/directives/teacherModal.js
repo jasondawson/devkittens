@@ -18,42 +18,41 @@ angular.module('devKittens')
 			// 	$scope.studentSection = !$scope.studentSection;
 			// };
 
-			$scope.toggleAddMentos = false;
+			$scope.toggleAddVocabulary = false;
 			$scope.toggleAddSchedule = false;
 
-			$scope.toggleViewToMentos = false;
+			$scope.toggleViewToVocabulary = false;
 			$scope.toggleViewToSchedule = false;
 			$scope.toggleViewToCohort = false;
 
-			$scope.activateMentos = function() {
-				console.log('activateMentos')
-				$scope.activeTab = 'mentos';
-				$scope.toggleViewToMentos = true;
+			$scope.activateVocabulary = function() {
+				$scope.activeTab = 'Vocabulary';
+				$scope.toggleViewToVocabulary = true;
 
 				$scope.toggleViewToCohort = false;	
 				$scope.toggleViewToSchedule = false;
 			}
 
 			$scope.activateSchedule = function() {
-				console.log('activateSchedule')
+				// console.log('activateSchedule')
 				$scope.activeTab = 'schedule';
 				$scope.toggleViewToSchedule = true;
 
 				$scope.toggleViewToCohort = false;
-				$scope.toggleViewToMentos = false;
+				$scope.toggleViewToVocabulary = false;
 			}
 
 			$scope.activateCohort = function() {
-				console.log('activateCohort')
+				// console.log('activateCohort')
 				$scope.activeTab = 'cohort';
 				$scope.toggleViewToCohort = true;
 
-				$scope.toggleViewToMentos = false;
+				$scope.toggleViewToVocabulary = false;
 				$scope.toggleViewToSchedule = false;
 			}
 
-			$scope.addMentosView = function() {
-				$scope.toggleAddMentos = !$scope.toggleAddMentos;
+			$scope.addVocabularyView = function() {
+				$scope.toggleAddVocabulary = !$scope.toggleAddVocabulary;
 			}
 
 			$scope.addScheduleView = function() {
