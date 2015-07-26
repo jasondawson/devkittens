@@ -31,19 +31,31 @@
 
 		<!-- Title -->
 		<div ng-show="event.lesson">
-			<i class="fa fa-pencil"></i><h4>{{event.lesson.topic}}</h4> 
+			<div ng-show="!editTopic">
+				
+				<h3>{{event.lesson.topic}} <i class="fa fa-pencil" ng-click="editTopic=!editTopic"></i></h3>
+			</div>
+			<div ng-show="editTopic">
+				<input type="text" ng-model="event.lesson.topic"/>
+				<button ng-click="updateLessonTopic(event.lesson._id, event.lesson.topic)">submit change</button>
+			</div>
 			<div ng-repeat="section in event.lesson.sections">
 				<div ng-show="!editSection">
-					<i class="fa fa-pencil" ng-click="editSection=!editSection"></i><p>Title: {{section.title}}</p> 
-					<div ng-bind-html="section.content | unsafe"></div>
 					
+					<h4>
+						{{section.title}} 
+						<i class="fa fa-pencil" ng-click="editSection=!editSection"></i>
+						<i class="fa fa-times" ng-click="removeLessonSection(section._id)"></i>
+					</h4> 
+					<div ng-bind-html="section.content | unsafe"></div>
+					<i class="fa fa-plus" ng-click="addSection()"></i> add section
 				</div>
 				<div ng-show="editSection">
 					<input type="text" ng-model="section.title"
 							   placeholder="Section title"
 							   class="form-control"/> 
 					<text-angular ng-model="section.content"></text-angular>
-					<button ng-click="updateLesson(section._id, section.title, section.content)"
+					<button ng-click="updateLessonSection(section._id, section.title, section.content)">submit changes</button>
 				</div>
 			</div>
 		</div>

@@ -5,6 +5,7 @@ angular.module('devKittens')
 	document.body.scrollTop = document.documentElement.scrollTop = 0;
 	$scope.user = user;
 	$scope.events = courseRef.curriculum;
+	$scope.courseTitle = courseRef.title
 	
 	for(i = 0; i < $scope.events.length; i++){
 		switch ((i + 7) % 7){

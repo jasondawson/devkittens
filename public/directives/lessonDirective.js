@@ -4,7 +4,7 @@ angular.module('devKittens')
 	return {
 		restrict: 'E',
 		templateUrl: '/public/templates/lesson.html',
-		controller: function($scope, lessonService, courseServices){
+		controller: function($scope, lessonService, courseServices, $route){
 			$scope.show = false;
 
 			$scope.topic ='';
@@ -64,9 +64,34 @@ angular.module('devKittens')
 				});
 			}
 
-			$scope.editLesson = function(){
-				LessonService.editLesson(data).then(function(response){
-					console.log(1111, response);
+			$scope.updateLessonTopic = function(id, topic){
+				lessonService.updateLessonTopic(id, topic).then(function(response){
+					courseServices.getCourse($route.current.params.courseId).then(function(response){
+						$scope.events = response.curriculum;
+
+					});
+				})
+			}
+
+			$scope.updateLessonSection = function(id, title, content){
+				var data = {
+					'sections.$.title' : title,
+					'sections.$.content': content
+				}
+				lessonService.updateLessonSection(id, data).then(function(response){
+					courseServices.getCourse($route.current.params.courseId).then(function(response){
+						$scope.events = response.curriculum;
+
+					});
+				})
+			}
+
+			$scope.removeLessonSection = function(id){
+				lessonService.removeLessonSection(id).then(function(response){
+					courseServices.getCourse($route.current.params.courseId).then(function(response){
+						$scope.events = response.curriculum;
+
+					});
 				})
 			}
 

@@ -10,11 +10,29 @@ angular.module('devKittens')
 		})
 	};
 
-	this.updateLesson = function(data){
+	this.updateLessonTopic = function(id, topic){
+		console.log(11111,id, topic)
 		return $http({
 			method: 'PUT',
-			url: '/api/lessons',
+			url: '/api/lessons/?id=' + id,
+			data: {
+				topic: topic
+			 }
+		})
+	};
+
+	this.updateLessonSection = function(id, data){
+		return $http({
+			method: 'PUT',
+			url: '/api/lessons/' + id,
 			data: data
+		})
+	};
+
+	this.removeLessonSection = function(id){
+		return $http({
+			method: 'PUT',
+			url: '/api/lessons/remove/' + id
 		})
 	};
 
