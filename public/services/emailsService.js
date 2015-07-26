@@ -48,7 +48,7 @@ angular.module('devKittens')
 
 		var emailList = cleanList(emailString);
 		var html = '<p>You\'ve been invited to DevMoutain\'s ' + cohort.name + ' calendar!</p>'
-				  + '<p><a http://localhost:3000/#/registration/' + cohort.id + '" target="_blank">'
+				  + '<p><a href="http://localhost:3000/#/registration/' + cohort.id + '" target="_blank">'
 				  + 'http://localhost:3000/#/registration/' + cohort.id
 				  + '</a></p>';
 

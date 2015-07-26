@@ -87,6 +87,7 @@ module.exports = function(passport) {
                             newUser.local.email    = email;
                             newUser.local.password = newUser.generateHash(password);
                             newUser.name           = req.body.name;
+                            newUser.avatar         = req.body.avatar;
 
                             if (req.body.permissions) {
                                 newUser.permissions = req.body.permissions;
@@ -95,8 +96,11 @@ module.exports = function(passport) {
                             newUser.save(function (err, result) {
                                 if (err) return done(err);
                                 
+                                // Pushing student id to cohort student array
                                 if (req.body.permissions && req.body.permissions.isStudent.status === true) {
-                                    Cohort.findOne({'_id': req.body.permissions.isStudent.courseId}, function (err, foundCohort) {
+                                    Cohort.findOne({'_id': req.body.permissions.isStudent.cohortId}, function (err, foundCohort) {
+                                        if (!foundCohort.students) foundCohort.students = [];
+                                        
                                         foundCohort.students.push(result._id);
                                         foundCohort.save();
                                     })

@@ -14,7 +14,7 @@ var UserSchema = mongoose.Schema({
 		, isInstructor: { type: Boolean, default: false }
 		, isStudent: {
 			  status: { type: Boolean, default: true }
-			, courseId: String
+			, cohortId: String
 		}
 	}
 	// mentor specific

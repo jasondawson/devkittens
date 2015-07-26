@@ -28,7 +28,6 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 
 // Controllers
-var Calendar = require('./controllers/CalendarController.js');
 var Lesson = require('./controllers/LessonController.js');
 var User = require('./controllers/UserController.js');
 var CourseController = require('./controllers/CourseController.js');

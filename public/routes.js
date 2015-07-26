@@ -2,6 +2,19 @@ angular.module('devKittens')
 
 .config(function ($routeProvider) {
 
+	function getAuth ($http, $location, $q) {
+		var dfd = $q.defer();
+		$http({
+			method: 'GET',
+			url: '/api/auth'
+		}).then(function (response) {
+			dfd.resolve(response.data);
+		}, function(err) {
+			$location.path('/login')
+		})
+		return dfd.promise;
+	}
+
 	$routeProvider
 	.when('/', {
 		templateUrl: '/public/templates/home.html',
@@ -12,21 +25,10 @@ angular.module('devKittens')
 		templateUrl: '/public/templates/calendar.html',
 		controller: 'CalendarController',
 		resolve: {
-			specificCohortData: function(cohortServices, $route) {
+			specificCohortData: function (cohortServices, $route) {
 				return cohortServices.getCohort($route.current.params.cohortId);
 			},
-			user: function($http, $location, $q){
-				var dfd = $q.defer();
-				$http({
-					method: 'GET',
-					url: '/api/auth'
-				}).then(function(response){
-					dfd.resolve(response.data);
-				}, function(err){
-					$location.path('/login')
-				})
-				return dfd.promise;
-			}
+			user: getAuth
 		}
 	})
 
@@ -34,7 +36,7 @@ angular.module('devKittens')
 		templateUrl: '/public/templates/dashboard-mentors.html',
 		controller: 'MentorController',
 		resolve: {
-			mentorData: function(dashboardService) {
+			mentorData: function (dashboardService) {
 				return dashboardService.getMentorData();
 				// console.log('mentorData ', mentorData);
 				
@@ -42,7 +44,7 @@ angular.module('devKittens')
 			optionsData: function (dashboardService) {
 				return dashboardService.getOptions();
 			},
-			usersData: function(dashboardService, $q) {
+			usersData: function (dashboardService, $q) {
 				var dfd = $q.defer();
 				dashboardService.getUsers().then(function(response) {
 					dfd.resolve(response.data);
@@ -51,18 +53,7 @@ angular.module('devKittens')
 				})
 				return dfd.promise;
 			},
-			user: function($http, $location, $q){
-				var dfd = $q.defer();
-				$http({
-					method: 'GET',
-					url: '/api/auth'
-				}).then(function(response){
-					dfd.resolve(response.data);
-				}, function(err){
-					$location.path('/login')
-				})
-				return dfd.promise;
-			}
+			user: getAuth
 		}
 	})
 
@@ -70,13 +61,13 @@ angular.module('devKittens')
 		templateUrl: '/public/templates/dashboard.html',
 		controller: 'DashboardController',
 		resolve: {
-			cohortData: function(cohortServices) {
+			cohortData: function (cohortServices) {
 				return cohortServices.getAllCohorts();
 			},
-			courseData: function(courseServices) {
+			courseData: function (courseServices) {
 				return courseServices.getAllCourses();
 			},
-			usersData: function(dashboardService, $q) {
+			usersData: function (dashboardService, $q) {
 				var dfd = $q.defer();
 				dashboardService.getUsers().then(function(response) {
 					dfd.resolve(response.data);
@@ -85,18 +76,7 @@ angular.module('devKittens')
 				})
 				return dfd.promise;
 			},
-			user: function($http, $location, $q){
-				var dfd = $q.defer();
-				$http({
-					method: 'GET',
-					url: '/api/auth'
-				}).then(function(response){
-					dfd.resolve(response.data);
-				}, function(err){
-					$location.path('/login')
-				})
-				return dfd.promise;
-			}
+			user: getAuth
 		}
 	})
 
@@ -104,21 +84,10 @@ angular.module('devKittens')
 		templateUrl: '/public/templates/curriculum.html',
 		controller: 'CurriculumController',
 		resolve: {
-			courseRef: function(courseServices, $route) {
+			courseRef: function (courseServices, $route) {
 				return courseServices.getCourse($route.current.params.courseId);
 			},
-			user: function($http, $location, $q) {
-				var dfd = $q.defer();
-				$http({
-					method: 'GET',
-					url: '/api/auth'
-				}).then(function(response){
-					dfd.resolve(response.data);
-				}, function(err){
-					$location.path('/login')
-				})
-				return dfd.promise;
-			}
+			user: getAuth
 		}
 	})
 

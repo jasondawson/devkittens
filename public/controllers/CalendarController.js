@@ -4,7 +4,9 @@ angular.module('devKittens')
 function ($scope, calendarService, specificCohortData, emailsService, user) {
 
 	$scope.user = user;	
+	$scope.students = specificCohortData.students;
 	$scope.events = specificCohortData.curriculum;
+
 
 	// get active course info
 	$scope.course = {
@@ -23,12 +25,25 @@ function ($scope, calendarService, specificCohortData, emailsService, user) {
 		.then(function (response) {
 			console.log(response);
 			$scope.loading = false;
-			$scope.students = '';
+			$scope.newStudents = '';
+			$scope.closeModal();
 		})
 		.catch(function (err) {
 			console.error(err);
 			$scope.loading = false;
 		});
+	}
+
+
+	// Modal related || TODO: refactor for make all modals consistent
+	$scope.openModal = function () {
+		$('body').css('overflow', 'hidden');
+		$scope.studentModal = true;
+	}
+
+	$scope.closeModal = function () {
+		$('body').css('overflow', 'inherit');
+		$scope.studentModal = false;
 	}
 
 
