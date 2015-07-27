@@ -8,22 +8,23 @@ var UserSchema = mongoose.Schema({
 	  }
 	, name: String
 	, avatar: String 
-	, permissions: {
-		  isAdmin: { type: Boolean, default: false }
-		, isMentor: { type: Boolean, default: false }
-		, isInstructor: { type: Boolean, default: false }
-		, isStudent: {
-			  status: { type: Boolean, default: true }
-			, cohortId: String
-		}
-	}
-	// mentor specific
-	, mentorData: {
-		mentos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'UserSchema' }],
-	  }
-	, mentorType: String
-	, seniority: Number
-	, cohort: String
+	// , permissions: {
+	// 	  isAdmin: { type: Boolean, default: false }
+	// 	, isMentor: { type: Boolean, default: false }
+	// 	, isInstructor: { type: Boolean, default: false }
+	// 	, isStudent: {
+	// 		  status: { type: Boolean, default: true }
+	// 		, cohortId: String
+	// 	}
+	// }
+	// // mentor specific
+	// , mentorData: {
+	// 	mentos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'UserSchema' }],
+	//   }
+	// , mentorType: String
+	// , seniority: Number
+	// , cohort: String
+	, userType: {type: mongoose.Schema.Types.ObjectId, ref: {type: String, enum: ["Mentor", "Instructor", "Student", "Admin"], default: "Student"}}
 
 	// TODO: Enable github info
 	// , github: {
