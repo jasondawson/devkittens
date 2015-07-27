@@ -4,7 +4,6 @@ var Course = require('../models/CourseModel.js'),
 	User   = require('../models/User.js');
 
 exports.createNewCohort = function(req, res) {
-	console.log(req.body);
 	Course.findById(req.body.courseType._id)
 	.populate('curriculum.lesson')
 	.lean()
@@ -23,7 +22,6 @@ exports.createNewCohort = function(req, res) {
 			})
 
 			.save(function(err2, data2) {
-				console.log('this is saved cohort', err2, data2);
 				if (err2) {
 					res.status(500).json(err2);
 				} else {

@@ -25,7 +25,6 @@ exports.put = function (req, res) {
 				user.permissions.isAdmin = permission.status;
 				break;
 			case 'isMentor':
-				console.log(permission.status, permission.type);
 				user.permissions.isMentor = permission.status;
 				break;
 			case 'isInstructor':

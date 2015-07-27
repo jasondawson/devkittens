@@ -146,6 +146,4 @@ function isAuth(req, res, next) {
     	res.status(403).send('not allowed');
     }
 
-   
-   
 }

@@ -31,7 +31,6 @@ module.exports = {
 	},
 	updateSection: function(req, res){
 		var data = req.body;
-		console.log('data', data)
 		Lesson.update({ 'sections._id' : req.params.sectionId }, { $set:  data  }, function(err, data){
 			console.log(err, data)
 			if (err) return res.status(500).send('you need to enter the customer id');

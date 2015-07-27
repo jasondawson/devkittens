@@ -10,7 +10,7 @@ angular.module('devKittens')
 		}).then(function (response) {
 			dfd.resolve(response.data);
 		}, function(err) {
-			$location.path('/login')
+			$location.path('/login');
 		})
 		return dfd.promise;
 	}
