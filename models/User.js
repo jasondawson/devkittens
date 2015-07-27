@@ -7,7 +7,8 @@ var UserSchema = mongoose.Schema({
 	  	, password: { type: String, required: true }
 	  }
 	, name: String
-	, avatar: String 
+	, avatar: String
+	, github: String
 	// , permissions: {
 	// 	  isAdmin: { type: Boolean, default: false }
 	// 	, isMentor: { type: Boolean, default: false }
