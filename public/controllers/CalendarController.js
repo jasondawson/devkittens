@@ -7,6 +7,9 @@ function ($scope, calendarService, specificCohortData, emailsService, user) {
 	$scope.students = specificCohortData.students;
 	$scope.events = specificCohortData.curriculum;
 
+	$scope.toggleSubscribeCohort = false;
+	$scope.backdropVisible = false;
+
 
 	// get active course info
 	$scope.course = {
@@ -44,6 +47,11 @@ function ($scope, calendarService, specificCohortData, emailsService, user) {
 	$scope.closeModal = function () {
 		$('body').css('overflow', 'inherit');
 		$scope.studentModal = false;
+	}
+
+	$scope.toggleSubscribeCohortModal = function() {
+		$scope.toggleSubscribeCohort = !$scope.toggleSubscribeCohort;
+		$scope.backdropVisible = !$scope.backdropVisible;
 	}
 
 
