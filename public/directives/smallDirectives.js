@@ -31,6 +31,21 @@ angular.module('devKittens')
 })
 
 
+.directive('hideMessage', function ($timeout) {
+	return {
+		restrict: 'A',
+		link: function(scope, elem, attrs){
+			scope.informSuccess = function () {
+				scope.displayMessage = true;
+				$timeout(function () {
+					scope.displayMessage = false;
+				}, 5000)
+			}
+		}
+	}
+})
+
+
 .directive('tioTooltip', function($timeout){
 	return {
 		restrict:'A',

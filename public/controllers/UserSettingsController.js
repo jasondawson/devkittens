@@ -1,7 +1,7 @@
 angular.module('devKittens')
 
 .controller('UserSettingsController',
-function ($scope, user, userService) {
+function ($scope, $timeout, user, userService) {
 
 	$scope.user = user;
 	$scope.updateUser = function (user, newPassword) {
@@ -16,13 +16,18 @@ function ($scope, user, userService) {
 
 		userService.updateUser(updatedInfo, user._id)
 		.then(function (response) {
-			$scope.password = '';
+			$scope.newPassword = '';
 			$scope.user = response;
+			
+			$scope.displayMessage = true;
+			$timeout(function () {
+				$scope.displayMessage = false;
+			}, 3000)
+
 		})
 		.catch(function (err) {
 			throw new Error(err);
 		});
-
 	}
 
 
