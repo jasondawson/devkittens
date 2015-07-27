@@ -111,5 +111,13 @@ angular.module('devKittens')
 		}
 	})
 
+	.when('/user-settings', {
+		templateUrl: '/public/templates/userSettings.html',
+		controller: 'UserSettingsController',
+		resolve: {
+			user: getAuth
+		}
+	})
+
 	.otherwise('/');
 })

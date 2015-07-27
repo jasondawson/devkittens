@@ -5,26 +5,8 @@
     border-radius: 2px;
     background-color: rgba(174, 177, 181, 0);
 
-	@radius-height: 100px;
-	@button-border: 1px solid #B0B0B0;
-
 	.width-container {
 		margin: 0 auto;
-	}
-
-	.pic-container {
-		display: inline-block;
-		vertical-align: middle;
-		width: 50px;
-		height: 50px;			
-		margin-right: 4px;
-		border-radius: @radius-height;
-
-		img {
-			max-width: 100%;
-			border-radius: @radius-height;
-			border: @button-border;
-		}
 	}
 
 	.add-students {
@@ -61,5 +43,22 @@
 		justify-content: center;
 		align-items: center;
 		z-index: 9;
+	}
+}
+
+
+// Profile image
+.pic-container {
+	display: inline-block;
+	vertical-align: middle;
+	width: 50px;
+	height: 50px;			
+	margin-right: 4px;
+	border-radius: @radius-height;
+
+	img {
+		max-width: 100%;
+		border-radius: @radius-height;
+		border: @button-border;
 	}
 }

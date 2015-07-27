@@ -7,6 +7,11 @@ angular.module('devKittens')
 		templateUrl: '/public/templates/header.html',
 		link: function (scope, elem, attrs) {
 			document.body.scrollTop = document.documentElement.scrollTop = 0;
+
+			scope.openHeaderDropdown = false;
+			scope.toggleHeaderDropdown = function () {
+				scope.openHeaderDropdown = !scope.openHeaderDropdown;
+			}
 		}
 	}
 })
