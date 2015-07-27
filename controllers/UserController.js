@@ -15,25 +15,16 @@ exports.getAll = function (req, res) {
 
 exports.put = function (req, res) {
 	var id = req.params.id;
-	var permission = req.body.permissions;
+	
 
 	User.findOne({ '_id' : id }, function (err, user) {
-		if (err) res.status(500).send(err);
+		// Do some error handling
+		if (!req.body.name || !req.body.local.email) return res.status(500).send('Missing information.');
 
-		switch (permission.type) {
-			case 'isAdmin':
-				user.permissions.isAdmin = permission.status;
-				break;
-			case 'isMentor':
-				user.permissions.isMentor = permission.status;
-				break;
-			case 'isInstructor':
-				user.permissions.isInstructor = permission.status;
-				break;
-			case 'isStudent':
-				user.permissions.isStudent = permission.status;
-				break;
-		}
+		user.name = req.body.name;
+		user.local.email = req.body.local.email;
+
+		if (req.body.local.password) user.local.password = user.generateHash(req.body.local.password);
 
 		user.save(function (err, result) {
 			if (err) return res.status(500).send(err);
@@ -45,7 +36,7 @@ exports.put = function (req, res) {
 
 // TODO: FOR TESTING PURPOSES ONLY -- REPLACE BY ANDREW AUTH
 exports.post = function (req, res) {
-	console.log('req.body ', req.body);
+	
 	var data = req.body;
 	var newUser = new User();
 
@@ -62,7 +53,10 @@ exports.post = function (req, res) {
 	})
 }
 
-// DEPRECATED
+//////////////////
+/// DEPRECATED ///
+//////////////////
+
 exports.get = function (req, res) {
 	var id = req.params.id;
 
@@ -75,15 +69,37 @@ exports.get = function (req, res) {
 }
 
 
-// DUMMY DATA TO CREATE USER:
-// {
-//     "local": {
-//         "email" : "jeremy@gmail.com",
-//         "password" : "McAndCheese"
-//     },
-//     "name" : "Jeremy",
-//     "permissions": {
-//         "isAdmin": "true",
-//         "isStudent": "false"
-//     }
+// exports.put = function (req, res) {
+// 	var id = req.params.id;
+// 	var permission = req.body.permissions;
+
+// 	User.findOne({ '_id' : id }, function (err, user) {
+// 		if (err) res.status(500).send(err);
+
+// 		switch (permission.type) {
+// 			case 'isAdmin':
+// 				user.permissions.isAdmin = permission.status;
+// 				break;
+// 			case 'isMentor':
+// 				user.permissions.isMentor = permission.status;
+// 				break;
+// 			case 'isInstructor':
+// 				user.permissions.isInstructor = permission.status;
+// 				break;
+// 			case 'isStudent':
+// 				user.permissions.isStudent = permission.status;
+// 				break;
+// 		}
+
+// 		user.save(function (err, result) {
+// 			if (err) return res.status(500).send(err);
+// 			return res.json(result);
+// 		})
+
+// 	})
 // }
+
+
+//////////////////
+//////////////////
+//////////////////

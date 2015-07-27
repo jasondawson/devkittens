@@ -622,7 +622,7 @@ section.user-settings .shift-wrapper {
 }
 section.user-settings .shift-wrapper .profile-header {
   background-color: #eee;
-  padding: 10px;
+  padding: 15px;
   font-weight: 600;
 }
 section.user-settings .shift-wrapper .container {
@@ -640,7 +640,7 @@ section.user-settings .shift-wrapper .container .profile-container-body .pic-con
   padding: 12px;
   height: 80px;
   width: 80px;
-  border-radius: 2px;
+  border-radius: 5px;
   box-shadow: 0px 0px 5px -1px #000000;
   position: absolute;
   top: 5px;
