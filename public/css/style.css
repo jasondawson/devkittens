@@ -799,10 +799,10 @@ select {
   z-index: 10;
   width: 50%;
   height: 80%;
-  max-height: 80%;
+  max-height: 85%;
   overflow: scroll;
 }
-.lesson-modal .flex1 {
+.lesson-modal .flex {
   width: 100%;
 }
 .lesson-modal .form-control {
