@@ -6,6 +6,7 @@ var User = require('../models/User.js');
 var Cohort = require('../models/CohortModel.js');
 var Instructor = require('../models/InstructorModel.js');
 var Mentor = require('../models/MentorModel.js');
+var Student = require('../models/StudentModel.js');
 
 // expose this function to our app using module.exports
 module.exports = function(passport) {
@@ -103,12 +104,16 @@ module.exports = function(passport) {
                                 if (req.body.userType == "instructor") {
                                     new Instructor({
                                         userId: result._id
-                                    }).save()
+                                    }).save();
                                 } else if (req.body.userType == "mentor") {
                                     new Mentor({
                                         userId: result._id
-                                    }).save()
+                                    }).save();
                                 } else {
+                                    new Student({
+                                        userId: result._id,
+                                        cohortId: req.body.cohortId
+                                    }).save();
                                     Cohort.findOne({'_id': req.body.cohortId}, function (err, foundCohort) {
                                         if (!foundCohort.students) foundCohort.students = [];
                                         

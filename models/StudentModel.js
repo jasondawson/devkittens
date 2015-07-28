@@ -1,14 +1,15 @@
 var mongoose = require('mongoose');
-	User = require('..models/User.js');
-	Lesson = require('..models/LessonModel.js');
+	User = require('../models/User.js');
+	Lesson = require('../models/LessonModel.js');
 	Course = require('../models/CourseModel.js');
-	Mentor = require('../models/Mentor')
+	Mentor = require('../models/MentorModel.js')
 	Schema = mongoose.Schema;
 
 var StudentSchema = mongoose.Schema({
-	  user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
-	, cohortId: {[ type: mongoose.Schema.Types.ObjectId, ref: "Course" ]}
+	  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
+	, cohortId: { type: mongoose.Schema.Types.ObjectId, ref: "Course" }
 	, mentor: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
+	, somethingAboutCompleteAssignments: [String]
 });
 
-module.exports = mongoose.model('');
+module.exports = mongoose.model('Student', StudentSchema);
