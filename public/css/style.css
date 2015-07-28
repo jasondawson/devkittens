@@ -739,9 +739,11 @@ section.user-settings .shift-wrapper .container .profile-container-body form .bt
   overflow: hidden;
 }
 .close-modal {
-  float: right;
+  position: absolute;
+  top: 5px;
+  right: 5px;
   font-size: 2em;
-  margin: -8% 2%;
+  /*		margin: -8% 2%;*/
 }
 .close-mini-modal {
   margin: 5px;
@@ -789,6 +791,16 @@ select {
 .display-box-nonmodal {
   width: 475px;
   margin: 0;
+}
+.lesson-modal {
+  position: fixed;
+  top: 10%;
+  left: 25%;
+  z-index: 10;
+  width: 50%;
+  height: 80%;
+  max-height: 80%;
+  overflow: scroll;
 }
 .lesson-modal .flex1 {
   width: 100%;
