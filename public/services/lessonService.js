@@ -36,4 +36,13 @@ angular.module('devKittens')
 		})
 	};
 
+	this.addLessonSection = function(id, section){
+		return $http({
+			method: 'POST',
+			url: '/api/lesson/sections/' + id,
+			data: section
+		})
+	}
+
+
 })
