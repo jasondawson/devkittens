@@ -110,6 +110,10 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 		$scope.backdropVisible = !$scope.backdropVisible;
 	}
 
+	$scope.toggleMentorModal = function() {
+		$scope.toggleViewToMentorProfile = !$scope.toggleViewToMentorProfile;
+		$scope.backdropVisible = !$scope.backdropVisible;
+	}
 	
 
 	// Sets currentMentor through an ng-click on dashboard-mentors.html
