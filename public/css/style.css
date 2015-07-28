@@ -405,9 +405,6 @@ section.dashboard .right {
 .center {
   align-self: center;
 }
-.felx1 {
-  flex: 1;
-}
 .width100 {
   width: 100%;
 }
@@ -691,7 +688,7 @@ section.user-settings .shift-wrapper .container .profile-container-body form .bt
   background: white;
   z-index: 100;
   box-shadow: 0px 0px 40px -10px rgba(0, 0, 0, 0.7);
-  overflow: auto;
+  overflow: scroll;
 }
 .modal .modal-header {
   width: 100%;

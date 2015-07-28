@@ -12,7 +12,7 @@ angular.module('devKittens')
 			$scope.activeDay;
 
 			
-
+// ------------ CREATING NEW LESSON -------------------------
 			// ADD TITLE/TOPIC
 			$scope.setTopic = function(topic){
 				$scope.topic = topic;
@@ -25,6 +25,7 @@ angular.module('devKittens')
 				$scope.sections.push(section)
 				$scope.newSection = {};
 			}
+
 
 			$scope.addContent = function(i, item){
 				$scope.sections[i].content.push(item)
@@ -64,34 +65,44 @@ angular.module('devKittens')
 				});
 			}
 
-			$scope.updateLessonTopic = function(id, topic){
-				lessonService.updateLessonTopic(id, topic).then(function(response){
-					courseServices.getCourse($route.current.params.courseId).then(function(response){
-						$scope.events = response.curriculum;
+			// --------------- UPDATING LESSON ------------
 
-					});
+			$scope.updateLessonTopic = function(lesson){
+				var id = lesson._id;
+				var topic = lesson.topic
+				lessonService.updateLessonTopic(id, topic).then(function(response){
+					lesson.editTopic = !lesson.editTopic
 				})
 			}
 
-			$scope.updateLessonSection = function(id, title, content){
+			// $scope.updateLessonSection = function(id, title, content){
+			$scope.updateLessonSection = function(section){
+				var id = section._id
 				var data = {
-					'sections.$.title' : title,
-					'sections.$.content': content
+					'sections.$.title' : section.title,
+					'sections.$.content': section.content
 				}
 				lessonService.updateLessonSection(id, data).then(function(response){
-					courseServices.getCourse($route.current.params.courseId).then(function(response){
-						$scope.events = response.curriculum;
-
-					});
+					section.editSection = !section.editSection;
 				})
 			}
 
-			$scope.removeLessonSection = function(id){
-				lessonService.removeLessonSection(id).then(function(response){
-					courseServices.getCourse($route.current.params.courseId).then(function(response){
-						$scope.events = response.curriculum;
+			$scope.addLessonSection = function(lesson, section){
+				var id = lesson._id;
+				section.show = !section.show
+				lessonService.addLessonSection(id, section).then(function(response){
+					console.log('response', response.data.sections[response.data.sections.length -1])
+					lesson.sections.push(response.data.sections[response.data.sections.length - 1]);
+					console.log(lesson.sections)
+				})
+			}
 
-					});
+			$scope.removeLessonSection = function(index, sections, section){
+				$scope.sections = sections;
+				var id = section._id;
+				lessonService.removeLessonSection(id).then(function(response){
+					$scope.sections = sections
+					$scope.sections.splice(index, 1);
 				})
 			}
 
@@ -99,7 +110,7 @@ angular.module('devKittens')
 		link: function (scope, elem, attrs) {
 			//MODAL UX/UI --> move to directive?
 			scope.showModal = function (event) {
-				$('body').css('overflow', 'hidden');
+				// $('body').css('overflow', 'hidden');
 
 				scope.currentEvent = event;
 				console.log(4444, scope.currentEvent)

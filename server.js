@@ -53,6 +53,7 @@ app.use(passport.session()); // persistent login sessions
 
 // Lessons
 app.post('/api/lessons', Lesson.create);
+app.post('/api/lesson/sections/:lessonId', Lesson.addSection);
 app.get('/api/lessons', Lesson.get);
 app.put('/api/lessons/', Lesson.update);
 app.put('/api/lessons/:sectionId', Lesson.updateSection);
