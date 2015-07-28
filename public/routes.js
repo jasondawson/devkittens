@@ -86,7 +86,8 @@ angular.module('devKittens')
 		resolve: {
 			courseRef: function (courseServices, $route) {
 				return courseServices.getCourse($route.current.params.courseId);
-			}
+			},
+			user: getAuth
 		}
 	})
 
@@ -98,7 +99,7 @@ angular.module('devKittens')
 				return $route.current.params.courseId;
 			},
 			destroySession: function(authService) {
-				authService.justDestroy();
+				return authService.justDestroy();
 			}
 		}
 	})
