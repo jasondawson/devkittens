@@ -6,7 +6,7 @@ function ($scope, user, calendarService, specificCohortData, infoStorage, emails
 	$scope.user = user;	
 	$scope.students = specificCohortData.students;
 	$scope.events = specificCohortData.curriculum;
-	infoStorage.saveCohortId(specificCohortData._id);
+	infoStorage.saveCalendarId(specificCohortData._id);
 
 
 	$scope.toggleSubscribeCohort = false;

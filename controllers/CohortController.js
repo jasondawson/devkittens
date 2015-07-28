@@ -40,9 +40,9 @@ exports.updateLessonOrder = function (req, res) {
 		var newCourse = [];
 		
 		req.body.forEach(function (courseId) {
-			cohort.curriculum.forEach(function (course) {
-				if (courseId == course._id) {
-					newCourse.push(course);
+			cohort.curriculum.forEach(function (lesson) {
+				if (courseId == lesson._id) {
+					newCourse.push(lesson);
 				}
 			})
 		})

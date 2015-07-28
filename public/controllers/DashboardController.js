@@ -5,6 +5,9 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 
 	$scope.user = user;
 
+	// TODO: This controller is doing things a controller shouldn't do.
+	// Simplify and consolidate functionality and move it away from here.
+
 	// Init
 	$scope.toggleAddCohort = false;
 	$scope.toggleAddCourse = false;
@@ -21,6 +24,11 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 	$scope.usersArray = usersData;
 	$scope.backdropVisible = false;
 
+
+	//loading gif
+	$scope.openLoader = function () {
+		$scope.loading = true;
+	}
 
 	$scope.addCohortView = function() {
 		$scope.toggleAddCohort = !$scope.toggleAddCohort;

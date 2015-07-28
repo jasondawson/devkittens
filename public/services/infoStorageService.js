@@ -4,7 +4,8 @@ angular.module('devKittens')
 	var service = {};
 	
 	var user;
-	var cohortId;
+	var calendarId;
+	// ^^^ calendar can be a cohort or curriculum
 
 	service.saveUser = function (passedUser) {
 		user = passedUser;
@@ -16,12 +17,12 @@ angular.module('devKittens')
 	}
 
 
-	service.saveCohortId = function (id) {
-		cohortId = id;
+	service.saveCalendarId = function (id) {
+		calendarId = id;
 	}
 
-	service.serveCohortId = function () {
-		return cohortId;
+	service.serveCalendarId = function () {
+		return calendarId;
 	}
 
 	return service;

@@ -14,11 +14,19 @@ angular.module("devKittens")
 		return dfrd.promise;
 	}
 
-	this.updateCoursesOrder = function (newOrderById, cohortId) {
+	this.updateCoursesOrder = function (newOrderById, cohortId, location) {
 		if (!cohortId) return console.error('Missing cohort id');
 
 		var deferred = $q.defer();
-		var uri = '/api/cohort/' + cohortId;
+
+		if (location === 'curriculum') {
+			var uri = '/api/update-course/' + cohortId;
+		} else if ('calendar') {
+			var uri = '/api/cohort/' + cohortId;
+		} else {
+			return console.info('Unidentified timeline page location.');
+		}
+
 
 		$http.put(uri, newOrderById)
 		.success(function (response) {

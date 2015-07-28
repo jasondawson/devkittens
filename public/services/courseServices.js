@@ -17,6 +17,7 @@ angular.module('devKittens')
 			dfrd.reject(err);
 		});
 
+
 		return dfrd.promise;
 	};
 

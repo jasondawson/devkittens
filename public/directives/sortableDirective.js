@@ -1,6 +1,6 @@
 angular.module('devKittens')
 
-.directive('sortable', function (cohortServices, infoStorage) {
+.directive('sortable', function (cohortServices, infoStorage, $location) {
 	return {
 		restrict: 'E',
 		link: function (scope, elem, attrs) {
@@ -10,8 +10,6 @@ angular.module('devKittens')
 		      handle: ".portlet-header",
 		      placeholder: "portlet-placeholder ui-corner-all",
 		      activate: function (event, ui) {
-		      	// console.log(event, ui);
-		      	// console.log(this);
 		      	$(ui.item).addClass('active-dragging');
 		      },
 		      deactivate: function (event, ui) {
@@ -25,7 +23,9 @@ angular.module('devKittens')
 		      		return day.id.substring(3);
 		      	})
 
-		      	cohortServices.updateCoursesOrder(udpatedPositions, infoStorage.serveCohortId())
+		      	var location = $location.$$url.split('/')[1];
+
+		      	cohortServices.updateCoursesOrder(udpatedPositions, infoStorage.serveCalendarId(), location)
 		      	.then(function (response) {
 		      		// console.info(response);
 		      	})

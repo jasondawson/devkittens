@@ -39,6 +39,31 @@ exports.getAllCourses = function(req, res) {
 }
 
 
+exports.updateLessonOrder = function (req, res) {
+	var curriculumId = req.params.curriculumId;
+
+	Course.findById(curriculumId, function (err, course) {
+		if (err) res.status(500).send(err);
+
+		var newCourse = [];
+		
+		req.body.forEach(function (courseId) {
+			course.curriculum.forEach(function (lesson) {
+				if (courseId == lesson._id) {
+					newCourse.push(lesson);
+				}
+			})
+		})
+
+		course.curriculum = newCourse;
+		course.save(function (err, result) {
+			if (err) return res.status(500).send(err);
+			return res.json(result);
+		});
+	})
+}
+
+
 exports.updateCourseCurriculum = function(req, res) {
 	var data = req.body;
 
@@ -60,34 +85,5 @@ exports.updateCourseCurriculum = function(req, res) {
 			
 		})
 	});
-
-	// Course.update({ 'curriculum._id' :  req.params.curriculumId}, { $set: {'curriculum.$.lesson': data.lesson}}, function (err, data) {
-	// 	if (err) {
-	// 		console.log(2222, err)
-	// 		return res.status(500).send(err);
-	// 	}
-	// 	Course.find(
-	// 		{ 'curriculum._id' :  req.params.curriculumId },
-	// 		function(err, data){
-	// 			if (err) {
-	// 				return res.status(500).send(err)
-	// 			}
-	// 			data[0]
-	// 			.populate('curriculum.lesson')
-	// 			.exec(function(err, result){
-	// 				console.log(33333, result)
-	// 			})
-	// 		}
-	// 	)
-		// .populate('curriculum.lesson')
-		// .exec(function(err, course){
-		// 	if (err) {
-		// 		// console.log(333, err)
-		// 		return res.status(500).send(err)
-		// 	}
-		// 	// console.log(4444, course)
-		// 	return res.json(course)
-		// })
-	// });
 }
 
