@@ -21,9 +21,6 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 	$scope.usersArray = usersData;
 	$scope.backdropVisible = false;
 
-	console.log('cohortArray ', $scope.cohortArray);
-	console.log('usersArray ', $scope.usersArray);
-
 
 	$scope.addCohortView = function() {
 		$scope.toggleAddCohort = !$scope.toggleAddCohort;

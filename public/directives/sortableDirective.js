@@ -19,7 +19,7 @@ angular.module('devKittens')
 
 		      	cohortServices.updateCoursesOrder(udpatedPositions, infoStorage.serveCohortId())
 		      	.then(function (response) {
-		      		console.info(response);
+		      		// console.info(response);
 		      	})
 		      	.catch(function (err) {
 		      		console.error(err);
