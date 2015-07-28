@@ -30,13 +30,9 @@
 
 
 		<!-- Title -->
-<<<<<<< Updated upstream
 		<div ng-show="event.lesson" class="portlet-header">
-			<div ng-show="!editTopic">
-=======
-		<div ng-show="event.lesson">
 			<div ng-show="!event.lesson.editTopic">
->>>>>>> Stashed changes
+
 				
 				<h2>{{event.lesson.topic}} <i class="fa fa-pencil" ng-click="event.lesson.editTopic=!event.lesson.editTopic"></i></h2>
 			</div>
@@ -44,16 +40,10 @@
 				<input type="text" ng-model="event.lesson.topic"/>
 				<button ng-click="updateLessonTopic(event.lesson)">submit change</button>
 			</div>
-<<<<<<< Updated upstream
-			<div ng-repeat="section in event.lesson.sections" class="portlet-content">
-				<div ng-show="!editSection">
-					
-					<h4>
-=======
-			<div ng-repeat="section in event.lesson.sections track by $index">
+			<div ng-repeat="section in event.lesson.sections track by $index" class="portlet-content">
 				<div ng-show="!section.editSection">
 					<h3 ng-show="section.title">
->>>>>>> Stashed changes
+
 						{{section.title}} 
 						<i class="fa fa-pencil" ng-click="section.editSection=!section.editSection"></i>
 						<i class="fa fa-times" ng-click="removeLessonSection($index, event.lesson.sections, section)"></i>
