@@ -136,10 +136,10 @@ a:visited {
   margin-left: 19px;
 }
 .portlet-placeholder {
-  border: 1px dotted black;
   margin: 0 1em 1em 0;
   height: 100px;
-  background-color: #343434;
+  background-color: #eee;
+  box-shadow: inset 0px 0px 8px 0px #000;
 }
 header {
   position: fixed;
