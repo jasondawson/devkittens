@@ -4,13 +4,15 @@
 	<i class="close-modal fa fa-times" ng-click="toggleSubscribeCohortModal()"></i>
 
 	<form class="new-cohort-form">
-		<select class="form-input center" ng-options="cohort.name for cohort in cohortArray" ng-model="cohortInfo.name"></select>
+		<select class="form-input center" ng-options="cohort.name for cohort in cohortArray" ng-model="selectedCohort.name"></select>
 			<dropdown-directive></dropdown-directive>
-		<select class="form-input center" ng-options="student.name for student in studentArray" ng-model="studentInfo.name"></select>
-			<dropdown-directive></dropdown-directive>
+		<select class="form-input center" multiple ng-multiple="true" size="5" ng-model="selectedStudents" ng-options="student.name for student in usersArray"></select>
+
+		You have selected: {{ selectedStudents }}
+			<!-- <dropdown-directive></dropdown-directive> -->
 	</form>
 	<div class="form-btn-container">
 		<button class="form-btn" type="submit" ng-click="toggleSubscribeCohortModal()">Cancel</button>
-		<button class="form-btn" type="submit">Save</button>
+		<button class="form-btn" type="submit" ng-click="saveSelectedStudents(selectedStudents)">Save</button>
 	</div>
 </div> <!-- End of 'add-cohort-modal' -->

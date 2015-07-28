@@ -8,7 +8,7 @@ var MentorSchema = mongoose.Schema({
 	  user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 	, cohortId: [{ type: mongoose.Schema.Types.ObjectId, ref: "Course" }]
 	, mentorData: {
-		mentos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+		mentos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
 	  }
 	, mentorType: String
 	, seniority: Number

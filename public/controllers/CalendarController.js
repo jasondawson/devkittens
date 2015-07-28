@@ -9,9 +9,6 @@ function ($scope, user, calendarService, specificCohortData, infoStorage, emails
 	infoStorage.saveCalendarId(specificCohortData._id);
 
 
-	$scope.toggleSubscribeCohort = false;
-	$scope.backdropVisible = false;
-
 
 	// get active course info
 	$scope.course = {
@@ -39,6 +36,10 @@ function ($scope, user, calendarService, specificCohortData, infoStorage, emails
 		});
 	}
 
+	$scope.sendMentorInvite = function(mentorEmails) {
+
+	}
+
 
 	// Modal related || TODO: refactor for make all modals consistent
 	$scope.openModal = function () {
@@ -49,11 +50,6 @@ function ($scope, user, calendarService, specificCohortData, infoStorage, emails
 	$scope.closeModal = function () {
 		$('body').css('overflow', 'inherit');
 		$scope.studentModal = false;
-	}
-
-	$scope.toggleSubscribeCohortModal = function() {
-		$scope.toggleSubscribeCohort = !$scope.toggleSubscribeCohort;
-		$scope.backdropVisible = !$scope.backdropVisible;
 	}
 
 

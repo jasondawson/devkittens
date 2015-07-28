@@ -72,8 +72,47 @@ angular.module('devKittens')
 	}
 
 
+	service.sendMentorInvite = function(emailString) {
+		if(!emailString) return console.log('Missing critical information to send email invite.');
 
+		var deferred = $q.defer();
+
+		var emailList = cleanList(emailString);
+		var html = '<p>You\'ve been invited to DevMountain\'s Mentor group!</p>'
+						+ '<p><a href="http://localhost:3000/#/registration/mentor" target="_blank">'
+						+ 'http://localhost:3000/#/registration/mentor'
+						+ '</a></p>';
+
+		var email = {
+				html: html
+			, subject: 'DevMountain\'s Invitation to Join the Mentors Group | Project Management Software'
+			, to: emailList
+		}
+
+		$http.post('/api/email', email)
+		.success(function(response) {
+			deferred.resolve(response);
+		})
+		.error(function(err) {
+			deferred.reject(err);
+		});
+
+		return deferred.promise;
+	}
 
 
 	return service;
 })
+
+
+
+
+
+
+
+
+
+
+
+
+

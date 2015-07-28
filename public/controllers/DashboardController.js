@@ -1,7 +1,7 @@
 angular.module('devKittens')
 
 .controller('DashboardController',
-function ($scope, $location, cohortData, courseData, usersData, courseServices, cohortServices, user) {
+function ($scope, $location, cohortData, courseData, usersData, courseServices, cohortServices, emailsService, user) {
 
 	$scope.user = user;
 
@@ -88,10 +88,17 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 		$scope.toggleViewToMentors = false;
 	}
 
-	$scope.toggleMentorModal = function() {
-		$scope.toggleViewToMentorProfile = !$scope.toggleViewToMentorProfile;
-		$scope.backdropVisible = !$scope.backdropVisible;
+	// Open/close mentor modal - invites mentors to join DevMtn
+	$scope.openMentorModal = function() {
+		$('body').css('overflow', 'hidden');
+		$scope.mentorModal = true;
 	}
+
+	$scope.closeMentorModal = function() {
+		$('body').css('overflow', 'inherit');
+		$scope.mentorModal = false;
+	}
+
 
 	$scope.toggleTeacherModal = function() {
 		$scope.toggleViewToTeacherProfile = !$scope.toggleViewToTeacherProfile;
@@ -114,6 +121,20 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 	$scope.setTeacher = function(teacher) {
 		$scope.currentTeacher = teacher
 		console.log('currentTeacher ', $scope.currentTeacher);
+	}
+
+	// Send an email to new mentors inviting them to join DevMtn
+	$scope.sendMentorInvite = function(mentorEmails) {
+		$scope.loading = true;
+
+		if(!mentorEmails) return console.warn('Please add emails');
+
+		emailsService.sendMentorInvite(mentorEmails)
+		.then(function(response) {
+			console.log('response', response);
+		}, function(err) {
+			console.log('error ', err);
+		})
 	}
 
 
