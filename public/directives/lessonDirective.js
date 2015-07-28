@@ -67,16 +67,17 @@ angular.module('devKittens')
 
 			// --------------- UPDATING LESSON ------------
 
-			$scope.updateLessonTopic = function(lesson){
-				var id = lesson._id;
-				var topic = lesson.topic
+			$scope.updateLessonTopic = function(event){
+				var id = event.lesson._id;
+				var topic = event.lesson.topic
 				lessonService.updateLessonTopic(id, topic).then(function(response){
-					lesson.editTopic = !lesson.editTopic
+					event.lesson.editTopic = !event.lesson.editTopic
 				})
 			}
 
 			// $scope.updateLessonSection = function(id, title, content){
-			$scope.updateLessonSection = function(section){
+			$scope.updateLessonSection = function(event, section){
+				car event = event;
 				var id = section._id
 				var data = {
 					'sections.$.title' : section.title,
@@ -87,7 +88,8 @@ angular.module('devKittens')
 				})
 			}
 
-			$scope.addLessonSection = function(lesson, section){
+			$scope.addLessonSection = function(event, section){
+				var lesson = event.lesson;
 				var id = lesson._id;
 				section.show = !section.show
 				lessonService.addLessonSection(id, section).then(function(response){
@@ -97,8 +99,8 @@ angular.module('devKittens')
 				})
 			}
 
-			$scope.removeLessonSection = function(index, sections, section){
-				$scope.sections = sections;
+			$scope.removeLessonSection = function(index, event, section){
+				$scope.sections = event.lesson.sections;
 				var id = section._id;
 				lessonService.removeLessonSection(id).then(function(response){
 					$scope.sections = sections

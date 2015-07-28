@@ -33,7 +33,7 @@
 			<span class="course-body">
 				<div ng-show="event.lesson.editTopic">
 					<input type="text" ng-model="event.lesson.topic"/>
-					<button ng-click="updateLessonTopic(event.lesson)">submit change</button>
+					<button ng-click="updateLessonTopic(event)">submit change</button>
 				</div>
 				<div ng-repeat="section in event.lesson.sections track by $index" class="portlet-content">
 					<div ng-show="!section.editSection">
@@ -41,7 +41,7 @@
 
 							{{section.title}} 
 							<i class="fa fa-pencil" ng-click="section.editSection=!section.editSection"></i>
-							<i class="fa fa-times" ng-click="removeLessonSection($index, event.lesson.sections, section)"></i>
+							<i class="fa fa-times" ng-click="removeLessonSection($index, event, section)"></i>
 						</h3> 
 						<div ng-bind-html="section.content | unsafe"></div>
 					</div>
@@ -50,7 +50,7 @@
 								   placeholder="Section title"
 								   class="form-control"/> 
 						<text-angular ng-model="section.content"></text-angular>
-						<button ng-click="updateLessonSection(section)">submit changes</button>
+						<button ng-click="updateLessonSection(event, section)">submit changes</button>
 					</div>
 					<br />
 				</div>
@@ -58,7 +58,7 @@
 
 				<!-- ADDS NEW SECTION TO A LESSON -->
 				<i class="fa fa-plus" ng-click="newSection.show=!newSection.show"></i> add section
-				<form ng-show="newSection.show" ng-submit="addLessonSection(event.lesson, newSection)">
+				<form ng-show="newSection.show" ng-submit="addLessonSection(event, newSection)">
 					<input type="text" ng-model="newSection.title"
 						   placeholder="Section title"
 						   class="form-control"/>
