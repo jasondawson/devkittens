@@ -77,7 +77,7 @@ angular.module('devKittens')
 
 			// $scope.updateLessonSection = function(id, title, content){
 			$scope.updateLessonSection = function(event, section){
-				car event = event;
+				var event = event;
 				var id = section._id
 				var data = {
 					'sections.$.title' : section.title,
