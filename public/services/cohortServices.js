@@ -14,6 +14,23 @@ angular.module("devKittens")
 		return dfrd.promise;
 	}
 
+	this.updateCoursesOrder = function (newOrderById, cohortId) {
+		if (!cohortId) return console.error('Missing cohort id');
+
+		var deferred = $q.defer();
+		var uri = '/api/cohort/' + cohortId;
+
+		$http.put(uri, newOrderById)
+		.success(function (response) {
+			deferred.resolve(response);
+		})
+		.error(function (err) {
+			deferred.resolve(err);
+		});
+
+		return deferred.promise;
+	}
+
 	this.getCohort = function(cohortId) {
 		var dfrd = $q.defer();
 		$http({

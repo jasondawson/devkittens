@@ -1,11 +1,14 @@
 angular.module('devKittens')
 
 .controller('CalendarController',
-function ($scope, calendarService, specificCohortData, emailsService) {
+function ($scope, calendarService, specificCohortData, infoStorage, emailsService) {
 
 	// $scope.user = user;	
 	$scope.students = specificCohortData.students;
 	$scope.events = specificCohortData.curriculum;
+	infoStorage.saveCohortId(specificCohortData._id);
+
+	console.log(specificCohortData);
 
 	$scope.toggleSubscribeCohort = false;
 	$scope.backdropVisible = false;

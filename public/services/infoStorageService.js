@@ -2,7 +2,9 @@ angular.module('devKittens')
 
 .factory('infoStorage', function () {
 	var service = {};
+	
 	var user;
+	var cohortId;
 
 	service.saveUser = function (passedUser) {
 		user = passedUser;
@@ -13,6 +15,14 @@ angular.module('devKittens')
 		return null;
 	}
 
+
+	service.saveCohortId = function (id) {
+		cohortId = id;
+	}
+
+	service.serveCohortId = function () {
+		return cohortId;
+	}
 
 	return service;
 })
