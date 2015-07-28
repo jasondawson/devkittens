@@ -107,6 +107,17 @@ app.get('/logout', function(req, res) {
     res.redirect('/#/');
 });
 
+app.get('/api/just-destroy', function(req, res) {
+    req.session.destroy()
+    .exec(function(err, data) {
+        if (err) {
+            res.status(500).json(err);
+        } else {
+            res.json(data);
+        }
+    })
+})
+
 
 
 
