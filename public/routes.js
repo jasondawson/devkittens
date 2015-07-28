@@ -27,8 +27,8 @@ angular.module('devKittens')
 		resolve: {
 			specificCohortData: function (cohortServices, $route) {
 				return cohortServices.getCohort($route.current.params.cohortId);
-			}
-			//user: getAuth
+			},
+			user: getAuth
 		}
 	})
 
