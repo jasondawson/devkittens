@@ -91,24 +91,24 @@ angular.module('devKittens')
 		}
 	})
 
-	// .when('/registration/:courseId', {
-	// 	templateUrl: '/public/templates/registration.html',
-	// 	controller: 'registrationController',
-	// 	resolve: {
-	// 		courseId: function ($route) {
-	// 			return $route.current.params.courseId;
-	// 		}
-	// 	}
-	// })
-
-	.when('/registration/mentor', {
+	.when('/registration/:courseId', {
 		templateUrl: '/public/templates/registration.html',
+		controller: 'registrationController',
 		resolve: {
-			type: function () {
-				return null; // should return something but I don't know what 
+			courseId: function ($route) {
+				return $route.current.params.courseId;
 			}
 		}
 	})
+
+	// .when('/registration/mentor', {
+	// 	templateUrl: '/public/templates/registration.html',
+	// 	resolve: {
+	// 		type: function () {
+	// 			return null; // should return something but I don't know what 
+	// 		}
+	// 	}
+	// })
 
 	// .when('/registration', {
 	// 	templateUrl: '/public/templates/registration.html',
