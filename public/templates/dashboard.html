@@ -93,6 +93,11 @@
 			<i class="icon-dashboard fa fa-plus-circle"></i>
 		</div>
 
+		<div class="display-box add-new" ng-click="toggleSubscribeCohortModal()">
+			<span class="text-dashboard">Subscribe to cohort</span> <br />
+			<i class="icon-dashboard fa fa-plus-circle"></i>
+		</div>
+
 		<a class="mentors-link" href="#dashboard">
 			<div class="display-box" ng-click="toggleMentorModal(); setMentor(mentor)" ng-repeat="mentor in usersArray">
 				<img class="mentor-image center" ng-src="{{mentor.avatar}}"</img>
@@ -255,3 +260,7 @@
 	set-teacher="setTeacher(teacher)"
 	toggle-teacher-modal="toggleTeacherModal()">
 </teacher-modal>
+
+ 
+
+

@@ -14,11 +14,16 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 	$scope.toggleViewToTeachers = false;
 	$scope.toggleViewToMentorProfile = false;
 	$scope.toggleViewToTeacherProfile = false;
+	$scope.toggleSubscribeCohort = false;
 	$scope.activeTab = 'courses';
 	$scope.cohortArray = cohortData;
 	$scope.courseArray = courseData;
 	$scope.usersArray = usersData;
 	$scope.backdropVisible = false;
+
+	console.log('cohortArray ', $scope.cohortArray);
+	console.log('usersArray ', $scope.usersArray);
+
 
 	$scope.addCohortView = function() {
 		$scope.toggleAddCohort = !$scope.toggleAddCohort;
@@ -40,7 +45,6 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 		$scope.toggleAddTeacher = !$scope.toggleAddTeacher;
 		$scope.backdropVisible = !$scope.backdropVisible;
 	}
-
 
 	// Toggling between dashboard views
 	$scope.activateCourses = function() {
@@ -80,14 +84,17 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 	}
 
 	$scope.toggleMentorModal = function() {
-		// console.log('$scope.toggleViewToMentorProfile ', $scope.toggleViewToMentorProfile)
 		$scope.toggleViewToMentorProfile = !$scope.toggleViewToMentorProfile;
 		$scope.backdropVisible = !$scope.backdropVisible;
 	}
 
 	$scope.toggleTeacherModal = function() {
-		console.log('$scope.toggleViewToTeacherProfile ', $scope.toggleViewToTeacherProfile)
 		$scope.toggleViewToTeacherProfile = !$scope.toggleViewToTeacherProfile;
+		$scope.backdropVisible = !$scope.backdropVisible;
+	}
+
+	$scope.toggleSubscribeCohortModal = function() {
+		$scope.toggleSubscribeCohort = !$scope.toggleSubscribeCohort;
 		$scope.backdropVisible = !$scope.backdropVisible;
 	}
 
@@ -96,12 +103,12 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 	// Sets currentMentor through an ng-click on dashboard-mentors.html
 	$scope.setMentor = function(mentor) {
 		$scope.currentMentor = mentor
-		// console.log('currentMentor ', $scope.currentMentor);
+		console.log('currentMentor ', $scope.currentMentor);
 	}
 
 	$scope.setTeacher = function(teacher) {
 		$scope.currentTeacher = teacher
-		// console.log('currentTeacher ', $scope.currentTeacher);
+		console.log('currentTeacher ', $scope.currentTeacher);
 	}
 
 

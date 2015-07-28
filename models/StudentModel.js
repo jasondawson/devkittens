@@ -9,10 +9,6 @@ var StudentSchema = mongoose.Schema({
 	  user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 	, cohortId: {[ type: mongoose.Schema.Types.ObjectId, ref: "Course" ]}
 	, mentor: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
-	, githubInfo: {
-		username: String,
-		link: String
-	}
 });
 
-module.exports = mongoose.model('')
+module.exports = mongoose.model('');

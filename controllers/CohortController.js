@@ -1,6 +1,6 @@
 var Course = require('../models/CourseModel.js'),
 	Cohort = require('../models/CohortModel.js'),
-	Lesson = require('../models/LessonModel.js');
+	Lesson = require('../models/LessonModel.js'),
 	User   = require('../models/User.js');
 
 exports.createNewCohort = function(req, res) {

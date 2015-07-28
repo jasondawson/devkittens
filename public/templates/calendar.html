@@ -15,13 +15,27 @@
 				<span class="arrow-down"></span>
 			</span>
 		</div>
+
 		<div class="pic-container add-students" ng-click="openModal()">
 			<div class="flex-plus">
 				<i class="fa fa-user-plus"></i>
 			</div>
 		</div>
+
+		<div class="pic-container add-students" ng-click="toggleSubscribeCohortModal()">
+			<div class="flex-plus">
+				<i class="fa fa-users"></i>
+			</div>
+		</div>
+
 	</div>
 </div>
+
+<subscribe-modal
+	ng-show="toggleSubscribeCohort"
+	toggle-subscribe-cohort="toggleSubscribeCohort"
+	toggle-subscribe-cohort-modal="toggleSubscribeCohortModal()">
+</subscribe-modal>
 
 
 <span class="pic-modal" ng-show="studentModal">

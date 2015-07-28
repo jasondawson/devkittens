@@ -24,6 +24,7 @@ exports.put = function (req, res) {
 		user.name = req.body.name;
 		user.local.email = req.body.local.email;
 
+		if (req.body.githubUrl) user.githubUrl = req.body.githubUrl;
 		if (req.body.local.password) user.local.password = user.generateHash(req.body.local.password);
 
 		user.save(function (err, result) {
