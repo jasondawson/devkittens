@@ -1,6 +1,6 @@
 angular.module('devKittens')
 
-.directive('sortable', function () {
+.directive('sortable', function (cohortServices, infoStorage) {
 	return {
 		restrict: 'E',
 		link: function (scope, elem, attrs) {
@@ -8,7 +8,23 @@ angular.module('devKittens')
 		    $( ".column" ).sortable({
 		      connectWith: ".column",
 		      handle: ".portlet-header",
-		      placeholder: "portlet-placeholder ui-corner-all"
+		      placeholder: "portlet-placeholder ui-corner-all",
+		      update: function (event, ui) {
+		      	var days = elem.find('.day');
+		      	var days = Array.prototype.slice.call(days);
+
+		      	var udpatedPositions = days.map(function (day) {
+		      		return day.id.substring(3);
+		      	})
+
+		      	cohortServices.updateCoursesOrder(udpatedPositions, infoStorage.serveCohortId())
+		      	.then(function (response) {
+		      		console.info(response);
+		      	})
+		      	.catch(function (err) {
+		      		console.error(err);
+		      	});
+		      }
 		    });
 		 
 		    $( ".portlet" )
@@ -22,6 +38,7 @@ angular.module('devKittens')
 		      icon.toggleClass( "ui-icon-minusthick ui-icon-plusthick" );
 		      icon.closest( ".portlet" ).find( ".portlet-content" ).toggle();
 		    });
+
 
 		}
 	}

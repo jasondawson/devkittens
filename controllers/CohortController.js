@@ -32,6 +32,29 @@ exports.createNewCohort = function(req, res) {
 	})
 };
 
+exports.updateLessonOrder = function (req, res) {
+	var cohortId = req.params.cohortId;
+	Cohort.findById(cohortId, function (err, cohort) {
+		if (err) return res.status(500).send(err);
+		
+		var newCourse = [];
+		
+		req.body.forEach(function (courseId) {
+			cohort.curriculum.forEach(function (course) {
+				if (courseId == course._id) {
+					newCourse.push(course);
+				}
+			})
+		})
+
+		cohort.curriculum = newCourse;
+		cohort.save(function (err, result) {
+			if (err) return res.status(500).send(err);
+			return res.json(result);
+		});
+	})
+}
+
 exports.getCohort = function(req, res) {
 	Cohort.findById(req.params.cohortId)
 	.populate('students')
