@@ -1,8 +1,8 @@
 <section class="cal">
 <lesson></lesson>
-<sortable class="sortable">
-
-	<div class="day"
+<sortable class="column">
+	
+	<div class="day portlet"
 		  activate-day
 		  ng-repeat="event in events" id="day{{event._id}}"
 		  ng-class="{
@@ -30,7 +30,7 @@
 
 
 		<!-- Title -->
-		<div ng-show="event.lesson">
+		<div ng-show="event.lesson" class="portlet-header">
 			<div ng-show="!editTopic">
 				
 				<h3>{{event.lesson.topic}} <i class="fa fa-pencil" ng-click="editTopic=!editTopic"></i></h3>
@@ -39,7 +39,7 @@
 				<input type="text" ng-model="event.lesson.topic"/>
 				<button ng-click="updateLessonTopic(event.lesson._id, event.lesson.topic)">submit change</button>
 			</div>
-			<div ng-repeat="section in event.lesson.sections">
+			<div ng-repeat="section in event.lesson.sections" class="portlet-content">
 				<div ng-show="!editSection">
 					
 					<h4>
