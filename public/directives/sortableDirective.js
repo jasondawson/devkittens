@@ -9,6 +9,14 @@ angular.module('devKittens')
 		      connectWith: ".column",
 		      handle: ".portlet-header",
 		      placeholder: "portlet-placeholder ui-corner-all",
+		      activate: function (event, ui) {
+		      	// console.log(event, ui);
+		      	// console.log(this);
+		      	$(ui.item).addClass('active-dragging');
+		      },
+		      deactivate: function (event, ui) {
+		      	$(ui.item).removeClass('active-dragging');
+		      },
 		      update: function (event, ui) {
 		      	var days = elem.find('.day');
 		      	var days = Array.prototype.slice.call(days);
