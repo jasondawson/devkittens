@@ -4,6 +4,8 @@ var LocalStrategy = require('passport-local').Strategy;
 // load up the user model
 var User = require('../models/User.js');
 var Cohort = require('../models/CohortModel.js');
+var Instructor = require('../models/InstructorModel.js');
+var Mentor = require('../models/MentorModel.js');
 
 // expose this function to our app using module.exports
 module.exports = function(passport) {
@@ -88,17 +90,26 @@ module.exports = function(passport) {
                             newUser.local.password = newUser.generateHash(password);
                             newUser.name           = req.body.name;
                             newUser.avatar         = req.body.avatar;
+                            newUser.userType       = req.body.userType;
 
-                            if (req.body.permissions) {
-                                newUser.permissions = req.body.permissions;
-                            }
+                            // if (req.body.permissions) {
+                            //     newUser.permissions = req.body.permissions;
+                            // }
 
                             newUser.save(function (err, result) {
                                 if (err) return done(err);
                                 
                                 // Pushing student id to cohort student array
-                                if (req.body.permissions && req.body.permissions.isStudent.status === true) {
-                                    Cohort.findOne({'_id': req.body.permissions.isStudent.cohortId}, function (err, foundCohort) {
+                                if (req.body.userType == "instructor") {
+                                    new Instructor({
+                                        userId: result._id
+                                    }).save()
+                                } else if (req.body.userType == "mentor") {
+                                    new Mentor({
+                                        userId: result._id
+                                    }).save()
+                                } else {
+                                    Cohort.findOne({'_id': req.body.cohortId}, function (err, foundCohort) {
                                         if (!foundCohort.students) foundCohort.students = [];
                                         
                                         foundCohort.students.push(result._id);

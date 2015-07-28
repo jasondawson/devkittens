@@ -7,6 +7,8 @@ function ($scope, authService, $location, infoStorage, courseId) {
 	$scope.errorMessage = '';
 
 	$scope.createUser = function (name, email, password, confirmPassword) {
+		console.log(courseId, typeof courseId);
+		if(!courseId) return $scope.errorMessage = "Illegal registration.";
 		if(password !== confirmPassword) return $scope.errorMessage = 'Your passwords don\'t match';
 
 		authService.createUser(name, email, password, courseId)

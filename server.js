@@ -83,6 +83,7 @@ app.put('/api/user/:id', User.put);
 
 // Auth
 app.post('/api/user', passport.authenticate('local-signup'), function (req, res) {
+    console.log(req.body);
     res.redirect('/#')
     res.json(req.use);
 });

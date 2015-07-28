@@ -110,15 +110,15 @@ angular.module('devKittens')
 		}
 	})
 
-	.when('/registration', {
-		templateUrl: '/public/templates/registration.html',
-		controller: 'registrationController',
-		resolve: {
-			courseId: function() {
-				return null;
-			}
-		}
-	})
+	// .when('/registration', {
+	// 	templateUrl: '/public/templates/registration.html',
+	// 	controller: 'registrationController',
+	// 	resolve: {
+	// 		courseId: function() {
+	// 			return null;
+	// 		}
+	// 	}
+	// })
 
 	.when('/user-settings', {
 		templateUrl: '/public/templates/userSettings.html',

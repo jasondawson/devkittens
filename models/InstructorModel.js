@@ -5,10 +5,12 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 var instructorSchema = new Schema({
-	user: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
+	userId: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
 	cohorts: [{type: mongoose.Schema.Types.ObjectId, ref: "Cohort"}],
 	rating: Number,
 	comments: [String],
 	skills: [String],
 	schedule: [{date: Date, lesson: {type: mongoose.Schema.Types.ObjectId, ref: "Lesson"}}]
 })
+
+module.exports = mongoose.model('Instructor', instructorSchema);

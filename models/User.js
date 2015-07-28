@@ -9,7 +9,7 @@ var UserSchema = mongoose.Schema({
 	, name: String
 	, avatar: String
 	, githubUrl: String
-	, userType: {type: mongoose.Schema.Types.ObjectId, ref: {type: String, enum: ["Mentor", "Instructor", "Student", "Admin"], default: "Student"}}
+	, userType: String
 })
 
 

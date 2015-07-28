@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
-	User = require('..models/User.js');
-	Lesson = require('..models/LessonModel.js');
+	User = require('../models/User.js');
+	Lesson = require('../models/LessonModel.js');
 	Course = require('../models/CourseModel.js'),
 	Schema = mongoose.Schema;
 
 var MentorSchema = mongoose.Schema({
-	  user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
+	  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 	, cohortId: [{ type: mongoose.Schema.Types.ObjectId, ref: "Course" }]
 	, mentorData: {
 		mentos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
@@ -14,4 +14,4 @@ var MentorSchema = mongoose.Schema({
 	, seniority: Number
 });
 
-module.exports = mongoose.model('');
+module.exports = mongoose.model('Mentor', MentorSchema);
