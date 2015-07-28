@@ -11,4 +11,4 @@ var StudentSchema = mongoose.Schema({
 	, mentor: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 });
 
-module.exports = mongoose.model('')
+module.exports = mongoose.model('');

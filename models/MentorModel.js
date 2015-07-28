@@ -14,4 +14,4 @@ var MentorSchema = mongoose.Schema({
 	, seniority: Number
 });
 
-module.exports = mongoose.model('')
+module.exports = mongoose.model('');
