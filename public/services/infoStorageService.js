@@ -46,21 +46,20 @@ angular.module('devKittens')
 
 	// COURSE
 	service.setCurrentCourse = function(currentCourse) {
+		// currentCourseData = currentCourse;
+		var currentCourseArray = [];
+
+		for(var i = 0; i < currentCourse.curriculum.length; i += 28) {
+			currentCourseArray.push(currentCourse.curriculum.slice(i, i + 28))
+			console.log('currentCourseArray ', currentCourse);
+		}
+
+		currentCourse.curriculum = currentCourseArray;
 		currentCourseData = currentCourse;
 	}
 
 	service.getCurrentCourse = function() {
 		if (!currentCourseData) return null;
-
-		var currentCourseArray = [];
-
-		for(var i = 0; i < currentCourseData.curriculum.length; i += 28) {
-			currentCourseArray.push(currentCourseData.curriculum.slice(i, i + 28))
-			console.log('currentCourseArray ', currentCourseArray);
-		}
-
-		currentCourseData.curriculum = currentCourseArray;
-
 		return currentCourseData;
 	}
 
