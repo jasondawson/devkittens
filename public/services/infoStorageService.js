@@ -51,7 +51,7 @@ angular.module('devKittens')
 
 		for(var i = 0; i < currentCourse.curriculum.length; i += 28) {
 			currentCourseArray.push(currentCourse.curriculum.slice(i, i + 28))
-			console.log('currentCourseArray ', currentCourse);
+			// console.log('currentCourseArray ', currentCourse);
 		}
 
 		currentCourse.curriculum = currentCourseArray;
@@ -61,6 +61,24 @@ angular.module('devKittens')
 	service.getCurrentCourse = function() {
 		if (!currentCourseData) return null;
 		return currentCourseData;
+	}
+
+	// COHORT
+	service.setCurrentCohort = function(currentCohort) {
+		
+		var currentCohortArray = [];
+
+		for(var i = 0; i < currentCohort.curriculum.length; i += 30) {
+			currentCohortArray.push(currentCohort.curriculum.slice(i, i + 30))
+		}
+
+		currentCohort.curriculum = currentCohortArray;
+		currentCohortData = currentCohort;
+	}
+
+	service.getCurrentCohort = function() {
+		if(!currentCohortData) return null;
+		return currentCohortData;
 	}
 
 

@@ -3,7 +3,7 @@
 
 <div class="calendar-nav">
 	<i class="fa fa-arrow-circle-left" ng-click="previousMonth()"></i>
-	<span class="calendar-title">{{ currentCourse.title }} - August 2015</span>
+	<span class="calendar-title">{{ currentCohort.name }} - {{ currentCohort.startDate | date: fullDate }}</span>
 	<i class="fa fa-arrow-circle-right" ng-click="nextMonth()"></i>
 </div>
 
@@ -15,7 +15,7 @@
 
 <div class="overall-container">
 
-	<div class="calendar-container" ng-click="viewDay(day)" ng-repeat="day in currentCourse.curriculum[0]">
+	<div class="calendar-container" ng-click="viewDay(day)" ng-repeat="day in currentCohort.curriculum[0]">
 		<div class="display-box add-new">
 			<span class="text-dashboard calendar-text">{{ day.day }}</span>
 			<p>{{ day.topic }}</p>

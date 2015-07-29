@@ -39,6 +39,37 @@ angular.module('devKittens')
 		}
 	})
 
+	.when('/cohort/:cohortId?', {
+		templateUrl: '/public/templates/cohort.html',
+		controller: 'CohortController',
+		resolve: {
+			currentCohortData: function($route, $q, $location, infoStorage, cohortServices) {
+				var tempCohortData = infoStorage.getCurrentCohort();
+				if(tempCohortData) return tempCohortData;
+				else {
+					var deferred = $q.defer();
+
+					cohortServices.getCohort($route.current.params.cohortId)
+					.then(function(response) {
+						infoStorage.getCurrentCohort(response);
+						var data = infoStorage.getCurrentCohort();
+						deferred.resolve(data); 
+					})
+					.catch(function(err) {
+						console.error(err);
+						$location.path('/dashboard');
+						deferred.reject(err);
+					});
+					return deferred.promise;
+				}
+			},
+			dayOfWeek: function(infoStorage) {
+				return infoStorage.getDayOfWeek();
+			},
+			user: getAuth
+		}
+	})
+
 
 	.when('/day/:courseId/:dayId', {
 		templateUrl: '/public/templates/day.html',
