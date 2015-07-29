@@ -12,9 +12,6 @@ angular.module('devKittens')
 		templateUrl: '/public/templates/calendar.html',
 		controller: 'CalendarController',
 		resolve: {
-			specificCohortData: function (cohortServices, $route) {
-				return null;
-			},
 			currentCourseData: function($route, $q, $location, infoStorage, courseServices, cohortServices) {
 				var tempCourseData = infoStorage.getCurrentCourse();
 				if (tempCourseData) return tempCourseData;

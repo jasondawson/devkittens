@@ -1,13 +1,8 @@
 angular.module('devKittens')
 
 .controller('CalendarController',
-function ($scope, user, calendarService, specificCohortData, infoStorage, emailsService, cohortServices, currentCourseData, dayOfWeek, $location) {
-	if(specificCohortData) {
-		$scope.students = specificCohortData.students;
-		$scope.events = specificCohortData.curriculum;
-		infoStorage.saveCalendarId(specificCohortData._id);
-	}
-
+function ($scope, user, calendarService, infoStorage, emailsService, cohortServices, currentCourseData, dayOfWeek, $location) {
+	
 	$scope.user = user;	
 	$scope.currentCourse = currentCourseData;
 	$scope.dayOfWeek = dayOfWeek;
@@ -27,37 +22,28 @@ function ($scope, user, calendarService, specificCohortData, infoStorage, emails
 		$location.path('/day/' + currentCourseData._id + '/' + day._id);
 	}
 
+	//sending email invites to students, doesn't belong here
 
-	// console.log('currentCourseData ', currentCourseData);
+	// $scope.sendStudentInvite = function (studentEmails) {
+	// 	$scope.loading = true;
 
-
-	
-
-	// get active course info
-	// $scope.course = {
-	// 	name: specificCohortData.name
+	// 	if (!studentEmails) return console.warn('Plase add emails');
+	// 	var cohortInfo = {
+	// 		name: specificCohortData.name,
+	// 		id: specificCohortData._id
+	// 	}
+	// 	emailsService.sendStudentInvite(studentEmails, cohortInfo)
+	// 	.then(function (response) {
+	// 		console.log(response);
+	// 		$scope.loading = false;
+	// 		$scope.newStudents = '';
+	// 		$scope.closeModal();
+	// 	})
+	// 	.catch(function (err) {
+	// 		console.error(err);
+	// 		$scope.loading = false;
+	// 	});
 	// }
-
-	$scope.sendStudentInvite = function (studentEmails) {
-		$scope.loading = true;
-
-		if (!studentEmails) return console.warn('Plase add emails');
-		var cohortInfo = {
-			name: specificCohortData.name,
-			id: specificCohortData._id
-		}
-		emailsService.sendStudentInvite(studentEmails, cohortInfo)
-		.then(function (response) {
-			console.log(response);
-			$scope.loading = false;
-			$scope.newStudents = '';
-			$scope.closeModal();
-		})
-		.catch(function (err) {
-			console.error(err);
-			$scope.loading = false;
-		});
-	}
 
 	$scope.sendMentorInvite = function(mentorEmails) {
 		$scope.loading = true;
