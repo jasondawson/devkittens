@@ -80,10 +80,10 @@ app.post('/api/email', EmailController.sendEmail);
 // Users
 app.get('/api/users', User.getAll);
 app.put('/api/user/:id', User.put);
+app.post('/api/data-type', User.getTypeData);
 
 // Auth
-app.post('/api/user', passport.authenticate('local-signup'), function (req, res) {
-    console.log(req.body);
+app.post('/api/user', logout, passport.authenticate('local-signup'), function (req, res) {
     res.redirect('/#')
     res.json(req.use);
 });
@@ -101,28 +101,11 @@ app.get('/api/auth', isAuth, function(req, res) {
 });
 
 
-// TODO: does this work?
 app.get('/logout', function(req, res) {
 	req.session.destroy();
     res.redirect('/#/');
 });
 
-app.get('/api/just-destroy', function(req, res) {
-    req.session.destroy()
-    .exec(function(err, data) {
-        if (err) {
-            res.status(500).json(err);
-        } else {
-            res.json(data);
-        }
-    })
-})
-
-
-
-
-// DEPRECATED
-// app.get('/api/user/:id', User.get);
 
 
 ////////////////////////////////////
@@ -149,10 +132,16 @@ app.listen(portNum, function () {
 });
 
 
+// Custom middleware
+function logout (req, res, next) {
+    if (req.session || req.user) {
+        req.logout();
+    }
+    next();
+}
 
 
 function isAuth(req, res, next) {
-
     // if user is authenticated in the session, carry on 
     if (req.user){
         next();
@@ -160,5 +149,4 @@ function isAuth(req, res, next) {
    	// if they aren't redirect them to the home page
     	res.status(403).send('not allowed');
     }
-
 }

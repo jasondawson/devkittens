@@ -16,7 +16,6 @@ angular.module('devKittens')
 		return null;
 	}
 
-
 	service.saveCalendarId = function (id) {
 		calendarId = id;
 	}

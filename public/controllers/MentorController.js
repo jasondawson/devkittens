@@ -1,6 +1,8 @@
 angular.module('devKittens')
 
 .controller('MentorController', function ($scope, mentorData, optionsData, usersData, user) {
+
+	alert('MENTOR CONTROLLER!!!');
 	
 	$scope.user = user;
 	$scope.mentorModalVisible = false;

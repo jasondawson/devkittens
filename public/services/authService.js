@@ -37,11 +37,5 @@ angular.module('devKittens')
 			}
 		})
 	}
-
-	this.justDestroy = function() {
-		return $http({
-			method: "GET",
-			url: "/api/just-destroy"
-		})
-	}
-})
+	
+});

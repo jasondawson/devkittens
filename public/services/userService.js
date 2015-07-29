@@ -19,5 +19,26 @@ angular.module('devKittens')
 	}
 
 
+	service.getTypeData = function (type, id) {
+		var deferred = $q.defer();
+
+		var data = {
+			userType: type,
+			_id: id
+		}
+
+		// Post acting as a get
+		$http.post('/api/data-type', data)
+		.success(function (response) {
+			deferred.resolve(response);
+		})
+		.error(function (err) {
+			deferred.reject(err);
+		});
+
+		return deferred.promise;
+	}
+
+
 	return service;
 })

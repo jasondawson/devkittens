@@ -2,6 +2,9 @@ var exports = module.exports = {};
 
 // Dependencies
 var User = require('../models/User.js');
+var Student = require('../models/StudentModel.js');
+var Mentor = require('../models/MentorModel.js');
+var Instructor = require('../models/InstructorModel.js');
 
 
 exports.getAll = function (req, res) {
@@ -35,6 +38,31 @@ exports.put = function (req, res) {
 	})
 }
 
+exports.getTypeData = function (req, res) {
+	switch(req.body.userType) {
+	    case 'student':
+	        Student.find({'userId':req.body._id}, function (err, student) {
+	        	if (err) return res.status(500).send(err);
+	        	return res.json(student);
+	        })
+	        break;
+	    case 'mentor':
+	        Mentor.find({'userId':req.body._id}, function (err, mentor) {
+	        	if (err) return res.status(500).send(err);
+	        	return res.json(mentor);
+	        })
+	        break;
+        case 'instructor':
+	        Instructor.find({'userId':req.body._id}, function (err, instructor) {
+	        	if (err) return res.status(500).send(err);
+	        	return res.json(instructor);
+	        })
+	        break;
+	    default:
+	        res.send(req.body);
+	}
+}
+
 // TODO: FOR TESTING PURPOSES ONLY -- REPLACE BY ANDREW AUTH
 exports.post = function (req, res) {
 	
@@ -47,60 +75,8 @@ exports.post = function (req, res) {
 	// newUser.permissions.isAdmin = data.permissions.isAdmin;
 	// newUser.permissions.isStudent = data.permissions.isStudent;
 	newUser.save(function (err, result) {
-		console.log(err, result);
 		if (err) return res.status(500).send(err);
 		
 		return res.json(result);
 	})
 }
-
-//////////////////
-/// DEPRECATED ///
-//////////////////
-
-exports.get = function (req, res) {
-	var id = req.params.id;
-
-	User.findOne({ '_id' : id }, function (err, user) {
-		if (err) return res.status(500).send(err);
-		user.local.password = 'hidden';
-
-		return res.json(user);
-	})
-}
-
-
-// exports.put = function (req, res) {
-// 	var id = req.params.id;
-// 	var permission = req.body.permissions;
-
-// 	User.findOne({ '_id' : id }, function (err, user) {
-// 		if (err) res.status(500).send(err);
-
-// 		switch (permission.type) {
-// 			case 'isAdmin':
-// 				user.permissions.isAdmin = permission.status;
-// 				break;
-// 			case 'isMentor':
-// 				user.permissions.isMentor = permission.status;
-// 				break;
-// 			case 'isInstructor':
-// 				user.permissions.isInstructor = permission.status;
-// 				break;
-// 			case 'isStudent':
-// 				user.permissions.isStudent = permission.status;
-// 				break;
-// 		}
-
-// 		user.save(function (err, result) {
-// 			if (err) return res.status(500).send(err);
-// 			return res.json(result);
-// 		})
-
-// 	})
-// }
-
-
-//////////////////
-//////////////////
-//////////////////
