@@ -24,6 +24,24 @@ module.exports = {
 		})
 	},
 
+	getOne: function (req, res) {
+		Course.findById(req.params.curriculumId, function (err, course) {
+			if (err) return res.status(500).send(err);
+
+			// get lesson id
+			for (var i = 0; i < course.curriculum.length; i++) {
+				if (course.curriculum[i]._id == req.params.dayId) {
+					Lesson.findById(course.curriculum[i].lesson, function (err, lesson) {
+						if (err) return res.status(500).send(err);
+						return res.json(lesson);
+					})
+					return;
+				}
+			}
+		})
+
+	},
+
 	update: function(req, res){
 		Lesson.findByIdAndUpdate(req.query.id, req.body, function(err, data){
 			if (err) return res.status(500).send(err);
@@ -31,6 +49,7 @@ module.exports = {
 			// Reflecting changes on curriculum;
 			Course.findById(req.body.courseInfo.courseId, function (err, course) {
 				course.curriculum[req.body.courseInfo.index].topic = req.body.topic;
+
 				course.save(function (err, savedCourse) {
 					if (err) return res.status(500).send(err);
 					return res.send(data);
@@ -49,7 +68,6 @@ module.exports = {
 		})
 		//	Lesson.findByIdAndUpdate({ _id: req.params.lessonId }, { $push: { sections: body } }, function(err, data){
 		// 	if (err) return res.status(500).send('there was an error');
-		// 	console.log(11111, data)
 		// 	return res.send(data);
 		// })
 	},
@@ -71,7 +89,6 @@ module.exports = {
 			})
 		})
 		// Lesson.update({ 'sections._id' : req.params.sectionId }, { $pull: { 'sections' : { _id : req.params.sectionId }}  }, function(err, data){
-		// 	console.log(err, data)
 		// 	if (err) return res.status(500).send('you need to enter the customer id');
 		// 	return res.send(data);
 		// })

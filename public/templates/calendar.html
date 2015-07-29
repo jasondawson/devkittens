@@ -14,13 +14,20 @@
 </div>
 
 <div class="overall-container">
-	<div class="calendar-container" ng-click="viewDay(day)" ng-repeat="month in currentCourse.curriculum[0]">
+
+	<div class="calendar-container" ng-click="viewDay(day)" ng-repeat="day in currentCourse.curriculum[0]">
+
+	<!-- <div class="calendar-container" ng-click="viewDay(day)" ng-repeat="day in currentCourse.curriculum"> -->
+
 		<div class="display-box add-new">
-			<span class="text-dashboard">{{ month.day }}</span>
-			<p>{{ month.topic }}</p>
+			<span class="text-dashboard">{{ day.day }}</span>
+			<p>{{ day.topic }}</p>
 		</div>
 	</div> <!-- End of 'calendar-container' -->
 </div>
+
+
+
 
 
 <!-- CREATE AN ACTIVE MONTH VARIABLE SO THAT THE NEXT/PREVIOUS BUTTONS WORK ON CALENDAR VIEW -->

@@ -17,14 +17,12 @@ exports.createNewCourse = function(req, res) {
 };
 
 exports.getCourse = function(req, res) {
-	Course.findOne({'curriculum._id': req.params.courseId})
+
+	Course.findById(req.params.courseId)
 	.populate('curriculum.lesson')
 	.exec(function (err, data) {
-		if (err) {
-			res.status(500).json(err);
-		} else {
-			res.json(data);
-		}
+		if (err) return res.status(500).json(err);
+		return res.json(data);
 	})
 };
 
@@ -77,7 +75,7 @@ exports.updateCourseCurriculum = function(req, res) {
 		// course.curriculum[data.index - 1].lesson = data.lesson;
 		// course.curriculum[data.index - 1].topic = data.topic;
 
-		course.curriculum.id(req.params.curriculumId).set(data)
+		course.curriculum.id(req.params.curriculumId).set(data);
 
 		course.save(function (err, result) {
 			if (err) return res.status(500).send(err);

@@ -688,44 +688,6 @@ section.registration .right .inner-right .btn {
   line-height: 2;
   width: 100px;
 }
-section.user-settings .shift-wrapper {
-  padding: 0 150px;
-}
-section.user-settings .shift-wrapper .profile-header {
-  background-color: #eee;
-  padding: 15px;
-  font-weight: 600;
-}
-section.user-settings .shift-wrapper .container {
-  border-radius: 2px;
-  border: 1px solid #c3c3c3;
-  padding: 0;
-  position: relative;
-}
-section.user-settings .shift-wrapper .container .profile-container-body {
-  padding: 20px;
-}
-section.user-settings .shift-wrapper .container .profile-container-body .pic-container {
-  float: right;
-  background-color: #fff;
-  padding: 12px;
-  height: 80px;
-  width: 80px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 5px -1px #000000;
-  position: absolute;
-  top: 5px;
-  right: 2px;
-}
-section.user-settings .shift-wrapper .container .profile-container-body form {
-  max-width: 400px;
-}
-section.user-settings .shift-wrapper .container .profile-container-body form .form-control {
-  margin-bottom: 15px;
-}
-section.user-settings .shift-wrapper .container .profile-container-body form .btn {
-  height: 42px;
-}
 .modal-cover {
   position: fixed;
   top: 0;
@@ -964,4 +926,43 @@ select {
   max-width: 100%;
   border-radius: 100px;
   border: 1px solid #b0b0b0;
+}
+section.smaller-wrapper .shift-wrapper {
+  padding: 0 150px;
+  margin-bottom: 40px;
+}
+section.smaller-wrapper .shift-wrapper .profile-header {
+  background-color: #eee;
+  padding: 15px;
+  font-weight: 600;
+}
+section.smaller-wrapper .shift-wrapper .container {
+  border-radius: 2px;
+  border: 1px solid #c3c3c3;
+  padding: 0;
+  position: relative;
+}
+section.smaller-wrapper .shift-wrapper .container .profile-container-body {
+  padding: 20px;
+}
+section.smaller-wrapper .shift-wrapper .container .profile-container-body .pic-container {
+  float: right;
+  background-color: #fff;
+  padding: 12px;
+  height: 80px;
+  width: 80px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px -1px #000000;
+  position: absolute;
+  top: 5px;
+  right: 2px;
+}
+section.smaller-wrapper .shift-wrapper .container .profile-container-body form {
+  max-width: 400px;
+}
+section.smaller-wrapper .shift-wrapper .container .profile-container-body form .form-control {
+  margin-bottom: 15px;
+}
+section.smaller-wrapper .shift-wrapper .container .profile-container-body form .btn {
+  height: 42px;
 }

@@ -6,10 +6,13 @@ angular.module('devKittens')
 	var daysOfWeek = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
 	
 	var user;
+	var lessonRef;
 	var calendarId;
 	var currentCourseData;
 	// ^^^ calendar can be a cohort or curriculum
 
+
+	// USER
 	service.saveUser = function (passedUser) {
 		user = passedUser;
 	}
@@ -19,6 +22,8 @@ angular.module('devKittens')
 		return null;
 	}
 
+
+	// CALENDAR
 	service.saveCalendarId = function (id) {
 		calendarId = id;
 	}
@@ -27,6 +32,19 @@ angular.module('devKittens')
 		return calendarId;
 	}
 
+
+	// LESSON
+	service.saveLessonRef = function (info) {
+		// Lesson info saved on curriculum schema (not lesson)
+		lessonRef = info;
+	}
+
+	service.serveLessonRef = function () {
+		return lessonRef;
+	}
+
+
+	// COURSE
 	service.setCurrentCourse = function(currentCourse) {
 		currentCourseData = currentCourse;
 	}
@@ -43,6 +61,8 @@ angular.module('devKittens')
 		return currentCourseData;
 	}
 
+
+	// WEEK DAY
 	service.getDayOfWeek = function() {
 		return daysOfWeek;
 	}

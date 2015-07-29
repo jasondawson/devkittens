@@ -1,6 +1,6 @@
 angular.module('devKittens')
 
-.service('courseServices', function($http, $q) {
+.service('courseServices', function ($http, $q, infoStorage) {
 
 	this.createNewCourse = function(obj) {
 		var dfrd = $q.defer();
@@ -23,15 +23,13 @@ angular.module('devKittens')
 
 	this.getCourse = function(courseId) {
 		var dfrd = $q.defer();
+		var uri = '/api/course/' + courseId;
 
-		$http({
-			method: "GET",
-			url: "/api/course/" + courseId
+		$http.get(uri)
+		.success(function (response) {
+			dfrd.resolve(response);
 		})
-		.then(function (response) {
-			dfrd.resolve(response.data);
-		})
-		.catch(function (err) {
+		.error(function (err) {
 			dfrd.reject(err);
 		});
 

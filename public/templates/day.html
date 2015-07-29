@@ -1,5 +1,54 @@
-<!-- <div ng-show="show" class="modal-wrapper lesson-modal"> -->
-	<div ng-show="!lesson">
+<header-directive></header-directive>
+
+	<!-- IF THERE IS NO LESSON -->
+	<section class="smaller-wrapper" ng-show="!lesson">
+
+		<div class="shift-wrapper">
+			<div class="container">
+				{{activeLesson}}
+				<div class="profile-header">Create a new lesson</div>
+
+				<div class="profile-container-body">
+					<form ng-submit="updateUser(user, newPassword)">
+						<div class="alert alert-success" role="alert" ng-if="displayMessage" hide-essage>Settings have been updated.</div>
+						<label>Lesson topic: *</label>
+						<form ng-submit="setTopic(topic)">
+							<input class="form-control" placeholder="e.g. Javascript 101" ng-model="topic" required/>
+						</form>
+						<hr>
+
+						<label>New section name:</label>
+						<form ng-submit="addSection(newSection)">
+							<input type="text" ng-model="newSection.title"
+								   placeholder="e.g. Variables and functions"
+								   class="form-control"/>
+
+						   <text-angular ng-model="newSection.content"></text-angular>
+
+						   <button class="btn btn-default">Create section</button>
+						</form>
+
+						<div ng-repeat="section in sections">
+							<br>
+							<hr ng-if="$index === 0">
+
+							<h4>{{section.title}}</h4>
+							<div ng-bind-html="section.content | unsafe"></div>
+
+							<hr>
+						</div>
+						<br><br>
+						<button class="btn btn-success" ng-click="createLesson(topic)">Save lesson</button>
+					</form>
+				</div>
+
+			</div>
+		</div>
+
+	</section>
+
+
+<!-- 	<div ng-show="!lesson">
 		<div class="flex-row content-center align-items-center" ng-click="closeModal()"></div>
 		<div class="flex-column align-items-center">
 				<h3>Create a new lesson</h3>
@@ -28,8 +77,11 @@
 				<br><br>
 				<button ng-click="createLesson(topic)" class="btn btn-success">Save lesson</button>
 		</div>
-	</div>
+	</div> -->
 
+
+
+	<!-- IF THERE IS A LESSON -->
 	<div ng-show="lesson" class="portlet-header">
 			<div ng-show="!lesson.editTopic">
 				<h2>{{lesson.topic}} <i class="fa fa-pencil" ng-click="lesson.editTopic=!lesson.editTopic"></i></h2>

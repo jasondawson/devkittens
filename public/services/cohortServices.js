@@ -45,6 +45,7 @@ angular.module("devKittens")
 			url: "/api/cohort/" + cohortId,
 			method: "GET"
 		}).then(function(response) {
+			console.warn(response.data);
 			dfrd.resolve(response.data);
 		})
 		return dfrd.promise;

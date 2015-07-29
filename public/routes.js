@@ -13,10 +13,26 @@ angular.module('devKittens')
 		controller: 'CalendarController',
 		resolve: {
 			specificCohortData: function (cohortServices, $route) {
-				return cohortServices.getCohort($route.current.params.cohortId);
+				return null;
 			},
-			currentCourseData: function(infoStorage) {
-				return infoStorage.getCurrentCourse();
+			currentCourseData: function($route, $q, $location, infoStorage, courseServices) {
+				var tempCourseData = infoStorage.getCurrentCourse();
+				if (tempCourseData) return tempCourseData;
+				else {
+					var deferred = $q.defer();
+
+					courseServices.getCourse($route.current.params.cohortId)
+					.then(function (response) {
+						infoStorage.setCurrentCourse(response);
+						deferred.resolve(response);
+					})
+					.catch(function (err) {
+						console.error(err);
+						$location.path('/dashboard');
+						deferred.reject(err);
+					});
+					return deferred.promise;
+				}
 			},
 			dayOfWeek: function(infoStorage) {
 				return infoStorage.getDayOfWeek();
@@ -25,31 +41,21 @@ angular.module('devKittens')
 		}
 	})
 
-	.when('/day/:curriculumId', {
+
+	.when('/day/:curriculumId/:dayId', {
 		templateUrl: '/public/templates/day.html',
-		controller: 'CurriculumController',
+		controller: 'DayController',
 		resolve: {
 			user: getBlockedAuth,
 			curriculumId: function($route){
 				return $route.current.params.curriculumId;
 			},
-			courseRef: function (courseServices, $route) {
-				return courseServices.getCourse($route.current.params.curriculumId);
+			activeLesson: function (lessonService, $route) {
+				return lessonService.getLesson($route.current.params.curriculumId, $route.current.params.dayId)
 			}
 		}
 	})
 
-
-	// .when('/calendar', {
-	// 	templateUrl: '/public/templates/calendar.html',
-	// 	controller: 'CalendarController',
-	// 	resolve: {
-	// 		currentCourseData: function(courseSerivce) {
-	// 			return courseSerivce.getCurrentCourse();
-	// 		}
-	// 	}
-
-	// })
 
 	.when('/dashboard', {
 		templateUrl: '/public/templates/dashboard.html',
@@ -103,7 +109,7 @@ angular.module('devKittens')
 		}
 	})
 
-	.otherwise('/');
+	// .otherwise('/');
 })
 
 
@@ -128,7 +134,7 @@ function getAuth ($http, $location, $q, userService, infoStorage) {
 
 	})
 	.error(function (err) {
-		$location.path('/login');
+		$location.path('/');
 	});
 
 	return dfd.promise;
@@ -160,7 +166,7 @@ function getBlockedAuth ($http, $location, $q, userService, infoStorage) {
 
 	})
 	.error(function (err) {
-		$location.path('/login');
+		$location.path('/');
 	});
 
 	return dfd.promise;

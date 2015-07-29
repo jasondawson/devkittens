@@ -162,7 +162,7 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 		.then(function(response) {
 			$scope.courseInfo.title = '';
 			$scope.courseInfo.courseLength = '';
-			$location.path('/curriculum/' + response._id);
+			$location.path('/calendar/' + response._id);
 		})
 	}
 

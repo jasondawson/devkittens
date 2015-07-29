@@ -1,10 +1,7 @@
 angular.module('devKittens')
 
 .controller('CalendarController',
-
 function ($scope, user, calendarService, specificCohortData, infoStorage, emailsService, cohortServices, currentCourseData, dayOfWeek, $location) {
-
-
 	if(specificCohortData) {
 		$scope.students = specificCohortData.students;
 		$scope.events = specificCohortData.curriculum;
@@ -17,8 +14,8 @@ function ($scope, user, calendarService, specificCohortData, infoStorage, emails
 
 
 	$scope.viewDay = function (day) {
-		console.log(11111, day);
-		$location.path('/day/' + day._id);
+		infoStorage.saveLessonRef(day);
+		$location.path('/day/' + currentCourseData._id + '/' + day._id);
 	}
 
 
