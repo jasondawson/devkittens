@@ -35,7 +35,7 @@
 		</div>
 
 		<a class="calendar-link" ng-repeat="course in courseArray"
-		   ng-href="/#/curriculum/{{course._id}}">
+		   ng-href="/#/calendar/{{course._id}}" ng-click="setCourse(course)">
 			<div class="display-box">
 				<span class="text-dashboard name center">{{ course.title }}</span>
 				<span class="text-dashboard center">{{ course.courseLength }} days</span>
@@ -61,7 +61,8 @@
 			<i class="icon-dashboard fa fa-plus-circle"></i>
 		</div>
 
-		<a class="calendar-link" ng-href="/#/calendar/{{cohort._id}}" ng-repeat="cohort in cohortArray">
+		<a class="calendar-link" ng-repeat="cohort in cohortArray" 
+			ng-href="/#/calendar/{{cohort._id}}" ng-click="setCohort(cohort)">
 			<div class="display-box">
 				<span class="text-dashboard name center">{{ cohort.name }}</span>
 				<span class="text-dashboard center">{{ cohort.sched }}</span>

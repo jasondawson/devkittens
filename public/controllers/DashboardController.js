@@ -1,7 +1,7 @@
 angular.module('devKittens')
 
 .controller('DashboardController',
-function ($scope, $location, cohortData, courseData, usersData, courseServices, cohortServices, emailsService, user) {
+function ($scope, $location, cohortData, courseData, usersData, courseServices, cohortServices, emailsService, infoStorage, user) {
 
 	$scope.user = user;
 
@@ -127,6 +127,17 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 		console.log('currentTeacher ', $scope.currentTeacher);
 	}
 
+	$scope.setCourse = function(course) {
+		$scope.currentCourse = course;
+		infoStorage.setCurrentCourse($scope.currentCourse);
+		console.log('currentCourse ', $scope.currentCourse);
+	}
+
+	$scope.setCohort = function(cohort) {
+		$scope.currentCohort = cohort;
+		console.log('currentCohort ', $scope.currentCohort);
+	}
+
 	// Send an email to new mentors inviting them to join DevMtn
 	$scope.sendMentorInvite = function(mentorEmails) {
 		$scope.loading = true;
@@ -170,4 +181,28 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 		})
 	}
 
+
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

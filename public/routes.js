@@ -15,9 +15,24 @@ angular.module('devKittens')
 			specificCohortData: function (cohortServices, $route) {
 				return cohortServices.getCohort($route.current.params.cohortId);
 			},
+			currentCourseData: function(infoStorage) {
+				return infoStorage.getCurrentCourse();
+			},
 			user: getAuth
 		}
 	})
+
+
+	// .when('/calendar', {
+	// 	templateUrl: '/public/templates/calendar.html',
+	// 	controller: 'CalendarController',
+	// 	resolve: {
+	// 		currentCourseData: function(courseSerivce) {
+	// 			return courseSerivce.getCurrentCourse();
+	// 		}
+	// 	}
+
+	// })
 
 	.when('/dashboard', {
 		templateUrl: '/public/templates/dashboard.html',

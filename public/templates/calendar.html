@@ -1,7 +1,33 @@
 <header-directive scroll-top></header-directive>
 <loading-gif ng-if="loading"></loading-gif>
 
-<h1 class="page-title">{{course.name}}</h1>
+<div class="calendar-nav">
+	<i class="fa fa-arrow-circle-left"></i>
+	<i class="fa fa-arrow-circle-right"></i>
+	<span class="calendar-title">Month Here</span>
+</div>
+
+<div class="overall-container">
+	<div class="calendar-container" ng-repeat="day in currentCourse.curriculum">
+		<div class="display-box add-new">
+			<span class="text-dashboard">{{ day.day }}</span>
+		</div>
+	</div> <!-- End of 'calendar-container' -->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <h1 class="page-title">{{course.name}}</h1>
 
 
 
@@ -61,4 +87,4 @@
 </span>
 
 
-<timeline events="events"></timeline>
+<timeline events="events"></timeline> -->

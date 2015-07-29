@@ -608,6 +608,37 @@ section.dashboard .right {
   width: 990px;
   height: 4px;
 }
+.calendar-nav {
+  font-size: 2em;
+  margin: 0 2%;
+}
+.overall-container {
+  width: 100%;
+  height: 100%;
+  margin: 2% 2% 0 2%;
+}
+.calendar-title {
+  display: flex;
+  justify-content: center;
+  margin: -3% 0 0;
+}
+.calendar-container {
+  float: left;
+  min-width: 13%;
+  height: 29%;
+  background-color: #fff;
+  border-radius: 2px;
+  border-bottom: 2px solid #DFDFDF;
+  margin: 0 5px 5px 5px;
+}
+.display-box {
+  float: left;
+  height: 150px;
+  margin: 3%;
+  margin-top: 0;
+  border-radius: 2px;
+  cursor: pointer;
+}
 section.registration {
   display: flex;
   justify-content: center;

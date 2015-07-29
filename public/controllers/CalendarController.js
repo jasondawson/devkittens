@@ -1,19 +1,24 @@
 angular.module('devKittens')
 
 .controller('CalendarController',
-function ($scope, user, calendarService, specificCohortData, infoStorage, emailsService, cohortServices) {
+function ($scope, user, calendarService, specificCohortData, infoStorage, emailsService, cohortServices, currentCourseData) {
+
+
 
 	$scope.user = user;	
-	$scope.students = specificCohortData.students;
-	$scope.events = specificCohortData.curriculum;
-	infoStorage.saveCalendarId(specificCohortData._id);
+	// $scope.students = specificCohortData.students;
+	// $scope.events = specificCohortData.curriculum;
+	$scope.currentCourse = currentCourseData;
+	// infoStorage.saveCalendarId(specificCohortData._id);
 
+	console.log('currentCourseData ', currentCourseData);
 
+	
 
 	// get active course info
-	$scope.course = {
-		name: specificCohortData.name
-	}
+	// $scope.course = {
+	// 	name: specificCohortData.name
+	// }
 
 	$scope.sendStudentInvite = function (studentEmails) {
 		$scope.loading = true;
@@ -37,7 +42,31 @@ function ($scope, user, calendarService, specificCohortData, infoStorage, emails
 	}
 
 	$scope.sendMentorInvite = function(mentorEmails) {
+		$scope.loading = true;
+		if(!mentorEmails) return console.warn('Please add emails');
 
+		emailsService.sendMentorInvite(mentorEmails)
+		.then(function(response) {
+			console.log(response);
+			$scope.loading = false;
+			$scope.newMentors = '';
+			$scope.closeMentorModal();
+		})
+		.catch(function(err) {
+			console.error(err);
+			$scope.closeMentorModal();
+		})
+	}
+
+	// Open/close mentor modal - invites mentors to join DevMtn
+	$scope.openMentorModal = function() {
+		$('body').css('overflow', 'hidden');
+		$scope.mentorModal = true;
+	}
+
+	$scope.closeMentorModal = function() {
+		$('body').css('overflow', 'inherit');
+		$scope.mentorModal = false;
 	}
 
 
