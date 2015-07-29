@@ -42,6 +42,9 @@ a:active,
 a:visited {
   text-decoration: none;
 }
+i:hover {
+  color: #1a75ff;
+}
 /*ANGULAR STUFF*/
 [ng\:cloak],
 [ng-cloak],
