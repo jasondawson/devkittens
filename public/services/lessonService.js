@@ -26,9 +26,10 @@ angular.module('devKittens')
 		return deferred.promise;
 	}
 
-	this.updateLessonTopic = function(curriculumId, lessonId, topic){
+	this.updateLesson = function(curriculumId, lessonId, topic, sections){
 		var dayId = infoStorage.serveLessonRef();
 		var index = dayId.day - 1;
+		console.log("dayId", dayId)
 
 		var courseInfo = {
 			courseId: curriculumId,
@@ -40,18 +41,19 @@ angular.module('devKittens')
 			url: '/api/lessons/?id=' + lessonId,
 			data: {
 				topic: topic,
+				sections : sections,
 				courseInfo: courseInfo
 			}
 		})
 	};
 
-	this.updateLessonSection = function(id, data){
-		return $http({
-			method: 'PUT',
-			url: '/api/lessons/' + id,
-			data: data
-		})
-	};
+	// this.updateLessonSection = function(id, data){
+	// 	return $http({
+	// 		method: 'PUT',
+	// 		url: '/api/lessons/' + id,
+	// 		data: data
+	// 	})
+	// };
 
 	this.removeLessonSection = function(id){
 		return $http({

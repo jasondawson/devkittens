@@ -82,39 +82,48 @@
 
 
 	<!-- IF THERE IS A LESSON -->
-	<div ng-show="lesson" class="portlet-header">
-			<div ng-show="!lesson.editTopic">
-				<h2>{{lesson.topic}} <i class="fa fa-pencil" ng-click="lesson.editTopic=!lesson.editTopic"></i></h2>
+<section class="smaller-wrapper">
+	<div class="shift-wrapper">	
+		<div ng-show="lesson" class="portlet-header">
+			<div ng-show="!lesson.edit">
+				<h2>{{lesson.topic}} <i class="fa fa-pencil" ng-click="lesson.edit=!lesson.edit"></i></h2>
 			</div>
 			
 			<span class="course-body">
-				<div ng-show="lesson.editTopic">
-					<input type="text" ng-model="lesson.topic"/>
-					<button ng-click="updateLessonTopic()">submit change</button>
-				</div>
-				<div ng-repeat="section in lesson.sections track by $index" class="portlet-content">
-					<div ng-show="!section.editSection">
-						<h3 ng-show="section.title">
 
+				<!-- EDIT LESSON TITLE -->
+				<div ng-show="lesson.edit">
+					lesson topic: <input type="text" ng-model="lesson.topic"/>
+					<!-- <button ng-click="updateLesson()">submit change</button> -->
+				</div>
+
+				<!-- LESSON INFO -->
+				<div ng-repeat="section in lesson.sections track by $index" class="portlet-content">
+					<div ng-show="!lesson.edit">
+						<h3 ng-show="section.title">
 							{{section.title}} 
-							<i class="fa fa-pencil" ng-click="section.editSection=!section.editSection"></i>
-							<i class="fa fa-times" ng-click="removeLessonSection($index, section)"></i>
+							<!-- <i class="fa fa-pencil" ng-click="section.editSection=!section.editSection"></i> -->
 						</h3> 
 						<div ng-bind-html="section.content | unsafe"></div>
 					</div>
-					<div ng-show="section.editSection">
-						<input type="text" ng-model="section.title"
+					<br />
+
+
+					<!-- EDIT LESSON -->
+					
+					<div ng-show="lesson.edit">
+						<i ng-show="lesson.edit" class="fa fa-times" ng-click="removeLessonSection($index, section)">delete section</i>
+						<br />
+						section title: <input type="text" ng-model="section.title"
 								   placeholder="Section title"
 								   class="form-control"/> 
-						<text-angular ng-model="section.content"></text-angular>
-						<button ng-click="updateLessonSection( section)">submit changes</button>
+						section content: <text-angular ng-model="section.content"></text-angular>
 					</div>
 					<br />
 				</div>
-
-
 				<!-- ADDS NEW SECTION TO A LESSON -->
-				<i class="fa fa-plus" ng-click="newSection.show=!newSection.show"></i> add section
+				<i ng-show="lesson.edit" class="fa fa-plus" ng-click="newSection.show=!newSection.show">add section</i>
+				<br />
 				<form ng-show="newSection.show" ng-submit="addLessonSection(newSection)">
 					<input type="text" ng-model="newSection.title"
 						   placeholder="Section title"
@@ -124,6 +133,10 @@
 
 				   <button class="btn btn-default">Create section</button>
 				</form>
+				<br />
+				<button ng-show="lesson.edit" ng-click="updateLesson()">submit changes</button>
 			</span>
 		</div>
+	</div>
+</section>
 <!-- </div> -->

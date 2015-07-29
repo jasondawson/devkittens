@@ -65,12 +65,13 @@ angular.module('devKittens')
 
 	// --------------- UPDATING LESSON ------------
 
-	$scope.updateLessonTopic = function(){
+	$scope.updateLesson = function(){
 		var lessonId = $scope.lesson._id;
 		var topic = $scope.lesson.topic;
-		lessonService.updateLessonTopic(curriculumId, lessonId, topic)
+		var sections = $scope.lesson.sections
+		lessonService.updateLesson(curriculumId, lessonId, topic, sections)
 		.then(function(response){
-			$scope.lesson.editTopic = !$scope.lesson.editTopic;
+			$scope.lesson.edit = !$scope.lesson.edit;
 		})
 	}
 
