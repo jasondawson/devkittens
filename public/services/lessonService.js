@@ -1,6 +1,6 @@
 angular.module('devKittens')
 
-.service('lessonService', function($http){
+.service('lessonService', function ($http, infoStorage) {
 
 	this.createLesson = function(data){
 		return $http({
@@ -10,14 +10,25 @@ angular.module('devKittens')
 		})
 	};
 
-	this.updateLessonTopic = function(id, topic){
-		console.log(11111,id, topic)
+	this.updateLessonTopic = function(id, topic, index){
+		var index = index - 1;
+		courseId = infoStorage.serveCalendarId();
+		
+		var courseInfo = {
+			index: index,
+			courseId: courseId
+		}
+
+		if (!courseInfo.courseId)
+			return console.warn('Insufficient info needed to store.');
+
 		return $http({
 			method: 'PUT',
 			url: '/api/lessons/?id=' + id,
 			data: {
-				topic: topic
-			 }
+				topic: topic,
+				courseInfo: courseInfo
+			}
 		})
 	};
 

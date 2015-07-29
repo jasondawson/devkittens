@@ -1,6 +1,6 @@
 angular.module('devKittens')
 
-.controller('CurriculumController', function ($scope, lessonService, infoStorage, courseRef, $sce, user) {
+.controller('CurriculumController', function ($scope, lessonService, infoStorage, courseServices, courseRef, $sce, user) {
 	// TODO: make this a directive
 	document.body.scrollTop = document.documentElement.scrollTop = 0;
 	$scope.user = user;
@@ -40,10 +40,9 @@ angular.module('devKittens')
 		lessonService.createLesson(data)
 		.then(function(response){
 
-			courseServices.updateCourseCurriculum($scope.currentEvent, response.data._id)
+			courseServices.updateCourseCurriculum($scope.currentEvent, response.data._id, topic)
 			.then(function(response){
 				$scope.events = response.data.curriculum;
-				console.log(response)
 			})
 
 
@@ -65,9 +64,10 @@ angular.module('devKittens')
 
 	$scope.updateLessonTopic = function(event){
 		var id = event.lesson._id;
-		var topic = event.lesson.topic
-		lessonService.updateLessonTopic(id, topic).then(function(response){
-			event.lesson.editTopic = !event.lesson.editTopic
+		var topic = event.lesson.topic;
+		lessonService.updateLessonTopic(id, topic, event.day)
+		.then(function(response){
+			event.lesson.editTopic = !event.lesson.editTopic;
 		})
 	}
 

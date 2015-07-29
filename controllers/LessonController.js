@@ -1,4 +1,5 @@
 var Lesson = require('../models/LessonModel.js');
+var Course = require('../models/CourseModel.js');
 
 module.exports = {
 
@@ -26,7 +27,15 @@ module.exports = {
 	update: function(req, res){
 		Lesson.findByIdAndUpdate(req.query.id, req.body, function(err, data){
 			if (err) return res.status(500).send(err);
-			return res.send(data);
+			
+			// Reflecting changes on curriculum;
+			Course.findById(req.body.courseInfo.courseId, function (err, course) {
+				course.curriculum[req.body.courseInfo.index].topic = req.body.topic;
+				course.save(function (err, savedCourse) {
+					if (err) return res.status(500).send(err);
+					return res.send(data);
+				});
+			})
 		})
 	},
 
@@ -38,16 +47,16 @@ module.exports = {
 				res.send(data)
 			})
 		})
-  // 		Lesson.findByIdAndUpdate({ _id: req.params.lessonId }, { $push: { sections: body } }, function(err, data){
+		//	Lesson.findByIdAndUpdate({ _id: req.params.lessonId }, { $push: { sections: body } }, function(err, data){
 		// 	if (err) return res.status(500).send('there was an error');
 		// 	console.log(11111, data)
 		// 	return res.send(data);
 		// })
 	},
 
-	updateSection: function(req, res){
+	updateSection: function(req, res) {
 		var data = req.body;
-		Lesson.update({ 'sections._id' : req.params.sectionId }, { $set:  data  }, function(err, data){
+		Lesson.update({ 'sections._id' : req.params.sectionId }, { $set:  data  }, function (err, data){
 			if (err) return res.status(500).send(err);
 			return res.send(data);
 		})

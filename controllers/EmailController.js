@@ -1,6 +1,5 @@
 var exports = module.exports = {};
 
-
 var mandrill = require('mandrill-api/mandrill');
 // var keys = require('../models/Keys.js');
 

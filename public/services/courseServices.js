@@ -56,12 +56,13 @@ angular.module('devKittens')
 	}
 
 
-	this.updateCourseCurriculum = function(event, lessonId) {
+	this.updateCourseCurriculum = function(event, lessonId, topic) {
 		return $http({
 			method: 'PUT',
 			url: "/api/course/" + event._id,
 			data: {
 				lesson: lessonId,
+				topic: topic,
 				index: event.day
 			}
 		})

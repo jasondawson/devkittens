@@ -69,8 +69,9 @@ exports.updateCourseCurriculum = function(req, res) {
 
 	Course.findOne({ 'curriculum._id' :  req.params.curriculumId}, function (err, course) {
 		if (err) return res.status(500).send(err);
+		
 		course.curriculum[data.index - 1].lesson = data.lesson;
-
+		course.curriculum[data.index - 1].topic = data.topic;
 
 		course.save(function (err, result) {
 			if (err) return res.status(500).send(err);
