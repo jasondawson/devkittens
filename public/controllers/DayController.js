@@ -69,7 +69,7 @@ angular.module('devKittens')
 		var topic = $scope.lesson.topic;
 		lessonService.updateLessonTopic(curriculumId, lessonId, topic)
 		.then(function(response){
-			console.log(response);
+			$scope.lesson.editTopic = !$scope.lesson.editTopic;
 		})
 	}
 
@@ -83,8 +83,8 @@ angular.module('devKittens')
 
 
 	// $scope.updateLessonSection = function(id, title, content){
-	$scope.updateLessonSection = function(event, section){
-		var event = event;
+	$scope.updateLessonSection = function(section){
+		console.log(section);
 		var id = section._id
 		var data = {
 			'sections.$.title' : section.title,
@@ -95,20 +95,20 @@ angular.module('devKittens')
 		})
 	}
 
-	$scope.addLessonSection = function(event, section){
-		var lesson = event.lesson;
-		var id = lesson._id;
+	$scope.addLessonSection = function(section){
+		var id = $scope.lesson._id;
 		section.show = !section.show
 		lessonService.addLessonSection(id, section).then(function(response){
-			lesson.sections.push(response.data.sections[response.data.sections.length - 1]);
+			$scope.lesson.sections.push(response.data.sections[response.data.sections.length - 1]);
+			section.title = '';
+			section.content = '';
 		})
 	}
 
-	$scope.removeLessonSection = function(index, event, section){
-		$scope.sections = event.lesson.sections;
+	$scope.removeLessonSection = function(index, section){
+		$scope.sections = $scope.lesson.sections;
 		var id = section._id;
 		lessonService.removeLessonSection(id).then(function(response){
-			// $scope.sections = event.lesson.sections
 			$scope.sections.splice(index, 1);
 		})
 	}
