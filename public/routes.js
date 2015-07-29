@@ -8,7 +8,7 @@ angular.module('devKittens')
 		controller: 'HomeController'
 	})
 
-	.when('/calendar/:cohortId?', {
+	.when('/calendar/:courseId?', {
 		templateUrl: '/public/templates/calendar.html',
 		controller: 'CalendarController',
 		resolve: {
@@ -21,7 +21,7 @@ angular.module('devKittens')
 				else {
 					var deferred = $q.defer();
 
-					cohortServices.getCohort($route.current.params.cohortId)
+					courseServices.getCourse($route.current.params.courseId)
 					.then(function (response) {
 						infoStorage.setCurrentCourse(response);
 						var data = infoStorage.getCurrentCourse();
