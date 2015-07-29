@@ -3,7 +3,7 @@ angular.module('devKittens')
 .factory('infoStorage', function () {
 	var service = {};
 
-	var daysOfWeek = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
+	var daysOfWeek = [ 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' ];
 	
 	var user;
 	var lessonRef;

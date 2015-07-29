@@ -12,9 +12,12 @@ function ($scope, user, calendarService, specificCohortData, infoStorage, emails
 	$scope.currentCourse = currentCourseData;
 	$scope.dayOfWeek = dayOfWeek;
 
+	$scope.previousBtn = true;
+	$scope.nextBtn = true;
+
 	$scope.segmentLength = $scope.currentCourse.curriculum.length;
 	$scope.currentSegment = 0;
-	$scope.activeMonth = [];
+	$scope.activeMonth = $scope.currentCourse.curriculum[0];
 
 	console.log('currentCourse ', $scope.currentCourse);
 
@@ -102,17 +105,24 @@ function ($scope, user, calendarService, specificCohortData, infoStorage, emails
 
 	$scope.previousMonth = function() {
 		if($scope.currentSegment === 0) {
+			$scope.previousBtn = false;
 			return null;
 		}
 
-		$scope.currentSegment++;
+		$scope.currentSegment--;
+
+		$scope.activeMonth = $scope.currentCourse.curriculum[$scope.currentSegment];
 	}
 
 	$scope.nextMonth = function() {
+		$scope.currentSegment++;
+
 		if($scope.currentSegment === $scope.segmentLength) {
+			$scope.nextBtn = false;
 			return null;
 		}
-		$scope.currentSegment++;
+
+		$scope.activeMonth = $scope.currentCourse.curriculum[$scope.currentSegment];
 	}
 
 

@@ -2,9 +2,9 @@
 <loading-gif ng-if="loading"></loading-gif>
 
 <div class="calendar-nav">
-	<i class="fa fa-arrow-circle-left" ng-click="previousMonth()"></i>
-	<span class="calendar-title">{{ currentCourse.title }} - August 2015</span>
-	<i class="fa fa-arrow-circle-right" ng-click="nextMonth()"></i>
+	<i class="fa fa-arrow-circle-left" ng-show="previousBtn" ng-click="previousMonth()"></i>
+	<span class="calendar-title">{{ currentCourse.title }}</span>
+	<i class="fa fa-arrow-circle-right" ng-show="nextBtn" ng-click="nextMonth()"></i>
 </div>
 
 <div class="week-day-container">
@@ -15,7 +15,7 @@
 
 <div class="overall-container">
 
-	<div class="calendar-container" ng-click="viewDay(day)" ng-repeat="day in currentCourse.curriculum[0]">
+	<div class="calendar-container" ng-click="viewDay(day)" ng-repeat="day in activeMonth">
 		<div class="display-box add-new">
 			<span class="text-dashboard calendar-text">{{ day.day }}</span>
 			<p>{{ day.topic }}</p>
