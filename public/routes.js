@@ -10,7 +10,7 @@ angular.module('devKittens')
 
 	.when('/course/:courseId?', {
 		templateUrl: '/public/templates/calendar.html',
-		controller: 'CalendarController',
+		controller: 'CourseController',
 		resolve: {
 			currentCourseData: function($route, $q, $location, infoStorage, courseServices, cohortServices) {
 				var tempCourseData = infoStorage.getCurrentCourse();
@@ -40,16 +40,19 @@ angular.module('devKittens')
 	})
 
 
-	.when('/day/:curriculumId/:dayId', {
+	.when('/day/:courseId/:dayId', {
 		templateUrl: '/public/templates/day.html',
 		controller: 'DayController',
 		resolve: {
 			user: getBlockedAuth,
-			curriculumId: function($route){
-				return $route.current.params.curriculumId;
+			courseId: function($route){
+				return $route.current.params.courseId;
+			},
+			dayId: function($route){
+				return $route.current.params.dayId;
 			},
 			activeLesson: function (lessonService, $route) {
-				return lessonService.getLesson($route.current.params.curriculumId, $route.current.params.dayId)
+				return lessonService.getLesson($route.current.params.courseId, $route.current.params.dayId)
 			},
 			user: getAuth
 		}

@@ -43,13 +43,14 @@ module.exports = {
 	},
 
 	update: function(req, res){
+		console.log(1111111, req.body)
 		Lesson.findByIdAndUpdate(req.query.id, req.body, function(err, data){
 			if (err) return res.status(500).send(err);
 			
 			// Reflecting changes on curriculum;
-			Course.findById(req.body.courseInfo.courseId, function (err, course) {
-				course.curriculum[req.body.courseInfo.index].topic = req.body.topic;
-
+			Course.findById(req.body.info.courseId, function (err, course) {
+				course.curriculum.id(req.body.info.dayId).set({ topic: req.body.topic});
+				console.log(22222222, course)
 				course.save(function (err, savedCourse) {
 					if (err) return res.status(500).send(err);
 					return res.send(data);
