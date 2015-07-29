@@ -1,9 +1,10 @@
 angular.module('devKittens')
 
-.controller('DayController', function ($scope, curriculumId, user, activeLesson, infoStorage, lessonService, courseServices) {
+.controller('DayController', function ($scope, courseId, dayId, user, activeLesson, infoStorage, lessonService, courseServices) {
 	$scope.user = user;
 	$scope.lesson = activeLesson;
-	$scope.curriculumId = curriculumId;
+	$scope.courseId = courseId;
+	$scope.dayId = dayId;
 
 
 
@@ -42,7 +43,6 @@ angular.module('devKittens')
 			var curriculumRef = infoStorage.serveLessonRef()._id;
 			courseServices.updateCourseCurriculum(curriculumRef, response.data._id, topic)
 			.then(function(response){
-				// $scope.events = response.data.curriculum;
 				console.log(response)
 			})
 			.catch(function (err) {
@@ -69,7 +69,7 @@ angular.module('devKittens')
 		var lessonId = $scope.lesson._id;
 		var topic = $scope.lesson.topic;
 		var sections = $scope.lesson.sections
-		lessonService.updateLesson(curriculumId, lessonId, topic, sections)
+		lessonService.updateLesson(dayId, courseId, lessonId, topic, sections)
 		.then(function(response){
 			$scope.lesson.edit = !$scope.lesson.edit;
 		})
@@ -85,17 +85,17 @@ angular.module('devKittens')
 
 
 	// $scope.updateLessonSection = function(id, title, content){
-	$scope.updateLessonSection = function(section){
-		console.log(section);
-		var id = section._id
-		var data = {
-			'sections.$.title' : section.title,
-			'sections.$.content': section.content
-		}
-		lessonService.updateLessonSection(id, data).then(function(response){
-			section.editSection = !section.editSection;
-		})
-	}
+	// $scope.updateLessonSection = function(section){
+	// 	console.log(section);
+	// 	var id = section._id
+	// 	var data = {
+	// 		'sections.$.title' : section.title,
+	// 		'sections.$.content': section.content
+	// 	}
+	// 	lessonService.updateLessonSection(id, data).then(function(response){
+	// 		section.editSection = !section.editSection;
+	// 	})
+	// }
 
 	$scope.addLessonSection = function(section){
 		var id = $scope.lesson._id;

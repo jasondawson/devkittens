@@ -10,9 +10,9 @@ angular.module('devKittens')
 		})
 	};
 
-	this.getLesson = function (curriculumId, dayId) {
+	this.getLesson = function (course, dayId) {
 		var deferred = $q.defer();
-		var uri = '/api/lesson/' + curriculumId + '/' + dayId;
+		var uri = '/api/lesson/' + course + '/' + dayId;
 
 		$http.get(uri)
 		.success(function (response) {
@@ -26,13 +26,13 @@ angular.module('devKittens')
 		return deferred.promise;
 	}
 
-	this.updateLesson = function(curriculumId, lessonId, topic, sections){
-		var dayId = infoStorage.serveLessonRef();
+	this.updateLesson = function(dayId, courseId, lessonId, topic, sections){
 		var index = dayId.day - 1;
 		console.log("dayId", dayId)
 
-		var courseInfo = {
-			courseId: curriculumId,
+		var info = {
+			courseId: courseId,
+			dayId: dayId,
 			index: index
 		}
 
@@ -42,7 +42,7 @@ angular.module('devKittens')
 			data: {
 				topic: topic,
 				sections : sections,
-				courseInfo: courseInfo
+				info: info
 			}
 		})
 	};
