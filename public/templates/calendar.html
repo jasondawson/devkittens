@@ -3,14 +3,15 @@
 
 <div class="calendar-nav">
 	<i class="fa fa-arrow-circle-left"></i>
+	<span class="calendar-title">August 2015</span>
 	<i class="fa fa-arrow-circle-right"></i>
-	<span class="calendar-title">Month Here</span>
 </div>
 
 <div class="overall-container">
 	<div class="calendar-container" ng-repeat="day in currentCourse.curriculum">
 		<div class="display-box add-new">
 			<span class="text-dashboard">{{ day.day }}</span>
+			<p>{{ day.topic }}</p>
 		</div>
 	</div> <!-- End of 'calendar-container' -->
 </div>

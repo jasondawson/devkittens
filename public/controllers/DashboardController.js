@@ -130,12 +130,12 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 	$scope.setCourse = function(course) {
 		$scope.currentCourse = course;
 		infoStorage.setCurrentCourse($scope.currentCourse);
-		console.log('currentCourse ', $scope.currentCourse);
+		// console.log('currentCourse ', $scope.currentCourse);
 	}
 
 	$scope.setCohort = function(cohort) {
 		$scope.currentCohort = cohort;
-		console.log('currentCohort ', $scope.currentCohort);
+		// console.log('currentCohort ', $scope.currentCohort);
 	}
 
 	// Send an email to new mentors inviting them to join DevMtn

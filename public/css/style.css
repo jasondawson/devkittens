@@ -609,8 +609,10 @@ section.dashboard .right {
   height: 4px;
 }
 .calendar-nav {
+  display: flex;
+  justify-content: space-between;
   font-size: 2em;
-  margin: 0 2%;
+  margin: 0 2.5%;
 }
 .overall-container {
   width: 100%;
@@ -620,7 +622,7 @@ section.dashboard .right {
 .calendar-title {
   display: flex;
   justify-content: center;
-  margin: -3% 0 0;
+  margin: 0;
 }
 .calendar-container {
   float: left;
@@ -630,6 +632,12 @@ section.dashboard .right {
   border-radius: 2px;
   border-bottom: 2px solid #DFDFDF;
   margin: 0 5px 5px 5px;
+}
+.calendar-container:nth-child(7n+1) {
+  background-color: #DFDFDF;
+}
+.calendar-container:nth-child(7n+7) {
+  background-color: #DFDFDF;
 }
 .display-box {
   float: left;

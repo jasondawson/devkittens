@@ -4,14 +4,16 @@ angular.module('devKittens')
 function ($scope, user, calendarService, specificCohortData, infoStorage, emailsService, cohortServices, currentCourseData) {
 
 
+	if(specificCohortData) {
+		$scope.students = specificCohortData.students;
+		$scope.events = specificCohortData.curriculum;
+		infoStorage.saveCalendarId(specificCohortData._id);
+	}
 
 	$scope.user = user;	
-	// $scope.students = specificCohortData.students;
-	// $scope.events = specificCohortData.curriculum;
 	$scope.currentCourse = currentCourseData;
-	// infoStorage.saveCalendarId(specificCohortData._id);
 
-	console.log('currentCourseData ', currentCourseData);
+	// console.log('currentCourseData ', currentCourseData);
 
 	
 
