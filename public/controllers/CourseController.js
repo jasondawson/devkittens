@@ -1,6 +1,6 @@
 angular.module('devKittens')
 
-.controller('CalendarController',
+.controller('CourseController',
 function ($scope, user, calendarService, infoStorage, emailsService, cohortServices, currentCourseData, dayOfWeek, $location) {
 	
 	$scope.user = user;	

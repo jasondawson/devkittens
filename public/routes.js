@@ -10,7 +10,7 @@ angular.module('devKittens')
 
 	.when('/course/:courseId?', {
 		templateUrl: '/public/templates/calendar.html',
-		controller: 'CalendarController',
+		controller: 'CourseController',
 		resolve: {
 			currentCourseData: function($route, $q, $location, infoStorage, courseServices, cohortServices) {
 				var tempCourseData = infoStorage.getCurrentCourse();
