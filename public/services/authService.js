@@ -11,19 +11,17 @@ angular.module('devKittens')
 		}
 
 		var image = 'http://www.gravatar.com/avatar/' + md5(email) + '?d=https%3A%2F%2Fm2.behance.net%2Frendition%2Fpm%2F6507107%2Fdisp%2F05d8e97450a4564f4ca3d53c7a1544e9.png';
+		var data = {
+			cohortId: userType,
+			userType: theType,
+			name: name,
+			email: email,
+			avatar: image,
+			password: password
+		}
 
-		return $http({
-			method: 'POST',
-			url: '/api/user',
-			data: {
-				cohortId: userType,
-				userType: theType,
-				name: name,
-				email: email,
-				avatar: image,
-				password: password
-			}
-		})
+		return $http.post('/api/user', data);
+
 	}
 
 

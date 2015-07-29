@@ -13,7 +13,6 @@ exports.createNewCohort = function(req, res) {
 			res.status(500).json(err);
 		} else {
 			var arrayToUse = data.curriculum;
-			console.log('curriculum', arrayToUse)
 			new Cohort({
 						name: req.body.name,
 						courseType: req.body.courseType._id,

@@ -47,20 +47,20 @@ angular.module('devKittens')
 				// var tempCohortData = infoStorage.getCurrentCohort();
 				// if(tempCohortData) return tempCohortData;
 				// else {
-					var deferred = $q.defer();
+				var deferred = $q.defer();
 
-					cohortServices.getCohort($route.current.params.cohortId)
-					.then(function(response) {
-						infoStorage.getCurrentCohort(response);
-						var data = infoStorage.getCurrentCohort();
-						deferred.resolve(data); 
-					})
-					.catch(function(err) {
-						console.error(err);
-						$location.path('/dashboard');
-						deferred.reject(err);
-					});
-					return deferred.promise;
+				cohortServices.getCohort($route.current.params.cohortId)
+				.then(function(response) {
+					infoStorage.setCurrentCohort(response);
+					var data = infoStorage.getCurrentCohort();
+					deferred.resolve(data); 
+				})
+				.catch(function(err) {
+					console.error(err);
+					$location.path('/dashboard');
+					deferred.reject(err);
+				});
+				return deferred.promise;
 				// }
 			},
 			dayOfWeek: function(infoStorage) {
@@ -131,7 +131,7 @@ angular.module('devKittens')
 		}
 	})
 
-	.otherwise('/');
+	// .otherwise('/');
 })
 
 

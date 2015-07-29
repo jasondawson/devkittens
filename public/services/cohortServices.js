@@ -44,10 +44,14 @@ angular.module("devKittens")
 		$http({
 			url: "/api/cohort/" + cohortId,
 			method: "GET"
-		}).then(function(response) {
+		})
+		.then(function(response) {
 			console.warn(response.data);
 			dfrd.resolve(response.data);
 		})
+		.catch(function (err) {
+			dfrd.reject(err);
+		});
 		return dfrd.promise;
 	}
 
