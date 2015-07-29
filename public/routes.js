@@ -8,7 +8,7 @@ angular.module('devKittens')
 		controller: 'HomeController'
 	})
 
-	.when('/calendar/:courseId?', {
+	.when('/course/:courseId?', {
 		templateUrl: '/public/templates/calendar.html',
 		controller: 'CalendarController',
 		resolve: {
