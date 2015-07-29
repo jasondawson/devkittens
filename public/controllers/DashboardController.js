@@ -162,6 +162,7 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 		.then(function(response) {
 			$scope.courseInfo.title = '';
 			$scope.courseInfo.courseLength = '';
+			infoStorage.setCurrentCourse(response);
 			$location.path('/course/' + response._id);
 		})
 	}
