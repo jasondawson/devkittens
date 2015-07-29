@@ -3,8 +3,14 @@
 
 <div class="calendar-nav">
 	<i class="fa fa-arrow-circle-left"></i>
-	<span class="calendar-title">August 2015</span>
+	<span class="calendar-title">{{ currentCourse.title }} - August 2015</span>
 	<i class="fa fa-arrow-circle-right"></i>
+</div>
+
+<div class="week-day-container">
+	<div class="dayOfWeek" ng-repeat="weekDay in dayOfWeek">
+		<span>{{ weekDay }}</span>
+	</div>
 </div>
 
 <div class="overall-container">

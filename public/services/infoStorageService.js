@@ -2,6 +2,8 @@ angular.module('devKittens')
 
 .factory('infoStorage', function () {
 	var service = {};
+
+	var daysOfWeek = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
 	
 	var user;
 	var calendarId;
@@ -31,6 +33,10 @@ angular.module('devKittens')
 
 	service.getCurrentCourse = function() {
 		return currentCourseData;
+	}
+
+	service.getDayOfWeek = function() {
+		return daysOfWeek;
 	}
 
 	return service;

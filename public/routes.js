@@ -18,6 +18,9 @@ angular.module('devKittens')
 			currentCourseData: function(infoStorage) {
 				return infoStorage.getCurrentCourse();
 			},
+			dayOfWeek: function(infoStorage) {
+				return infoStorage.getDayOfWeek();
+			},
 			user: getAuth
 		}
 	})
