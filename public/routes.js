@@ -142,7 +142,7 @@ angular.module('devKittens')
 		}
 	})
 
-	// .otherwise('/');
+	.otherwise('/');
 })
 
 
@@ -188,7 +188,7 @@ function getBlockedAuth ($http, $location, $q, userService, infoStorage) {
 
 			// Prevent student to login on protected page
 			if (response.userType === 'student')
-				return $location.path('/calendar/' + response.typeData.cohortId);
+				return $location.path('/cohort/' + response.typeData.cohortId);
 
 			dfd.resolve(response);
 		})
