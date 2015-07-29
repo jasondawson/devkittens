@@ -20,9 +20,9 @@ angular.module('devKittens')
 .directive('timeline', function () {
 	return {
 		restrict: 'E',
-		scope: {
-			events: '='
-		},
+		// scope: {
+		// 	events: '='
+		// },
 		templateUrl: '/public/templates/timeline.html',
 		controller: function($scope, $sce){
 			

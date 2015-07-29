@@ -74,6 +74,14 @@ app.put('/api/cohort/:cohortId', CohortController.updateLessonOrder);
 app.get('/api/cohort/:cohortId', CohortController.getCohort);
 app.get('/api/all-cohorts', CohortController.getAllCohorts);
 
+//Cohort Lessons
+app.post('/api/cohort/lesson/sections/:curriculumId', CohortController.addSection);
+app.put('/api/cohort/lessons/:curriculumId', CohortController.updateLesson);
+// app.put('/api/lessons/:sectionId', Lesson.updateSection);
+// app.put('/api/lessons/remove/:sectionId', Lesson.removeSection);
+// app.delete('/api/lessons', Lesson.delete);
+
+
 // Emails
 app.post('/api/email', EmailController.sendEmail);
 

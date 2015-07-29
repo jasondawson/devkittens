@@ -25,7 +25,7 @@ module.exports = {
 
 	update: function(req, res){
 		Lesson.findByIdAndUpdate(req.query.id, req.body, function(err, data){
-			if (err) return res.status(500).send('you need to enter the customer id');
+			if (err) return res.status(500).send(err);
 			return res.send(data);
 		})
 	},
@@ -48,7 +48,7 @@ module.exports = {
 	updateSection: function(req, res){
 		var data = req.body;
 		Lesson.update({ 'sections._id' : req.params.sectionId }, { $set:  data  }, function(err, data){
-			if (err) return res.status(500).send('you need to enter the customer id');
+			if (err) return res.status(500).send(err);
 			return res.send(data);
 		})
 	},

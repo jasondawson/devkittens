@@ -67,21 +67,24 @@ angular.module("devKittens")
 		return dfrd.promise;
 	}
 
-	this.updateLessonTopic = function(id, topic){
-		console.log(11111,id, topic)
-		return $http({
-			method: 'PUT',
-			url: '/api/lessons/?id=' + id,
-			data: {
-				topic: topic
-			 }
-		})
-	};
 
-	this.updateLessonSection = function(id, data){
+	//-------------------- UPDATING LESSON ----------------
+
+	// this.updateLessonTopic = function(id, topic){
+	// 	console.log(11111,id, topic)
+	// 	return $http({
+	// 		method: 'PUT',
+	// 		url: '/api/cohort/lessons/' + id,
+	// 		data: {
+	// 			topic: topic
+	// 		 }
+	// 	})
+	// };
+
+	this.updateLesson = function(id, data){
 		return $http({
 			method: 'PUT',
-			url: '/api/lessons/' + id,
+			url: '/api/cohort/lessons/' + id,
 			data: data
 		})
 	};
@@ -89,14 +92,14 @@ angular.module("devKittens")
 	this.removeLessonSection = function(id){
 		return $http({
 			method: 'PUT',
-			url: '/api/lessons/remove/' + id
+			url: '/api/cohort/lessons/remove/' + id
 		})
 	};
 
 	this.addLessonSection = function(id, section){
 		return $http({
 			method: 'POST',
-			url: '/api/lesson/sections/' + id,
+			url: '/api/cohort/lesson/sections/' + id,
 			data: section
 		})
 	}

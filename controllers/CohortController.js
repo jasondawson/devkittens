@@ -74,3 +74,31 @@ exports.getAllCohorts = function(req, res) {
 		}
 	})
 };
+
+
+exports.updateLesson = function (req, res) {
+	var topic = req.body.topic;
+	var sections = req.body.sections
+	console.log(111111, req.params, req.body)
+	Cohort.update( { 'curriculum._id': req.params.curriculumId }, { $set: { 'curriculum.$.lesson.topic': topic , 'curriculum.$.lesson.sections': sections }  }, function (err, cohort) {
+		console.log(222222, err, cohort)
+		if (err) return res.status(500).send(err);
+		return res.send(cohort);
+	})
+};
+
+exports.addSection = function(req, res){
+	var body = req.body;
+	Cohort.findOne({ 'curriculum._id': req.params.curriculumId }, function(err, cohort){
+		cohort.curriculum.id(req.params.curriculumId).lesson.sections.push(body);
+		cohort.save(function(err, data){
+			console.log(22222, err, data)
+			res.send(data)
+		})
+	})
+// 		Lesson.findByIdAndUpdate({ _id: req.params.lessonId }, { $push: { sections: body } }, function(err, data){
+	// 	if (err) return res.status(500).send('there was an error');
+	// 	console.log(11111, data)
+	// 	return res.send(data);
+	// })
+};
