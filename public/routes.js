@@ -113,17 +113,6 @@ angular.module('devKittens')
 		}
 	})
 
-	.when('/curriculum/:courseId?', {
-		templateUrl: '/public/templates/curriculum.html',
-		controller: 'CurriculumController',
-		resolve: {
-			courseRef: function (courseServices, $route) {
-				return courseServices.getCourse($route.current.params.courseId);
-			},
-			user: getBlockedAuth
-		}
-	})
-
 	.when('/registration/:userType', {
 		templateUrl: '/public/templates/registration.html',
 		controller: 'registrationController',
