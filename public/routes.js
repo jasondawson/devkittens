@@ -24,7 +24,8 @@ angular.module('devKittens')
 					courseServices.getCourse($route.current.params.cohortId)
 					.then(function (response) {
 						infoStorage.setCurrentCourse(response);
-						deferred.resolve(response);
+						var data = infoStorage.getCurrentCourse();
+						deferred.resolve(data);
 					})
 					.catch(function (err) {
 						console.error(err);
@@ -52,7 +53,8 @@ angular.module('devKittens')
 			},
 			activeLesson: function (lessonService, $route) {
 				return lessonService.getLesson($route.current.params.curriculumId, $route.current.params.dayId)
-			}
+			},
+			user: getAuth
 		}
 	})
 

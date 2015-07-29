@@ -12,14 +12,18 @@ function ($scope, user, calendarService, specificCohortData, infoStorage, emails
 	$scope.currentCourse = currentCourseData;
 	$scope.dayOfWeek = dayOfWeek;
 
+	$scope.segmentLength = $scope.currentCourse.curriculum.length;
+	$scope.currentSegment = 0;
+	$scope.activeMonth = [];
+
+	console.log('currentCourse ', $scope.currentCourse);
+
 
 	$scope.viewDay = function (day) {
 		infoStorage.saveLessonRef(day);
 		$location.path('/day/' + currentCourseData._id + '/' + day._id);
 	}
 
-
-	$scope.monthSegment = 0;
 
 	// console.log('currentCourseData ', currentCourseData);
 
@@ -95,12 +99,20 @@ function ($scope, user, calendarService, specificCohortData, infoStorage, emails
 
 	// --------------- Navigating Calendar --------
 
+
 	$scope.previousMonth = function() {
-		$scope.monthSegment--;
+		if($scope.currentSegment === 0) {
+			return null;
+		}
+
+		$scope.currentSegment++;
 	}
 
 	$scope.nextMonth = function() {
-		$scope.monthSegment++;
+		if($scope.currentSegment === $scope.segmentLength) {
+			return null;
+		}
+		$scope.currentSegment++;
 	}
 
 

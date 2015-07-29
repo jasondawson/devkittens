@@ -100,7 +100,7 @@
 		</div>
 
 		<a class="mentors-link" href="#dashboard">
-			<div class="display-box" ng-click="toggleMentorModal(); setMentor(mentor)" ng-repeat="mentor in usersArray">
+			<div class="display-box" ng-click="toggleMentorModal(); setMentor(mentor)" ng-repeat="mentor in usersArray | filter: {userType: 'mentor'}">
 				<img class="mentor-image center" ng-src="{{mentor.avatar}}"</img>
 				<span class="text-dashboard center">{{ mentor.name }}</span>
 				<span class="text-dashboard name center">{{ mentor.location }}</span>
@@ -129,7 +129,7 @@
 		</div>
 
 		<a class="mentors-link" href="#dashboard">
-			<div class="display-box" ng-click="toggleTeacherModal(); setTeacher(teacher)" ng-repeat="teacher in usersArray">
+			<div class="display-box" ng-click="toggleTeacherModal(); setTeacher(teacher)" ng-repeat="teacher in usersArray | filter: {userType: 'instructor'}">
 				<img class="mentor-image center" ng-src="{{teacher.avatar}}"</img>
 				<span class="text-dashboard center">{{ teacher.name }}</span>
 				<span class="text-dashboard name center">{{ teacher.location }}</span>
