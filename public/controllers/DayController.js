@@ -1,6 +1,7 @@
 angular.module('devKittens')
 
-.controller('DayController', function ($scope, curriculumId, activeLesson, infoStorage, lessonService, courseServices) {
+.controller('DayController', function ($scope, curriculumId, user, activeLesson, infoStorage, lessonService, courseServices) {
+	$scope.user = user;
 	$scope.lesson = activeLesson;
 	$scope.curriculumId = curriculumId;
 
