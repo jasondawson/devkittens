@@ -2,9 +2,9 @@
 <loading-gif ng-if="loading"></loading-gif>
 
 <div class="calendar-nav">
-	<i class="fa fa-arrow-circle-left"></i>
+	<i class="fa fa-arrow-circle-left" ng-click="previousMonth()"></i>
 	<span class="calendar-title">{{ currentCourse.title }} - August 2015</span>
-	<i class="fa fa-arrow-circle-right"></i>
+	<i class="fa fa-arrow-circle-right" ng-click="nextMonth()"></i>
 </div>
 
 <div class="week-day-container">
@@ -14,19 +14,16 @@
 </div>
 
 <div class="overall-container">
-	<div class="calendar-container" ng-click="viewDay(day)" ng-repeat="day in currentCourse.curriculum">
+	<div class="calendar-container" ng-click="viewDay(day)" ng-repeat="month in currentCourse.curriculum[0]">
 		<div class="display-box add-new">
-			<span class="text-dashboard">{{ day.day }}</span>
-			<p>{{ day.topic }}</p>
+			<span class="text-dashboard">{{ month.day }}</span>
+			<p>{{ month.topic }}</p>
 		</div>
 	</div> <!-- End of 'calendar-container' -->
 </div>
 
 
-
-
-
-
+<!-- CREATE AN ACTIVE MONTH VARIABLE SO THAT THE NEXT/PREVIOUS BUTTONS WORK ON CALENDAR VIEW -->
 
 
 

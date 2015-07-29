@@ -32,6 +32,14 @@ angular.module('devKittens')
 	}
 
 	service.getCurrentCourse = function() {
+		var currentCourseArray = [];
+		for(var i = 0; i < currentCourseData.curriculum.length; i += 30) {
+			currentCourseArray.push(currentCourseData.curriculum.slice(i, i + 30))
+			console.log('currentCourseArray ', currentCourseArray);
+		}
+
+		currentCourseData.curriculum = currentCourseArray;
+
 		return currentCourseData;
 	}
 

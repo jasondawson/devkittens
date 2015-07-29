@@ -22,6 +22,11 @@ function ($scope, user, calendarService, specificCohortData, infoStorage, emails
 	}
 
 
+	$scope.monthSegment = 0;
+
+	// console.log('currentCourseData ', currentCourseData);
+
+
 	
 
 	// get active course info
@@ -88,6 +93,17 @@ function ($scope, user, calendarService, specificCohortData, infoStorage, emails
 	$scope.closeModal = function () {
 		$('body').css('overflow', 'inherit');
 		$scope.studentModal = false;
+	}
+
+
+	// --------------- Navigating Calendar --------
+
+	$scope.previousMonth = function() {
+		$scope.monthSegment--;
+	}
+
+	$scope.nextMonth = function() {
+		$scope.monthSegment++;
 	}
 
 
