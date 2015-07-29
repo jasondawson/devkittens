@@ -15,13 +15,13 @@ angular.module('devKittens')
 			specificCohortData: function (cohortServices, $route) {
 				return null;
 			},
-			currentCourseData: function($route, $q, $location, infoStorage, courseServices) {
+			currentCourseData: function($route, $q, $location, infoStorage, courseServices, cohortServices) {
 				var tempCourseData = infoStorage.getCurrentCourse();
 				if (tempCourseData) return tempCourseData;
 				else {
 					var deferred = $q.defer();
 
-					courseServices.getCourse($route.current.params.cohortId)
+					cohortServices.getCohort($route.current.params.cohortId)
 					.then(function (response) {
 						infoStorage.setCurrentCourse(response);
 						var data = infoStorage.getCurrentCourse();
