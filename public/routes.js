@@ -25,6 +25,20 @@ angular.module('devKittens')
 		}
 	})
 
+	.when('/day/:curriculumId', {
+		templateUrl: '/public/templates/day.html',
+		controller: 'CurriculumController',
+		resolve: {
+			user: getBlockedAuth,
+			curriculumId: function($route){
+				return $route.current.params.curriculumId;
+			},
+			courseRef: function (courseServices, $route) {
+				return courseServices.getCourse($route.current.params.curriculumId);
+			}
+		}
+	})
+
 
 	// .when('/calendar', {
 	// 	templateUrl: '/public/templates/calendar.html',

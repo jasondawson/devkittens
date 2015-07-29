@@ -14,7 +14,7 @@
 </div>
 
 <div class="overall-container">
-	<div class="calendar-container" ng-repeat="day in currentCourse.curriculum">
+	<div class="calendar-container" ng-click="viewDay(day)" ng-repeat="day in currentCourse.curriculum">
 		<div class="display-box add-new">
 			<span class="text-dashboard">{{ day.day }}</span>
 			<p>{{ day.topic }}</p>

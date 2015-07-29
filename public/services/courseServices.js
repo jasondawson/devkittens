@@ -38,6 +38,16 @@ angular.module('devKittens')
 		return dfrd.promise;
 	},
 
+	this.getCourseByCurriculumId = function(curriculumId){
+		return $http({
+			method: 'GET',
+			url: '/api/course',
+			data: {
+				'curriculum._id': curriculumId
+			}
+		})
+	},
+
 	this.getAllCourses = function() {
 		var dfrd = $q.defer();
 
@@ -56,14 +66,17 @@ angular.module('devKittens')
 	}
 
 
-	this.updateCourseCurriculum = function(event, lessonId, topic) {
+	//MIGHT BE BROKEN
+	// this.updateCourseCurriculum = function(event, lessonId, topic) {
+
+	this.updateCourseCurriculum = function(curriculumId, lessonId, topic) {
 		return $http({
 			method: 'PUT',
-			url: "/api/course/" + event._id,
+			url: "/api/course/" + curriculumId,
 			data: {
 				lesson: lessonId,
-				topic: topic,
-				index: event.day
+				topic: topic
+				// index: event.day
 			}
 		})
 	}

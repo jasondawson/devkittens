@@ -1,0 +1,77 @@
+<!-- <div ng-show="show" class="modal-wrapper lesson-modal"> -->
+	<div ng-show="!lesson">
+		<div class="flex-row content-center align-items-center" ng-click="closeModal()"></div>
+		<div class="flex-column align-items-center">
+				<h3>Create a new lesson</h3>
+					<form ng-submit="setTopic(topic)"/>
+						<input class="" type="text" ng-model="topic" placeholder="Lesson topic" />
+					</form>
+					<h4>New Section</h4>
+					<form ng-submit="addSection(newSection)">
+						<input type="text" ng-model="newSection.title"
+							   placeholder="Section title"
+							   class="form-control"/>
+
+					   <text-angular ng-model="newSection.content"></text-angular>
+
+					   <button class="btn btn-default">Create section</button>
+					</form>
+					<br>
+					<div ng-repeat="section in sections">
+						<hr ng-if="$index === 0">
+
+						<h4>{{section.title}}</h4>
+						<div ng-bind-html="section.content | unsafe"></div>
+
+						<hr>
+					</div>
+				<br><br>
+				<button ng-click="createLesson(topic)" class="btn btn-success">Save lesson</button>
+		</div>
+	</div>
+
+	<div ng-show="lesson" class="portlet-header">
+			<div ng-show="!lesson.editTopic">
+				<h2>{{lesson.topic}} <i class="fa fa-pencil" ng-click="lesson.editTopic=!lesson.editTopic"></i></h2>
+			</div>
+			
+			<span class="course-body">
+				<div ng-show="lesson.editTopic">
+					<input type="text" ng-model="lesson.topic"/>
+					<button ng-click="updateLessonTopic(event)">submit change</button>
+				</div>
+				<div ng-repeat="section in lesson.sections track by $index" class="portlet-content">
+					<div ng-show="!section.editSection">
+						<h3 ng-show="section.title">
+
+							{{section.title}} 
+							<i class="fa fa-pencil" ng-click="section.editSection=!section.editSection"></i>
+							<i class="fa fa-times" ng-click="removeLessonSection($index, event, section)"></i>
+						</h3> 
+						<div ng-bind-html="section.content | unsafe"></div>
+					</div>
+					<div ng-show="section.editSection">
+						<input type="text" ng-model="section.title"
+								   placeholder="Section title"
+								   class="form-control"/> 
+						<text-angular ng-model="section.content"></text-angular>
+						<button ng-click="updateLessonSection(event, section)">submit changes</button>
+					</div>
+					<br />
+				</div>
+
+
+				<!-- ADDS NEW SECTION TO A LESSON -->
+				<i class="fa fa-plus" ng-click="newSection.show=!newSection.show"></i> add section
+				<form ng-show="newSection.show" ng-submit="addLessonSection(event, newSection)">
+					<input type="text" ng-model="newSection.title"
+						   placeholder="Section title"
+						   class="form-control"/>
+
+				   <text-angular ng-model="newSection.content"></text-angular>
+
+				   <button class="btn btn-default">Create section</button>
+				</form>
+			</span>
+		</div>
+<!-- </div> -->

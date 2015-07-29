@@ -1,12 +1,27 @@
 angular.module('devKittens')
 
-.controller('CurriculumController', function ($scope, lessonService, infoStorage, courseServices, courseRef, $sce, user) {
+
+.controller('CurriculumController', function ($scope, lessonService, courseServices, infoStorage, user, curriculumId, courseRef) {
+
 	// TODO: make this a directive
 	document.body.scrollTop = document.documentElement.scrollTop = 0;
 	$scope.user = user;
-	$scope.events = courseRef.curriculum;
-	$scope.courseTitle = courseRef.title
-	infoStorage.saveCalendarId(courseRef._id);
+	
+	$scope.curriculumId = curriculumId;
+	
+
+	$scope.courseRef = courseRef;
+	console.log($scope.courseRef)
+
+	for(var i = 0; i < $scope.courseRef.curriculum.length; i++) {
+		if ($scope.courseRef.curriculum[i]._id === $scope.curriculumId && $scope.courseRef.curriculum[i].lesson){
+			$scope.lesson = $scope.courseRef.curriculum[i].lesson
+		} else {
+			$scope.lesson = null;
+		}
+		console.log(222222, $scope.lesson)
+	}
+
 	
 	// ------------ CREATING NEW LESSON -------------------------
 	// ADD TITLE/TOPIC
@@ -40,14 +55,19 @@ angular.module('devKittens')
 		lessonService.createLesson(data)
 		.then(function(response){
 
-			courseServices.updateCourseCurriculum($scope.currentEvent, response.data._id, topic)
-			.then(function(response){
-				$scope.events = response.data.curriculum;
-			})
+
+		courseServices.updateCourseCurriculum($scope.curriculumId, response.data._id, topic)
+		.then(function(response){
+			// $scope.events = response.data.curriculum;
+			console.log(response)
+		})
+		.catch(function (err) {
+			console.error(err);
+		});
 
 
 			// Clear values
-			$scope.closeModal('skip');
+			// $scope.closeModal('skip');
 
 			$scope.preReadings = [];
 			$scope.objectives = [];
