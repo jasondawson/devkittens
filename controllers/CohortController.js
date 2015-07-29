@@ -4,6 +4,7 @@ var Course = require('../models/CourseModel.js'),
 	User   = require('../models/User.js');
 
 exports.createNewCohort = function(req, res) {
+	console.log('curriculum', req.body)
 	Course.findById(req.body.courseType._id)
 	.populate('curriculum.lesson')
 	.lean()
@@ -12,7 +13,7 @@ exports.createNewCohort = function(req, res) {
 			res.status(500).json(err);
 		} else {
 			var arrayToUse = data.curriculum;
-
+			console.log('curriculum', arrayToUse)
 			new Cohort({
 						name: req.body.name,
 						courseType: req.body.courseType._id,
@@ -23,6 +24,8 @@ exports.createNewCohort = function(req, res) {
 
 			.save(function(err2, data2) {
 				if (err2) {
+					console.log(22222, 'err2', err2)
+
 					res.status(500).json(err2);
 				} else {
 					res.json(data2);

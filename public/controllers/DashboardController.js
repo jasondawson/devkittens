@@ -175,6 +175,7 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 	$scope.createNewCohort = function(obj) {
 		cohortServices.createNewCohort(obj)
 		.then(function(response) {
+			infoStorage.setCurrentCohort(response);
 			for (var key in $scope.cohortInfo) {
 				$scope.cohortInfo[key] = "";
 			};

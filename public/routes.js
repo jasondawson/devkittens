@@ -44,9 +44,9 @@ angular.module('devKittens')
 		controller: 'CohortController',
 		resolve: {
 			currentCohortData: function($route, $q, $location, infoStorage, cohortServices) {
-				var tempCohortData = infoStorage.getCurrentCohort();
-				if(tempCohortData) return tempCohortData;
-				else {
+				// var tempCohortData = infoStorage.getCurrentCohort();
+				// if(tempCohortData) return tempCohortData;
+				// else {
 					var deferred = $q.defer();
 
 					cohortServices.getCohort($route.current.params.cohortId)
@@ -61,7 +61,7 @@ angular.module('devKittens')
 						deferred.reject(err);
 					});
 					return deferred.promise;
-				}
+				// }
 			},
 			dayOfWeek: function(infoStorage) {
 				return infoStorage.getDayOfWeek();
