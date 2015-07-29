@@ -2,12 +2,12 @@ angular.module('devKittens')
 
 .service('authService', function ($http, $q) {
 
-	this.createUser = function(name, email, password, courseId){
+	this.createUser = function(name, email, password, userType){
 		
-		if (courseId != 'mentor' && courseId != "instructor") {
+		if (userType != 'mentor' && userType != "instructor" && userType != 'admin') {
 			var theType = 'student';
 		} else {
-			var theType = courseId;
+			var theType = userType;
 		}
 
 		var image = 'http://www.gravatar.com/avatar/' + md5(email) + '?d=https%3A%2F%2Fm2.behance.net%2Frendition%2Fpm%2F6507107%2Fdisp%2F05d8e97450a4564f4ca3d53c7a1544e9.png';
@@ -16,7 +16,7 @@ angular.module('devKittens')
 			method: 'POST',
 			url: '/api/user',
 			data: {
-				cohortId: courseId,
+				cohortId: userType,
 				userType: theType,
 				name: name,
 				email: email,

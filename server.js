@@ -92,7 +92,7 @@ app.post('/api/data-type', User.getTypeData);
 
 // Auth
 app.post('/api/user', logout, passport.authenticate('local-signup'), function (req, res) {
-    res.redirect('/#')
+    res.redirect('/#/')
     res.json(req.use);
 });
 

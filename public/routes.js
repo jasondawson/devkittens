@@ -71,12 +71,12 @@ angular.module('devKittens')
 		}
 	})
 
-	.when('/registration/:courseId', {
+	.when('/registration/:userType', {
 		templateUrl: '/public/templates/registration.html',
 		controller: 'registrationController',
 		resolve: {
-			courseId: function ($route) {
-				return $route.current.params.courseId;
+			userType: function ($route) {
+				return $route.current.params.userType;
 			}
 		}
 	})
@@ -150,33 +150,4 @@ function getBlockedAuth ($http, $location, $q, userService, infoStorage) {
 	});
 
 	return dfd.promise;
-}
-
-
-
-
-// DEPRECATED
-// .when('/dashboard-mentors', {
-// 	templateUrl: '/public/templates/dashboard-mentors.html',
-// 	controller: 'MentorController',
-// 	resolve: {
-// 		mentorData: function (dashboardService) {
-// 			return dashboardService.getMentorData();
-// 			// console.log('mentorData ', mentorData);
-			
-// 		},
-// 		optionsData: function (dashboardService) {
-// 			return dashboardService.getOptions();
-// 		},
-// 		usersData: function (dashboardService, $q) {
-// 			var dfd = $q.defer();
-// 			dashboardService.getUsers().then(function(response) {
-// 				dfd.resolve(response.data);
-// 			}, function(err) {
-// 				console.log('Houston... ', err);
-// 			})
-// 			return dfd.promise;
-// 		},
-// 		user: getAuth
-// 	}
-// })
+};

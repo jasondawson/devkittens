@@ -109,12 +109,15 @@ module.exports = function(passport) {
                                     new Mentor({
                                         userId: result._id
                                     }).save();
+                                } else if (req.body.userType == "admin") {
                                 } else {
                                     new Student({
                                         userId: result._id,
                                         cohortId: req.body.cohortId
                                     }).save();
                                     Cohort.findOne({'_id': req.body.cohortId}, function (err, foundCohort) {
+                                        if (err) return res.status(500).send(err);
+
                                         if (!foundCohort.students) foundCohort.students = [];
                                         
                                         foundCohort.students.push(result._id);
