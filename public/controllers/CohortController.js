@@ -1,11 +1,12 @@
 angular.module('devKittens')
 
 .controller('CohortController', 
-	function ($scope, infoStorage, cohortServices, dayOfWeekCohort) {
+	function ($scope, user, infoStorage, cohortServices, currentCohortData, dayOfWeek) {
 
+	$scope.user = user;
 	$scope.currentCohort = currentCohortData;
-	$scope.dayOfWeekCohort = dayOfWeek;
+	$scope.dayOfWeek = dayOfWeek;
 
-	console.log('currentCohort ', currentCohort);
+	// console.log('currentCohort ', $scope.currentCohort);
 
 })

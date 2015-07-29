@@ -14,7 +14,7 @@ function ($scope, user, calendarService, infoStorage, emailsService, cohortServi
 	$scope.currentSegment = 0;
 	$scope.activeMonth = $scope.currentCourse.curriculum[0];
 
-	console.log('currentCourse ', $scope.currentCourse);
+	// console.log('currentCourse ', $scope.currentCourse);
 
 
 	$scope.viewDay = function (day) {

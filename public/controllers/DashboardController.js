@@ -135,6 +135,7 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 
 	$scope.setCohort = function(cohort) {
 		$scope.currentCohort = cohort;
+		infoStorage.setCurrentCohort($scope.currentCohort);
 		// console.log('currentCohort ', $scope.currentCohort);
 	}
 
