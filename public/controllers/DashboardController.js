@@ -162,7 +162,7 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 		.then(function(response) {
 			$scope.courseInfo.title = '';
 			$scope.courseInfo.courseLength = '';
-			$location.path('/calendar/' + response._id);
+			$location.path('/course/' + response._id);
 		})
 	}
 
@@ -177,7 +177,7 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 				$scope.cohortInfo[key] = "";
 			};
 			$scope.toggleAddCohort = false;
-			$location.path('/calendar/' + response._id);
+			$location.path('/cohort/' + response._id);
 		})
 	}
 
