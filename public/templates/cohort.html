@@ -15,11 +15,11 @@
 
 <div class="overall-container">
 
-	<div class="calendar-container" ng-click="viewDay(day)" ng-repeat="day in currentCohort.curriculum[0]">
+	<div class="calendar-container" ng-click="viewDay(day)" ng-repeat="day in currentCohort.dates">
 		<hr><hr><hr><hr><hr><hr>
 		
 		<div class="display-box add-new">
-			<span class="text-dashboard calendar-text">{{ day.day }}</span>
+			<span class="text-dashboard calendar-text">{{ day | date: 'd' }}</span>
 			<p>{{ day.topic }}</p>
 			<div ng-show="!day.instructor && user.userType !== 'student'">available</div>
 		</div>

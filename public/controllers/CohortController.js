@@ -14,4 +14,5 @@ angular.module('devKittens')
 
 	// console.log('currentCohort ', $scope.currentCohort);
 
+
 })

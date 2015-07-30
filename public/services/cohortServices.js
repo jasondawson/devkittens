@@ -120,6 +120,7 @@ angular.module("devKittens")
 	// 	})
 	// };
 
+
 	// this.addLessonSection = function(id, section){
 	// 	return $http({
 	// 		method: 'POST',
@@ -128,3 +129,5 @@ angular.module("devKittens")
 	// 	})
 	// }
 })
+
+

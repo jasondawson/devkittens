@@ -9,6 +9,7 @@ angular.module('devKittens')
 	var lessonRef;
 	var calendarId;
 	var currentCourseData;
+	var currentCohortData;
 	// ^^^ calendar can be a cohort or curriculum
 
 
@@ -66,13 +67,13 @@ angular.module('devKittens')
 	// COHORT
 	service.setCurrentCohort = function(currentCohort) {
 		
-		var currentCohortArray = [];
+		// var currentCohortArray = [];
 
-		for(var i = 0; i < currentCohort.curriculum.length; i += 30) {
-			currentCohortArray.push(currentCohort.curriculum.slice(i, i + 30))
-		}
+		// for(var i = 0; i < currentCohort.curriculum.length; i += 30) {
+		// 	currentCohortArray.push(currentCohort.curriculum.slice(i, i + 30))
+		// }
 
-		currentCohort.curriculum = currentCohortArray;
+		// currentCohort.curriculum = currentCohortArray;
 		currentCohortData = currentCohort;
 	}
 
