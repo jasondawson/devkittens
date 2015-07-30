@@ -14,7 +14,6 @@ angular.module('devKittens')
 		controller: function($scope) {
 
 			$scope.studentArray = $scope.usersArray;
-			console.log('users',$scope.usersArray)
 			$scope.selectedStudents = [];
 			$scope.selectedStudents.push($scope.selectedStudents[1]);
 

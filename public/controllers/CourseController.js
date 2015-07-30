@@ -1,9 +1,9 @@
 angular.module('devKittens')
 
 .controller('CourseController',
-function ($scope, user, calendarService, infoStorage, emailsService, cohortServices, currentCourseData, dayOfWeek, $location) {
+function ($scope, calendarService, user, infoStorage, emailsService, cohortServices, currentCourseData, dayOfWeek, $location) {
 	
-	$scope.user = user;	
+	$scope.user = user;
 	$scope.currentCourse = currentCourseData;
 	$scope.dayOfWeek = dayOfWeek;
 

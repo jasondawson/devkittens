@@ -19,7 +19,7 @@ angular.module("devKittens")
 
 		var deferred = $q.defer();
 
-		if (location === 'curriculum') {
+		if (location === 'course') {
 			var uri = '/api/update-course/' + cohortId;
 		} else if ('calendar') {
 			var uri = '/api/cohort/' + cohortId;

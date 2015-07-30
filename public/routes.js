@@ -20,6 +20,7 @@ angular.module('devKittens')
 
 					courseServices.getCourse($route.current.params.courseId)
 					.then(function (response) {
+						infoStorage.saveCalendarId(response._id);
 						infoStorage.setCurrentCourse(response);
 						var data = infoStorage.getCurrentCourse();
 						deferred.resolve(data);
@@ -140,7 +141,7 @@ angular.module('devKittens')
 		}
 	})
 
-	// .otherwise('/');
+	.otherwise('/');
 })
 
 

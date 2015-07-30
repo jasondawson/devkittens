@@ -11,8 +11,8 @@ angular.module('devKittens')
 		$scope.day = null;
 	}
 
-//TYPEREF REFERS TO COURSE OR COHORT
 
+	//TYPEREF REFERS TO COURSE OR COHORT
 	$scope.cohortId = typeId;
 	$scope.courseId = typeId;
 

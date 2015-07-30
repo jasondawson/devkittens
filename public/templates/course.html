@@ -17,25 +17,26 @@
 	</div>
 </div>
 
-<div class="overall-container">
-
-	<div class="calendar-container" ng-click="viewDay(day)" ng-repeat="day in activeMonth">
+<sortable>
+<div class="overall-container column">
+	<div class="calendar-container" ng-click="viewDay(day)" ng-repeat="day in activeMonth" id="day{{day._id}}">
 	<hr><hr><hr><hr><hr><hr>
 
-		<div class="display-box add-new column">
-			<span class="text-dashboard calendar-text">{{ day.day }}</span>
 
-			<sortable>
-				<div class="column full-height">
+		<div class="display-box add-new">
+			<span class="text-dashboard calendar-text">{{ day.day }}</span>
+			<i class="fa fa-arrows-alt portlet-header"></i>
+
+				<div class="full-height">
 					<div>
-						<p ng-if="day.topic" class="portlet-header">{{ day.topic }}</p>
+						<p ng-if="day.topic" id="{{day.lesson._id}}">{{ day.topic }}</p>
 					</div>
 				</div>
-			</sortable>
 
 		</div>
 	</div>
 </div>
+<sortable>
 
 
 

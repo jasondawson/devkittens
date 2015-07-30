@@ -16,38 +16,25 @@ angular.module('devKittens')
 		      	$(ui.item).removeClass('active-dragging');
 		      },
 		      update: function (event, ui) {
-		      	// console.warn('update ui ', ui);
-		      	// var days = elem.find('.day');
-		      	// var days = Array.prototype.slice.call(days);
 
-		      	// var udpatedPositions = days.map(function (day) {
-		      	// 	return day.id.substring(3);
-		      	// })
+		      	var days = $('.column').find('.calendar-container');
+		      	days = Array.prototype.slice.call(days);
 
-		      	// var location = $location.$$url.split('/')[1];
+		      	var udpatedPositions = days.map(function (day) {
+		      		return day.id.substring(3);
+		      	})
 
-		      	// cohortServices.updateCoursesOrder(udpatedPositions, infoStorage.serveCalendarId(), location)
-		      	// .then(function (response) {
-		      	// 	// console.info(response);
-		      	// })
-		      	// .catch(function (err) {
-		      	// 	console.error(err);
-		      	// });
+		      	var location = $location.$$url.split('/')[1];
+
+		      	cohortServices.updateCoursesOrder(udpatedPositions, infoStorage.serveCalendarId(), location)
+		      	.then(function (response) {
+		      		// console.info(response);
+		      	})
+		      	.catch(function (err) {
+		      		console.error(err);
+		      	});
 		      }
 		    });
-		 
-		    $( ".portlet" )
-			  .addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" )
-			  .find( ".portlet-header" )
-			  .addClass( "ui-widget-header ui-corner-all" )
-			  .prepend( "<span class='ui-icon ui-icon-minusthick portlet-toggle'></span>");
-		 
-		    $( ".portlet-toggle" ).click(function() {
-		      var icon = $( this );
-		      icon.toggleClass( "ui-icon-minusthick ui-icon-plusthick" );
-		      icon.closest( ".portlet" ).find( ".portlet-content" ).toggle();
-		    });
-
 
 		}
 	}
