@@ -113,6 +113,9 @@ module.exports = function(passport) {
                                         userId: result._id
                                     }).save();
                                 } else if (req.body.userType == "admin") {
+                                    new Instructor({
+                                        userId: result._id
+                                    }).save();
                                 } else {
                                     new Student({
                                         userId: result._id,
