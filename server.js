@@ -88,6 +88,8 @@ app.put('/api/cohort/lessons/:cohortId', CohortController.updateLesson);
 // Cohort instructors
 app.put('/api/instructify/:userId', InstructorController.addToInstructor);
 app.post('/api/instructify/:cohortId/:dayId', InstructorController.addInstructor);
+app.put('/api/destructify/:userId', InstructorController.removeFromInstructor);
+app.post('/api/destructify/:dayId', InstructorController.removeInstructor);
 
 
 // Emails

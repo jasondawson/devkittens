@@ -46,7 +46,6 @@ angular.module("devKittens")
 			method: "GET"
 		})
 		.then(function(response) {
-			console.warn(response.data);
 			dfrd.resolve(response.data);
 		})
 		.catch(function (err) {
@@ -99,6 +98,26 @@ angular.module("devKittens")
 			method: "POST",
 			url: '/api/instructify/' + cohortId + "/" + dayId,
 			data: user
+		})
+
+		$q.all([req1, req2])
+		.then(function(response) {
+			dfrd.resolve(response);
+		})
+		return dfrd.promise;
+	}
+
+	this.removeInstructor = function(user, lesson, dayId) {
+		var dfrd = $q.defer();
+		var req1 = $http({
+			method: "PUT",
+			url: '/api/destructify/' + user._id,
+			data: lesson
+		})
+
+		var req2 = $http({
+			method: "POST",
+			url: '/api/destructify/' + dayId,
 		})
 
 		$q.all([req1, req2])

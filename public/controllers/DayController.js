@@ -6,7 +6,6 @@ angular.module('devKittens')
 	if (typeRef == 'cohort') {
 		$scope.lesson = activeLesson.lesson;
 		$scope.day = activeLesson;
-		console.log($scope.day.instructor, user.userType);
 	} else if (typeRef == 'course') {
 		$scope.lesson = activeLesson;
 		$scope.day = null;
@@ -19,11 +18,6 @@ angular.module('devKittens')
 
 	$scope.dayId = dayId;
 	$scope.typeRef = typeRef;
-
-
-	
-
-	console.log(111111, $scope.lesson);
 
 
 
@@ -169,11 +163,16 @@ angular.module('devKittens')
 	//the stuff about instructors teaching classes, etc.
 
 	$scope.teachLesson = function(lesson) {
-		console.log(user, lesson);
-		$scope.day.instructor = true;
 		cohortServices.addInstructor(user, typeId, lesson, dayId)
 		.then(function(response) {
-			console.log(response);
+			$scope.day.instructor = true;
+		})
+	}
+
+	$scope.removeLesson = function(lesson) {
+		cohortServices.removeInstructor(user, lesson, dayId)
+		.then(function(response) {
+			$scope.day.instructor = false;
 		})
 	}
 });

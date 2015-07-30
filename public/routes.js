@@ -51,7 +51,6 @@ angular.module('devKittens')
 
 				cohortServices.getCohort($route.current.params.cohortId)
 				.then(function(response) {
-					console.log('response from getCohort ', response)
 					infoStorage.setCurrentCohort(response);
 					var data = infoStorage.getCurrentCohort();
 					deferred.resolve(data); 
