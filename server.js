@@ -33,6 +33,7 @@ var User = require('./controllers/UserController.js');
 var CourseController = require('./controllers/CourseController.js');
 var CohortController = require('./controllers/CohortController.js');
 var EmailController = require('./controllers/EmailController.js');
+var InstructorController = require('./controllers/InstructorController.js');
 
 
 
@@ -83,6 +84,10 @@ app.put('/api/cohort/lessons/:cohortId', CohortController.updateLesson);
 // app.put('/api/lessons/:sectionId', Lesson.updateSection);
 // app.put('/api/lessons/remove/:sectionId', Lesson.removeSection);
 // app.delete('/api/lessons', Lesson.delete);
+
+// Cohort instructors
+app.put('/api/instructify/:userId', InstructorController.addToInstructor);
+app.post('/api/instructify/:cohortId/:dayId', InstructorController.addInstructor);
 
 
 // Emails

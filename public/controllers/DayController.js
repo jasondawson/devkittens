@@ -4,16 +4,13 @@ angular.module('devKittens')
 	$scope.user = user;
 	$scope.lesson = activeLesson;
 
-
-//TYPE REFERS TO COURSE OR COHORT
-	$scope.typeRef = typeRef;
-	console.log('type', $scope.isType)
+//TYPEREF REFERS TO COURSE OR COHORT
 
 	$scope.cohortId = typeId;
 	$scope.courseId = typeId;
 
-
 	$scope.dayId = dayId;
+	$scope.typeRef = typeRef;
 
 
 	
@@ -78,7 +75,7 @@ angular.module('devKittens')
 	}
 
 	// --------------- UPDATING LESSON ------------
-	if ($scope.isType == 'course') {
+	if ($scope.typeRef == 'course') {
 
 		$scope.updateLesson = function(){
 			var lessonId = $scope.lesson._id;
@@ -129,7 +126,7 @@ angular.module('devKittens')
 				$scope.sections.splice(index, 1);
 			})
 		}
-	} else if ($scope.isType === 'cohort') {
+	} else if ($scope.typeRef === 'cohort') {
 		$scope.updateLesson = function(){
 			// var lessonId = $scope.lesson._id;
 			var topic = $scope.lesson.topic;
@@ -159,5 +156,17 @@ angular.module('devKittens')
 				$scope.sections.splice(index, 1);
 			})
 		}
+	}
+
+	//the stuff about instructors teaching classes, etc.
+
+	$scope.teachLesson = function(lesson) {
+		console.log(user, lesson);
+		lesson.instructor = [];
+		lesson.instructor.push(user._id);
+		cohortServices.addInstructor(user, typeId, lesson, dayId)
+		.then(function(response) {
+			console.log(response);
+		})
 	}
 });

@@ -10,7 +10,7 @@ var instructorSchema = new Schema({
 	rating: Number,
 	comments: [String],
 	skills: [String],
-	schedule: [{date: Date, lesson: {type: mongoose.Schema.Types.ObjectId, ref: "Lesson"}}]
+	schedule: []
 })
 
 module.exports = mongoose.model('Instructor', instructorSchema);

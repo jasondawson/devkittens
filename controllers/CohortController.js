@@ -109,11 +109,12 @@ exports.getCohortDay = function(req, res) {
 			var lesson;
 			for (var i = 0; i < data.curriculum.length; i++) {
 				if (data.curriculum[i]._id == req.params.dayId) {
-					lesson = data.curriculum[i].lesson;
+					// lesson = data.curriculum[i].lesson;
+					return res.json(data.curriculum[i]);
 				}
 			}
-			console.log(lesson);
-			res.json(lesson);
+			// console.log(lesson);
+			// res.json(lesson);
 		}
 	})
 }

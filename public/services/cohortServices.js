@@ -87,6 +87,27 @@ angular.module("devKittens")
 		return dfrd.promise;
 	}
 
+	this.addInstructor = function(user, cohortId, lesson, dayId) {
+		var dfrd = $q.defer();
+		var req1 = $http({
+			method: "PUT",
+			url: '/api/instructify/' + user._id,
+			data: lesson
+		})
+
+		var req2 = $http({
+			method: "POST",
+			url: '/api/instructify/' + cohortId + "/" + dayId,
+			data: user
+		})
+
+		$q.all([req1, req2])
+		.then(function(response) {
+			dfrd.resolve(response);
+		})
+		return dfrd.promise;
+	}
+
 
 	//-------------------- UPDATING LESSON ----------------
 
