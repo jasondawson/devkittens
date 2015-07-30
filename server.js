@@ -79,10 +79,10 @@ app.get('/api/all-cohorts', CohortController.getAllCohorts);
 app.get('/api/cohort-day/:cohortId/:dayId', CohortController.getCohortDay);
 
 //Cohort Lessons
-app.post('/api/cohort/lesson/sections/:curriculumId', CohortController.addSection);
+app.post('/api/cohort/lesson/sections/:cohortId/:dayId', CohortController.addSection);
 app.put('/api/cohort/lessons/:cohortId', CohortController.updateLesson);
 // app.put('/api/lessons/:sectionId', Lesson.updateSection);
-// app.put('/api/lessons/remove/:sectionId', Lesson.removeSection);
+app.put('/api/cohort/section/remove', CohortController.removeSection);
 // app.delete('/api/lessons', Lesson.delete);
 
 // Cohort instructors

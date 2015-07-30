@@ -153,21 +153,26 @@ angular.module("devKittens")
 		})
 	};
 
-	// this.removeLessonSection = function(id){
-	// 	return $http({
-	// 		method: 'PUT',
-	// 		url: '/api/cohort/lessons/remove/' + id
-	// 	})
-	// };
+	this.removeLessonSection = function(cohortId, dayId, sectionId){
+		return $http({
+			method: 'PUT',
+			url: '/api/cohort/section/remove',
+			data: {
+				cohortId: cohortId,
+				dayId: dayId,
+				sectionId: sectionId
+			}
+		})
+	};
 
 
-	// this.addLessonSection = function(id, section){
-	// 	return $http({
-	// 		method: 'POST',
-	// 		url: '/api/cohort/lesson/sections/' + id,
-	// 		data: section
-	// 	})
-	// }
+	this.addLessonSection = function(cohortId, dayId, section){
+		return $http({
+			method: 'POST',
+			url: '/api/cohort/lesson/sections/' + cohortId + '/' + dayId,
+			data: section
+		})
+	}
 })
 
 

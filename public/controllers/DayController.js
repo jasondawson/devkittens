@@ -129,6 +129,7 @@ angular.module('devKittens')
 			})
 		}
 	} else if ($scope.typeRef === 'cohort') {
+		// CRUDY COHORT
 		$scope.updateLesson = function(){
 			// var lessonId = $scope.lesson._id;
 			var topic = $scope.lesson.topic;
@@ -142,10 +143,12 @@ angular.module('devKittens')
 
 
 		$scope.addLessonSection = function(section){
-			var id = $scope.lesson._id;
 			section.show = !section.show
-			lessonService.addLessonSection(id, section).then(function(response){
-				$scope.lesson.sections.push(response.data.sections[response.data.sections.length - 1]);
+			cohortServices.addLessonSection($scope.cohortId, $scope.dayId, section).then(function(response){
+				// $scope.lesson.sections.push(response.data.sections[response.data.sections.length - 1]);
+				console.log('look at me', response.data.lesson)
+				$scope.lesson.sections.push(response.data.lesson.sections[response.data.lesson.sections.length - 1]);
+				
 				section.title = '';
 				section.content = '';
 			})
@@ -153,8 +156,8 @@ angular.module('devKittens')
 
 		$scope.removeLessonSection = function(index, section){
 			$scope.sections = $scope.lesson.sections;
-			var id = section._id;
-			lessonService.removeLessonSection(id).then(function(response){
+			var sectionId = section._id;
+			cohortServices.removeLessonSection($scope.cohortId, $scope.dayId, sectionId).then(function(response){
 				$scope.sections.splice(index, 1);
 			})
 		}

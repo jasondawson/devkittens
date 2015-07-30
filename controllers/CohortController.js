@@ -73,7 +73,7 @@ exports.updateLessonOrder = function (req, res) {
 			return res.json(result);
 		});
 	})
-}
+};
 
 exports.getCohort = function(req, res) {
 	Cohort.findById(req.params.cohortId)
@@ -117,7 +117,7 @@ exports.getCohortDay = function(req, res) {
 			// res.json(lesson);
 		}
 	})
-}
+};
 
 
 exports.updateLesson = function (req, res) {
@@ -132,26 +132,28 @@ exports.updateLesson = function (req, res) {
 			res.send(data)
 		})
 	})
-	// } { $set: {'curriculum.$.topic': topic, 'curriculum.$.lesson.topic': topic , 'curriculum.$.lesson.sections': sections }  }, function (err, cohort) {
-	// 	if (err) return res.status(500).send(err);
-	// 	console.log(33333333, cohort)
-	// 	return res.send(cohort);
-	// })
 };
 
 exports.addSection = function(req, res){
-	var body = req.body;
-	Cohort.findOne({ 'curriculum._id': req.params.curriculumId }, function(err, cohort){
-		cohort.curriculum.id(req.params.curriculumId).lesson.sections.push(body);
+	Cohort.findById(req.params.cohortId, function(err, cohort){
+		cohort.curriculum.id(req.params.dayId).lesson.sections.push(req.body);
 		cohort.save(function(err, data){
-			res.send(data)
+			res.send(data.curriculum.id(req.params.dayId))
 		})
 	})
+};
 
-
-// 		Lesson.findByIdAndUpdate({ _id: req.params.lessonId }, { $push: { sections: body } }, function(err, data){
-	// 	if (err) return res.status(500).send('there was an error');
-	// 	console.log(11111, data)
+exports.removeSection = function(req, res){
+	var data = req.body;
+	Cohort.findById(req.body.cohortId , function(err, cohort){
+		console.log('info', 4444444444444, cohort.curriculum.id(req.body.dayId).lesson)
+		cohort.curriculum.id(req.body.dayId).lesson.sections.id(req.body.sectionId).remove();
+		cohort.save(function(err, data){
+			res.send(data);
+		})
+	})
+	// Lesson.update({ 'sections._id' : req.params.sectionId }, { $pull: { 'sections' : { _id : req.params.sectionId }}  }, function(err, data){
+	// 	if (err) return res.status(500).send('you need to enter the customer id');
 	// 	return res.send(data);
 	// })
 };
