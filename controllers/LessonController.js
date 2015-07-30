@@ -31,10 +31,10 @@ module.exports = {
 			// get lesson id
 			for (var i = 0; i < course.curriculum.length; i++) {
 				if (course.curriculum[i]._id == req.params.dayId) {
-					// Lesson.findById(course.curriculum[i].lesson, function (err, lesson) {
-					// 	if (err) return res.status(500).send(err);
-						return res.json(course.curriculum[i]);
-					// })
+					Lesson.findById(course.curriculum[i].lesson, function (err, lesson) {
+						if (err) return res.status(500).send(err);
+						if (lesson) return res.json(lesson);
+					})
 					return;
 				}
 			}

@@ -2,7 +2,14 @@ angular.module('devKittens')
 
 .controller('DayController', function ($scope, dayId, typeRef, typeId, user, activeLesson, infoStorage, lessonService, courseServices, cohortServices) {
 	$scope.user = user;
-	$scope.lesson = activeLesson;
+	
+	if (typeRef == 'cohort') {
+		$scope.lesson = activeLesson.lesson;
+		$scope.day = activeLesson;
+	} else if (typeRef == 'course') {
+		$scope.lesson = activeLesson;
+		$scope.day = null
+	}
 
 //TYPEREF REFERS TO COURSE OR COHORT
 
