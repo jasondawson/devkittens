@@ -6,9 +6,10 @@ angular.module('devKittens')
 	if (typeRef == 'cohort') {
 		$scope.lesson = activeLesson.lesson;
 		$scope.day = activeLesson;
+		console.log($scope.day.instructor, user.userType);
 	} else if (typeRef == 'course') {
 		$scope.lesson = activeLesson;
-		$scope.day = null
+		$scope.day = null;
 	}
 
 //TYPEREF REFERS TO COURSE OR COHORT
@@ -169,8 +170,7 @@ angular.module('devKittens')
 
 	$scope.teachLesson = function(lesson) {
 		console.log(user, lesson);
-		lesson.instructor = [];
-		lesson.instructor.push(user._id);
+		$scope.day.instructor = true;
 		cohortServices.addInstructor(user, typeId, lesson, dayId)
 		.then(function(response) {
 			console.log(response);
