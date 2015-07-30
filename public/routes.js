@@ -76,9 +76,9 @@ angular.module('devKittens')
 		controller: 'DayController',
 		resolve: {
 			user: getBlockedAuth,
-			courseId: function($route){
-				return $route.current.params.courseId;
-			},
+			// courseId: function($route){
+			// 	return $route.current.params.courseId;
+			// },
 			dayId: function($route){
 				return $route.current.params.dayId;
 			},
@@ -89,6 +89,12 @@ angular.module('devKittens')
 				if ($route.current.params.type == "cohort") {
 					return cohortServices.getCohortLesson($route.current.params.typeId, $route.current.params.dayId);
 				}
+			},
+			type: function ($route) {
+				return $route.current.params.type;
+			},
+			typeId: function ($route) {
+				return $route.current.params.typeId;
 			},
 			user: getAuth
 		}

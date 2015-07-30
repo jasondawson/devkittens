@@ -98,12 +98,22 @@ exports.getCohortDay = function(req, res) {
 
 
 exports.updateLesson = function (req, res) {
+	console.log(1111111, req.body, 2222222, req.params)
 	var topic = req.body.topic;
 	var sections = req.body.sections
-	Cohort.update( { 'curriculum._id': req.params.curriculumId }, { $set: { 'curriculum.$.lesson.topic': topic , 'curriculum.$.lesson.sections': sections }  }, function (err, cohort) {
-		if (err) return res.status(500).send(err);
-		return res.send(cohort);
+	Cohort.findById(req.params.cohortId, function (err, cohort) {
+		console.log('cohort', cohort);
+		cohort.curriculum.id(req.body.dayId).set({topic: topic});
+		cohort.curriculum.id(req.body.dayId).set({ lesson: { topic: topic, sections: sections } });
+		cohort.save(function(err, data){
+			res.send(data)
+		})
 	})
+	// } { $set: {'curriculum.$.topic': topic, 'curriculum.$.lesson.topic': topic , 'curriculum.$.lesson.sections': sections }  }, function (err, cohort) {
+	// 	if (err) return res.status(500).send(err);
+	// 	console.log(33333333, cohort)
+	// 	return res.send(cohort);
+	// })
 };
 
 exports.addSection = function(req, res){

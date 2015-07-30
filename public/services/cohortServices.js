@@ -101,13 +101,17 @@ angular.module("devKittens")
 	// 	})
 	// };
 
-	// this.updateLesson = function(id, data){
-	// 	return $http({
-	// 		method: 'PUT',
-	// 		url: '/api/cohort/lessons/' + id,
-	// 		data: data
-	// 	})
-	// };
+	this.updateLesson = function(cohortId, dayId, topic, sections){
+		return $http({
+			method: 'PUT',
+			url: '/api/cohort/lessons/' + cohortId,
+			data: {
+				topic: topic,
+				sections: sections,
+				dayId: dayId
+			}
+		})
+	};
 
 	// this.removeLessonSection = function(id){
 	// 	return $http({
