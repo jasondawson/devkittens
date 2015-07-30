@@ -29,6 +29,15 @@
 				</div>
 			</sortable>
 			<div class="instructor-type" ng-show="!day.instructor && user.userType !== 'student'">available</div>
+
+	<!-- <div class="calendar-container" ng-click="viewDay(day)" ng-repeat="day in currentCohort.dates">
+		<hr><hr><hr><hr><hr><hr>
+		
+		<div class="display-box add-new">
+			<span class="text-dashboard calendar-text">{{ day | date: 'd' }}</span>
+			<p>{{ day.name }}</p>
+			<div ng-show="!day.instructor && user.userType !== 'student'">available</div> -->
+
 		</div>
 	</div>
 </div>

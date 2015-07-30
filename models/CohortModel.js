@@ -19,7 +19,7 @@ var cohortSchema = new Schema({
 // cohortSchema.pre('save', function(startDate, duration, next) {
 // 	var datesArr = [startDate];
 // 	var formattedDates = [];
-// 	for(var i = 1; i <= duration; i++) {
+// 	for(var i = 1; i < duration; i++) {
 // 		var tomorrow = datesArr[i - 1] + (1000 * 60 * 60 * 24);
 // 		datesArr.push(tomorrow);
 // 	}

@@ -7,7 +7,7 @@ var Course = require('../models/CourseModel.js'),
 var populateCalendar = function(startDate, numDays) {
 	var datesArr = [startDate];
 	var formattedDates = [];
-	for(var i = 1; i <= numDays; i++) {
+	for(var i = 1; i < numDays; i++) {
 		var tomorrow = datesArr[i - 1] + (1000 * 60 * 60 * 24);
 		datesArr.push(tomorrow);
 	}
