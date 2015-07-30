@@ -9,7 +9,8 @@ var cohortSchema = new Schema({
 	, curriculum: [{
 		topic: String,
 		lesson: {},
-		day: Number
+		day: Number,
+		instructor: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }]
 	}]
 	, startDate: {type: Date, required: true}
 	, dates: [ String ]

@@ -91,7 +91,7 @@ angular.module('devKittens')
 					return cohortServices.getCohortLesson($route.current.params.typeId, $route.current.params.dayId);
 				}
 			},
-			type: function ($route) {
+			typeRef: function ($route) {
 				return $route.current.params.type;
 			},
 			typeId: function ($route) {

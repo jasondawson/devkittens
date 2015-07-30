@@ -1,12 +1,12 @@
 angular.module('devKittens')
 
-.controller('DayController', function ($scope, dayId, type, typeId, user, activeLesson, infoStorage, lessonService, courseServices, cohortServices) {
+.controller('DayController', function ($scope, dayId, typeRef, typeId, user, activeLesson, infoStorage, lessonService, courseServices, cohortServices) {
 	$scope.user = user;
 	$scope.lesson = activeLesson;
 
 
 //TYPE REFERS TO COURSE OR COHORT
-	$scope.isType = type;
+	$scope.typeRef = typeRef;
 	console.log('type', $scope.isType)
 
 	$scope.cohortId = typeId;
