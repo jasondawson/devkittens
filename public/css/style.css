@@ -149,10 +149,24 @@ i:hover {
   margin-left: 19px;
 }
 .portlet-placeholder {
-  margin: 0 1em 1em 0;
-  height: 100px;
-  background-color: #eee;
-  box-shadow: inset 0px 0px 8px 0px rgba(0, 0, 0, 0.33);
+  margin: 0;
+  height: 22px;
+  width: 100%;
+  background-color: #F6F6EF;
+  box-shadow: inset 0px 0px 8px 0px rgba(0, 0, 0, 0.15);
+}
+.active-dragging {
+  cursor: -webkit-grabbing;
+  background-color: #fff;
+  border-radius: 5px;
+  -ms-transform: rotate(1.1deg);
+  /* IE 9 */
+  -webkit-transform: rotate(1.1deg);
+  /* Safari */
+  transform: rotate(1.1deg);
+}
+.full-height.column {
+  height: 100%;
 }
 header {
   position: fixed;
@@ -428,17 +442,6 @@ section.dashboard .right {
   opacity: 0.6;
   display: inline-block;
 }
-.cal .active-dragging {
-  cursor: -webkit-grabbing;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0px 0px 7px -2px rgba(0, 0, 0, 0.8);
-  -ms-transform: rotate(1.3deg);
-  /* IE 9 */
-  -webkit-transform: rotate(1.3deg);
-  /* Safari */
-  transform: rotate(1.3deg);
-}
 .cal .course-body {
   display: none;
   padding: 0 10px;
@@ -616,10 +619,11 @@ section.dashboard .right {
 }
 .display-box {
   float: left;
-  width: calc(90%);
+  width: calc(100% - 10px);
   margin-top: 0;
   border-radius: 2px;
   cursor: pointer;
+  height: 95%;
 }
 .display-box p {
   border-radius: 2px;
@@ -629,7 +633,8 @@ section.dashboard .right {
   line-height: 16px;
   margin-bottom: 0px;
 }
-.display-box p:hover {
+.display-box p:hover,
+.display-box p:active {
   border: 1px solid #d5d5d5;
   background-color: #eeeeee;
 }
