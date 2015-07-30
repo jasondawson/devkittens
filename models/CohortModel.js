@@ -16,19 +16,19 @@ var cohortSchema = new Schema({
 	, location: String
 })
 
-cohortSchema.pre('save', function(startDate, duration, next) {
-	var datesArr = [startDate];
-	var formattedDates = [];
-	for(var i = 1; i <= duration; i++) {
-		var tomorrow = datesArr[i - 1] + (1000 * 60 * 60 * 24);
-		datesArr.push(tomorrow);
-	}
-	for(var i = 0; i < datesArr.length; i++) {
-		formattedDates.push(new Date(datesArr[i]))
-	}
+// cohortSchema.pre('save', function(startDate, duration, next) {
+// 	var datesArr = [startDate];
+// 	var formattedDates = [];
+// 	for(var i = 1; i <= duration; i++) {
+// 		var tomorrow = datesArr[i - 1] + (1000 * 60 * 60 * 24);
+// 		datesArr.push(tomorrow);
+// 	}
+// 	for(var i = 0; i < datesArr.length; i++) {
+// 		formattedDates.push(new Date(datesArr[i]))
+// 	}
 
-	this.dates = formatedDates;
-	next();
-})
+// 	this.dates = formattedDates;
+// 	next();
+// })
 
 module.exports = mongoose.model("Cohort", cohortSchema);
