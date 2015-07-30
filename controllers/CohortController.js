@@ -4,20 +4,21 @@ var Course = require('../models/CourseModel.js'),
 	User   = require('../models/User.js');
 
 // Create dates to populate the calendar.
-var populateCalendar = function(startDate, numDays) {
-	var datesArr = [startDate];
-	var formattedDates = [];
-	for(var i = 1; i < numDays; i++) {
-		var tomorrow = datesArr[i - 1] + (1000 * 60 * 60 * 24);
-		datesArr.push(tomorrow);
-	}
-	for(var i = 0; i < datesArr.length; i++) {
-		formattedDates.push(new Date(datesArr[i]).toISOString());
-	}
-	// console.log('calendar Dates ', formattedDates);
-	console.log('test date ', formattedDates[2]);
-	return formattedDates;
-}
+// var populateCalendar = function(startDate, numDays) {
+// 	var datesArr = [startDate];
+// 	console.log('datesArr startDate ', new Date(datesArr[0]));
+// 	var formattedDates = [];
+// 	for(var i = 1; i < numDays; i++) {
+// 		var tomorrow = datesArr[i - 1] + (1000 * 60 * 60 * 24);
+// 		datesArr.push(tomorrow);
+// 	}
+// 	for(var i = 0; i < datesArr.length; i++) {
+// 		formattedDates.push(new Date(datesArr[i]));
+// 	}
+// 	// console.log('calendar Dates ', formattedDates);
+// 	console.log('test date ', formattedDates[2]);
+// 	return formattedDates;
+// }
 
 // getQuarter(Date.now(), 90)
 
@@ -80,9 +81,9 @@ exports.getCohort = function(req, res) {
 	.populate('students')
 	.exec(function (err, data) {
 		console.log('data ', data)
-		var dates = populateCalendar(data.startDate.getTime(), data.curriculum.length);
-		data.dates = dates;
-		console.log('data.dates ', data);
+		// var dates = populateCalendar(data.startDate.getTime(), data.curriculum.length);
+		// data.dates = dates;
+		// console.log('data.dates ', data);
 		res.json(data);
 	})
 };

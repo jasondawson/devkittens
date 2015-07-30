@@ -12,7 +12,4 @@ angular.module('devKittens')
 		$location.path('/day/cohort/' + $scope.currentCohort._id + '/' + day._id);
 	}
 
-	// console.log('currentCohort ', $scope.currentCohort);
-
-
 })
