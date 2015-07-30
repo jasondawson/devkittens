@@ -9,7 +9,7 @@ angular.module('devKittens')
 	})
 
 	.when('/course/:courseId?', {
-		templateUrl: '/public/templates/calendar.html',
+		templateUrl: '/public/templates/course.html',
 		controller: 'CourseController',
 		resolve: {
 			currentCourseData: function($route, $q, $location, infoStorage, courseServices, cohortServices) {
@@ -70,8 +70,8 @@ angular.module('devKittens')
 		}
 	})
 
-
-	.when('/day/:courseId/:dayId', {
+	// the type parameter should specify cohort or course; the type id is the _id of that course/cohort
+	.when('/day/:type/:typeId/:dayId', {
 		templateUrl: '/public/templates/day.html',
 		controller: 'DayController',
 		resolve: {
@@ -82,8 +82,13 @@ angular.module('devKittens')
 			dayId: function($route){
 				return $route.current.params.dayId;
 			},
-			activeLesson: function (lessonService, $route) {
-				return lessonService.getLesson($route.current.params.courseId, $route.current.params.dayId)
+			activeLesson: function (lessonService, cohortServices, $route) {
+				if ($route.current.params.type == "course") {
+					return lessonService.getLesson($route.current.params.typeId, $route.current.params.dayId);
+				}
+				if ($route.current.params.type == "cohort") {
+					return cohortServices.getCohortLesson($route.current.params.typeId, $route.current.params.dayId);
+				}
 			},
 			user: getAuth
 		}

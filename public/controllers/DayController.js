@@ -6,6 +6,8 @@ angular.module('devKittens')
 	$scope.courseId = courseId;
 	$scope.dayId = dayId;
 
+	console.log(111111, $scope.lesson);
+
 
 
 	// ------------ CREATING NEW LESSON -------------------------

@@ -20,7 +20,7 @@ function ($scope, user, calendarService, infoStorage, emailsService, cohortServi
 	$scope.viewDay = function (day) {
 		console.log('day', day);
 		infoStorage.saveLessonRef(day);
-		$location.path('/day/' + currentCourseData._id + '/' + day._id);
+		$location.path('/day/course/' + currentCourseData._id + '/' + day._id);
 	}
 
 	//sending email invites to students, doesn't belong here

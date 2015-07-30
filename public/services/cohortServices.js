@@ -72,6 +72,21 @@ angular.module("devKittens")
 		return dfrd.promise;
 	}
 
+	this.getCohortLesson = function(cohortId, dayId) {
+		var dfrd = $q.defer();
+
+		$http({
+			method: "GET",
+			url: '/api/cohort-day/' + cohortId + '/' + dayId
+		}).then(function (response) {
+			dfrd.resolve(response.data);
+		})
+		.catch(function (err) {
+			dfrd.reject(err);
+		})
+		return dfrd.promise;
+	}
+
 
 	//-------------------- UPDATING LESSON ----------------
 
@@ -86,26 +101,26 @@ angular.module("devKittens")
 	// 	})
 	// };
 
-	this.updateLesson = function(id, data){
-		return $http({
-			method: 'PUT',
-			url: '/api/cohort/lessons/' + id,
-			data: data
-		})
-	};
+	// this.updateLesson = function(id, data){
+	// 	return $http({
+	// 		method: 'PUT',
+	// 		url: '/api/cohort/lessons/' + id,
+	// 		data: data
+	// 	})
+	// };
 
-	this.removeLessonSection = function(id){
-		return $http({
-			method: 'PUT',
-			url: '/api/cohort/lessons/remove/' + id
-		})
-	};
+	// this.removeLessonSection = function(id){
+	// 	return $http({
+	// 		method: 'PUT',
+	// 		url: '/api/cohort/lessons/remove/' + id
+	// 	})
+	// };
 
-	this.addLessonSection = function(id, section){
-		return $http({
-			method: 'POST',
-			url: '/api/cohort/lesson/sections/' + id,
-			data: section
-		})
-	}
+	// this.addLessonSection = function(id, section){
+	// 	return $http({
+	// 		method: 'POST',
+	// 		url: '/api/cohort/lesson/sections/' + id,
+	// 		data: section
+	// 	})
+	// }
 })

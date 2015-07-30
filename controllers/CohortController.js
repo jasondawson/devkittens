@@ -66,7 +66,7 @@ exports.getCohort = function(req, res) {
 };
 
 
-// TODO: This is going to be a huge request
+// TODO: This is going to be a huge request but I'll do it for you becaues I really care
 exports.getAllCohorts = function(req, res) {
 	Cohort.find({}, function(err, data) {
 		if (err) {
@@ -76,6 +76,25 @@ exports.getAllCohorts = function(req, res) {
 		}
 	})
 };
+
+exports.getCohortDay = function(req, res) {
+	console.log(22222, req.params, 3333333, req.body)
+	Cohort.findOne({_id: req.params.cohortId}, function(err, data) {
+		if (err) {
+			res.status(500).json(err);
+		} else {
+			console.log(444444, data)
+			var lesson;
+			for (var i = 0; i < data.curriculum.length; i++) {
+				if (data.curriculum[i]._id == req.params.dayId) {
+					lesson = data.curriculum[i].lesson;
+				}
+			}
+			console.log(lesson);
+			res.json(lesson);
+		}
+	})
+}
 
 
 exports.updateLesson = function (req, res) {

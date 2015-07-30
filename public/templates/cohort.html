@@ -21,6 +21,7 @@
 		<div class="display-box add-new">
 			<span class="text-dashboard calendar-text">{{ day.day }}</span>
 			<p>{{ day.topic }}</p>
+			<div ng-show="!day.instructor && user.userType !== 'student'">available</div>
 		</div>
 	</div> <!-- End of 'calendar-container' -->
 </div>
