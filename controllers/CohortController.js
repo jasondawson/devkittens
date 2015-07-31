@@ -4,7 +4,6 @@ var Course = require('../models/CourseModel.js'),
 	User   = require('../models/User.js');
 
 exports.createNewCohort = function(req, res) {
-	console.log('curriculum', req.body)
 	Course.findById(req.body.courseType._id)
 	.populate('curriculum.lesson')
 	.lean()
@@ -23,8 +22,6 @@ exports.createNewCohort = function(req, res) {
 
 			.save(function(err2, data2) {
 				if (err2) {
-					console.log(22222, 'err2', err2)
-
 					res.status(500).json(err2);
 				} else {
 					res.json(data2);
@@ -61,10 +58,8 @@ exports.getCohort = function(req, res) {
 	Cohort.findById(req.params.cohortId)
 	.populate('students')
 	.exec(function (err, data) {
-		console.log('data ', data)
 		// var dates = populateCalendar(data.startDate.getTime(), data.curriculum.length);
 		// data.dates = dates;
-		// console.log('data.dates ', data);
 		res.json(data);
 	})
 };
@@ -82,12 +77,10 @@ exports.getAllCohorts = function(req, res) {
 };
 
 exports.getCohortDay = function(req, res) {
-	console.log(22222, req.params, 3333333, req.body)
 	Cohort.findOne({_id: req.params.cohortId}, function(err, data) {
 		if (err) {
 			res.status(500).json(err);
 		} else {
-			console.log(444444, data)
 			var lesson;
 			for (var i = 0; i < data.curriculum.length; i++) {
 				if (data.curriculum[i]._id == req.params.dayId) {
@@ -95,7 +88,6 @@ exports.getCohortDay = function(req, res) {
 					return res.json(data.curriculum[i]);
 				}
 			}
-			// console.log(lesson);
 			// res.json(lesson);
 		}
 	})
@@ -103,11 +95,9 @@ exports.getCohortDay = function(req, res) {
 
 
 exports.updateLesson = function (req, res) {
-	console.log(1111111, req.body, 2222222, req.params)
 	var topic = req.body.topic;
 	var sections = req.body.sections
 	Cohort.findById(req.params.cohortId, function (err, cohort) {
-		console.log('cohort', cohort);
 		cohort.curriculum.id(req.body.dayId).set({topic: topic});
 		cohort.curriculum.id(req.body.dayId).set({ lesson: { topic: topic, sections: sections } });
 		cohort.save(function(err, data){
@@ -128,7 +118,6 @@ exports.addSection = function(req, res){
 exports.removeSection = function(req, res){
 	var data = req.body;
 	Cohort.findById(req.body.cohortId , function(err, cohort){
-		console.log('info', 4444444444444, cohort.curriculum.id(req.body.dayId).lesson)
 		cohort.curriculum.id(req.body.dayId).lesson.sections.id(req.body.sectionId).remove();
 		cohort.save(function(err, data){
 			res.send(data);
@@ -147,7 +136,6 @@ exports.removeSection = function(req, res){
 // Create dates to populate the calendar.
 // var populateCalendar = function(startDate, numDays) {
 // 	var datesArr = [startDate];
-// 	console.log('datesArr startDate ', new Date(datesArr[0]));
 // 	var formattedDates = [];
 // 	for(var i = 1; i < numDays; i++) {
 // 		var tomorrow = datesArr[i - 1] + (1000 * 60 * 60 * 24);
@@ -156,8 +144,6 @@ exports.removeSection = function(req, res){
 // 	for(var i = 0; i < datesArr.length; i++) {
 // 		formattedDates.push(new Date(datesArr[i]));
 // 	}
-// 	// console.log('calendar Dates ', formattedDates);
-// 	console.log('test date ', formattedDates[2]);
 // 	return formattedDates;
 // }
 

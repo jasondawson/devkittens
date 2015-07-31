@@ -1028,6 +1028,7 @@ section.lesson .fa-pencil {
   font-size: 14px;
   padding-top: 10px;
   cursor: pointer;
+  margin-left: 20px;
 }
 section.lesson .container.extra-padding {
   padding: 20px 40px;

@@ -52,7 +52,6 @@ exports.removeFromInstructor = function(req, res) {
 			}
 			instructor.save(function(err, newUser) {
 				if (!err) {
-					console.log(newUser);
 					res.json(newUser);
 				}
 			})
