@@ -45,6 +45,31 @@ exports.sendEmail = function (req, res) {
 
 };
 
+exports.sendReminder = function (email) {
+	var message = {
+	    text: "Ooops! The original message was not sent correctly.",
+	    html: email.html,
+	    subject: email.subject,
+	    to: email.to,
+		from_name: 'DevMountain',
+		from_email: 'yofala@gmail.com',
+		headers: {
+			'Reply-To': 'yofala@gmail.com'
+		}
+	};
+
+
+
+    mandrill_client.messages.send({"message": message, "async": async, "ip_pool": ip_pool}, function(result) {
+        console.log(result);
+
+  
+    }, function(e) {
+        console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
+        
+    });
+}
+
 
 // EXAMPLE EMAIL
 // var message = {
