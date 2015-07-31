@@ -18,7 +18,6 @@ function ($scope, calendarService, user, infoStorage, emailsService, cohortServi
 
 
 	$scope.viewDay = function (day) {
-		console.log('day', day);
 		infoStorage.saveLessonRef(day);
 		$location.path('/day/course/' + currentCourseData._id + '/' + day._id);
 	}
