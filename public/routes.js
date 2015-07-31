@@ -13,25 +13,21 @@ angular.module('devKittens')
 		controller: 'CourseController',
 		resolve: {
 			currentCourseData: function($route, $q, $location, infoStorage, courseServices, cohortServices) {
-				var tempCourseData = infoStorage.getCurrentCourse();
-				if (tempCourseData) return tempCourseData;
-				else {
-					var deferred = $q.defer();
+				var deferred = $q.defer();
 
-					courseServices.getCourse($route.current.params.courseId)
-					.then(function (response) {
-						infoStorage.saveCalendarId(response._id);
-						infoStorage.setCurrentCourse(response);
-						var data = infoStorage.getCurrentCourse();
-						deferred.resolve(data);
-					})
-					.catch(function (err) {
-						console.error(err);
-						$location.path('/dashboard');
-						deferred.reject(err);
-					});
-					return deferred.promise;
-				}
+				courseServices.getCourse($route.current.params.courseId)
+				.then(function (response) {
+					infoStorage.saveCalendarId(response._id);
+					infoStorage.setCurrentCourse(response);
+					var data = infoStorage.getCurrentCourse();
+					deferred.resolve(data);
+				})
+				.catch(function (err) {
+					console.error(err);
+					$location.path('/dashboard');
+					deferred.reject(err);
+				});
+				return deferred.promise;
 			},
 			dayOfWeek: function(infoStorage) {
 				return infoStorage.getDayOfWeek();
@@ -45,24 +41,21 @@ angular.module('devKittens')
 		controller: 'CohortController',
 		resolve: {
 			currentCohortData: function($route, $q, $location, infoStorage, cohortServices) {
-				// var tempCohortData = infoStorage.getCurrentCohort();
-				// if(tempCohortData) return tempCohortData;
-				// else {
-				var deferred = $q.defer();
+			var deferred = $q.defer();
 
-				cohortServices.getCohort($route.current.params.cohortId)
-				.then(function(response) {
-					infoStorage.setCurrentCohort(response);
-					var data = infoStorage.getCurrentCohort();
-					deferred.resolve(data); 
-				})
-				.catch(function(err) {
-					console.error(err);
-					$location.path('/dashboard');
-					deferred.reject(err);
-				});
-				return deferred.promise;
-				// }
+			cohortServices.getCohort($route.current.params.cohortId)
+			.then(function(response) {
+				infoStorage.saveCalendarId(response._id);
+				infoStorage.setCurrentCohort(response);
+				var data = infoStorage.getCurrentCohort();
+				deferred.resolve(data); 
+			})
+			.catch(function(err) {
+				console.error(err);
+				$location.path('/dashboard');
+				deferred.reject(err);
+			});
+			return deferred.promise;
 			},
 			dayOfWeek: function(infoStorage) {
 				return infoStorage.getDayOfWeek();
@@ -76,8 +69,6 @@ angular.module('devKittens')
 		templateUrl: '/public/templates/day.html',
 		controller: 'DayController',
 		resolve: {
-			user: getBlockedAuth,
-
 			dayId: function($route) {
 				return $route.current.params.dayId;
 			},
