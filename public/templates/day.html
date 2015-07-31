@@ -59,7 +59,7 @@
 				<h2>{{lesson.topic}}
 
 					<span style="float: right;">
-						<button ng-click="teachLesson(lesson)" ng-show="!day.instructor && user.userType !== 'student' && typeRef == 'cohort'" class="btn btn-default">Teach this lesson</button>
+						<button ng-click="teachLesson(day)" ng-show="!day.instructor && user.userType !== 'student' && typeRef == 'cohort'" class="btn btn-default">Teach this lesson</button>
 
 						<button ng-click="removeLesson(lesson)" ng-show="day.instructor == user._id && user.userType !== 'student' && typeRef == 'cohort'" class="btn btn-default">Cancel teaching appointment</button> 
 						
