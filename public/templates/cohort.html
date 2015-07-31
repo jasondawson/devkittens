@@ -2,9 +2,9 @@
 <loading-gif ng-if="loading"></loading-gif>
 
 <div class="calendar-nav">
-	<i class="fa fa-arrow-circle-left" ng-click="previousMonth()"></i>
-	<span class="calendar-title">{{ currentCohort.name }} - {{ currentCohort.startDate | date: fullDate }}</span>
-	<i class="fa fa-arrow-circle-right" ng-click="nextMonth()"></i>
+	<i class="previous-month fa fa-chevron-left" ng-class="{ active: currentSegment === 0 }" ng-click="previousMonth()"></i>
+	<span class="calendar-title">{{ currentCohort.name }} | {{ currentCohort.startDate | date: fullDate }} - {{ arrayLength[arrayLength.length - 1].day | date: fullDate }}</span>
+	<i class="next-month fa fa-chevron-right"  ng-click="nextMonth()"></i>
 </div>
 
 <div class="week-day-container">
@@ -16,11 +16,11 @@
 
 <div class="overall-container">
 
-	<div class="calendar-container" ng-click="viewDay(day)" ng-repeat="day in currentCohort.curriculum">
+	<div class="calendar-container" ng-click="viewDay(day)" ng-repeat="day in activeMonth">
 	<hr><hr><hr><hr><hr><hr>
 		<div class="display-box add-new column">
 			<!-- <span class="text-dashboard calendar-text">{{ day.day | date: 'd' }}</span> -->
-			<span class="text-dashboard calendar-text">{{ day.day | date: 'd' }}</span>
+			<span class="text-dashboard calendar-text">{{ day.day | date: 'MMM d' }}</span>
 
 			<sortable>
 				<div class="column full-height">

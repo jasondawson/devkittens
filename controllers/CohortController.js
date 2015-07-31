@@ -3,25 +3,6 @@ var Course = require('../models/CourseModel.js'),
 	Lesson = require('../models/LessonModel.js'),
 	User   = require('../models/User.js');
 
-// Create dates to populate the calendar.
-// var populateCalendar = function(startDate, numDays) {
-// 	var datesArr = [startDate];
-// 	console.log('datesArr startDate ', new Date(datesArr[0]));
-// 	var formattedDates = [];
-// 	for(var i = 1; i < numDays; i++) {
-// 		var tomorrow = datesArr[i - 1] + (1000 * 60 * 60 * 24);
-// 		datesArr.push(tomorrow);
-// 	}
-// 	for(var i = 0; i < datesArr.length; i++) {
-// 		formattedDates.push(new Date(datesArr[i]));
-// 	}
-// 	// console.log('calendar Dates ', formattedDates);
-// 	console.log('test date ', formattedDates[2]);
-// 	return formattedDates;
-// }
-
-// getQuarter(Date.now(), 90)
-
 exports.createNewCohort = function(req, res) {
 	console.log('curriculum', req.body)
 	Course.findById(req.body.courseType._id)
@@ -158,3 +139,47 @@ exports.removeSection = function(req, res){
 	// 	return res.send(data);
 	// })
 };
+
+
+
+
+// DEPRECATED 
+// Create dates to populate the calendar.
+// var populateCalendar = function(startDate, numDays) {
+// 	var datesArr = [startDate];
+// 	console.log('datesArr startDate ', new Date(datesArr[0]));
+// 	var formattedDates = [];
+// 	for(var i = 1; i < numDays; i++) {
+// 		var tomorrow = datesArr[i - 1] + (1000 * 60 * 60 * 24);
+// 		datesArr.push(tomorrow);
+// 	}
+// 	for(var i = 0; i < datesArr.length; i++) {
+// 		formattedDates.push(new Date(datesArr[i]));
+// 	}
+// 	// console.log('calendar Dates ', formattedDates);
+// 	console.log('test date ', formattedDates[2]);
+// 	return formattedDates;
+// }
+
+// getQuarter(Date.now(), 90)
+
+
+// BREAKS UP THE CALENDAR BASED ON THE MONTH - PUTS EACH MONTH IN IT'S OWN ARRAY
+// function splitArr(arr) {
+// 	var newArr = []
+// 	var start = 0;
+// 	var last;
+// 	for(var i = 0; i < arr.length; i++) {
+// 		if(arr[i] === arr.length) {
+// 			newArr.push(arr.splice(start, arr.length + 1))
+// 		}
+		
+// 		if(arr[i] === 1) {
+// 			last = i;
+// 			newArr.push(arr.splice(start, last));
+//             i = 0;
+//             last = 0;
+// 		}
+// 	}
+// 	return newArr;
+// }

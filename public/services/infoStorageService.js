@@ -67,14 +67,16 @@ angular.module('devKittens')
 	// COHORT
 	service.setCurrentCohort = function(currentCohort) {
 		
-		// var currentCohortArray = [];
+		var currentCohortArray = [];
 
-		// for(var i = 0; i < currentCohort.curriculum.length; i += 30) {
-		// 	currentCohortArray.push(currentCohort.curriculum.slice(i, i + 30))
-		// }
+		for(var i = 0; i < currentCohort.curriculum.length; i += 28) {
+			currentCohortArray.push(currentCohort.curriculum.slice(i, i + 28))
+		}
 
-		// currentCohort.curriculum = currentCohortArray;
+		currentCohort.curriculum = currentCohortArray;
 		currentCohortData = currentCohort;
+
+		console.log('currentCohortData ', currentCohortData)
 	}
 
 	service.getCurrentCohort = function() {
