@@ -15,16 +15,18 @@
 
 	<span class="calendar-title">{{ currentCourse.title }}</span>
 
+	<i class="next-month fa fa-chevron-right"  ng-click="nextMonth()"></i>
+
 	<!-- IF NO RIGHT -->
-	<div ng-if="currentSegment === (activeMonth.length - 2)"
+	<!-- <div ng-if="currentSegment === (activeMonth.length - 1)"
 		 class="navigate-btn dimmed">
 		<i class="fa fa-chevron-right dimmed"></i>
-	</div>
+	</div> -->
 	<!-- IF RIGHT IS OPTION -->
-	<div ng-if="currentSegment !== (activeMonth.length - 2)" ng-click="nextMonth()"
+	<!-- <div ng-if="currentSegment !== (activeMonth.length - 1)" ng-click="nextMonth()"
 		 class="navigate-btn">
 		<i class="fa fa-chevron-right"></i>
-	</div>
+	</div> -->
 </div>
 
 <div class="week-day-container">

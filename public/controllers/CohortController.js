@@ -19,13 +19,35 @@ angular.module('devKittens')
 	}
 
 	$scope.previousMonth = function() {
+		if($scope.currentSegment === 0) {
+			$('.fa-chevron-left').css('color', '#DFDFDF')
+			return;
+		}
+
 		$scope.currentSegment--;
+
+		$('.fa-chevron-left').css('color', '#000');
+		$('.fa-chevron-right').css('color', '#000');
+
 		$scope.activeMonth = $scope.currentCohort.curriculum[$scope.currentSegment];
 	}
 
 	$scope.nextMonth = function() {
+		if($scope.currentSegment === $scope.segmentLength - 1){
+			return;
+		}
+
 		$scope.currentSegment++;
+
+		$('.fa-chevron-right').css('color', '#000');
+		$('.fa-chevron-left').css('color', '#000');
+
 		$scope.activeMonth = $scope.currentCohort.curriculum[$scope.currentSegment];
+
+		if($scope.currentSegment === $scope.segmentLength - 1){
+			$('.fa-chevron-right').css('color', '#DFDFDF')
+			return;
+		}
 
 	}
 

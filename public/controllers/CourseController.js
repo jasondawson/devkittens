@@ -89,15 +89,38 @@ function ($scope, calendarService, user, infoStorage, emailsService, cohortServi
 
 
 	$scope.previousMonth = function() {
+		if($scope.currentSegment === 0) {
+			$('.fa-chevron-left').css('color', '#DFDFDF')
+			return;
+		}
+
 		$scope.currentSegment--;
+
+		$('.fa-chevron-left').css('color', '#000');
+		$('.fa-chevron-right').css('color', '#000');
+
 		$scope.activeMonth = $scope.currentCourse.curriculum[$scope.currentSegment];
 	}
 
 	$scope.nextMonth = function() {
-		$scope.currentSegment++;
-		$scope.activeMonth = $scope.currentCourse.curriculum[$scope.currentSegment];
-	}
 
+		if($scope.currentSegment === $scope.segmentLength - 1){
+			return;
+		}
+
+		$scope.currentSegment++;
+
+		$('.fa-chevron-right').css('color', '#000');
+		$('.fa-chevron-left').css('color', '#000');
+		
+		$scope.activeMonth = $scope.currentCourse.curriculum[$scope.currentSegment];
+
+		if($scope.currentSegment === $scope.segmentLength - 1){
+			$('.fa-chevron-right').css('color', '#DFDFDF')
+			return;
+		}
+
+	}
 
 	// --------------- UPDATING LESSON ------------
 
