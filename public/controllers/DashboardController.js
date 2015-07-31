@@ -179,7 +179,7 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 
 	// All that biz for creating a new cohort, etc. authored by Kyle, the handsomest hunk to ever use toilet paper.
 
-	$scope.locationOptions = ['Provo', 'Salt Lake City'];
+	$scope.locationOptions = ['Provo', 'Salt Lake City', 'Dallas'];
 
 	$scope.createNewCohort = function(obj) {
 		cohortServices.createNewCohort(obj)

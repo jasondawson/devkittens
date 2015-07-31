@@ -26,6 +26,12 @@ var cohortSchema = new Schema({
 
 cohortSchema.pre('save', function(next, startDate, curriculum) {
 	var start = this.startDate.getTime();
+
+	if(this.startDate.getDay() !== 1) {
+		var numDay = this.startDate.getDay() - 1;
+		start = this.startDate.getTime() - ((1000 * 60 * 60 * 24) * (numDay));
+	}
+
 	var datesArr = [start];
 	var formattedDates = [];
 	for(var i = 1; i < this.curriculum.length; i++) {

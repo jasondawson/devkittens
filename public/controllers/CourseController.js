@@ -22,29 +22,6 @@ function ($scope, calendarService, user, infoStorage, emailsService, cohortServi
 		$location.path('/day/course/' + currentCourseData._id + '/' + day._id);
 	}
 
-	//sending email invites to students, doesn't belong here
-
-	// $scope.sendStudentInvite = function (studentEmails) {
-	// 	$scope.loading = true;
-
-	// 	if (!studentEmails) return console.warn('Plase add emails');
-	// 	var cohortInfo = {
-	// 		name: specificCohortData.name,
-	// 		id: specificCohortData._id
-	// 	}
-	// 	emailsService.sendStudentInvite(studentEmails, cohortInfo)
-	// 	.then(function (response) {
-	// 		console.log(response);
-	// 		$scope.loading = false;
-	// 		$scope.newStudents = '';
-	// 		$scope.closeModal();
-	// 	})
-	// 	.catch(function (err) {
-	// 		console.error(err);
-	// 		$scope.loading = false;
-	// 	});
-	// }
-
 	$scope.sendMentorInvite = function(mentorEmails) {
 		$scope.loading = true;
 		if(!mentorEmails) return console.warn('Please add emails');
@@ -121,6 +98,7 @@ function ($scope, calendarService, user, infoStorage, emailsService, cohortServi
 		}
 
 	}
+});
 
 	// --------------- UPDATING LESSON ------------
 
@@ -175,5 +153,27 @@ function ($scope, calendarService, user, infoStorage, emailsService, cohortServi
 	// 	})
 	// }
 
+	// DEPRECATED
+	//sending email invites to students, doesn't belong here
 
-});
+	// $scope.sendStudentInvite = function (studentEmails) {
+	// 	$scope.loading = true;
+
+	// 	if (!studentEmails) return console.warn('Plase add emails');
+	// 	var cohortInfo = {
+	// 		name: specificCohortData.name,
+	// 		id: specificCohortData._id
+	// 	}
+	// 	emailsService.sendStudentInvite(studentEmails, cohortInfo)
+	// 	.then(function (response) {
+	// 		console.log(response);
+	// 		$scope.loading = false;
+	// 		$scope.newStudents = '';
+	// 		$scope.closeModal();
+	// 	})
+	// 	.catch(function (err) {
+	// 		console.error(err);
+	// 		$scope.loading = false;
+	// 	});
+	// }
+
