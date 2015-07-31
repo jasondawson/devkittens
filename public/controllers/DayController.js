@@ -20,8 +20,9 @@ angular.module('devKittens')
 	$scope.typeRef = typeRef;
 
 	// BACK TO CALENDAR
-	$scope.toCalendar = function() {
-		return $location.path('/' + typeRef + '/' + typeId);
+	$scope.toCalendar = function(){
+		console.log(1212121212)
+		$location.path('/' + typeRef + '/' + typeId);
 	}
 
 	// ------------ CREATING NEW LESSON -------------------------
@@ -59,11 +60,9 @@ angular.module('devKittens')
 			var curriculumRef = infoStorage.serveLessonRef()._id;
 			courseServices.updateCourseCurriculum(curriculumRef, response.data._id, topic)
 			.then(function(response){
-				console.log(response);
-				$location.path('/' + typeRef + '/' + typeId);
+				console.log(response)
 			})
 			.catch(function (err) {
-				alert("An error has occurred and the lesson was not saved. Sorry!");
 				console.error(err);
 			});
 
@@ -72,6 +71,7 @@ angular.module('devKittens')
 			// $scope.miniProjects = [];
 			// $scope.projects = [];
 			// $scope.readings = [];
+			$location.path('/' + typeRef + '/' + typeId);
 		})
 		.catch(function (err) {
 			throw new Error(err);
@@ -89,7 +89,6 @@ angular.module('devKittens')
 			lessonService.updateLesson($scope.dayId, $scope.courseId, lessonId, topic, sections)
 			.then(function(response){
 				$scope.lesson.edit = !$scope.lesson.edit;
-				$scope.newSection.show = false;
 			})
 		}
 

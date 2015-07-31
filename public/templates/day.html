@@ -90,8 +90,8 @@
 					<!-- EDIT LESSON -->
 					
 					<div ng-show="lesson.edit">
-						<div class="delete-section">
-							delete section&nbsp;&nbsp;<i ng-show="lesson.edit" class="fa fa-trash-o" ng-click="removeLessonSection($index, section)"></i>
+						<div class="delete-section" ng-click="removeLessonSection($index, section)">
+							delete section&nbsp;&nbsp;<i ng-show="lesson.edit" class="fa fa-trash-o" ></i>
 						</div>
 						<br />
 
@@ -122,7 +122,7 @@
 				
 				<br>
 				<button ng-show="lesson.edit" class="btn btn-success" ng-click="updateLesson()">Submit changes</button>
-				<button class="btn btn-default" style="float: right;" ng-show="lesson.edit"><i class="fa fa-file-text-o" ng-click="newSection.show=!newSection.show"></i>&nbsp;&nbsp;add section</button>
+				<button class="btn btn-default" style="float: right;" ng-show="lesson.edit" ng-click="newSection.show=!newSection.show"><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;add section</button>
 			</span>
 		</div>
 	</div>
