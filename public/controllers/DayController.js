@@ -1,6 +1,7 @@
 angular.module('devKittens')
 
-.controller('DayController', function ($scope, dayId, typeRef, typeId, user, activeLesson, infoStorage, lessonService, courseServices, cohortServices, $location) {
+.controller('DayController',
+function ($scope, dayId, typeRef, typeId, user, activeLesson, infoStorage, lessonService, courseServices, cohortServices, $location) {
 	$scope.user = user;
 	
 	if (typeRef == 'cohort') {
