@@ -256,6 +256,16 @@ header .right .header-dropdown .header-unit {
 header .right .header-dropdown .header-unit:hover {
   background-color: #eee;
 }
+header .right .header-dropdown .arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #FFFFFF;
+  position: absolute;
+  top: -5px;
+  margin-left: 156px;
+}
 section.home {
   height: 100%;
 }
