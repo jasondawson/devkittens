@@ -128,24 +128,20 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 	// Sets currentMentor through an ng-click on dashboard-mentors.html
 	$scope.setMentor = function(mentor) {
 		$scope.currentMentor = mentor
-		console.log('currentMentor ', $scope.currentMentor);
 	}
 
 	$scope.setTeacher = function(teacher) {
 		$scope.currentTeacher = teacher
-		console.log('currentTeacher ', $scope.currentTeacher);
 	}
 
 	$scope.setCourse = function(course) {
 		$scope.currentCourse = course;
 		infoStorage.setCurrentCourse($scope.currentCourse);
-		// console.log('currentCourse ', $scope.currentCourse);
 	}
 
 	$scope.setCohort = function(cohort) {
 		$scope.currentCohort = cohort;
 		infoStorage.setCurrentCohort($scope.currentCohort);
-		// console.log('currentCohort ', $scope.currentCohort);
 	}
 
 	// Send an email to new mentors inviting them to join DevMtn

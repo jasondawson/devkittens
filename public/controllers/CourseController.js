@@ -14,9 +14,6 @@ function ($scope, calendarService, user, infoStorage, emailsService, cohortServi
 	$scope.currentSegment = 0;
 	$scope.activeMonth = $scope.currentCourse.curriculum[0];
 
-	// console.log('currentCourse ', $scope.currentCourse);
-
-
 	$scope.viewDay = function (day) {
 		infoStorage.saveLessonRef(day);
 		$location.path('/day/course/' + currentCourseData._id + '/' + day._id);

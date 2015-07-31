@@ -139,7 +139,6 @@ function ($scope, dayId, typeRef, typeId, user, activeLesson, infoStorage, lesso
 			cohortServices.updateLesson($scope.cohortId, $scope.dayId, topic, sections)
 			.then(function(response){
 				$scope.lesson.edit = !$scope.lesson.edit;
-				console.log('im a cohort');
 			})
 		}
 
@@ -148,7 +147,7 @@ function ($scope, dayId, typeRef, typeId, user, activeLesson, infoStorage, lesso
 			section.show = !section.show
 			cohortServices.addLessonSection($scope.cohortId, $scope.dayId, section).then(function(response){
 				// $scope.lesson.sections.push(response.data.sections[response.data.sections.length - 1]);
-				console.log('look at me', response.data.lesson)
+				
 				$scope.lesson.sections.push(response.data.lesson.sections[response.data.lesson.sections.length - 1]);
 				
 				section.title = '';

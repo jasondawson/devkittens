@@ -40,7 +40,6 @@ cohortSchema.pre('save', function(next, startDate, curriculum) {
 	}
 	for(var i = 0; i < datesArr.length; i++) {
 		formattedDates.push(new Date(datesArr[i]));
-		// console.log('formatted date ', formattedDates[i]);
 	}
 
 
