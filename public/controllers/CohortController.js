@@ -11,6 +11,7 @@ angular.module('devKittens')
 	$scope.segmentLength = $scope.currentCohort.curriculum.length;
 	$scope.currentSegment = 0;
 	$scope.activeMonth = $scope.currentCohort.curriculum[0];
+	
 
 	$scope.viewDay = function(day) {
 		// var currentCohort = infoStorage.getCurrentCohort()

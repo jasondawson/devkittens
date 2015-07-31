@@ -248,6 +248,22 @@
 	.fa {
 		cursor: pointer;
 	}
+
+	@dimmed-color: #CAC9C9;
+	.dimmed {
+		color: @dimmed-color;
+
+		.fa {
+			cursor: not-allowed;
+		}
+
+		&:hover {
+			color: @dimmed-color;
+			.fa {
+				color: @dimmed-color;
+			}
+		}
+	}
 }
 
 .overall-container {

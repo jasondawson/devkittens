@@ -588,6 +588,18 @@ section.dashboard .right {
 .calendar-nav .fa {
   cursor: pointer;
 }
+.calendar-nav .dimmed {
+  color: #cac9c9;
+}
+.calendar-nav .dimmed .fa {
+  cursor: not-allowed;
+}
+.calendar-nav .dimmed:hover {
+  color: #cac9c9;
+}
+.calendar-nav .dimmed:hover .fa {
+  color: #cac9c9;
+}
 .overall-container {
   width: 100%;
   max-height: 100%;

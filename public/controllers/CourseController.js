@@ -89,24 +89,12 @@ function ($scope, calendarService, user, infoStorage, emailsService, cohortServi
 
 
 	$scope.previousMonth = function() {
-		if($scope.currentSegment === 0) {
-			$scope.previousBtn = false;
-			return null;
-		}
-
 		$scope.currentSegment--;
-
 		$scope.activeMonth = $scope.currentCourse.curriculum[$scope.currentSegment];
 	}
 
 	$scope.nextMonth = function() {
 		$scope.currentSegment++;
-
-		if($scope.currentSegment === $scope.segmentLength) {
-			$scope.nextBtn = false;
-			return null;
-		}
-
 		$scope.activeMonth = $scope.currentCourse.curriculum[$scope.currentSegment];
 	}
 
