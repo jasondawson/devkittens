@@ -30,8 +30,8 @@ h4 {
   font-size: 19px;
 }
 body {
-  margin-top: 100px;
-  height: calc(100% - 100px);
+  margin-top: 120px;
+  height: calc(100% - 120px);
 }
 a {
   cursor: pointer;
@@ -103,7 +103,7 @@ i:hover {
   top: 0;
   left: 0;
   z-index: 100;
-  background: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.33);
 }
 .text-left {
   margin: 15px 25px;
@@ -179,7 +179,7 @@ header {
   width: 100%;
   height: 60px;
   background-color: #262626;
-  border-bottom: 1px solid #c3c3c3;
+  border-bottom: 1px solid #191919;
   z-index: 100;
 }
 header .section {
@@ -751,26 +751,27 @@ section.registration .right .inner-right .btn {
 }
 .add-cohort-modal {
   min-height: 70%;
-  width: 50%;
+  width: 45%;
   position: absolute;
   top: 15%;
-  left: 25%;
+  left: 30%;
   z-index: 1000;
   background: #fff;
+  border-radius: 3px;
   border: 1px solid #c3c3c3;
-  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
 }
 .strict-modal {
   overflow: hidden;
 }
 .close-modal {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 8px;
+  right: 10px;
   font-size: 2em;
-  /*		margin: -8% 2%;*/
+  cursor: pointer;
 }
 .close-mini-modal {
   margin: 5px;
@@ -805,6 +806,7 @@ section.registration .right .inner-right .btn {
 .center {
   display: flex;
   justify-content: center;
+  margin: 0 auto;
 }
 select {
   -webkit-appearance: none;
@@ -999,4 +1001,38 @@ section.lesson .fa-pencil {
 section.lesson .container.extra-padding {
   padding: 20px 40px;
   margin-top: 20px;
+}
+section.lesson .delete-section {
+  color: #B06A6A;
+  float: right;
+  cursor: pointer;
+}
+section.lesson .delete-section:hover {
+  color: red;
+}
+section.lesson .fa-trash-o:hover {
+  color: red !important;
+}
+section.lesson .topic-wrapper {
+  display: inline-block;
+  width: 100%;
+}
+section.lesson .topic-wrapper h3 {
+  display: inline-block;
+}
+section.lesson .topic-wrapper input {
+  font-size: 21px;
+  width: 80%;
+  background-color: transparent;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 1px solid #B0B0B0;
+}
+section.lesson .topic-wrapper input:focus {
+  outline: none;
+  border-bottom: 1px solid #1a75ff;
+}
+section.lesson .ta-toolbar {
+  margin-bottom: 10px;
 }

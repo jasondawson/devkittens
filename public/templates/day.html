@@ -48,41 +48,7 @@
 	</section>
 
 
-<!-- 	<div ng-show="!lesson">
-		<div class="flex-row content-center align-items-center" ng-click="closeModal()"></div>
-		<div class="flex-column align-items-center">
-				<h3>Create a new lesson</h3>
-					<form ng-submit="setTopic(topic)"/>
-						<input class="" type="text" ng-model="topic" placeholder="Lesson topic" />
-					</form>
-					<h4>New Section</h4>
-					<form ng-submit="addSection(newSection)">
-						<input type="text" ng-model="newSection.title"
-							   placeholder="Section title"
-							   class="form-control"/>
-
-					   <text-angular ng-model="newSection.content"></text-angular>
-
-					   <button class="btn btn-default">Create section</button>
-					</form>
-					<br>
-					<div ng-repeat="section in sections">
-						<hr ng-if="$index === 0">
-
-						<h4>{{section.title}}</h4>
-						<div ng-bind-html="section.content | unsafe"></div>
-
-						<hr>
-					</div>
-				<br><br>
-				<button ng-click="createLesson(topic)" class="btn btn-success">Save lesson</button>
-		</div>
-	</div> -->
-
-
-
-	<!-- IF THERE IS A LESSON -->
-
+<!-- IF THERE IS A LESSON -->
 <button ng-click="toCalendar()" id="back-to-calendar" class="btn btn-default"><i class="fa fa-long-arrow-left"></i>&nbsp;&nbsp;&nbsp;back to calendar</button>
 
 <section class="lesson smaller-wrapper">
@@ -98,8 +64,9 @@
 			<span class="course-body">
 
 				<!-- EDIT LESSON TITLE -->
-				<div ng-show="lesson.edit">
-					lesson topic: <input type="text" ng-model="lesson.topic"/>
+				<div ng-show="lesson.edit" class="topic-wrapper">
+					<h3>Lesson topic:&nbsp;&nbsp;</h3>
+					<input type="text" ng-model="lesson.topic"/>
 					<!-- <button ng-click="updateLesson()">submit change</button> -->
 				</div>
 
@@ -107,9 +74,8 @@
 				<div ng-repeat="section in lesson.sections track by $index" class="portlet-content container extra-padding">
 					<div ng-show="!lesson.edit">
 						<h3 ng-show="section.title">
-							{{section.title}} 
-							<!-- <i class="fa fa-pencil" ng-click="section.editSection=!section.editSection"></i> -->
-						</h3> 
+							{{section.title}}
+						</h3>
 						<div ng-bind-html="section.content | unsafe"></div>
 						<button ng-click="teachLesson(lesson)" ng-show="!day.instructor && user.userType !== 'student' && typeRef == 'cohort'">Teach this lesson</button> 
 						<button ng-click="removeLesson(lesson)" ng-show="day.instructor == user._id && user.userType !== 'student' && typeRef == 'cohort'">Do not teach this lesson</button> 
@@ -119,18 +85,26 @@
 					<!-- EDIT LESSON -->
 					
 					<div ng-show="lesson.edit">
-						<i ng-show="lesson.edit" class="fa fa-times" ng-click="removeLessonSection($index, section)">delete section</i>
+						<div class="delete-section">
+							delete section&nbsp;&nbsp;<i ng-show="lesson.edit" class="fa fa-trash-o" ng-click="removeLessonSection($index, section)"></i>
+						</div>
 						<br />
-						section title: <input type="text" ng-model="section.title"
+
+						<label>Section title:</label>
+						<input type="text" ng-model="section.title"
 								   placeholder="Section title"
-								   class="form-control"/> 
-						section content: <text-angular ng-model="section.content"></text-angular>
+								   class="form-control"/>
+					   <br> 
+					   <label>Section content:</label>
+						<text-angular ng-model="section.content"></text-angular>
+
 					</div>
 
 				</div>
+
+
 				<!-- ADDS NEW SECTION TO A LESSON -->
-				<i ng-show="lesson.edit" class="fa fa-plus" ng-click="newSection.show=!newSection.show">add section</i>
-				<br />
+				<br>
 				<form ng-show="newSection.show" ng-submit="addLessonSection(newSection)">
 					<input type="text" ng-model="newSection.title"
 						   placeholder="Section title"
@@ -140,8 +114,10 @@
 
 				   <button class="btn btn-default">Create section</button>
 				</form>
-				<br />
-				<button ng-show="lesson.edit" ng-click="updateLesson()">submit changes</button>
+				
+				<br>
+				<button ng-show="lesson.edit" class="btn btn-success" ng-click="updateLesson()">submit changes</button>
+				<button class="btn btn-default" style="float: right;" ng-show="lesson.edit"><i class="fa fa-file-text-o" ng-click="newSection.show=!newSection.show"></i>&nbsp;&nbsp;add section</button>
 			</span>
 		</div>
 	</div>

@@ -20,8 +20,7 @@ angular.module('devKittens')
 	$scope.typeRef = typeRef;
 
 	// BACK TO CALENDAR
-	$scope.toCalendar = function(){
-		console.log(1212121212)
+	$scope.toCalendar = function() {
 		return $location.path('/' + typeRef + '/' + typeId);
 	}
 
@@ -89,6 +88,7 @@ angular.module('devKittens')
 			lessonService.updateLesson($scope.dayId, $scope.courseId, lessonId, topic, sections)
 			.then(function(response){
 				$scope.lesson.edit = !$scope.lesson.edit;
+				$scope.newSection.show = false;
 			})
 		}
 

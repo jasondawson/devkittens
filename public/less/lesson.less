@@ -20,4 +20,50 @@ section.lesson {
 		margin-top: 20px;
 	}
 
+	.delete-section {
+		color: #B06A6A;
+		float: right;
+		cursor: pointer;
+
+		&:hover {
+			color: red;
+		}
+	}
+
+	.fa-trash-o {
+		&:hover {
+			color: red !important;
+		}
+	}
+
+
+	.topic-wrapper {
+		display: inline-block;
+		width: 100%;
+		
+		h3 {
+			display: inline-block;
+		}
+
+		input {
+			font-size: 21px;
+			width: 80%;
+			background-color: transparent;
+			border-top: none;
+			border-right: none;
+			border-left: none;
+			border-bottom: 1px solid #B0B0B0;
+
+			&:focus {
+				outline: none;
+				border-bottom: 1px solid @blue;
+			}
+		}
+	}
+
+
+	.ta-toolbar {
+		margin-bottom: 10px;
+	}
+
 }
