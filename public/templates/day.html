@@ -73,12 +73,15 @@
 				<!-- LESSON INFO -->
 				<div ng-repeat="section in lesson.sections track by $index" class="portlet-content container extra-padding">
 					<div ng-show="!lesson.edit">
+						<span style="float: right;">
+							<button ng-click="teachLesson(lesson)" ng-show="!day.instructor && user.userType !== 'student' && typeRef == 'cohort'" class="btn btn-default">Teach this lesson</button> 
+							<button ng-click="removeLesson(lesson)" ng-show="day.instructor == user._id && user.userType !== 'student' && typeRef == 'cohort'" class="btn btn-default">Do not teach this lesson</button> 
+						</span>
+
 						<h3 ng-show="section.title">
 							{{section.title}}
 						</h3>
 						<div ng-bind-html="section.content | unsafe"></div>
-						<button ng-click="teachLesson(lesson)" ng-show="!day.instructor && user.userType !== 'student' && typeRef == 'cohort'">Teach this lesson</button> 
-						<button ng-click="removeLesson(lesson)" ng-show="day.instructor == user._id && user.userType !== 'student' && typeRef == 'cohort'">Do not teach this lesson</button> 
 					</div>
 
 

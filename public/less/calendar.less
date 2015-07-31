@@ -234,7 +234,7 @@
 	display: flex;
 	justify-content: space-between;
 	font-size: 2em;
-	margin: 0 2.5% 40px 2.5%;
+	margin: 0 2.5% 70px 2.5%;
 
 	.navigate-btn {
 		cursor: pointer;
@@ -243,6 +243,10 @@
 				color: @blue;
 			}
 		}
+	}
+
+	.fa {
+		cursor: pointer;
 	}
 }
 
@@ -261,9 +265,16 @@
 }
 
 .calendar-title {
-	display: flex;
-	justify-content: center;
-	margin: 0;
+	text-align: center;
+
+	.subtitle.date-info {
+		color: #B2B2B2;
+		font-size: 14px;
+	}
+}
+
+.calendar-title.offset {
+	margin-top: -30px;
 }
 
 .calendar-text {
@@ -313,7 +324,7 @@
     cursor: pointer;
     height: 95%;
 
-    .fa-arrows-alt {
+    .fa-arrows {
     	position: absolute;
     	top: 3px;
     	right: 3px;

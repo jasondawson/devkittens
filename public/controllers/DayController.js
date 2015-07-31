@@ -59,9 +59,11 @@ angular.module('devKittens')
 			var curriculumRef = infoStorage.serveLessonRef()._id;
 			courseServices.updateCourseCurriculum(curriculumRef, response.data._id, topic)
 			.then(function(response){
-				console.log(response)
+				console.log(response);
+				$location.path('/' + typeRef + '/' + typeId);
 			})
 			.catch(function (err) {
+				alert("An error has occurred and the lesson was not saved. Sorry!");
 				console.error(err);
 			});
 
@@ -70,7 +72,6 @@ angular.module('devKittens')
 			// $scope.miniProjects = [];
 			// $scope.projects = [];
 			// $scope.readings = [];
-			$location.path('/' + typeRef + '/' + typeId);
 		})
 		.catch(function (err) {
 			throw new Error(err);

@@ -43,17 +43,24 @@ exports.updateLessonOrder = function (req, res) {
 	Course.findById(curriculumId, function (err, course) {
 		if (err) res.status(500).send(err);
 
-		var newCourse = [];
+		var newCurriculum = [];
 		
 		req.body.forEach(function (courseId) {
 			course.curriculum.forEach(function (lesson) {
 				if (courseId == lesson._id) {
-					newCourse.push(lesson);
+					newCurriculum.push(lesson);
 				}
 			})
 		})
 
-		course.curriculum = newCourse;
+		// Reseting day values
+		newCurriculum = newCurriculum.map(function (item, index) {
+			var dayNum = index + 1;
+			item.day = dayNum;
+			return item;
+		})
+
+		course.curriculum = newCurriculum;
 		course.save(function (err, result) {
 			if (err) return res.status(500).send(err);
 			return res.json(result);

@@ -51,7 +51,6 @@ function ($scope, calendarService, user, infoStorage, emailsService, cohortServi
 
 		emailsService.sendMentorInvite(mentorEmails)
 		.then(function(response) {
-			console.log(response);
 			$scope.loading = false;
 			$scope.newMentors = '';
 			$scope.closeMentorModal();
