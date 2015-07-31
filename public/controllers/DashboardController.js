@@ -1,7 +1,7 @@
 angular.module('devKittens')
 
 .controller('DashboardController',
-function ($scope, $location, cohortData, courseData, usersData, courseServices, cohortServices, emailsService, infoStorage, user) {
+function ($scope, $location, cohortData, courseData, usersData, courseServices, cohortServices, emailsService, instructorServices, infoStorage, user) {
 
 	$scope.user = user;
 
@@ -99,10 +99,19 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 		$scope.mentorModal = false;
 	}
 
-
-	$scope.toggleTeacherModal = function() {
-		$scope.toggleViewToTeacherProfile = !$scope.toggleViewToTeacherProfile;
-		$scope.backdropVisible = !$scope.backdropVisible;
+//Kyle, this is what you are working on
+	$scope.toggleTeacherModal = function(id) {
+		if ($scope.toggleViewToTeacherProfile === false) {
+			instructorServices.getInstructorInfo(id)
+			.then(function(response) {
+				$scope.instructorData = response;
+				$scope.toggleViewToTeacherProfile = !$scope.toggleViewToTeacherProfile;
+				$scope.backdropVisible = !$scope.backdropVisible;
+			})
+		} else {
+			$scope.toggleViewToTeacherProfile = !$scope.toggleViewToTeacherProfile;
+			$scope.backdropVisible = !$scope.backdropVisible;
+		}
 	}
 
 	$scope.toggleSubscribeCohortModal = function() {

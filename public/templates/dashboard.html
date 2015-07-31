@@ -128,8 +128,9 @@
 			<i class="icon-dashboard fa fa-plus-circle"></i>
 		</div>
 
+		<!-- this lil guy toggles the modal -->
 		<a class="mentors-link" href="#dashboard">
-			<div class="display-box" ng-click="toggleTeacherModal(); setTeacher(teacher)" ng-repeat="teacher in usersArray | filter: {userType: 'instructor'}">
+			<div class="display-box" ng-click="toggleTeacherModal(teacher._id); setTeacher(teacher)" ng-repeat="teacher in usersArray | filter: {userType: '!student'}">
 				<img class="mentor-image center" ng-src="{{teacher.avatar}}"</img>
 				<span class="text-dashboard center">{{ teacher.name }}</span>
 				<span class="text-dashboard name center">{{ teacher.location }}</span>
@@ -280,6 +281,7 @@
 	toggle-view-to-teacher-profile="toggleViewToTeacherProfile"
 	current-teacher="currentTeacher"
 	teacher="teacher"
+	instructor-data="instructorData"
 	set-teacher="setTeacher(teacher)"
 	toggle-teacher-modal="toggleTeacherModal()">
 </teacher-modal>

@@ -4,14 +4,14 @@
 	<br />
 	<img class="mentor-image" ng-src="{{ currentTeacher.avatar }}">
 	<h2 class="name">{{ currentTeacher.name }}</h2>
-	<h4 class="text">{{ currentTeacher.mentorType }}</h4>
-	<h5>{{ currentTeacher.duties }}</h5>
+	<!-- <h4 class="text">{{ currentTeacher.mentorType }}</h4>
+	<h5>{{ currentTeacher.duties }}</h5> -->
 	<div class="mini-modal-cal cal">
 
 		<div class="menu-bar-horizontal">
 			<!-- TODO: CHANGE FROM MENTOS TO VOCABULARY -->
 			<button ng-click="activateVocabulary(); addVocabularyView()" class="btn btn-default btn-horizontal"
-				ng-class="{ active: activeTab === 'mentos' }">Vocabulary</button>
+				ng-class="{ active: activeTab === 'vocabulary' }">Vocabulary</button>
 
 			<button ng-click="activateSchedule(); addScheduleView()" class="btn btn-default btn-horizontal"
 				ng-class="{ active: activeTab === 'schedule' }">Schedule</button>
@@ -39,11 +39,12 @@
 				<h2 class="text-dashboard left">Your schedule</h2>
 
 				<!-- NEEDS AN NG-REPEAT FOR SCHEDULE DATES -->
-				<div class="mentos-list">
-					<h5>Teach - 8/1</h5>
-					<h5>Meeting - 7/29</h5>
-					<h5>Teach - 8/3</h5>
-					<h5>Teach - 8/30</h5>
+				<div class="mentos-list" ng-repeat="item in instructorData.schedule">
+					<div style="border: 1px solid black">{{item.topic}}</div>
+					<div ng-repeat="section in item.sections">
+						<div>{{section.title}}</div>
+						<div ng-bind-html="section.content | unsafe"></div>
+					</div>
 				</div>
 			</div> <!-- End of 'display-box-nonmodal' -->
 			<!-- END OF SCHEDULE SECTION -->

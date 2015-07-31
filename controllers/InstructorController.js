@@ -1,6 +1,15 @@
 var Cohort = require('../models/CohortModel.js'),
 	Instructor = require('../models/InstructorModel.js');
 
+exports.getInstructorInfo = function(req, res) {
+	Instructor.findOne({"userId": req.params.userId}, function(err, data) {
+		if (err) {
+			res.status(500).json(err);
+		} else {
+			res.json(data);
+		}
+	})
+}
 
 exports.addToInstructor = function(req, res) {
 	Instructor.update({"userId": req.params.userId}, 

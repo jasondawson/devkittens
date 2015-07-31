@@ -9,7 +9,8 @@ angular.module('devKittens')
 			setTeacher: '&',
 			toggleTeacherModal: '&',
 			teacher: '=',
-			currentTeacher: '='
+			currentTeacher: '=',
+			instructorData: '='
 		},
 		controller: function($scope) {
 			// $scope.studentSection = false;
@@ -20,13 +21,14 @@ angular.module('devKittens')
 
 			$scope.toggleAddVocabulary = false;
 			$scope.toggleAddSchedule = false;
+			$scope.toggleAddProjects = false;
 
 			$scope.toggleViewToVocabulary = false;
 			$scope.toggleViewToSchedule = false;
 			$scope.toggleViewToProjects = false;
 
 			$scope.activateVocabulary = function() {
-				$scope.activeTab = 'Vocabulary';
+				$scope.activeTab = 'vocabulary';
 				$scope.toggleViewToVocabulary = true;
 
 				$scope.toggleViewToProjects = false;	
