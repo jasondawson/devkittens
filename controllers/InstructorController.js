@@ -47,7 +47,7 @@ exports.removeFromInstructor = function(req, res) {
 		} else {
 			var instructor = data;
 			for (var i = 0; i < instructor.schedule.length; i++) {
-				if (instructor.schedule[i]._id == req.body._id) {
+				if (instructor.schedule[i]._id == req.params.dayId) {
 					instructor.schedule.splice(i, 1);
 				}
 			}

@@ -116,8 +116,7 @@ angular.module("devKittens")
 		var dfrd = $q.defer();
 		var req1 = $http({
 			method: "PUT",
-			url: '/api/destructify/' + user._id,
-			data: lesson
+			url: '/api/destructify/' + user._id + "/" + dayId
 		})
 
 		var req2 = $http({

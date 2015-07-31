@@ -167,10 +167,13 @@ angular.module('devKittens')
 
 	//the stuff about instructors teaching classes, etc.
 
+	$scope.superShowThis = false;
+
 	$scope.teachLesson = function(lesson) {
 		cohortServices.addInstructor(user, typeId, lesson, dayId)
 		.then(function(response) {
 			$scope.day.instructor = true;
+			$scope.superShowThis = true;
 		})
 	}
 
@@ -178,6 +181,7 @@ angular.module('devKittens')
 		cohortServices.removeInstructor(user, lesson, dayId)
 		.then(function(response) {
 			$scope.day.instructor = false;
+			$scope.superShowThis = false;
 		})
 	}
 });

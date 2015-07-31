@@ -61,7 +61,7 @@
 					<span style="float: right;">
 						<button ng-click="teachLesson(day)" ng-show="!day.instructor && user.userType !== 'student' && typeRef == 'cohort'" class="btn btn-default">Teach this lesson</button>
 
-						<button ng-click="removeLesson(lesson)" ng-show="day.instructor == user._id && user.userType !== 'student' && typeRef == 'cohort'" class="btn btn-default">Cancel teaching appointment</button> 
+						<button ng-click="removeLesson(lesson)" ng-show="(day.instructor == user._id && user.userType !== 'student' && typeRef == 'cohort') || superShowThis === true" class="btn btn-default">Cancel teaching appointment</button> 
 						
 						<i class="fa fa-pencil" ng-click="lesson.edit=!lesson.edit"></i>
 					</span>
