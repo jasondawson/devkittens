@@ -19,7 +19,11 @@ angular.module('devKittens')
 	$scope.dayId = dayId;
 	$scope.typeRef = typeRef;
 
-
+	// BACK TO CALENDAR
+	$scope.toCalendar = function(){
+		console.log(1212121212)
+		return $location.path('/' + typeRef + '/' + typeId);
+	}
 
 	// ------------ CREATING NEW LESSON -------------------------
 	// ADD TITLE/TOPIC
@@ -62,18 +66,18 @@ angular.module('devKittens')
 				console.error(err);
 			});
 
-			$scope.preReadings = [];
-			$scope.objectives = [];
-			$scope.miniProjects = [];
-			$scope.projects = [];
-			$scope.readings = [];
-			console.log('type', typeRef, 'id', typeId)
-			$location.path('/' + typeRef + '/' + typeId)
+			// $scope.preReadings = [];
+			// $scope.objectives = [];
+			// $scope.miniProjects = [];
+			// $scope.projects = [];
+			// $scope.readings = [];
+			$location.path('/' + typeRef + '/' + typeId);
 		})
 		.catch(function (err) {
 			throw new Error(err);
 		});
 	}
+
 
 	// --------------- UPDATING LESSON ------------
 	if ($scope.typeRef == 'course') {
