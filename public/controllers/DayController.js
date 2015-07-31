@@ -1,6 +1,6 @@
 angular.module('devKittens')
 
-.controller('DayController', function ($scope, dayId, typeRef, typeId, user, activeLesson, infoStorage, lessonService, courseServices, cohortServices) {
+.controller('DayController', function ($scope, dayId, typeRef, typeId, user, activeLesson, infoStorage, lessonService, courseServices, cohortServices, $location) {
 	$scope.user = user;
 	
 	if (typeRef == 'cohort') {
@@ -62,14 +62,13 @@ angular.module('devKittens')
 				console.error(err);
 			});
 
-			// Clear values
-			// $scope.closeModal('skip');
-
 			$scope.preReadings = [];
 			$scope.objectives = [];
 			$scope.miniProjects = [];
 			$scope.projects = [];
 			$scope.readings = [];
+			console.log('type', typeRef, 'id', typeId)
+			$location.path('/' + typeRef + '/' + typeId)
 		})
 		.catch(function (err) {
 			throw new Error(err);
