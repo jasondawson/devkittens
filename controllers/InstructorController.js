@@ -1,5 +1,6 @@
 var Cohort = require('../models/CohortModel.js'),
-	Instructor = require('../models/InstructorModel.js');
+	Instructor = require('../models/InstructorModel.js'),
+	ReservedLesson = require('../models/ReservedLessonModel.js');
 
 exports.getInstructorInfo = function(req, res) {
 	Instructor.findOne({"userId": req.params.userId}, function(err, data) {
@@ -71,6 +72,32 @@ exports.removeInstructor = function(req, res) {
 					res.json(newDay);
 				}
 			})
+		}
+	})
+}
+
+exports.createReserve = function(req, res) {
+	new ReservedLesson({
+		userId: req.params.userId,
+		dayId: req.params.dayId
+	}).save(function(err, data) {
+		if (err) {
+			res.status(500).json(err);
+		} else {
+			res.json(data);
+		}
+	})
+}
+
+exports.deleteReserve = function(req, res) {
+	ReservedLesson.findOne({
+		userId: req.params.userId,
+		dayId: req.params.dayId
+	}).remove(function(err, data) {
+		if (err) {
+			res.status(500).json(err);
+		} else {
+			res.json(data);
 		}
 	})
 }

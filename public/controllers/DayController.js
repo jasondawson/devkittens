@@ -21,7 +21,6 @@ angular.module('devKittens')
 
 	// BACK TO CALENDAR
 	$scope.toCalendar = function(){
-		console.log(1212121212)
 		$location.path('/' + typeRef + '/' + typeId);
 	}
 

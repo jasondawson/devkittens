@@ -75,8 +75,6 @@ angular.module('devKittens')
 
 		currentCohort.curriculum = currentCohortArray;
 		currentCohortData = currentCohort;
-
-		console.log('currentCohortData ', currentCohortData)
 	}
 
 	service.getCurrentCohort = function() {

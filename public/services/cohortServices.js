@@ -100,7 +100,12 @@ angular.module("devKittens")
 			data: user
 		})
 
-		$q.all([req1, req2])
+		var req3 = $http({
+			method: "POST",
+			url: '/api/reserved/' + user._id + '/' + dayId
+		})
+
+		$q.all([req1, req2, req3])
 		.then(function(response) {
 			dfrd.resolve(response);
 		})
@@ -118,6 +123,11 @@ angular.module("devKittens")
 		var req2 = $http({
 			method: "POST",
 			url: '/api/destructify/' + dayId,
+		})
+
+		var req3 = $http({
+			method: "PUT",
+			url: '/api/reserved/' + user._id + '/' + dayId
 		})
 
 		$q.all([req1, req2])

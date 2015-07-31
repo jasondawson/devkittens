@@ -91,7 +91,8 @@ app.post('/api/instructify/:cohortId/:dayId', InstructorController.addInstructor
 app.get('/api/instructify/:userId', InstructorController.getInstructorInfo);
 app.put('/api/destructify/:userId', InstructorController.removeFromInstructor);
 app.post('/api/destructify/:dayId', InstructorController.removeInstructor);
-
+app.post('/api/reserved/:userId/:dayId', InstructorController.createReserve);
+app.put('/api/reserved/:userId/:dayId', InstructorController.deleteReserve);
 
 // Emails
 app.post('/api/email', EmailController.sendEmail);
