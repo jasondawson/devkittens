@@ -27,10 +27,12 @@ module.exports = {
 	getOne: function (req, res) {
 		Course.findById(req.params.curriculumId, function (err, course) {
 			if (err) return res.status(500).send(err);
-
 			// get lesson id
 			for (var i = 0; i < course.curriculum.length; i++) {
 				if (course.curriculum[i]._id == req.params.dayId) {
+					// no course found
+					if (!course.curriculum[i].lesson) return res.send(null);
+
 					Lesson.findById(course.curriculum[i].lesson, function (err, lesson) {
 						if (err) return res.status(500).send(err);
 						if (lesson) return res.json(lesson);
