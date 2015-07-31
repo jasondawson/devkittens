@@ -39,10 +39,13 @@
 
 				<!-- NEEDS AN NG-REPEAT FOR SCHEDULE DATES -->
 				<div class="mentos-list" ng-repeat="day in instructorData.schedule">
-					<div style="border: 1px solid black">{{day.topic}}</div>
-					<div ng-repeat="section in day.sections">
-						<div>{{section.title}}</div>
-						<div ng-bind-html="section.content | unsafe"></div>
+					<div style="margin: 5px; border: 1px solid black">
+						<div>{{day.topic}}</div>
+						<div>{{day.day | date: 'longDate'}}</div>
+						<div ng-repeat="section in day.lesson.sections">
+							<div>{{section.title}}</div>
+							<div ng-bind-html="section.content | unsafe"></div>
+						</div>
 					</div>
 				</div>
 			</div> <!-- End of 'display-box-nonmodal' -->
