@@ -19,19 +19,19 @@ angular.module('devKittens')
 			// 	$scope.studentSection = !$scope.studentSection;
 			// };
 
-			$scope.toggleAddVocabulary = false;
+			$scope.toggleAddComments = false;
 			$scope.toggleAddSchedule = false;
-			$scope.toggleAddProjects = false;
+			$scope.toggleAddSkills = false;
 
-			$scope.toggleViewToVocabulary = false;
+			$scope.toggleViewToComments = false;
 			$scope.toggleViewToSchedule = false;
-			$scope.toggleViewToProjects = false;
+			$scope.toggleViewToSkills = false;
 
-			$scope.activateVocabulary = function() {
-				$scope.activeTab = 'vocabulary';
-				$scope.toggleViewToVocabulary = true;
+			$scope.activateComments = function() {
+				$scope.activeTab = 'Comments';
+				$scope.toggleViewToComments = true;
 
-				$scope.toggleViewToProjects = false;	
+				$scope.toggleViewToSkills = false;	
 				$scope.toggleViewToSchedule = false;
 			}
 
@@ -40,28 +40,28 @@ angular.module('devKittens')
 				$scope.activeTab = 'schedule';
 				$scope.toggleViewToSchedule = true;
 
-				$scope.toggleViewToProjects = false;
-				$scope.toggleViewToVocabulary = false;
+				$scope.toggleViewToSkills = false;
+				$scope.toggleViewToComments = false;
 			}
 
-			$scope.activateProjects = function() {
-				$scope.activeTab = 'projects';
-				$scope.toggleViewToProjects = true;
+			$scope.activateSkills = function() {
+				$scope.activeTab = 'Skills';
+				$scope.toggleViewToSkills = true;
 
-				$scope.toggleViewToVocabulary = false;
+				$scope.toggleViewToComments = false;
 				$scope.toggleViewToSchedule = false;
 			}
 
-			$scope.addVocabularyView = function() {
-				$scope.toggleAddVocabulary = !$scope.toggleAddVocabulary;
+			$scope.addCommentsView = function() {
+				$scope.toggleAddComments = !$scope.toggleAddComments;
 			}
 
 			$scope.addScheduleView = function() {
 				$scope.toggleAddSchedule = !$scope.toggleAddSchedule;
 			}
 
-			$scope.addProjectsView = function() {
-				$scope.toggleAddProjects = !$scope.toggleAddProjects;
+			$scope.addSkillsView = function() {
+				$scope.toggleAddSkills = !$scope.toggleAddSkills;
 			}
 
 		}

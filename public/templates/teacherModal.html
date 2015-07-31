@@ -9,39 +9,38 @@
 	<div class="mini-modal-cal cal">
 
 		<div class="menu-bar-horizontal">
-			<!-- TODO: CHANGE FROM MENTOS TO VOCABULARY -->
-			<button ng-click="activateVocabulary(); addVocabularyView()" class="btn btn-default btn-horizontal"
-				ng-class="{ active: activeTab === 'vocabulary' }">Vocabulary</button>
+			<!-- TODO: CHANGE FROM MENTOS TO Comments -->
+			<button ng-click="activateComments(); addCommentsView()" class="btn btn-default btn-horizontal"
+				ng-class="{ active: activeTab === 'Comments' }">Comments</button>
 
 			<button ng-click="activateSchedule(); addScheduleView()" class="btn btn-default btn-horizontal"
 				ng-class="{ active: activeTab === 'schedule' }">Schedule</button>
 
-			<button ng-click="activateProjects(); addProjectsView()" class="btn btn-default btn-horizontal"
-				ng-class="{ active: activeTab === 'projects' }">Mini Projects</button>
+			<button ng-click="activateSkills(); addSkillsView()" class="btn btn-default btn-horizontal"
+				ng-class="{ active: activeTab === 'Skills' }">Skills</button>
 		</div> <!-- End of 'menu-bar-horizontal' -->
 
-			<!-- Vocabulary SECTION -->
-			<div class="display-box-nonmodal" ng-show="toggleViewToVocabulary">
+			<!-- Comments SECTION -->
+			<div class="display-box-nonmodal" ng-show="toggleViewToComments">
 				<h2 class="text-dashboard left">Use these terms in your lesson</h2>
 
-				<!-- NEEDS AN NG-REPEAT FOR Vocabulary LIST -->
+				<!-- NEEDS AN NG-REPEAT FOR Comments LIST -->
 				<div class="mentos-list">
-					<h5>$q/$http</h5>
-					<h5>Closures</h5>
-					<h5>Higher Order Function</h5>
-					<h5>Recursion</h5>
+					<div ng-repeat="comment in instructorData.comments">
+						<div>{{comment}}</div>
+					</div>
 				</div>
 			</div> <!-- End of 'display-box-nonmodal' -->
-			<!-- END OF Vocabulary SECTION -->
+			<!-- END OF Comments SECTION -->
 
 			<!-- SCHEDULE SECTION -->
 			<div class="display-box-nonmodal" ng-show="toggleViewToSchedule">
 				<h2 class="text-dashboard left">Your schedule</h2>
 
 				<!-- NEEDS AN NG-REPEAT FOR SCHEDULE DATES -->
-				<div class="mentos-list" ng-repeat="item in instructorData.schedule">
-					<div style="border: 1px solid black">{{item.topic}}</div>
-					<div ng-repeat="section in item.sections">
+				<div class="mentos-list" ng-repeat="day in instructorData.schedule">
+					<div style="border: 1px solid black">{{day.topic}}</div>
+					<div ng-repeat="section in day.sections">
 						<div>{{section.title}}</div>
 						<div ng-bind-html="section.content | unsafe"></div>
 					</div>
@@ -50,14 +49,14 @@
 			<!-- END OF SCHEDULE SECTION -->
 
 			<!-- MINI-PROBLEM SECTION -->
-			<div class="display-box-nonmodal" ng-show="toggleViewToProjects">
+			<div class="display-box-nonmodal" ng-show="toggleViewToSkills">
 				<h2 class="text-dashboard left">Students Mini-problem for the day</h2>
 
 				<!-- NEEDS AN NG-REPEAT FOR COHORT LIST -->
 				<div class="mentos-list">
-					<h5>github.com/mini - 8/1</h5>
-					<h5>github.com/anotherProject - 8/3</h5>
-					<h5>Clone Medium Site - 8/30</h5>
+					<div ng-repeat="skill in instructorData.skills">
+						<div>{{skill}}</div>
+					</div>
 				</div>
 			</div> <!-- End of 'display-box-nonmodal' -->
 			<!-- END OF COHORT SECTION -->
