@@ -47,33 +47,46 @@ angular.module('devKittens')
 
 
 	// STORE LESSON
-	$scope.createLesson = function(topic) {
-		data = {
-			topic: topic,
-			sections: $scope.sections
-		}
+	if (typeRef == 'course') {
+		$scope.createLesson = function(topic) {
+			data = {
+				topic: topic,
+				sections: $scope.sections
+			}
 
-		lessonService.createLesson(data)
-		.then(function (response){
+			lessonService.createLesson(data)
+			.then(function (response){
 
-			// var curriculumRef = infoStorage.serveLessonRef()._id;
-			courseServices.updateCourseCurriculum(dayId, response.data._id, topic)
-			.then(function(response){
-				$location.path('/' + typeRef + '/' + typeId);
+				// var curriculumRef = infoStorage.serveLessonRef()._id;
+				courseServices.updateCourseCurriculum(dayId, response.data._id, topic)
+				.then(function(response){
+					$location.path('/' + typeRef + '/' + typeId);
+				})
+				.catch(function (err) {
+					console.error(err);
+				});
+
+				// $scope.preReadings = [];
+				// $scope.objectives = [];
+				// $scope.miniProjects = [];
+				// $scope.projects = [];
+				// $scope.readings = [];
 			})
 			.catch(function (err) {
-				console.error(err);
+				throw new Error(err);
 			});
-
-			// $scope.preReadings = [];
-			// $scope.objectives = [];
-			// $scope.miniProjects = [];
-			// $scope.projects = [];
-			// $scope.readings = [];
-		})
-		.catch(function (err) {
-			throw new Error(err);
-		});
+		}
+	} else if (typeRef == 'cohort') {
+		$scope.createLesson = function (topic) {
+			var topic = topic;
+			var sections = $scope.sections
+			cohortServices.updateLesson($scope.cohortId, $scope.dayId, topic, sections).then(function(response){
+				$location.path('/' + typeRef + '/' + typeId);
+				})
+				.catch(function (err) {
+					console.error(err);
+				});
+		}
 	}
 
 
