@@ -56,8 +56,8 @@ angular.module('devKittens')
 		lessonService.createLesson(data)
 		.then(function (response){
 
-			var curriculumRef = infoStorage.serveLessonRef()._id;
-			courseServices.updateCourseCurriculum(curriculumRef, response.data._id, topic)
+			// var curriculumRef = infoStorage.serveLessonRef()._id;
+			courseServices.updateCourseCurriculum(dayId, response.data._id, topic)
 			.then(function(response){
 				$location.path('/' + typeRef + '/' + typeId);
 			})

@@ -129,6 +129,9 @@ angular.module('devKittens')
 		resolve: {
 			userType: function ($route) {
 				return $route.current.params.userType;
+			},
+			cohortId: function ($route) {
+				return $route.current.params.cohortId;
 			}
 		}
 	})
