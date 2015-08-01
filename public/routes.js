@@ -131,7 +131,7 @@ angular.module('devKittens')
 				return $route.current.params.userType;
 			},
 			cohortId: function ($route) {
-				return $route.current.params.cohortId;
+				return null;
 			}
 		}
 	})

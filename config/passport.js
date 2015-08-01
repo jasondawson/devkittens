@@ -99,7 +99,6 @@ module.exports = function(passport) {
 
                             newUser.save(function (err, result) {
                                 if (err) return done(err);
-                                console.warn(req.body);
                                 // Pushing student id to cohort student array
                                 if (req.body.userType == "instructor") {
                                     new Instructor({
@@ -132,7 +131,6 @@ module.exports = function(passport) {
                                     }).save();
                                     Cohort.findOne({'_id': req.body.cohortId}, function (err, foundCohort) {
                                         if (err) return res.status(500).send(err);
-
                                         if (!foundCohort.students) foundCohort.students = [];
                                         
                                         foundCohort.students.push(result._id);

@@ -19,7 +19,7 @@ function ($scope, authService, $location, infoStorage, userType, cohortId) {
 			$location.path('/dashboard');
 		})
 		.catch(function (err) {
-			throw new Error(err);
+			console.error(err);
 		});
 
 	};

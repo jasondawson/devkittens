@@ -12,7 +12,7 @@
 				<span class="arrow-down"></span>
 			</span>
 		</div>
-		<div class="pic-container add-students" ng-click="openModal()">
+		<div class="pic-container add-students" ng-if="user.userType !== 'student'" ng-click="openModal()">
 			<div class="flex-plus">
 				<i class="fa fa-user-plus"></i>
 			</div>

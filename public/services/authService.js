@@ -6,6 +6,7 @@ angular.module('devKittens')
 
 		if (userType != 'mentor' && userType != "instructor" && userType != 'admin') {
 			var theType = 'student';
+			cohortId = userType;
 		} else {
 			var theType = userType;
 		}
