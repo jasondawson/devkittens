@@ -13,6 +13,7 @@ angular.module('devKittens')
 	$scope.currentSegment = 0;
 	$scope.activeMonth = $scope.currentCohort.curriculum[0];
 	$scope.studentDisplay = false;
+	$scope.isCohort = true;
 	
 
 	$scope.viewDay = function(day, index) {
