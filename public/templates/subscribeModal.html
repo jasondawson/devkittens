@@ -1,4 +1,59 @@
 <!-- 'add-cohort-modal' activates when user clicks on 'Add a new mentor' --> 
+<div class="add-cohort-modal" ng-show="toggleSubscribeCohort">
+	<h2>Assign Mentors</h2>
+	</br>
+	<h4>Select the Cohort</h4>
+	<form>
+		<select class="form-input center" ng-options="cohort.name for cohort in cohortArray" ng-model="selectedCohort"></select>
+		<button class="submit center" ng-click="getStudentsForCohort(selectedCohort)">Select</button>
+	</form>
+
+	</br>
+	</br>
+
+	<h4>Select Mentors for the Cohort</h4>
+
+	<div class="flex-row-space-around">
+		<div ng-repeat="mentor in mentors">
+			<img id="max-avatar-size" ng-src="{{ mentor.avatar }}">
+			<h5> {{ mentor.name }} </h5>
+
+			<div class="mentos-list">
+				{{ mentor.mentos }}
+			</div>
+			
+		</div>
+	</div>
+
+	</br>
+	</br>
+
+	<h4>Select Students</h4>
+
+	<div class="flex-row-space-around">
+		<div ng-repeat="student in students" id="student-list">
+			<img id="max-avatar-size" src="{{ student.avatar }}">
+			<h5>{{ student.name }}</h5>
+		</div>
+	</div>
+
+	</br>
+
+	<div class="form-btn-container">
+		<button class="form-btn" type="submit" ng-click="toggleSubscribeCohortModal()">Cancel</button>
+		<button class="form-btn" type="submit" ng-click="saveSelectedStudents(selectedStudents)">Save</button>
+	</div>
+
+</div>  <!-- End of 'add-cohort-modal' -->
+
+
+
+
+
+
+
+
+
 <!-- <div class="add-cohort-modal" ng-show="toggleSubscribeCohort"> -->
 	<!-- <h2 class="text-dashboard text-left">Assign Mentos</h2>
 	<i class="close-modal fa fa-times" ng-click="toggleSubscribeCohortModal()"></i> -->
@@ -15,10 +70,10 @@
 		<button class="form-btn" type="submit" ng-click="toggleSubscribeCohortModal()">Cancel</button>
 		<button class="form-btn" type="submit" ng-click="saveSelectedStudents(selectedStudents)">Save</button>
 	</div> -->
-<!-- </div> <!-- End of 'add-cohort-modal' -->
+<!-- </div> End of 'add-cohort-modal' -->
 
 
-<div class="add-cohort-modal" ng-show="toggleSubscribeCohort">
+<!-- <div class="add-cohort-modal" ng-show="toggleSubscribeCohort">
 	<h2 class="text-dashboard text-left">Assign Mentos</h2>
 	<i class="close-modal fa fa-times" ng-click="toggleSubscribeCohortModal()"></i>
 
@@ -35,4 +90,4 @@
 		<button class="form-btn" type="submit" ng-click="toggleSubscribeCohortModal()">Cancel</button>
 		<button class="form-btn" type="submit" ng-click="saveSelectedStudents(selectedStudents)">Save</button>
 	</div>
-</div> <!-- End of 'add-cohort-modal'
+</div>  --><!-- End of 'add-cohort-modal'

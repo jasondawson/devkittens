@@ -63,7 +63,7 @@ exports.getTypeData = function (req, res) {
 	}
 }
 
-// TODO: FOR TESTING PURPOSES ONLY -- REPLACE BY ANDREW AUTH
+
 exports.post = function (req, res) {
 	
 	var data = req.body;

@@ -868,6 +868,29 @@ select {
 .lesson-modal .form-control {
   margin: 10px 0;
 }
+.add-cohort-modal {
+  overflow: auto;
+}
+.mentos-list {
+  min-height: 200px;
+}
+.flex-row-space-around {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+#max-avatar-size {
+  max-width: 60px;
+  max-height: 60px;
+}
+.mentos-list {
+  min-height: 150px;
+  width: 150px;
+  border: 1px solid black;
+}
+#student-list {
+  width: 150px;
+}
 .shift-wrapper {
   overflow: auto;
   width: 850px;

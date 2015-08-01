@@ -1,7 +1,7 @@
 angular.module('devKittens')
 
 .controller('registrationController',
-function ($scope, authService, $location, infoStorage, userType) {
+function ($scope, authService, $location, infoStorage, userType, cohortId) {
 	
 	// Init
 	$scope.errorMessage = '';
@@ -10,7 +10,7 @@ function ($scope, authService, $location, infoStorage, userType) {
 		if(!userType) return $scope.errorMessage = "Illegal registration.";
 		if(password !== confirmPassword) return $scope.errorMessage = 'Your passwords don\'t match';
 
-		authService.createUser(name, email, password, userType)
+		authService.createUser(name, email, password, userType, cohortId)
 		.then(function (response) {
 			// Temp store user info
 			infoStorage.saveUser(response);

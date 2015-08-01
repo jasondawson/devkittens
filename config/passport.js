@@ -99,7 +99,7 @@ module.exports = function(passport) {
 
                             newUser.save(function (err, result) {
                                 if (err) return done(err);
-                                
+                                console.warn(req.body);
                                 // Pushing student id to cohort student array
                                 if (req.body.userType == "instructor") {
                                     new Instructor({
@@ -107,13 +107,19 @@ module.exports = function(passport) {
                                     }).save();
                                 } else if (req.body.userType == "mentor") {
                                     new Mentor({
-                                        userId: result._id
+                                        userId: result._id,
+                                        cohortId: req.body.cohortId
                                     }).save();
-                                    new Instructor({
-                                        userId: result._id
-                                    }).save();
+                                    Cohort.findOne({'_id': req.body.cohortId}, function (err, foundCohort) {
+                                        if (err) return res.status(500).send(err);
+
+                                        if (!foundCohort.mentors) foundCohort.mentors = [];
+                                        
+                                        foundCohort.mentors.push(result._id);
+                                        foundCohort.save();
+                                    })
                                 } else if (req.body.userType == "admin") {
-                                    new Instructor({
+                                    new Admin({
                                         userId: result._id
                                     }).save();
                                 } else {

@@ -1,0 +1,18 @@
+<div class="add-cohort-modal" ng-show="toggleSubscribeCohort">
+	<h2 class="text-dashboard text-left">Assign Mentos</h2>
+	<i class="close-modal fa fa-times" ng-click="toggleSubscribeCohortModal()"></i>
+
+	<form class="new-cohort-form">
+		<select class="form-input center" ng-options="cohort.name for cohort in cohortArray" ng-model="selectedCohort.name"></select>
+			<dropdown-directive></dropdown-directive>
+	</form>
+	<div ng-repeat="mentor in mentors">
+		<img ng-src="mentor.avatar"/>
+		<h5>{{mentor.name}}</h5>
+	</div>
+
+	<div class="form-btn-container">
+		<button class="form-btn" type="submit" ng-click="toggleSubscribeCohortModal()">Cancel</button>
+		<button class="form-btn" type="submit" ng-click="saveSelectedStudents(selectedStudents)">Save</button>
+	</div>
+</div> <!-- End of 'add-cohort-modal'
