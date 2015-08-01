@@ -176,40 +176,40 @@ function isAuth(req, res, next) {
 
 var Reserved = require('./models/ReservedLessonModel.js')
 
-new CronJob('00 * * * * *', function() {
+// new CronJob('00 * * * * *', function() {
 
-    // get reservedlessons and check for dates and send email
-    var name, email, day;
-    Reserved.find()
-        .populate('userId')
-        .exec(function (err, reservations) {
-            reservations.forEach(function (reservation) {
-                Cohort.findOne({ 'curriculum._id': reservation.dayId }, function (err, day) {
-                    name = reservation.userId.name;
-                    email = reservation.userId.local.email;
-                    day = day.curriculum.id(reservation.dayId);
-                    var teachingDate = day.day;
-                    teachingDate.setHours(0,0,0,0);
-                    var currentDate48 = new Date();
-                    currentDate48.setDate(currentDate48.getDate()+2);
-                    currentDate48.setHours(0, 0, 0, 0);
-                    // console.log('lol',currentDate48.valueOf(), 'lol', teachingDate.valueOf());
+//     // get reservedlessons and check for dates and send email
+//     var name, email, day;
+//     Reserved.find()
+//         .populate('userId')
+//         .exec(function (err, reservations) {
+//             reservations.forEach(function (reservation) {
+//                 Cohort.findOne({ 'curriculum._id': reservation.dayId }, function (err, day) {
+//                     name = reservation.userId.name;
+//                     email = reservation.userId.local.email;
+//                     day = day.curriculum.id(reservation.dayId);
+//                     var teachingDate = day.day;
+//                     teachingDate.setHours(0,0,0,0);
+//                     var currentDate48 = new Date();
+//                     currentDate48.setDate(currentDate48.getDate()+2);
+//                     currentDate48.setHours(0, 0, 0, 0);
+//                     // console.log('lol',currentDate48.valueOf(), 'lol', teachingDate.valueOf());
 
-                    if (currentDate48.valueOf() == teachingDate.valueOf()) {
-                        console.log('an email should send')
-                        var email = {
-                            html: day,
-                            subject: "DevMountain teaching reminder",
-                             to: [{
-                                 email: 'daniel_con_frijoles@msn.com',
-                                 type: "to"
-                             }]
-                        }
+//                     if (currentDate48.valueOf() == teachingDate.valueOf()) {
+//                         console.log('an email should send')
+//                         var email = {
+//                             html: day,
+//                             subject: "DevMountain teaching reminder",
+//                              to: [{
+//                                  email: 'daniel_con_frijoles@msn.com',
+//                                  type: "to"
+//                              }]
+//                         }
 
-                        EmailController.sendReminder(email);
-                    }
-                })
-            })
-        })
-  // console.log('You will see this message minuto');
-}, null, true, 'America/Los_Angeles');
+//                         EmailController.sendReminder(email);
+//                     }
+//                 })
+//             })
+//         })
+//   // console.log('You will see this message minuto');
+// }, null, true, 'America/Los_Angeles');
