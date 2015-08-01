@@ -174,7 +174,8 @@ function isAuth(req, res, next) {
 
 
 
-var Reserved = require('./models/ReservedLessonModel.js')
+var Reserved = require('./models/ReservedLessonModel.js');
+var Cohort = require('./models/CohortModel.js');
 
 // new CronJob('00 * * * * *', function() {
 
