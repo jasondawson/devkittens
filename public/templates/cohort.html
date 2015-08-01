@@ -2,6 +2,7 @@
 <loading-gif ng-if="loading"></loading-gif>
 
 
+<!-- SEE STUDENTS VIEW -->
 <div class="user-pics" ng-if="studentDisplay">
 	<div class="width-container">
 		<div class="pic-container" ng-repeat="student in currentCohort.students" ng-attr-titletext="{{student.name}}" tio-tooltip>
@@ -27,7 +28,7 @@
 	display students
 </div>
 
-
+<!-- MODAL -->
 <span class="pic-modal" ng-show="studentModal">
 	<div class="modal-wrapper lesson-modal">
 		<div>
@@ -51,8 +52,11 @@
 </span>
 
 
+
+
+
+
 <div class="calendar-nav">
-	<!-- <i class="previous-month fa fa-chevron-left" ng-class="{ active: currentSegment < 1 }" ng-click="previousMonth()"></i> -->
 
 	<!-- IF NO LEFT -->
 	<div ng-if="currentSegment < 1" class="navigate-btn dimmed">
@@ -84,7 +88,6 @@
 	<div class="calendar-container" ng-click="viewDay(day, $index)" ng-repeat="day in activeMonth">
 	<hr><hr><hr><hr><hr><hr>
 		<div class="display-box add-new column">
-			<!-- <span class="text-dashboard calendar-text">{{ day.day | date: 'd' }}</span> -->
 			<span class="text-dashboard calendar-text">{{ day.day | date: 'MMM d' }}</span>
 
 			<div class="column full-height">

@@ -1,7 +1,7 @@
 angular.module('devKittens')
 
 .controller('CohortController', 
-	function ($scope, user, $location, infoStorage, cohortServices, currentCohortData, dayOfWeek) {
+	function ($scope, user, $location, infoStorage, cohortServices, currentCohortData, emailsService, dayOfWeek) {
 
 	// Init
 	$scope.user = user;
@@ -69,6 +69,28 @@ angular.module('devKittens')
 	$scope.toggleStudentView = function () {
 		$scope.studentDisplay = !$scope.studentDisplay;
 	}
+
+	// Send student invite
+	$scope.sendStudentInvite = function (studentEmails) {
+		$scope.loading = true;
+
+		if (!studentEmails) return console.warn('Plase add emails');
+		var cohortInfo = {
+			name: currentCohortData.name,
+			id: currentCohortData._id
+		}
+		emailsService.sendStudentInvite(studentEmails, cohortInfo)
+		.then(function (response) {
+			$scope.loading = false;
+			$scope.students = '';
+			$scope.closeModal();
+		})
+		.catch(function (err) {
+			$scope.loading = false;
+			$scope.closeModal();
+		});
+	}
+
 
 
 })
