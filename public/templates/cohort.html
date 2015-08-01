@@ -1,6 +1,56 @@
 <header-directive scroll-top></header-directive>
 <loading-gif ng-if="loading"></loading-gif>
 
+
+<div class="user-pics" ng-if="studentDisplay">
+	<div class="width-container">
+		<div class="pic-container" ng-repeat="student in currentCohort.students" ng-attr-titletext="{{student.name}}" tio-tooltip>
+			<a ng-href="{{student.githubUrl}}" target="_blank"><img ng-src="{{student.avatar}}"></a>
+			<span class="tooltip-wrapper">
+				<p class="tooltip"></p>
+				<span class="arrow-down"></span>
+			</span>
+		</div>
+		<div class="pic-container add-students" ng-click="openModal()">
+			<div class="flex-plus">
+				<i class="fa fa-user-plus"></i>
+			</div>
+		</div>
+
+		<div class="st-toggle-view" ng-click="toggleStudentView()">
+			hide students
+		</div>
+	</div>
+</div>
+
+<div class="st-toggle-view" ng-click="toggleStudentView()" ng-if="!studentDisplay">
+	display students
+</div>
+
+
+<span class="pic-modal" ng-show="studentModal">
+	<div class="modal-wrapper lesson-modal">
+		<div>
+			<div class="modal-cover flex-row content-center align-items-center" ng-click="closeModal()"></div>
+			<div class="modal flex-column align-items-center">
+				<div class="modal-header">
+					<h3>Invite students to this cohort</h3>
+					<i class="fa fa-times" ng-click="closeModal()"></i>
+				</div>
+
+ 
+				<div class="width100">
+					<form ng-submit="sendStudentInvite(newStudents)">
+						<textarea ng-model="newStudents" class="form-control" placeholder="Comma-separated email(s)"></textarea>
+						<button class="btn btn-default">Submit</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</span>
+
+
 <div class="calendar-nav">
 	<!-- <i class="previous-month fa fa-chevron-left" ng-class="{ active: currentSegment < 1 }" ng-click="previousMonth()"></i> -->
 

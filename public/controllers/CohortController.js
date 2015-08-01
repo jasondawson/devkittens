@@ -3,6 +3,7 @@ angular.module('devKittens')
 .controller('CohortController', 
 	function ($scope, user, $location, infoStorage, cohortServices, currentCohortData, dayOfWeek) {
 
+	// Init
 	$scope.user = user;
 	$scope.currentCohort = currentCohortData;
 	$scope.dayOfWeek = dayOfWeek;
@@ -11,6 +12,7 @@ angular.module('devKittens')
 	$scope.segmentLength = $scope.currentCohort.curriculum.length;
 	$scope.currentSegment = 0;
 	$scope.activeMonth = $scope.currentCohort.curriculum[0];
+	$scope.studentDisplay = false;
 	
 
 	$scope.viewDay = function(day, index) {
@@ -51,5 +53,22 @@ angular.module('devKittens')
 		}
 
 	}
+
+
+	// Modal related || TODO: refactor for make all modals consistent
+	$scope.openModal = function () {
+		$('body').css('overflow', 'hidden');
+		$scope.studentModal = true;
+	}
+
+	$scope.closeModal = function () {
+		$('body').css('overflow', 'inherit');
+		$scope.studentModal = false;
+	}
+
+	$scope.toggleStudentView = function () {
+		$scope.studentDisplay = !$scope.studentDisplay;
+	}
+
 
 })
