@@ -35,6 +35,7 @@ var CourseController = require('./controllers/CourseController.js');
 var CohortController = require('./controllers/CohortController.js');
 var EmailController = require('./controllers/EmailController.js');
 var InstructorController = require('./controllers/InstructorController.js');
+var StudentController = require('./controllers/StudentController.js');
 
 
 
@@ -94,6 +95,10 @@ app.put('/api/destructify/:userId/:dayId', InstructorController.removeFromInstru
 app.post('/api/destructify/:dayId', InstructorController.removeInstructor);
 app.post('/api/reserved/:userId/:dayId', InstructorController.createReserve);
 app.put('/api/reserved/:userId/:dayId', InstructorController.deleteReserve);
+
+// students completing sections
+app.post('/api/completed', StudentController.markAsCompleted);
+app.put('/api/completed', StudentController.markAsIncomplete);
 
 // Emails
 app.post('/api/email', EmailController.sendEmail);

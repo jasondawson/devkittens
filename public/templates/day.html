@@ -104,7 +104,13 @@
 						<text-angular ng-model="section.content"></text-angular>
 
 					</div>
-
+	<!-- right here is where Kyle is working on marking things as donzo -->
+					<div ng-show="user.userType == 'student' && typeRef == 'cohort'">
+						<div>I have finished this assignment without cheating</div>
+						<div ng-click="markAsCompleted($index, completedSection, section)">
+							<input type="checkbox" ng-model="completedSection" ng-checked="section.finishedStudents.indexOf(user._id) !== -1"/>
+						</div>
+					</div>
 				</div>
 
 

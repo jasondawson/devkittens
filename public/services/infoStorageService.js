@@ -8,6 +8,7 @@ angular.module('devKittens')
 	var user;
 	var lessonRef;
 	var calendarId;
+	var dayIndex;
 	var currentCourseData;
 	var currentCohortData;
 	// ^^^ calendar can be a cohort or curriculum
@@ -21,6 +22,15 @@ angular.module('devKittens')
 	service.serveUser = function () {
 		if (user) return user;
 		return null;
+	}
+
+	//Day index
+	service.storeDayIndex = function (passedIndex) {
+		dayIndex = passedIndex;
+	}
+
+	service.serveDayIndex = function () {
+		return dayIndex;
 	}
 
 

@@ -13,8 +13,9 @@ angular.module('devKittens')
 	$scope.activeMonth = $scope.currentCohort.curriculum[0];
 	
 
-	$scope.viewDay = function(day) {
+	$scope.viewDay = function(day, index) {
 		// var currentCohort = infoStorage.getCurrentCohort()
+		infoStorage.storeDayIndex(index);
 		$location.path('/day/cohort/' + $scope.currentCohort._id + '/' + day._id);
 	}
 

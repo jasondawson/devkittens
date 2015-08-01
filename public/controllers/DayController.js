@@ -1,7 +1,6 @@
 angular.module('devKittens')
 
-.controller('DayController',
-function ($scope, dayId, typeRef, typeId, user, activeLesson, infoStorage, lessonService, courseServices, cohortServices, $location) {
+.controller('DayController', function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStorage, lessonService, courseServices, cohortServices, studentServices, $location) {
 	$scope.user = user;
 	
 	if (typeRef == 'cohort') {
@@ -182,5 +181,22 @@ function ($scope, dayId, typeRef, typeId, user, activeLesson, infoStorage, lesso
 			$scope.day.instructor = false;
 			$scope.superShowThis = false;
 		})
+	}
+
+	//marking things as donze
+
+	$scope.markAsCompleted = function(sectionIndex, model, section) {
+		if (model == true) {
+			studentServices.markAsCompleted(user._id, dayIndex, sectionIndex, dayId)
+			.then(function(response) {
+				console.log(response);
+			})
+		} else {
+			console.log('working');
+			studentServices.markAsIncomplete(user._id, dayIndex, sectionIndex, dayId)
+			.then(function(response) {
+				console.log(response);
+			})
+		}
 	}
 });

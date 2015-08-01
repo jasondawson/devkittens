@@ -86,6 +86,15 @@ angular.module('devKittens')
 			typeRef: function($route) {
 				return $route.current.params.type;
 			},
+			dayIndex: function (infoStorage, $location, $route) {
+				if ($route.current.params.type == 'cohort') {
+					var index = infoStorage.serveDayIndex();
+					if (!index) return $location.path('/dashboard');
+					return index;
+				} else {
+					return null;
+				}
+			},
 			user: getAuth
 		}
 	})

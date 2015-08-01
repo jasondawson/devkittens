@@ -14,7 +14,8 @@ var cohortSchema = new Schema({
 				readPermissions: [{}],
 				editPermissions: [{}],
 				content: String,
-				title: String
+				title: String,
+				finishedStudents: [{ type: mongoose.Schema.Types.ObjectId, ref: "User"}]
 			}]
 		},
 		day: Date,
