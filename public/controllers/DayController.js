@@ -164,7 +164,6 @@ angular.module('devKittens')
 	}
 
 	//the stuff about instructors teaching classes, etc.
-
 	$scope.superShowThis = false;
 
 	$scope.teachLesson = function(lesson) {
@@ -184,18 +183,17 @@ angular.module('devKittens')
 	}
 
 	//marking things as donze
-
 	$scope.markAsCompleted = function(sectionIndex, model, section) {
 		if (model == true) {
 			studentServices.markAsCompleted(user._id, dayIndex, sectionIndex, dayId)
 			.then(function(response) {
-				console.log(response);
+				$scope.lesson.sections[sectionIndex].finishedStudents.push(user._id);
 			})
 		} else {
-			console.log('working');
 			studentServices.markAsIncomplete(user._id, dayIndex, sectionIndex, dayId)
 			.then(function(response) {
-				console.log(response);
+				var index = $scope.lesson.sections[sectionIndex].finishedStudents.indexOf(user._id);
+				$scope.lesson.sections[sectionIndex].finishedStudents.splice(index, 1);
 			})
 		}
 	}

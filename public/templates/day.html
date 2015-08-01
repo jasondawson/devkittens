@@ -78,7 +78,7 @@
 				</div>
 
 				<!-- LESSON INFO -->
-				<div ng-repeat="section in lesson.sections track by $index" class="portlet-content container extra-padding">
+				<div ng-repeat="section in lesson.sections track by $index" class="portlet-content container extra-padding" ng-class="{'done-border': section.finishedStudents.indexOf(user._id) > -1}">
 					<div ng-show="!lesson.edit">
 						<h3 ng-show="section.title">
 							{{section.title}}
@@ -105,11 +105,11 @@
 
 					</div>
 	<!-- right here is where Kyle is working on marking things as donzo -->
-					<div ng-show="user.userType == 'student' && typeRef == 'cohort'">
-						<div>I have finished this assignment without cheating</div>
-						<div ng-click="markAsCompleted($index, completedSection, section)">
+					<div ng-show="user.userType == 'student' && typeRef == 'cohort'" class="donzo-container">
+						<span>mark as done: </span>
+						<span ng-click="markAsCompleted($index, completedSection, section)">
 							<input type="checkbox" ng-model="completedSection" ng-checked="section.finishedStudents.indexOf(user._id) !== -1"/>
-						</div>
+						</span>
 					</div>
 				</div>
 

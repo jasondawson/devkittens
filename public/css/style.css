@@ -216,6 +216,10 @@ header .right p:hover {
   border-bottom: 2px solid #ff611a;
   background-color: #333333;
 }
+header .right .active-a {
+  border-bottom: 2px solid #ff611a;
+  background-color: #333333;
+}
 header .right .pic-container {
   width: 40px;
   height: 40px;
@@ -963,12 +967,6 @@ select {
 .user-pics .width-container {
   margin: 0 auto;
 }
-.user-pics .width-container .st-toggle-view {
-  position: absolute;
-  bottom: -22px;
-  top: inherit;
-  left: 0;
-}
 .user-pics .add-students .flex-plus {
   background-color: #fff;
   border-radius: 100px;
@@ -984,23 +982,6 @@ select {
   background-color: #e6e6e6;
 }
 .user-pics .add-students .flex-plus .fa {
-  color: #1a75ff;
-}
-.st-toggle-view {
-  background-color: #ffffff;
-  font-size: 12px;
-  padding: 2px 5px;
-  color: #B2B1B1;
-  border: 1px solid #B5B5B5;
-  border-top: none;
-  border-left: none;
-  cursor: pointer;
-  position: absolute;
-  bottom: inherit;
-  left: 0;
-  top: 61px;
-}
-.st-toggle-view:hover {
   color: #1a75ff;
 }
 .pic-modal .modal-wrapper {
@@ -1079,9 +1060,24 @@ section.lesson .fa-pencil {
   cursor: pointer;
   margin-left: 20px;
 }
+section.lesson .donzo-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  color: #CAC6C6;
+}
+section.lesson .donzo-container input[type=checkbox] {
+  top: 15px;
+  right: 15px;
+  margin-left: 10px;
+}
 section.lesson .container.extra-padding {
   padding: 20px 40px;
   margin-top: 20px;
+}
+section.lesson .container.extra-padding.done-border {
+  border: 1px solid #2ecc71;
 }
 section.lesson .delete-section {
   color: #B06A6A;

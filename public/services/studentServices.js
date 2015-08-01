@@ -16,7 +16,6 @@ angular.module('devKittens')
 		})
 		.then(function(response) {
 			dfrd.resolve(response.data);
-			$location.path('/dashboard');
 		})
 		return dfrd.promise;
 	}
@@ -35,8 +34,6 @@ angular.module('devKittens')
 		})
 		.then(function(response) {
 			dfrd.resolve(response.data);
-			$location.path('/dashboard');
-
 		})
 		return dfrd.promise;
 	}

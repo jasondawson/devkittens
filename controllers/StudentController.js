@@ -9,7 +9,6 @@ exports.markAsCompleted = function(req, res) {
 		} else {
 			cohort.curriculum[req.body.dayIndex].lesson.sections[req.body.sectionIndex].finishedStudents.push(req.body.userId);
 			cohort.save(function(err, data) {
-				console.log(data);
 				res.json(data);
 			})
 		}
@@ -23,10 +22,8 @@ exports.markAsIncomplete = function(req, res) {
 			res.status(500).json(err);
 		} else {
 			var whereToSplice = cohort.curriculum[req.body.dayIndex].lesson.sections[req.body.sectionIndex].finishedStudents.indexOf(req.body.userId);
-			console.log(999990099090990, whereToSplice);
 			cohort.curriculum[req.body.dayIndex].lesson.sections[req.body.sectionIndex].finishedStudents.splice(whereToSplice, 1);
 			cohort.save(function(err, data) {
-				console.log(data);
 				res.json(data);
 			})
 		}

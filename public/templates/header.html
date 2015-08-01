@@ -6,7 +6,9 @@
 	</div>
 
 	<div class="section right">
-		<a ng-show="user" ng-click="toggleStudentView()" ng-if="isCohort"><p>Students</p></a>
+		<a ng-show="user" ng-click="toggleStudentView()" ng-if="isCohort">
+			<p ng-class="{'active-a': studentDisplay}">Students</p>
+		</a>
 
 		<a ng-show="user" href="/#/dashboard" ng-if="user.userType !== 'student'"><p>Dashboard</p></a>
 		<div class="pic-container" ng-show="user" ng-click="toggleHeaderDropdown()">
