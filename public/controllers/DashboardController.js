@@ -4,6 +4,7 @@ angular.module('devKittens')
 function ($scope, $location, cohortData, courseData, usersData, courseServices, cohortServices, emailsService, instructorServices, infoStorage, user) {
 
 	$scope.user = user;
+	console.log('user ', user);
 
 	// TODO: This controller is doing things a controller shouldn't do.
 	// Simplify and consolidate functionality and move it away from here.
@@ -11,10 +12,12 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 	// Init
 	$scope.toggleAddCohort = false;
 	$scope.toggleAddCourse = false;
+	$scope.toggleSchedule = false;
 	$scope.toggleViewToCohorts = false;
 	$scope.toggleViewToCourses = true;
 	$scope.toggleViewToMentors = false;
 	$scope.toggleViewToTeachers = false;
+	$scope.toggleViewToSchedule = false;
 	$scope.toggleViewToMentorProfile = false;
 	$scope.toggleViewToTeacherProfile = false;
 	$scope.toggleSubscribeCohort = false;
@@ -51,6 +54,11 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 		$scope.backdropVisible = !$scope.backdropVisible;
 	}
 
+	$scope.addScheduleView = function() {
+		$scope.toggleSchedule = !$scope.toggleSchedule;
+		$scope.backdropVisible = !$scope.backdropVisible;
+	}
+
 	// Toggling between dashboard views
 	$scope.activateCourses = function() {
 		$scope.activeTab = 'courses';
@@ -59,15 +67,18 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 		$scope.toggleViewToCohorts = false;
 		$scope.toggleViewToMentors = false;
 		$scope.toggleViewToTeachers = false;
+		$scope.toggleViewToSchedule = false;
 	}
 
 	$scope.activateCohorts = function() {
 		$scope.activeTab = 'cohorts';
+		$scope.toggleViewToCohorts = true;
+
 		$scope.toggleViewToCourses = false;
 		$scope.toggleViewToMentors = false;
 		$scope.toggleViewToTeachers = false;
+		$scope.toggleViewToSchedule = false;
 
-		$scope.toggleViewToCohorts = true;
 	}
 
 	$scope.activateMentors = function() {
@@ -77,12 +88,24 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 		$scope.toggleViewToCohorts = false;
 		$scope.toggleViewToCourses = false;
 		$scope.toggleViewToTeachers = false;
+		$scope.toggleViewToSchedule = false;
 	}
 
 	$scope.activateTeachers = function() {
 		$scope.activeTab = 'teachers';
 		$scope.toggleViewToTeachers = true;
 
+		$scope.toggleViewToCohorts = false;
+		$scope.toggleViewToCourses = false;
+		$scope.toggleViewToMentors = false;
+		$scope.toggleViewToSchedule = false;
+	}
+
+	$scope.activateSchedule = function() {
+		$scope.activeTab = 'schedule';
+		$scope.toggleViewToSchedule = true;
+
+		$scope.toggleViewToTeachers = false;
 		$scope.toggleViewToCohorts = false;
 		$scope.toggleViewToCourses = false;
 		$scope.toggleViewToMentors = false;

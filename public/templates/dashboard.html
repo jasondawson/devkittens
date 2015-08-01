@@ -8,16 +8,23 @@
 	<div class="menu-bar">
 
 		<button ng-click="activateCourses()" class="btn btn-default"
-				ng-class="{ active: activeTab === 'courses' }">Courses</button>
+				ng-class="{ active: activeTab === 'courses' }" 
+				ng-if="user.userType === 'admin' || user.userType === 'mentor'">Courses</button>
 		
 		<button ng-click="activateCohorts()" class="btn btn-default"
 				ng-class="{ active: activeTab === 'cohorts' }">Cohorts</button>
 
 		<button ng-click="activateMentors()" class="btn btn-default"
-				ng-class="{ active: activeTab === 'mentors' }">Mentors</button>
+				ng-class="{ active: activeTab === 'mentors' }"
+				ng-if="user.userType === 'admin' || user.userType === 'mentor'">Mentors</button>
 
 		<button ng-click="activateTeachers()" class="btn btn-default"
-			ng-class="{active: activeTab === 'teachers' }">Instructors</button>
+			ng-class="{active: activeTab === 'teachers' }"
+			ng-if="user.userType === 'admin' || user.userType === 'mentor'">Instructors</button>
+
+		<button ng-click="activateSchedule()" class="btn btn-default"
+			ng-class="{active: activeTab === 'schedule' }">Schedule</button>
+
 	</div>
 
 
@@ -27,7 +34,7 @@
 
 
 
-
+	<!-- Toggles the modal that allows you to add a new course -->
 	<div class="container" ng-show="toggleViewToCourses">
 		<div class="display-box add-new" ng-click="addCourseView()">
 			<span class="text-dashboard">Add a new course</span> <br />
@@ -48,12 +55,7 @@
 
 
 
-
-
-
-
-
-
+	<!-- Toggles the modal that allows you to create a new cohort -->
 	<div class="container" ng-show="toggleViewToCohorts">
 
 		<div class="display-box add-new" ng-click="addCohortView()">
@@ -70,12 +72,6 @@
 			</div> <!-- End of 'display-box' -->
 		</a>
 	</div> <!-- End of 'container' -->
-
-
-
-
-
-
 
 
 
@@ -113,14 +109,7 @@
 
 
 
-
-
-
-
-
-
-
-
+	<!-- Toggles the modal that allows you to add a new instructor -->
 	<div class="container" ng-show="toggleViewToTeachers">
 
 		<div class="display-box add-new" ng-click="addTeacherView()">
@@ -140,8 +129,27 @@
 	</div> <!-- End of 'container' -->
 
 	<!-- <div class="shift-wrapper" ng-show="toggleViewToTeachers"> -->
-</div> <!-- End of 'shift-wrapper' -->
 
+
+
+
+
+	<!-- Toggles the modal that allows you to view your schedule -->
+	<div class="container" ng-show="toggleViewToSchedule">
+
+		<div class="display-box add-new" ng-click="addScheduleView()">
+			<span class="text-dashboard">Current Schedule</span> <br />
+			<i class="icon-dashboard fa fa-calendar"></i>
+		</div>
+
+		<a class="schedule-link" href="dashboard">
+			<div class="display-box add-new" ng-click="toggleScheduleModal()" ng-repeat="dates in schedule">
+				<span class="text-dashboard center">Info goes here</span>
+			</div> <!-- End of 'display-box' -->
+		</a>
+	</div> <!-- End of 'container' -->
+
+	</div> <!-- End of 'shift-wrapper' -->
 </section>
 
 
@@ -258,6 +266,22 @@
 		<button class="form-btn" type="submit">Save</button>
 	</div>
 </div> <!-- End of 'add-cohort-modal' -->
+
+
+
+
+
+<!-- 'add-cohort-modal' activates when user clicks on 'Add a new cohort' -->
+<div class="add-cohort-modal" ng-show="toggleSchedule">
+	<h2 class="text-dashboard left">Classes you are scheduled to teach</h2>
+	<i class="close-modal fa fa-times" ng-click="addScheduleView()"></i>
+
+	<div>
+		<span class="text">Cohort Name</span>
+		<span class="text">Aug 3, 2015</span>
+		<span class="text">Lesson</span>
+	</div>
+</div>
 
 
 
