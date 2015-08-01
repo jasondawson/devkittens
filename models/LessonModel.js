@@ -5,11 +5,10 @@ var LessonSchema = mongoose.Schema({
 	sections: [{
 		title: String,
 		content: String,
-		readPermissions: { type: [String], default: ['mentor', 'student', 'instructor'] },
-		editPermissions: { type: [String], default: ['mentor', 'instructor'] }
+		read: { type: [String], default: ['admin', 'mentor', 'student', 'instructor'] },
+		edit: { type: [String], default: ['admin', 'mentor', 'instructor'] }
 	}],
 	instructor: { type: String}
-	
 })
 
 

@@ -126,7 +126,7 @@ i:hover {
 }
 .tooltip-wrapper .tooltip {
   position: absolute;
-  width: 100px;
+  min-width: 100px;
   color: #FFF;
   font-weight: 400;
   background: #5b5b5b;
@@ -702,11 +702,16 @@ section.dashboard .right {
   margin: 0 10px;
   text-align: center;
 }
-#back-to-calendar {
+.go-back {
   position: fixed;
-  padding: 15px;
   top: 59px;
   right: 0;
+}
+.go-back .btn {
+  padding: 10px;
+  display: block;
+  float: right;
+  width: 165px;
 }
 section.registration {
   display: flex;
@@ -1003,9 +1008,15 @@ select {
   margin-right: 4px;
   border-radius: 100px;
 }
+.pic-container a {
+  cursor: default;
+}
 .pic-container img {
   max-width: 100%;
   border-radius: 100px;
+}
+.pic-container .has-github {
+  cursor: pointer;
 }
 section.smaller-wrapper .shift-wrapper {
   padding: 0 150px;
