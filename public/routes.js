@@ -119,6 +119,9 @@ angular.module('devKittens')
 				})
 				return dfd.promise;
 			},
+			instructorData: function(infoStorage) {
+				
+			},
 			user: getBlockedAuth
 		}
 	})

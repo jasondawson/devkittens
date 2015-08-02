@@ -4,158 +4,158 @@
 
 <section class="dashboard">
 
-<div class="shift-wrapper">
-	<div class="menu-bar">
+	<div class="shift-wrapper">
+		<div class="menu-bar">
 
-		<button ng-click="activateCourses()" class="btn btn-default"
-				ng-class="{ active: activeTab === 'courses' }" 
-				ng-if="user.userType === 'admin' || user.userType === 'mentor'">Courses</button>
-		
-		<button ng-click="activateCohorts()" class="btn btn-default"
-				ng-class="{ active: activeTab === 'cohorts' }">Cohorts</button>
+			<button ng-click="activateCourses()" class="btn btn-default"
+					ng-class="{ active: activeTab === 'courses' }" 
+					ng-if="user.userType === 'admin' || user.userType === 'mentor'">Courses</button>
+			
+			<button ng-click="activateCohorts()" class="btn btn-default"
+					ng-class="{ active: activeTab === 'cohorts' }">Cohorts</button>
 
-		<button ng-click="activateMentors()" class="btn btn-default"
-				ng-class="{ active: activeTab === 'mentors' }"
-				ng-if="user.userType === 'admin' || user.userType === 'mentor'">Mentors</button>
+			<button ng-click="activateMentors()" class="btn btn-default"
+					ng-class="{ active: activeTab === 'mentors' }"
+					ng-if="user.userType === 'admin' || user.userType === 'mentor'">Mentors</button>
 
-		<button ng-click="activateTeachers()" class="btn btn-default"
-			ng-class="{active: activeTab === 'teachers' }"
-			ng-if="user.userType === 'admin' || user.userType === 'mentor'">Instructors</button>
+			<button ng-click="activateTeachers()" class="btn btn-default"
+				ng-class="{active: activeTab === 'teachers' }"
+				ng-if="user.userType === 'admin' || user.userType === 'mentor'">Instructors</button>
 
-		<button ng-click="activateSchedule()" class="btn btn-default"
-			ng-class="{active: activeTab === 'schedule' }">Schedule</button>
+			<button ng-click="activateSchedule()" class="btn btn-default"
+				ng-class="{active: activeTab === 'schedule' }">Schedule</button>
 
-	</div>
-
-
-
-
-
-
-
-
-	<!-- Toggles the modal that allows you to add a new course -->
-	<div class="container" ng-show="toggleViewToCourses">
-		<div class="display-box add-new" ng-click="addCourseView()">
-			<span class="text-dashboard">Add a new course</span> <br />
-			<i class="icon-dashboard fa fa-plus-circle"></i>
 		</div>
 
-		<a class="calendar-link" ng-repeat="course in courseArray"
-		   ng-href="/#/course/{{course._id}}" ng-click="setCourse(course)">
-			<div class="display-box">
-				<span class="text-dashboard name center">{{ course.title }}</span>
-				<span class="text-dashboard center">{{ course.courseLength }} days</span>
-			</div> <!-- End of 'display-box' -->
-		</a>
-
-	</div> <!-- End of 'container' -->
 
 
 
 
 
-	<!-- Toggles the modal that allows you to create a new cohort -->
-	<div class="container" ng-show="toggleViewToCohorts">
 
-		<div class="display-box add-new" ng-click="addCohortView()">
-			<span class="text-dashboard">Add a new cohort</span> <br />
-			<i class="icon-dashboard fa fa-plus-circle"></i>
+
+		<!-- Toggles the modal that allows you to add a new course -->
+		<div class="container" ng-show="toggleViewToCourses">
+			<div class="display-box add-new" ng-click="addCourseView()">
+				<span class="text-dashboard">Add a new course</span> <br />
+				<i class="icon-dashboard fa fa-plus-circle"></i>
+			</div>
+
+			<a class="calendar-link" ng-repeat="course in courseArray"
+			   ng-href="/#/course/{{course._id}}" ng-click="setCourse(course)">
+				<div class="display-box">
+					<span class="text-dashboard name center">{{ course.title }}</span>
+					<span class="text-dashboard center">{{ course.courseLength }} days</span>
+				</div> <!-- End of 'display-box' -->
+			</a>
+
+		</div> <!-- End of 'container' -->
+
+
+
+
+
+		<!-- Toggles the modal that allows you to create a new cohort -->
+		<div class="container" ng-show="toggleViewToCohorts">
+
+			<div class="display-box add-new" ng-click="addCohortView()">
+				<span class="text-dashboard">Add a new cohort</span> <br />
+				<i class="icon-dashboard fa fa-plus-circle"></i>
+			</div>
+
+			<a class="calendar-link" ng-repeat="cohort in cohortArray" 
+				ng-href="/#/cohort/{{cohort._id}}" ng-click="setCohort(cohort)">
+				<div class="display-box">
+					<span class="text-dashboard name center">{{ cohort.name }}</span>
+					<span class="text-dashboard center">{{ cohort.sched }}</span>
+					<span class="text-dashboard center">{{ cohort.location }}</span>
+				</div> <!-- End of 'display-box' -->
+			</a>
+		</div> <!-- End of 'container' -->
+
+
+
+
+
+	<!-- Invite mentors to joing DevMtn -->
+
+		<div ng-show="toggleViewToCohorts" class="shift-wrapper">
 		</div>
 
-		<a class="calendar-link" ng-repeat="cohort in cohortArray" 
-			ng-href="/#/cohort/{{cohort._id}}" ng-click="setCohort(cohort)">
-			<div class="display-box">
-				<span class="text-dashboard name center">{{ cohort.name }}</span>
-				<span class="text-dashboard center">{{ cohort.sched }}</span>
-				<span class="text-dashboard center">{{ cohort.location }}</span>
-			</div> <!-- End of 'display-box' -->
-		</a>
-	</div> <!-- End of 'container' -->
+
+		<div class="container" ng-show="toggleViewToMentors">
+
+			<div class="display-box add-new" ng-click="openMentorModal()">
+				<span class="text-dashboard">Add a new mentor</span> <br />
+				<i class="icon-dashboard fa fa-plus-circle"></i>
+			</div>
+
+			<div class="display-box add-new" ng-click="toggleSubscribeCohortModal()">
+				<span class="text-dashboard">Add Mentos to Mentors</span> <br />
+				<i class="icon-dashboard fa fa-plus-circle"></i>
+			</div>
+
+			<a class="mentors-link" href="#dashboard">
+				<div class="display-box" ng-click="toggleMentorModal(); setMentor(mentor)" ng-repeat="mentor in usersArray | filter: {userType: 'mentor'}">
+					<img class="mentor-image center" ng-src="{{mentor.avatar}}"</img>
+					<span class="text-dashboard center">{{ mentor.name }}</span>
+					<span class="text-dashboard name center">{{ mentor.location }}</span>
+					<span class="text-dashboard name center">{{ mentor.mentorType }}</span>
+				</div> <!-- End of 'display-box' -->
+			</a>
+		</div> <!-- End of 'container' -->
 
 
 
 
 
-<!-- Invite mentors to joing DevMtn -->
+		<!-- Toggles the modal that allows you to add a new instructor -->
+		<div class="container" ng-show="toggleViewToTeachers">
 
-	<div ng-show="toggleViewToCohorts" class="shift-wrapper">
-	</div>
+			<div class="display-box add-new" ng-click="addTeacherView()">
+				<span class="text-dashboard">Add a new instructor</span> <br />
+				<i class="icon-dashboard fa fa-plus-circle"></i>
+			</div>
 
+			<!-- this lil guy toggles the modal -->
+			<a class="mentors-link" href="#dashboard">
+				<div class="display-box" ng-click="toggleTeacherModal(teacher._id); setTeacher(teacher)" ng-repeat="teacher in usersArray | filter: {userType: '!student'}">
+					<img class="mentor-image center" ng-src="{{teacher.avatar}}"</img>
+					<span class="text-dashboard center">{{ teacher.name }}</span>
+					<span class="text-dashboard name center">{{ teacher.location }}</span>
+					<span class="text-dashboard name center">{{ teacher.mentorType }}</span>
+				</div> <!-- End of 'display-box' -->
+			</a>
+		</div> <!-- End of 'container' -->
 
-	<div class="container" ng-show="toggleViewToMentors">
-
-		<div class="display-box add-new" ng-click="openMentorModal()">
-			<span class="text-dashboard">Add a new mentor</span> <br />
-			<i class="icon-dashboard fa fa-plus-circle"></i>
-		</div>
-
-		<div class="display-box add-new" ng-click="toggleSubscribeCohortModal()">
-			<span class="text-dashboard">Add Mentos to Mentors</span> <br />
-			<i class="icon-dashboard fa fa-plus-circle"></i>
-		</div>
-
-		<a class="mentors-link" href="#dashboard">
-			<div class="display-box" ng-click="toggleMentorModal(); setMentor(mentor)" ng-repeat="mentor in usersArray | filter: {userType: 'mentor'}">
-				<img class="mentor-image center" ng-src="{{mentor.avatar}}"</img>
-				<span class="text-dashboard center">{{ mentor.name }}</span>
-				<span class="text-dashboard name center">{{ mentor.location }}</span>
-				<span class="text-dashboard name center">{{ mentor.mentorType }}</span>
-			</div> <!-- End of 'display-box' -->
-		</a>
-	</div> <!-- End of 'container' -->
+		<!-- <div class="shift-wrapper" ng-show="toggleViewToTeachers"> -->
 
 
 
 
 
-	<!-- Toggles the modal that allows you to add a new instructor -->
-	<div class="container" ng-show="toggleViewToTeachers">
+		<!-- Toggles the modal that allows you to view your schedule -->
+		<div class="container" ng-show="toggleViewToSchedule">
 
-		<div class="display-box add-new" ng-click="addTeacherView()">
-			<span class="text-dashboard">Add a new instructor</span> <br />
-			<i class="icon-dashboard fa fa-plus-circle"></i>
-		</div>
+			<div class="display-box add-new" ng-click="addScheduleView(); getInstructorInfo()">
+				<span class="text-dashboard">Current Schedule</span> <br />
+				<i class="icon-dashboard fa fa-calendar"></i>
+			</div>
 
-		<!-- this lil guy toggles the modal -->
-		<a class="mentors-link" href="#dashboard">
-			<div class="display-box" ng-click="toggleTeacherModal(teacher._id); setTeacher(teacher)" ng-repeat="teacher in usersArray | filter: {userType: '!student'}">
-				<img class="mentor-image center" ng-src="{{teacher.avatar}}"</img>
-				<span class="text-dashboard center">{{ teacher.name }}</span>
-				<span class="text-dashboard name center">{{ teacher.location }}</span>
-				<span class="text-dashboard name center">{{ teacher.mentorType }}</span>
-			</div> <!-- End of 'display-box' -->
-		</a>
-	</div> <!-- End of 'container' -->
+			<div class="display-box add-new" ng-click="addScheduleView()">
+				<span class="text-dashboard">Add Lessons to Teach</span> <br />
+				<i class="icon-dashboard fa fa-plus-circle"></i>
+			</div>
 
-	<!-- <div class="shift-wrapper" ng-show="toggleViewToTeachers"> -->
-
-
-
-
-
-	<!-- Toggles the modal that allows you to view your schedule -->
-	<div class="container" ng-show="toggleViewToSchedule">
-
-		<div class="display-box add-new" ng-click="addScheduleView()">
-			<span class="text-dashboard">Current Schedule</span> <br />
-			<i class="icon-dashboard fa fa-calendar"></i>
-		</div>
-
-		<a class="schedule-link" href="dashboard">
-			<div class="display-box add-new" ng-click="toggleScheduleModal()" ng-repeat="dates in schedule">
-				<span class="text-dashboard center">Info goes here</span>
-			</div> <!-- End of 'display-box' -->
-		</a>
-	</div> <!-- End of 'container' -->
+			<a class="schedule-link" href="dashboard">
+				<div class="display-box add-new" ng-click="toggleScheduleModal()" ng-repeat="dates in schedule">
+					<span class="text-dashboard center">Info goes here</span>
+				</div> <!-- End of 'display-box' -->
+			</a>
+		</div> <!-- End of 'container' -->
 
 	</div> <!-- End of 'shift-wrapper' -->
 </section>
-
-
-
-
-
 
 
 
@@ -175,11 +175,6 @@
 		<button class="form-btn" type="submit" ng-click="createNewCourse(courseInfo)" ng-disabled="newCourseForm.$invalid">Save</button>
 	</div>
 </div> <!-- End of 'add-cohort-modal' -->
-
-
-
-
-
 
 
 
@@ -276,10 +271,10 @@
 	<h2 class="text-dashboard left">Classes you are scheduled to teach</h2>
 	<i class="close-modal fa fa-times" ng-click="addScheduleView()"></i>
 
-	<div>
+	<div ng-repeat="schedule in instructorSchedule">
 		<span class="text">Cohort Name</span>
-		<span class="text">Aug 3, 2015</span>
-		<span class="text">Lesson</span>
+		<span class="text">{{ schedule.day | date: fullDate }}</span>
+		<span class="text">{{ schedule.topic }}</span>
 	</div>
 </div>
 

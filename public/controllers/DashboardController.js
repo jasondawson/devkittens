@@ -1,11 +1,11 @@
 angular.module('devKittens')
 
 .controller('DashboardController',
-function ($scope, $location, cohortData, courseData, usersData, courseServices, cohortServices, emailsService, instructorServices, infoStorage, user) {
+function ($scope, $location, cohortData, courseData, usersData, courseServices, dashboardService, cohortServices, emailsService, instructorServices, infoStorage, user) {
 
 	$scope.user = user;
-	console.log('user ', user);
-
+	
+	
 	// TODO: This controller is doing things a controller shouldn't do.
 	// Simplify and consolidate functionality and move it away from here.
 
@@ -178,6 +178,19 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 			console.log('response', response);
 		}, function(err) {
 			console.log('error ', err);
+		})
+	}
+
+
+	$scope.getInstructorInfo = function() {
+		dashboardService.getInstructorInfo($scope.user).then(function(response) {
+			var instructorInfo = response;
+			$scope.instructorCohorts = response.data.cohorts;
+			$scope.instructorSchedule = response.data.schedule;
+			$scope.instructorSkills = response.data.skills;
+			// console.log('instructor info DashboardController ', instructorInfo);
+		}, function(err) {
+			console.log('Houston... ', err)
 		})
 	}
 
