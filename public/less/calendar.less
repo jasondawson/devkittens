@@ -1,3 +1,8 @@
+.width-container {
+	max-width: 1400px;
+	margin: 0 auto;
+}
+
 .cal {
 	width: 1000px;
 	min-height: 100px;
@@ -269,8 +274,11 @@
 .overall-container {
     width: 100%;
     max-height: 100%;
-    margin: 2%;
+    margin-top: 30px;
     position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 
     .instructor-type {
 	    position: absolute;
@@ -299,9 +307,9 @@
 }
 
 .calendar-container {
-    float: left;
+    // float: left;
     width: 13%;
-    height: 29%;
+    height: @day-height;
     background-color: #fff;
     border-radius: 4px;
     padding: 5px 5px 0 5px;

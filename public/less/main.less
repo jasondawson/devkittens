@@ -6,6 +6,7 @@ html, body {
 	padding: 0;
 	height: 100%;
 	width: 100%;
+    margin: 0 auto;
 	box-sizing: border-box;
 	background-color: #f6f6ef !important;
 	font-family: 'Open Sans', sans-serif;
@@ -164,9 +165,11 @@ i:hover{
 .portlet-placeholder {
 	margin: 0;
     width: 13%;
-    height: 22%;
-    background-color: #eee;
-    border: 1px dotted #BBBBBB;
+    // height: 29%;
+    height: @day-height;
+    margin: 0 5px 5px 5px;
+    background-color: lighten(@blue, 40%);//#eee;
+    border: 1px dotted @blue;
     box-shadow: inset 0px 0px 8px 0px rgba(0, 0, 0, 0.06); //inset 0px 0px 8px 0px rgba(0, 0, 0, 0.15);
 }
 

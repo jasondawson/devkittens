@@ -1,5 +1,7 @@
 <header-directive scroll-top></header-directive>
 <loading-gif ng-if="loading"></loading-gif>
+<div class="width-container">
+
 
 <div class="calendar-nav">
 	<!-- IF NO LEFT -->
@@ -37,7 +39,7 @@
 
 <sortable>
 <div class="overall-container column">
-	<div class="calendar-container" ng-click="viewDay(day)" ng-repeat="day in activeMonth" id="day{{day._id}}">
+	<div class="calendar-container portlet-content" ng-click="viewDay(day)" ng-repeat="day in activeMonth" id="day{{day._id}}">
 	<hr><hr><hr><hr><hr><hr>
 
 
@@ -55,3 +57,5 @@
 	</div>
 </div>
 <sortable>
+
+</div>
