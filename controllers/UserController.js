@@ -80,3 +80,14 @@ exports.post = function (req, res) {
 		return res.json(result);
 	})
 }
+
+exports.getUsersWithCohortId = function (req, res) {
+	console.log(req.body);
+	// User.findById(req.params.cohortId, function (err, User) {
+	// 	if (err) return res.status(500).send(err);
+	// 	for (var i = 0; i < User.length; i++) {
+	// 		if (!user.)
+	// 	}
+	// })
+
+}

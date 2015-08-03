@@ -5,43 +5,44 @@
 	<h4>Select the Cohort</h4>
 	<form>
 		<select class="form-input center" ng-options="cohort.name for cohort in cohortArray" ng-model="selectedCohort"></select>
-		<button class="submit center" ng-click="getStudentsForCohort(selectedCohort)">Select</button>
+		<button class="submit center" ng-click="getPeopleForCohort(selectedCohort); AssignMentorsView()">Select</button>
 	</form>
 
 	</br>
 	</br>
 
-	<h4>Select Mentors for the Cohort</h4>
+	<div class="AssignMentorsView">
+		<div ng-show="mentors">
+			<h4>Select Mentors for the Cohort</h4>
 
-	<div class="flex-row-space-around">
-		<div ng-repeat="mentor in mentors">
-			<img id="max-avatar-size" ng-src="{{ mentor.avatar }}">
-			<h5> {{ mentor.name }} </h5>
-
-			<div class="mentos-list">
-				{{ mentor.mentos }}
+			<div class="flex-row-space-around">
+				<div ng-repeat="mentor in mentors">
+					<img id="max-avatar-size" ng-src="{{ mentor.avatar }}">
+					<h5> {{ mentor.name }} </h5>
+					<input type="checkbox" ng-model"mentor._id">
+				</div>
 			</div>
-			
 		</div>
-	</div>
 
-	</br>
-	</br>
+		</br>
+		</br>
 
-	<h4>Select Students</h4>
+		<h4>Select Students</h4>
 
-	<div class="flex-row-space-around">
-		<div ng-repeat="student in students" id="student-list">
-			<img id="max-avatar-size" src="{{ student.avatar }}">
-			<h5>{{ student.name }}</h5>
+		<div class="flex-row-space-around">
+			<div ng-repeat="student in students" id="student-list">
+				<img id="max-avatar-size" src="{{ student.avatar }}">
+				<h5>{{ student.name }}</h5>
+				<input type="checkbox" ng-model"student._id">
+			</div>
 		</div>
-	</div>
 
-	</br>
+		</br>
 
-	<div class="form-btn-container">
-		<button class="form-btn" type="submit" ng-click="toggleSubscribeCohortModal()">Cancel</button>
-		<button class="form-btn" type="submit" ng-click="saveSelectedStudents(selectedStudents)">Save</button>
+		<div class="form-btn-container">
+			<button class="form-btn" type="submit" ng-click="toggleSubscribeCohortModal()">Cancel</button>
+			<button class="form-btn" type="submit" ng-click="saveSelectedStudents(selectedStudents)">Save</button>
+		</div>
 	</div>
 
 </div>  <!-- End of 'add-cohort-modal' -->

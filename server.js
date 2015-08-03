@@ -103,6 +103,9 @@ app.get('/api/users', User.getAll);
 app.put('/api/user/:id', User.put);
 app.post('/api/data-type', User.getTypeData);
 
+// Mentor Assigning
+app.get('api/mentors/cohortId', User.getUsersWithCohortId);
+
 // Auth
 app.post('/api/user', logout, passport.authenticate('local-signup'), function (req, res) {
     res.redirect('/#/')

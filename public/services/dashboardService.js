@@ -161,6 +161,14 @@
 			})
 		}
 
+		service.findPeopleForCohort = function(cohortId) {
+			console.log(cohortId);
+			return $http({
+				method: 'GET',
+				url: 'api/mentors/cohortId'
+			})
+		}
+
 		service.getOptions = function() {
 			return options;
 		}
