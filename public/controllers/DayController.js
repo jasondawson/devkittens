@@ -306,4 +306,13 @@ angular.module('devKittens')
 			})
 		}
 	}
+
+	// the creating a section part
+	$scope.showSection = function(section) {
+		if (!section.show) {
+			section.show = true;
+		} else {
+			section.show = false;
+		}
+	}
 });

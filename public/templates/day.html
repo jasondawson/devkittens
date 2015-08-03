@@ -1,9 +1,24 @@
 <header-directive></header-directive>
 
 	<!-- IF THERE IS NO LESSON -->
-	<section class="smaller-wrapper" ng-show="!lesson.sections.length && !lesson.topic">
+	<section class="smaller-wrapper whole-thing" ng-show="!lesson.sections.length && !lesson.topic">
 
-		<div class="shift-wrapper">
+		<div ng-show="sections.length" class="shift-wrapper smaller-padding">
+			<div class="container">
+				<div class="profile-header">Sections <span class="lil-guy">(click to expand)</span></div>
+				<div class="profile-container-body">
+					<div ng-repeat="section in sections" ng-click="showSection(section)">
+						<label>{{section.title}}</label>
+						<div ng-show="section.show" ng-bind-html="section.content | unsafe"></div>
+						<div>{{section.edit}}</div>
+						<div>{{section.read}}</div>
+						<hr ng-show="$index < sections.length - 1">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="shift-wrapper" ng-class="{'larger-padding': !sections.length, 'smaller-padding': sections.length}">
 			<div class="container">
 				{{activeLesson}}
 				<div class="profile-header">Create a new lesson</div>
@@ -16,6 +31,16 @@
 							<input class="form-control" placeholder="e.g. Javascript 101" ng-model="topic" required/>
 						</form>
 						<hr>
+
+						<!-- <div ng-repeat="section in sections">
+							<br>
+							<hr ng-if="$index === 0">
+
+							<h4>{{section.title}}</h4>
+							<div ng-bind-html="section.content | unsafe"></div>
+
+							<hr>
+						</div> -->
 
 						<label>New section name:</label>
 						<form ng-submit="addSection(newSection)">
@@ -70,7 +95,7 @@
 						   <button class="btn btn-default">Create section</button>
 						</form>
 
-						<div ng-repeat="section in sections">
+						<!-- <div ng-repeat="section in sections">
 							<br>
 							<hr ng-if="$index === 0">
 
@@ -80,7 +105,8 @@
 							<hr>
 							{{section.edit}}
 							{{section.read}}
-						</div>
+						</div> -->
+
 						<br><br>
 						<button class="btn btn-success" ng-click="createLesson(topic)">Save lesson</button>
 					<!-- </form> -->
