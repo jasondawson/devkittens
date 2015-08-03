@@ -9,8 +9,8 @@
 				<div class="profile-header">Create a new lesson</div>
 
 				<div class="profile-container-body">
-					<form ng-submit="updateUser(user, newPassword)">
-						<div class="alert alert-success" role="alert" ng-if="displayMessage" hide-essage>Settings have been updated.</div>
+					<!-- <form ng-submit="updateUser(user, newPassword)"> -->
+						<!-- <div class="alert alert-success" role="alert" ng-if="displayMessage" hide-essage>Settings have been updated.</div> -->
 						<label>Lesson topic: *</label>
 						<form ng-submit="setTopic(topic)">
 							<input class="form-control" placeholder="e.g. Javascript 101" ng-model="topic" required/>
@@ -25,6 +25,48 @@
 
 						   <text-angular ng-model="newSection.content"></text-angular>
 
+						   
+						   <p>edit permissions:</p>
+							<label ng-repeat="type in types">
+							  <input
+							    type="checkbox"
+							    name="selectedTypes[]"
+							    value="{{type}}"
+							    ng-checked="newSection.edit.indexOf(type) > -1"
+							    ng-click="toggleEditSelection(type)"
+							  > {{type}}
+							</label>
+							<br>
+							<p>read permissions:</p>
+							<label ng-repeat="type in types">
+							  <input
+							    type="checkbox"
+							    name="selectedTypes[]"
+							    value="{{type}}"
+							    ng-checked="newSection.read.indexOf(type) > -1"
+							    ng-click="toggleReadSelection(type)"
+							  > {{type}}
+							</label>
+							<br>
+
+
+
+						   
+							   <!-- <span style="display:inline-block">
+									edit permissions:<br>
+									<input type="checkbox" ng-checked="newSection.edit.push(admin)" ng-click="logNewSection(newSection)"/>admin<br>
+									<input type="checkbox" ng-checked="newSection.edit.push(mentor)"/>mentor<br>
+									<input type="checkbox" ng-checked="newSection.edit.push(instructor)"/>instructor<br>
+									<input type="checkbox" ng-checked="newSection.edit.push(student)"/>student<br>
+								</span> 
+								<span style="display:inline-block">
+									read permissions:<br>
+									<input type="checkbox" />admin<br>
+									<input type="checkbox" />mentor<br>
+									<input type="checkbox" />instructor<br>
+									<input type="checkbox" />student<br>
+								</span> -->
+							
 						   <button class="btn btn-default">Create section</button>
 						</form>
 
@@ -36,10 +78,12 @@
 							<div ng-bind-html="section.content | unsafe"></div>
 
 							<hr>
+							{{section.edit}}
+							{{section.read}}
 						</div>
 						<br><br>
 						<button class="btn btn-success" ng-click="createLesson(topic)">Save lesson</button>
-					</form>
+					<!-- </form> -->
 				</div>
 
 			</div>
@@ -60,7 +104,7 @@
 	<div class="shift-wrapper">	
 		<div ng-show="lesson" class="portlet-header">
 			<div ng-show="!lesson.edit && (lesson.sections.length || lesson.topic)">
-				<h2>{{lesson.topic}}
+				<h2>{{lesson.topic || topicPlaceholder}}
 
 					<span style="float: right;">
 						<button ng-click="teachLesson(day)" ng-show="!day.instructor && user.userType !== 'student' && typeRef == 'cohort'" class="btn btn-default">Teach this lesson</button>
@@ -106,6 +150,28 @@
 					   <br> 
 					   <label>Section content:</label>
 						<text-angular ng-model="section.content"></text-angular>
+						<p>edit permissions:</p>
+							<label ng-repeat="type in types">
+							  <input
+							    type="checkbox"
+							    name="selectedTypes[]"
+							    value="{{type}}"
+							    ng-checked="section.edit.indexOf(type) > -1"
+							    ng-click="toggleEditSelection(type, section)"
+							  > {{type}}
+							</label>
+							<br>
+							<p>read permissions:</p>
+							<label ng-repeat="type in types">
+							  <input
+							    type="checkbox"
+							    name="selectedTypes[]"
+							    value="{{type}}"
+							    ng-checked="section.read.indexOf(type) > -1"
+							    ng-click="toggleReadSelection(type, section)"
+							  > {{type}}
+							</label>
+							<br>
 
 					</div>
 	<!-- right here is where Kyle is working on marking things as donzo -->

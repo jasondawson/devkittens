@@ -11,6 +11,101 @@ angular.module('devKittens')
 		$scope.day = null;
 	}
 
+	$scope.topicPlaceholder = "topic goes here"
+
+	//SECTION PERMISSIONS
+	$scope.newSection = {}
+	$scope.newSection.edit = []
+	$scope.logNewSection = function(section){
+		console.log(section)
+	}
+
+	 // types
+  	$scope.types = ['admin', 'mentor', 'instructor', 'student'];
+
+  // selected edit type
+  	$scope.newSection.edit = [];
+ 	 $scope.newSection.read = [];
+
+  // toggle selection for a given type
+  	$scope.toggleEditSelection = function toggleSelection(type, section) {
+  		console.log('type', type, 'section', section)
+  		if (!section) {
+	    	var idx = $scope.newSection.edit.indexOf(type);
+	    	// is currently selected
+	    	if (idx > -1) {
+	    		$scope.newSection.edit.splice(idx, 1);
+	    	}	
+	    	// is newly selected
+	    	else {
+	    		$scope.newSection.edit.push(type);
+	    	}
+  		} else if (section) {
+			var idx = section.edit.indexOf(type);
+	    	// is currently selected
+	   		if (idx > -1) {
+	    		section.edit.splice(idx, 1);
+	    	}
+	    	// is newly selected
+	    	else {
+	    		section.edit.push(type);
+	    	}
+  		}
+  	};
+
+	// selected read type
+  
+
+  // toggle selection for a given type
+
+  $scope.toggleReadSelection = function toggleSelection(type, section) {
+  	  	console.log('type', type, 'section', section)
+  	if (!section) {
+  	
+	    var idx = $scope.newSection.read.indexOf(type);
+
+	    // is currently selected
+	    if (idx > -1) {
+	      $scope.newSection.read.splice(idx, 1);
+	    }
+
+	    // is newly selected
+	    else {
+	      $scope.newSection.read.push(type);
+	    }
+  	}
+  	if (section) {
+  		console.log(3434343434, section)
+  		var idx = section.read.indexOf(type);
+
+	    // is currently selected
+	    if (idx > -1) {
+	      section.read.splice(idx, 1);
+	    }
+
+	    // is newly selected
+	    else {
+	      section.read.push(type);
+	    }
+  	}
+  };
+
+
+
+
+
+
+	// $scope.newSection.readPermissions = [];
+	// $scope.newSection.writePermissions = [];
+
+	// $scope.addWritePermissions = function(type){
+	// 	$scope.newSection.writePermissions.push(type);
+	// }
+
+	// $scope.addReadPermissions = function(type){
+	// 	$scope.newSection.readPermissions.push(type);
+	// }
+
 
 	//TYPEREF REFERS TO COURSE OR COHORT
 	$scope.cohortId = typeId;
@@ -94,6 +189,7 @@ angular.module('devKittens')
 	if ($scope.typeRef == 'course') {
 
 		$scope.updateLesson = function(){
+			console.log(12121212, $scope.lesson.sections)
 			var lessonId = $scope.lesson._id;
 			var topic = $scope.lesson.topic;
 			var sections = $scope.lesson.sections
