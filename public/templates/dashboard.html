@@ -7,10 +7,15 @@
 	<div class="shift-wrapper">
 		<div class="menu-bar">
 
+			<button ng-click="activateInstructorSchedule()" class="btn btn-default"
+				ng-class="{active: instructorTab === 'instructorSchedule' }"
+				ng-if="user.userType === 'instructor'">Schedule</button>
+
 			<button ng-click="activateCourses()" class="btn btn-default"
 					ng-class="{ active: activeTab === 'courses' }" 
 					ng-if="user.userType === 'admin' || user.userType === 'mentor'">Courses</button>
 			
+
 			<button ng-click="activateCohorts()" class="btn btn-default"
 					ng-class="{ active: activeTab === 'cohorts' }">Cohorts</button>
 
@@ -23,7 +28,8 @@
 				ng-if="user.userType === 'admin' || user.userType === 'mentor'">Instructors</button>
 
 			<button ng-click="activateSchedule()" class="btn btn-default"
-				ng-class="{active: activeTab === 'schedule' }">Schedule</button>
+				ng-class="{active: activeTab === 'schedule' }"
+				ng-if="user.userType === 'admin' || user.userType === 'mentor'">Schedule</button>
 
 		</div>
 

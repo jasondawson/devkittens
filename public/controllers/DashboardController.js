@@ -21,6 +21,7 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 	$scope.toggleViewToMentorProfile = false;
 	$scope.toggleViewToTeacherProfile = false;
 	$scope.toggleSubscribeCohort = false;
+	$scope.instructorTab = 'instructorSchedule'
 	$scope.activeTab = 'courses';
 	$scope.cohortArray = cohortData;
 	$scope.courseArray = courseData;
@@ -74,6 +75,7 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 		$scope.activeTab = 'cohorts';
 		$scope.toggleViewToCohorts = true;
 
+		$scope.instructorTab = 'cohorts';
 		$scope.toggleViewToCourses = false;
 		$scope.toggleViewToMentors = false;
 		$scope.toggleViewToTeachers = false;
@@ -109,6 +111,17 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 		$scope.toggleViewToCohorts = false;
 		$scope.toggleViewToCourses = false;
 		$scope.toggleViewToMentors = false;
+	}
+
+	$scope.activateInstructorSchedule = function() {
+		$scope.instructorTab = 'instructorSchedule';
+		$scope.activeTab = 'schedule';
+		$scope.toggleViewToSchedule = true;
+
+		$scope.toggleViewToTeachers = false;
+		$scope.toggleViewToCohorts = false;
+		$scope.toggleViewToCourses = false;
+		$scope.toggleViewToMentors = false;	
 	}
 
 	// Open/close mentor modal - invites mentors to join DevMtn
