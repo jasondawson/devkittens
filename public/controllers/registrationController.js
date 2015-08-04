@@ -10,7 +10,9 @@ function ($scope, authService, $location, infoStorage, userType, cohortId) {
 		if(!userType) return $scope.errorMessage = "Illegal registration.";
 		if(password !== confirmPassword) return $scope.errorMessage = 'Your passwords don\'t match';
 
-		authService.createUser(name, email, password, userType, cohortId)
+		var typeArray = [];
+		typeArray.push(userType);
+		authService.createUser(name, email, password, typeArray, cohortId)
 		.then(function (response) {
 			// Temp store user info
 			infoStorage.saveUser(response);

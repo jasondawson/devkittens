@@ -100,18 +100,18 @@ module.exports = function(passport) {
                             newUser.save(function (err, result) {
                                 if (err) return done(err);
                                 // Pushing student id to cohort student array
-                                if (req.body.userType == "instructor") {
+                                if (req.body.userType.indexOf("instructor") !== -1) {
                                     new Instructor({
                                         userId: result._id
                                     }).save();
-                                } else if (req.body.userType == "mentor") {
+                                } else if (req.body.userType.indexOf("mentor") !== -1) {
                                     new Mentor({
                                         userId: result._id,
                                         cohortId: req.body.cohortId
                                     }).save();
-                                    new Instructor({
-                                        userId: result._id
-                                    }).save();
+                                    // new Instructor({
+                                    //     userId: result._id
+                                    // }).save();
                                     Cohort.findOne({'_id': req.body.cohortId}, function (err, foundCohort) {
                                         if (err) return res.status(500).send(err);
 
@@ -120,10 +120,10 @@ module.exports = function(passport) {
                                         foundCohort.mentors.push(result._id);
                                         foundCohort.save();
                                     })
-                                } else if (req.body.userType == "admin") {
-                                    new Instructor({
-                                        userId: result._id
-                                    }).save();
+                                // } else if (req.body.userType.indexOf("admin") !== -1) {
+                                //     // new Instructor({
+                                //     //     userId: result._id
+                                //     // }).save();
                                 } else {
                                     new Student({
                                         userId: result._id,
