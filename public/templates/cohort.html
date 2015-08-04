@@ -17,7 +17,7 @@
 				<span class="arrow-down"></span>
 			</span>
 		</div>
-		<div class="pic-container add-students" ng-if="user.userType !== 'student'" ng-click="openModal()">
+		<div class="pic-container add-students" ng-if="user.userType.admin || user.userType.mentor" ng-click="openModal()">
 			<div class="flex-plus">
 				<i class="fa fa-user-plus"></i>
 			</div>
@@ -92,7 +92,7 @@
 					<p ng-if="day.topic">{{ day.topic }}</p>
 				</div>
 			</div>
-			<div class="instructor-type" ng-show="!day.instructor && user.userType.indexOf('instructor') !== -1">available</div>
+			<div class="instructor-type" ng-show="!day.instructor && user.userType.instructor">available</div>
 			<div class="instructor-type" style="color: #2ecc71" ng-show="day.instructor == user._id">I'm teaching</div>
 
 	<!-- <div class="calendar-container" ng-click="viewDay(day)" ng-repeat="day in currentCohort.dates">
