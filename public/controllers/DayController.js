@@ -15,7 +15,6 @@ angular.module('devKittens')
 
 	//SECTION PERMISSIONS
 	$scope.newSection = {}
-	$scope.newSection.edit = []
 	$scope.logNewSection = function(section){
 		console.log(section)
 	}
@@ -24,8 +23,8 @@ angular.module('devKittens')
   	$scope.types = ['admin', 'mentor', 'instructor', 'student'];
 
   // selected edit type
-  	$scope.newSection.edit = [];
- 	 $scope.newSection.read = [];
+	$scope.newSection.edit = ['admin', 'mentor'];
+ 	$scope.newSection.read = ['admin', 'mentor', 'student', 'instructor'];
 
   // toggle selection for a given type
   	$scope.toggleEditSelection = function toggleSelection(type, section) {
@@ -131,6 +130,8 @@ angular.module('devKittens')
 	$scope.addSection = function(section){
 		$scope.sections.push(section)
 		$scope.newSection = {};
+		$scope.newSection.edit = ['admin', 'mentor'];
+ 	 	$scope.newSection.read = ['admin', 'mentor', 'student', 'instructor'];
 	}
 
 
