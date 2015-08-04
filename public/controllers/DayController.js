@@ -1,8 +1,7 @@
 angular.module('devKittens')
 
 .controller('DayController', function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStorage, lessonService, courseServices, cohortServices, studentServices, $location) {
-	$scope.user = user;
-	
+	$scope.user = user;	
 	if (typeRef == 'cohort') {
 		$scope.lesson = activeLesson.lesson;
 		$scope.day = activeLesson;
@@ -20,7 +19,7 @@ angular.module('devKittens')
 	}
 
 	 // types
-  	$scope.types = ['admin', 'mentor', 'instructor', 'student'];
+  	$scope.types = ['mentor', 'instructor', 'student'];
 
   // selected edit type
 	$scope.newSection.edit = ['admin', 'mentor'];
@@ -28,7 +27,6 @@ angular.module('devKittens')
 
   // toggle selection for a given type
   	$scope.toggleEditSelection = function toggleSelection(type, section) {
-  		console.log('type', type, 'section', section)
   		if (!section) {
 	    	var idx = $scope.newSection.edit.indexOf(type);
 	    	// is currently selected
@@ -58,7 +56,6 @@ angular.module('devKittens')
   // toggle selection for a given type
 
   $scope.toggleReadSelection = function toggleSelection(type, section) {
-  	  	console.log('type', type, 'section', section)
   	if (!section) {
   	
 	    var idx = $scope.newSection.read.indexOf(type);
@@ -74,7 +71,6 @@ angular.module('devKittens')
 	    }
   	}
   	if (section) {
-  		console.log(3434343434, section)
   		var idx = section.read.indexOf(type);
 
 	    // is currently selected
@@ -190,7 +186,6 @@ angular.module('devKittens')
 	if ($scope.typeRef == 'course') {
 
 		$scope.updateLesson = function(){
-			console.log(12121212, $scope.lesson.sections)
 			var lessonId = $scope.lesson._id;
 			var topic = $scope.lesson.topic;
 			var sections = $scope.lesson.sections
