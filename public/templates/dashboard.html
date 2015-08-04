@@ -9,11 +9,11 @@
 
 			<button ng-click="activateInstructorSchedule()" class="btn btn-default"
 				ng-class="{active: instructorTab === 'instructorSchedule' }"
-				ng-if="user.userType.instructor">Schedule</button>
+				ng-if="user.userType.indexOf('instructor') !== -1">Schedule</button>
 
 			<button ng-click="activateCourses()" class="btn btn-default"
 					ng-class="{ active: activeTab === 'courses' }" 
-					ng-if="user.userType.admin || user.userType.mentor">Courses</button>
+					ng-if="user.userType.indexOf('admin') !== -1 || user.userType.indexOf('mentor') !== -1">Courses</button>
 			
 
 			<button ng-click="activateCohorts()" class="btn btn-default"
@@ -21,15 +21,15 @@
 
 			<button ng-click="activateMentors()" class="btn btn-default"
 					ng-class="{ active: activeTab === 'mentors' }"
-					ng-if="user.userType.admin || user.userType.mentor">Mentors</button>
+					ng-if="user.userType.indexOf('admin') !== -1 || user.userType.indexOf('mentor') !== -1">Mentors</button>
 
 			<button ng-click="activateTeachers()" class="btn btn-default"
 				ng-class="{active: activeTab === 'teachers' }"
-				ng-if="user.userType.admin || user.userType.mentor">Instructors</button>
+				ng-if="user.userType.indexOf('admin') !== -1 || user.userType.indexOf('mentor') !== -1">Instructors</button>
 
 			<button ng-click="activateSchedule()" class="btn btn-default"
 				ng-class="{active: activeTab === 'schedule' }"
-				ng-if="user.userType.admin || user.userType.mentor">Schedule</button>
+				ng-if="user.userType.indexOf('admin') !== -1 || user.userType.indexOf('mentor') !== -1">Schedule</button>
 
 		</div>
 
