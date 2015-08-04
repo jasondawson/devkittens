@@ -11,8 +11,8 @@ var cohortSchema = new Schema({
 		lesson: {
 			topic: String,
 			sections: [{
-				readPermissions: [{}],
-				editPermissions: [{}],
+				read: [],
+				edit: [],
 				content: String,
 				title: String,
 				finishedStudents: [{ type: mongoose.Schema.Types.ObjectId, ref: "User"}]
