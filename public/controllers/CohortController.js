@@ -1,7 +1,7 @@
 angular.module('devKittens')
 
 .controller('CohortController', 
-	function ($scope, user, $location, infoStorage, cohortServices, currentCohortData, emailsService, dayOfWeek) {
+	function ($scope, user, $location, infoStorage, cohortServices, currentCohortData, emailsService, mentorService, dayOfWeek) {
 
 	// Init
 	$scope.user = user;
@@ -13,6 +13,7 @@ angular.module('devKittens')
 	$scope.currentSegment = 0;
 	$scope.activeMonth = $scope.currentCohort.curriculum[0];
 	$scope.studentDisplay = false;
+	$scope.mentorDisplay = false;
 	$scope.isCohort = true;
 	
 
@@ -67,6 +68,33 @@ angular.module('devKittens')
 		$scope.studentModal = false;
 	}
 
+	$scope.openMentorModal = function () {
+		$('body').css('overflow', 'hidden');
+		$scope.mentorModal = true;
+	}
+
+	$scope.closeMentorModal = function () {
+		$('body').css('overflow', 'inherit');
+		$scope.mentorModal = false;
+	}
+
+	$scope.getMentors = function() {
+		mentorService.getMentors().then(function(response){
+			console.log(response);
+		$scope.mentors = response.data;
+		}), function (error){
+			console.log(error);
+		}
+	}
+
+	$scope.assignMentors = function(mentor, cohortId) {
+		mentorService.assignMentors(mentor, cohortId).then(function(response){
+			console.log(response);
+		}), function (error){
+			console.log(error);
+		}
+	}
+
 	$scope.toggleStudentView = function () {
 		$scope.settingsView = false;
 		$scope.studentDisplay = !$scope.studentDisplay;
@@ -88,7 +116,7 @@ angular.module('devKittens')
 	$scope.sendStudentInvite = function (studentEmails) {
 		$scope.loading = true;
 
-		if (!studentEmails) return console.warn('Plase add emails');
+		if (!studentEmails) return console.warn('Please add emails');
 		var cohortInfo = {
 			name: currentCohortData.name,
 			id: currentCohortData._id
@@ -105,6 +133,8 @@ angular.module('devKittens')
 		});
 	}
 
-
+	$scope.toggleMentorView = function () {
+		$scope.mentorDisplay = !$scope.mentorDisplay;
+	}	
 
 })

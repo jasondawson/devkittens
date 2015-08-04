@@ -93,8 +93,8 @@ function ($scope, calendarService, user, infoStorage, emailsService, cohortServi
 			$('.fa-chevron-right').css('color', '#DFDFDF')
 			return;
 		}
-
 	}
+
 });
 
 	// --------------- UPDATING LESSON ------------

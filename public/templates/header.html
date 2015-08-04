@@ -12,6 +12,9 @@
 
 		<a ng-show="user" ng-click="toggleSettingsView()" ng-if="isCohort && user.userType !== 'student'">
 			<p ng-class="{'active-a': settingsView}">Cohort settings</p>
+
+		<a ng-show="user" ng-click="toggleMentorView(); getMentors()" ng-if="isCohort">
+			<p>Mentors</p>
 		</a>
 
 		<a ng-show="user" href="/#/dashboard" ng-if="user.userType !== 'student'"><p>Dashboard</p></a>

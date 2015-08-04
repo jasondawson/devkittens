@@ -36,8 +36,7 @@ var CohortController = require('./controllers/CohortController.js');
 var EmailController = require('./controllers/EmailController.js');
 var InstructorController = require('./controllers/InstructorController.js');
 var StudentController = require('./controllers/StudentController.js');
-
-
+var MentorController = require('./controllers/MentorController.js');
 
 
 // required for passport
@@ -99,6 +98,11 @@ app.put('/api/reserved/:userId/:dayId', InstructorController.deleteReserve);
 // students completing sections
 app.post('/api/completed', StudentController.markAsCompleted);
 app.put('/api/completed', StudentController.markAsIncomplete);
+
+// mentors
+app.get('/api/mentors', MentorController.getAllMentors);
+app.put('/api/mentors/:cohortId', MentorController.assignMentorCohortId);
+
 
 // Emails
 app.post('/api/email', EmailController.sendEmail);
