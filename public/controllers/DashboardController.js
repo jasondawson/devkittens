@@ -36,13 +36,13 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 
 	$scope.addCohortView = function() {
 		$scope.toggleAddCohort = !$scope.toggleAddCohort;
-		$scope.backdropVisible = !$scope.backdropVisible;
+		// $scope.backdropVisible = !$scope.backdropVisible;
 	}
 
 
 	$scope.addCourseView = function() {
 		$scope.toggleAddCourse = !$scope.toggleAddCourse;
-		$scope.backdropVisible = !$scope.backdropVisible;
+		// $scope.backdropVisible = !$scope.backdropVisible;
 	}
 
 	$scope.addMentorView = function() {
@@ -52,12 +52,12 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 
 	$scope.addTeacherView = function() {
 		$scope.toggleAddTeacher = !$scope.toggleAddTeacher;
-		$scope.backdropVisible = !$scope.backdropVisible;
+		// $scope.backdropVisible = !$scope.backdropVisible;
 	}
 
 	$scope.addScheduleView = function() {
 		$scope.toggleSchedule = !$scope.toggleSchedule;
-		$scope.backdropVisible = !$scope.backdropVisible;
+		// $scope.backdropVisible = !$scope.backdropVisible;
 	}
 
 	// Toggling between dashboard views
@@ -152,7 +152,7 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 
 	$scope.toggleSubscribeCohortModal = function() {
 		$scope.toggleSubscribeCohort = !$scope.toggleSubscribeCohort;
-		$scope.backdropVisible = !$scope.backdropVisible;
+		// $scope.backdropVisible = !$scope.backdropVisible;
 	}
 
 	$scope.toggleMentorModal = function() {

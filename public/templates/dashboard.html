@@ -165,79 +165,100 @@
 
 
 
+<!-- Modal for adding a new course -->
+<span class="pic-modal" ng-show="toggleAddCourse">
+	<div class="modal-wrapper lesson-modal">
+		<div>
+			<div class="modal-cover flex-row content-center align-items-center" ng-click="addCourseView()"></div>
+			<div class="modal flex-column align-items-center">
+				<div class="modal-header">
+					<h3>Enter new Course Information</h3>
+					<i class="fa fa-times" ng-click="addCourseView()"></i>
+				</div>
 
 
-<!-- 'add-cohort-modal' activates when suer clicks on 'Add a new course' -->
-<div class="add-cohort-modal" ng-show="toggleAddCourse">
-	<h2 class="text-dashboard left">Enter New Course Information</h2>
-	<i class="close-modal fa fa-times" ng-click="addCourseView()"></i>
+				<div class="width100">
 
-	<form class="new-cohort-form" name="newCourseForm">
-		<input class="form-input center" type="text" placeholder="Course Title" ng-model="courseInfo.title"/>
-		<input class="form-input center" type="number" placeholder="Course Length" ng-model="courseInfo.courseLength" />
-	</form>
-	<div class="form-btn-container">
-		<button class="form-btn" type="submit" ng-click="addCourseView()">Cancel</button>
-		<button class="form-btn" type="submit" ng-click="createNewCourse(courseInfo)" ng-disabled="newCourseForm.$invalid">Save</button>
-	</div>
-</div> <!-- End of 'add-cohort-modal' -->
-
-
-
-
-
-<!-- 'add-cohort-modal' activates when user clicks on 'Add a new cohort' -->
-<div class="add-cohort-modal" ng-show="toggleAddCohort">
-	<h2 class="text-dashboard left">Enter New Cohort Information</h2>
-	<i class="close-modal fa fa-times" ng-click="addCohortView()"></i>
-
-	<form class="new-cohort-form">
-		<input class="form-input center" type="text" placeholder="Cohort Name" ng-model="cohortInfo.name" />
-		<select class="form-input center" ng-options="item.title for item in courseArray" ng-model="cohortInfo.courseType"></select>
-			<dropdown-directive></dropdown-directive>
-		<input class="form-input center" type="date" ng-model="cohortInfo.startDate" />
-		<select class="form-input center" ng-options="item for item in locationOptions" ng-model="cohortInfo.location"></select>
-			<dropdown-directive></dropdown-directive>
-	</form>
-	<div class="form-btn-container">
-		<button class="form-btn" type="submit" ng-click="addCohortView()">Cancel</button>
-		<button class="form-btn" type="submit" ng-click="createNewCohort(cohortInfo)">Save</button>
-	</div>
-</div>
-
-
-
-
-
-
-	<span class="pic-modal" ng-show="mentorModal">
-		<div class="modal-wrapper lesson-modal">
-			<div>
-				<div class="modal-cover flex-row content-center align-items-center" ng-click="closeMentorModal()"></div>
-				<div class="modal flex-column align-items-center">
-					<div class="modal-header">
-						<h3>Invite mentors to DevMountain:</h3>
-						<i class="fa fa-times" ng-click="closeMentorModal()"></i>
-					</div>
-
-
-					<div class="width100">
-
-						<form ng-submit="sendMentorInvite(newMentors)">
-							<textarea ng-model="newMentors" class="form-control" placeholder="Comma-separated email(s)"></textarea>
-							<button class="btn btn-default">Submit</button>
-						</form>
+					<form class="new-cohort-form" name="newCourseForm">
+						<input class="form-input center" type="text" placeholder="Course Title" ng-model="courseInfo.title"/>
+						<input class="form-input center" type="number" placeholder="Course Length" ng-model="courseInfo.courseLength" />
+					</form>
+					<div class="form-btn-container">
+						<button class="form-btn" type="submit" ng-click="addCourseView()">Cancel</button>
+						<button class="form-btn" type="submit" ng-click="createNewCourse(courseInfo)" ng-disabled="newCourseForm.$invalid">Save</button>
 					</div>
 				</div>
 			</div>
 		</div>
-	</span>
+	</div>
+</span>
+
+
+
+
+<!-- Modal for adding a cohort -->
+<span class="pic-modal" ng-show="toggleAddCohort">
+	<div class="modal-wrapper lesson-modal">
+		<div>
+			<div class="modal-cover flex-row content-center align-items-center" ng-click="addCohortView()"></div>
+			<div class="modal flex-column align-items-center">
+				<div class="modal-header">
+					<h3>Enter New Cohort Information</h3>
+					<i class="fa fa-times" ng-click="addCohortView()"></i>
+				</div>
+
+				<div class="width100">
+
+					<form class="new-cohort-form">
+						<input class="form-input center" type="text" placeholder="Cohort Name" ng-model="cohortInfo.name" />
+						<select class="form-input center" ng-options="item.title for item in courseArray" ng-model="cohortInfo.courseType"></select>
+							<dropdown-directive></dropdown-directive>
+						<input class="form-input center" type="date" ng-model="cohortInfo.startDate" />
+						<select class="form-input center" ng-options="item for item in locationOptions" ng-model="cohortInfo.location"></select>
+							<dropdown-directive></dropdown-directive>
+					</form>
+
+					<div class="form-btn-container">
+						<button class="form-btn" type="submit" ng-click="addCohortView()">Cancel</button>
+						<button class="form-btn" type="submit" ng-click="createNewCohort(cohortInfo)">Save</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</span>
+
+
+
+<span class="pic-modal" ng-show="mentorModal">
+	<div class="modal-wrapper lesson-modal">
+		<div>
+			<div class="modal-cover flex-row content-center align-items-center" ng-click="closeMentorModal()"></div>
+			<div class="modal flex-column align-items-center">
+				<div class="modal-header">
+					<h3>Invite mentors to DevMountain:</h3>
+					<i class="fa fa-times" ng-click="closeMentorModal()"></i>
+				</div>
+
+
+				<div class="width100">
+
+					<form ng-submit="sendMentorInvite(newMentors)">
+						<textarea ng-model="newMentors" class="form-control" placeholder="Comma-separated email(s)"></textarea>
+						<button class="btn btn-default">Submit</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</span>
+
 
 
 
 <!-- 'add-cohort-modal' activates when user clicks on 'Add a new mentor' -->
-<div class="add-cohort-modal" ng-show="toggleAddMentor">
-	<h2 class="text-dashboard text-left">Enter New Mentor Information</h2>
+<!-- <div class="add-cohort-modal" ng-show="toggleAddMentor">
+	<h2 class="text-dashboard center">Enter New Mentor Information</h2>
 	<i class="close-modal fa fa-times" ng-click="addMentorView()"></i>
 
 	<form class="new-cohort-form">
@@ -249,43 +270,62 @@
 		<button class="form-btn" type="submit" ng-click="addMentorView()">Cancel</button>
 		<button class="form-btn" type="submit">Save</button>
 	</div>
-</div> <!-- End of 'add-cohort-modal' -->
+</div> --> <!-- End of 'add-cohort-modal' -->
+
+<!-- Modal for adding Instructor -->
+<span class="pic-modal" ng-show="toggleAddTeacher">
+	<div class="modal-wrapper lesson-modal">
+		<div>
+			<div class="modal-cover flex-row content-center align-items-center" ng-click="addTeacherView()"></div>
+			<div class="modal flex-column align-items-center">
+				<div class="modal-header">
+					<h3>Enter New Instructor Information</h3>
+					<i class="fa fa-times" ng-click="addTeacherView()"></i>
+				</div>
 
 
-<!-- 'add-cohort-modal' activates when user clicks on 'Add a new instructor' -->
-<div class="add-cohort-modal" ng-show="toggleAddTeacher">
-	<h2 class="text-dashboard text-left">Enter New Instructor Information</h2>
-	<i class="close-modal fa fa-times" ng-click="addTeacherView()"></i>
+				<div class="width100">
 
-	<form class="new-cohort-form">
-		<input class="form-input center" type="text" placeholder="Enter Instructor's name" />
-		<input class="form-input center" type="text" placeholder="Enter Instructor's type" />
-		<input class="form-input center" type="text" placeholder="Enter Instructor's cohort" />
-	</form>
-	<div class="form-btn-container">
-		<button class="form-btn" type="submit" ng-click="addTeacherView()">Cancel</button>
-		<button class="form-btn" type="submit">Save</button>
+					<form class="new-cohort-form">
+						<input class="form-input center" type="text" placeholder="Enter Instructor's name" />
+						<input class="form-input center" type="text" placeholder="Enter Instructor's type" />
+						<input class="form-input center" type="text" placeholder="Enter Instructor's cohort" />
+					</form>
+					<div class="form-btn-container">
+						<button class="form-btn" type="submit" ng-click="addTeacherView()">Cancel</button>
+						<button class="form-btn" type="submit">Save</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-</div> <!-- End of 'add-cohort-modal' -->
+</span>
 
 
+<!-- Modal to display instructors shedule -->
+<span class="pic-modal" ng-show="toggleSchedule">
+	<div class="modal-wrapper lesson-modal">
+		<div>
+			<div class="modal-cover flex-row content-center align-items-center" ng-click="addScheduleView()"></div>
+			<div class="modal flex-column align-items-center">
+				<div class="modal-header">
+					<h3>Classes you are scheduled to teach</h3>
+					<i class="fa fa-times" ng-click="addScheduleView()"></i>
+				</div>
 
 
-
-<!-- 'add-cohort-modal' activates when user clicks on 'Add a new cohort' -->
-<div class="add-cohort-modal" ng-show="toggleSchedule">
-	<h2 class="text-dashboard left">Classes you are scheduled to teach</h2>
-	<i class="close-modal fa fa-times" ng-click="addScheduleView()"></i>
-
-	<div ng-repeat="schedule in instructorSchedule">
-		<span class="text">Cohort Name</span>
-		<span class="text">{{ schedule.day | date: fullDate }}</span>
-		<span class="text">{{ schedule.topic }}</span>
+				<div class="width100">
+					<div ng-repeat="schedule in instructorSchedule">
+						<span class="text">Cohort Name</span>
+						<span class="text">{{ schedule.day | date: fullDate }}</span>
+						<span class="text">{{ schedule.topic }}</span>
+					</div>
+					
+				</div>
+			</div>
+		</div>
 	</div>
-</div>
-
-
-
+</span>
 
 
 

@@ -18,17 +18,6 @@
 	<span class="calendar-title">{{ currentCourse.title }}</span>
 
 	<i class="next-month fa fa-chevron-right"  ng-click="nextMonth()"></i>
-
-	<!-- IF NO RIGHT -->
-	<!-- <div ng-if="currentSegment === (activeMonth.length - 1)"
-		 class="navigate-btn dimmed">
-		<i class="fa fa-chevron-right dimmed"></i>
-	</div> -->
-	<!-- IF RIGHT IS OPTION -->
-	<!-- <div ng-if="currentSegment !== (activeMonth.length - 1)" ng-click="nextMonth()"
-		 class="navigate-btn">
-		<i class="fa fa-chevron-right"></i>
-	</div> -->
 </div>
 
 <div class="week-day-container">
@@ -59,3 +48,15 @@
 <sortable>
 
 </div>
+
+<!-- DEPRECATED -->
+	<!-- IF NO RIGHT -->
+	<!-- <div ng-if="currentSegment === (activeMonth.length - 1)"
+		 class="navigate-btn dimmed">
+		<i class="fa fa-chevron-right dimmed"></i>
+	</div> -->
+	<!-- IF RIGHT IS OPTION -->
+	<!-- <div ng-if="currentSegment !== (activeMonth.length - 1)" ng-click="nextMonth()"
+		 class="navigate-btn">
+		<i class="fa fa-chevron-right"></i>
+	</div> -->
