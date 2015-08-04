@@ -1,0 +1,142 @@
+section.cohort-settings {
+	@menu-width: 250px;
+
+    position: fixed;
+    min-height: 100vh;
+    width: 100%;
+    padding-top: 60px + 40px;
+    padding-left: @menu-width + 20px;
+    padding-right: 20px;
+    padding-bottom: 40px;
+    background-color: #f5f5f5;
+    overflow: auto;
+    z-index: 10;
+    top: 0;
+
+	.fa {
+		color: inherit;
+		&:hover {
+			color: inherit;
+		}
+	}
+
+    // .fa-times {
+    // 	font-size: 40px;
+    // 	float: right;
+    // 	cursor: pointer;
+
+    // 	&:hover {
+    // 		color: @blue;
+    // 	}
+    // }
+
+    .flex-pants {
+    	width: 100%;
+    	height: 100%;
+    	display: flex;
+    	justify-content: space-around;
+    }
+
+    .sub-dsh {
+    	@sub-color: #E4E3E3;
+
+		width: 450px;
+		min-height: 50px;
+		background-color: #fff;
+		padding: 20px;
+		border: 1px solid @sub-color;
+		border-bottom: 2px solid darken(@sub-color, 3%);
+		position: relative;
+		padding-top: 70px;
+		border-radius: 2px;
+
+		.mini-header {
+			background-color: @sub-color;
+			height: 50px;
+			line-height: 50px;
+			width: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			padding: 0 20px;
+			font-weight: 600;
+		}
+
+		form {
+			.btn {
+				margin-top: 15px;
+			}
+		}
+    }
+
+    .student-display {
+    	display: flex;
+    	position: relative;
+    	padding-bottom: 10px;
+    	margin-bottom: 10px;
+    	border-bottom: 1px solid #eee;
+
+    	img {
+    		max-width: 60px;
+    		border-radius: 600px;
+    		display: inline-block;
+    	}
+
+    	.s-info {
+    		display: inline-block;
+    		margin: 5px 10px;
+    		
+    		p { margin: 0; }
+
+	    	.s-name {
+	    		font-weight: 700;
+	    		display: inline-block;
+	    	}
+
+	    	.s-email {
+	    		display: block;
+	    	}
+
+	    	a {
+	    		position: absolute;
+	    		top: 5px;
+	    		right: 5px;
+	    	}
+    	}
+    }
+
+
+    .dsh-menu {
+		width: @menu-width;
+		height: 100%;
+		position: fixed;
+		top: 60px;
+		left: 0;
+		background-color: @menu-color;
+	    box-shadow: inset -4px 0px 19px -3px #303338;
+
+		.dsh-item {
+			@item-height: 50px;
+			height: @item-height;
+			width: 100%;
+			color: #fff;
+			cursor: pointer;
+			padding: 0 30px;
+
+			&:hover {
+				background-color: lighten(@menu-color, 5%);
+			}
+
+			p {
+				margin: 0 8px;
+				color: #fff;
+				line-height: @item-height;
+				display: inline-block;
+			}
+		}
+
+		.dsh-item.active-dsh {
+			background-color: darken(@menu-color, 5%);
+		}
+    }
+}

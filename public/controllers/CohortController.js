@@ -68,7 +68,20 @@ angular.module('devKittens')
 	}
 
 	$scope.toggleStudentView = function () {
+		$scope.settingsView = false;
 		$scope.studentDisplay = !$scope.studentDisplay;
+	}
+
+	$scope.toggleSettingsView = function () {
+		$scope.settingsView = !$scope.settingsView;
+		
+		if ($scope.settingsView === false) {
+			$('body').css('overflow', 'auto');
+		} else {
+			$('body').css('overflow', 'hidden');
+		}
+
+		$scope.studentDisplay = false;
 	}
 
 	// Send student invite
