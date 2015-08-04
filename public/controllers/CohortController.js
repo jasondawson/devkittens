@@ -56,17 +56,6 @@ angular.module('devKittens')
 	}
 
 
-	// Modal related || TODO: refactor for make all modals consistent
-	$scope.openModal = function () {
-		$('body').css('overflow', 'hidden');
-		$scope.studentModal = true;
-	}
-
-	$scope.closeModal = function () {
-		$('body').css('overflow', 'inherit');
-		$scope.studentModal = false;
-	}
-
 	$scope.toggleStudentView = function () {
 		$scope.settingsView = false;
 		$scope.studentDisplay = !$scope.studentDisplay;
@@ -82,27 +71,6 @@ angular.module('devKittens')
 		}
 
 		$scope.studentDisplay = false;
-	}
-
-	// Send student invite
-	$scope.sendStudentInvite = function (studentEmails) {
-		$scope.loading = true;
-
-		if (!studentEmails) return console.warn('Plase add emails');
-		var cohortInfo = {
-			name: currentCohortData.name,
-			id: currentCohortData._id
-		}
-		emailsService.sendStudentInvite(studentEmails, cohortInfo)
-		.then(function (response) {
-			$scope.loading = false;
-			$scope.students = '';
-			$scope.closeModal();
-		})
-		.catch(function (err) {
-			$scope.loading = false;
-			$scope.closeModal();
-		});
 	}
 
 
