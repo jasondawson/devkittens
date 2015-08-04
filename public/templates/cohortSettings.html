@@ -4,24 +4,25 @@
 	<!-- MENU -->
 	<div class="dsh-menu">
 
-		<div class="dsh-item active-dsh" active-menu>
+		<div class="dsh-item active-dsh" ng-click="activateMenu('students')" active-menu>
 			<i class="fa fa-paw"></i>
 			<p>Students</p>
 		</div>
 
-		<div class="dsh-item" active-menu>
+		<div class="dsh-item" ng-click="activateMenu('mentors')" active-menu>
 			<i class="fa fa-hand-lizard-o"></i>
 			<p>Mentors</p>
 		</div>
 
-		<div class="dsh-item" active-menu>
+		<div class="dsh-item" ng-click="activateMenu('instructors')" active-menu>
 			<i class="fa fa-briefcase"></i>
 			<p>Instructors</p>
 		</div>
 
 	</div>
 
-	<div class="flex-pants">
+	<!-- STUDENT SECTION -->
+	<div class="flex-pants" ng-if="currentTab === 'students'">
 
 		<div class="sub-dsh">
 			<div class="mini-header">Registered students</div>
@@ -49,5 +50,17 @@
 
 	</div>
 
+	<!-- INSTRUCTOR'S SECTION -->
+	<div class="flex-pants" ng-if="currentTab === 'instructors'">
+
+		<div class="sub-dsh">
+			<div class="mini-header">Invite instuctors</div>
+			<form ng-submit="sendStudentInvite(newStudents)">
+				<textarea ng-model="newStudents" class="form-control" placeholder="Comma-separated email(s)"></textarea>
+				<button class="btn btn-default">Submit</button>
+			</form>
+		</div>
+
+	</div>
 
 </section>

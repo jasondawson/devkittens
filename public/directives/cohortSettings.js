@@ -5,7 +5,10 @@ angular.module('devKittens')
 		restrict: 'E',
 		templateUrl: '/public/templates/cohortSettings.html',
 		controller: function ($scope) {
-				$scope.sendStudentInvite = function (studentEmails) {
+			
+			$scope.currentTab = 'students';
+
+			$scope.sendStudentInvite = function (studentEmails) {
 				$scope.loading = true;
 
 				if (!studentEmails) return console.warn('Plase add emails');
@@ -22,12 +25,26 @@ angular.module('devKittens')
 					$scope.loading = false;
 				});
 			}
+
+			$scope.activateMenu = function (tabName) {
+				switch(tabName) {
+				    case 'students':
+				    	$scope.currentTab = 'students';
+				        break;
+				    case 'mentors':
+				        $scope.currentTab = 'mentors';
+				        break;
+		        	case 'instructors':
+				        $scope.currentTab = 'instructors';
+				        break;
+				}
+			}
 		}
 	}
 })
 
 
-.directive('activeMenu', function ($timeout) {
+.directive('activeMenu', function () {
 	return {
 		restrict: 'A',
 		link: function(scope, elem, attrs) {
@@ -35,24 +52,6 @@ angular.module('devKittens')
 				removeClass();
 				elem.addClass('active-dsh');
 			});
-
-
-			// $timeout(function () {
-			// 	switch(scope.activeMenu) {
-			// 	    case 'students':
-			// 	    	removeClass();
-			// 	        elem.addClass('active-dsh');
-			// 	        break;
-			// 	    case 'mentors':
-			// 	        removeClass();
-			// 	        elem.addClass('active-dsh');
-			// 	        break;
-		 //        	case 'instructors':
-			// 	        removeClass();
-			// 	        elem.addClass('active-dsh');
-			// 	        break;
-			// 	}
-			// })
 
 			function removeClass () {
 				$('.dsh-menu').find('.dsh-item').removeClass('active-dsh');
