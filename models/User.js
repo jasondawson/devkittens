@@ -9,7 +9,7 @@ var UserSchema = mongoose.Schema({
 	, name: String
 	, avatar: String
 	, githubUrl: String
-	, userType: [String]
+	, userType: { admin: Boolean, mentor: Boolean, instructor: Boolean, student: Boolean }
 })
 
 

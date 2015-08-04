@@ -1,7 +1,8 @@
 angular.module('devKittens')
 
 .controller('DayController', function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStorage, lessonService, courseServices, cohortServices, studentServices, $location) {
-	$scope.user = user;	
+	$scope.user = user;
+	console.log(user)	
 	if (typeRef == 'cohort') {
 		$scope.lesson = activeLesson.lesson;
 		$scope.day = activeLesson;
@@ -16,6 +17,15 @@ angular.module('devKittens')
 	$scope.newSection = {}
 	$scope.logNewSection = function(section){
 		console.log(section)
+	}
+
+	$scope.permission = function(permissionTypes, userTypes){
+		console.log(permissionTypes, userTypes)
+		for(i = 0; i < permissionTypes.length; i ++){
+			console.log(22222222, userTypes[permissionTypes[i]])
+			if (userTypes[permissionTypes[i]]) return true;
+		}
+		return false;
 	}
 
 	 // types

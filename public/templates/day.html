@@ -1,7 +1,7 @@
 <header-directive></header-directive>
 
 	<!-- IF THERE IS NO LESSON -->
-	<section class="smaller-wrapper whole-thing" ng-show="!lesson.sections.length && !lesson.topic && user.userType.indexOf('admin') !== -1">
+	<section class="smaller-wrapper whole-thing" ng-show="!lesson.sections.length && !lesson.topic && user.userType.admin">
 
 		<div ng-show="sections.length" class="shift-wrapper smaller-padding">
 			<div class="container">
@@ -145,11 +145,11 @@
 				<h2>{{lesson.topic || topicPlaceholder}}
 
 					<span style="float: right;">
-						<button ng-click="teachLesson(day)" ng-show="!day.instructor && user.userType.indexOf('instructor') !== -1 && typeRef == 'cohort'" class="btn btn-default">Teach this lesson</button>
+						<button ng-click="teachLesson(day)" ng-show="!day.instructor && user.userType.instructor && typeRef == 'cohort'" class="btn btn-default">Teach this lesson</button>
 
-						<button ng-click="removeLesson(lesson)" ng-show="(day.instructor == user._id && typeRef == 'cohort') || superShowThis === true" class="btn btn-default">Cancel teaching appointment</button> 
+						<button ng-click="removeLesson(lesson)" ng-show="(day.instructor == user._id && typeRef == 'cohort') || superShowThis" class="btn btn-default">Cancel teaching appointment</button> 
 						
-						<i class="fa fa-pencil" ng-if="user.userType.indexOf('admin') !== -1" ng-click="lesson.edit=!lesson.edit"></i>
+						<i class="fa fa-pencil" ng-if="user.userType.admin" ng-click="lesson.edit=!lesson.edit"></i>
 					</span>
 				</h2>
 			</div>
@@ -164,8 +164,8 @@
 				</div>
 
 				<!-- LESSON INFO -->
-				<div ng-repeat="section in lesson.sections track by $index" class="portlet-content container extra-padding" ng-class="{'done-border': section.finishedStudents.indexOf(user._id) > -1}" ng-if="section.read.indexOf(user.userType) !== -1">
-					<i class="fa fa-pencil" ng-if="section.edit.indexOf(user.userType) !== -1 && user.userType !== 'admin'" ng-click="section.lesson.edit=!section.lesson.edit"></i>
+				<div ng-repeat="section in lesson.sections track by $index" class="portlet-content container extra-padding" ng-class="{'done-border': section.finishedStudents.indexOf(user._id) > -1}" ng-show="permission(section.read, user.userType)">
+					<i class="fa fa-pencil" ng-show="permission(section.edit, user.userType) && !user.userType.admin" ng-click="section.lesson.edit=!section.lesson.edit"></i>
 					<div ng-show="!section.lesson.edit">
 						<h3 ng-show="section.title">
 							{{section.title}}
@@ -189,7 +189,7 @@
 					   <br> 
 					   <label>Section content:</label>
 						<text-angular ng-model="section.content"></text-angular>
-						<div ng-if="user.userType.indexOf('admin') !== -1">
+						<div ng-if="user.userType.admin">
 							<p>edit permissions:</p>
 							<label ng-repeat="type in types">
 							  <input
@@ -216,7 +216,7 @@
 
 					</div>
 	<!-- right here is where Kyle is working on marking things as donzo -->
-					<div ng-show="user.userType.indexOf('student') !== -1 && typeRef == 'cohort'" class="donzo-container">
+					<div ng-show="user.userType.student && typeRef == 'cohort'" class="donzo-container">
 						<span>mark as done: </span>
 						<span ng-click="markAsCompleted($index, completedSection, section)">
 							<input type="checkbox" ng-model="completedSection" ng-checked="section.finishedStudents.indexOf(user._id) !== -1"/>
@@ -234,7 +234,7 @@
 						   class="form-control"/>
 
 				   	<text-angular ng-model="newSection.content"></text-angular>
-				   	<div ng-if="user.userType.indexOf('admin') !== -1">
+				   	<div ng-if="user.userType.admin">
 				   		<p>edit permissions:</p>
 							<label ng-repeat="type in types">
 							  <input
