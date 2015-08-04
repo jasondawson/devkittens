@@ -1147,3 +1147,6 @@ section.lesson .ta-toolbar {
   color: #999;
   font-style: italic;
 }
+.just-flex {
+  display: flex;
+}

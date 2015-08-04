@@ -9,9 +9,21 @@
 				<div class="profile-container-body">
 					<div ng-repeat="section in sections" ng-click="showSection(section)">
 						<label>{{section.title}}</label>
-						<div ng-show="section.show" ng-bind-html="section.content | unsafe"></div>
-						<div>{{section.edit}}</div>
-						<div>{{section.read}}</div>
+						<div ng-show="section.show">
+							<div ng-show="section.show" ng-bind-html="section.content | unsafe"></div>
+							<div class="just-flex">
+								<div>Edit permissions:&nbsp;</div>
+								<div class="just-flex" ng-repeat="edit in section.edit">
+									{{edit}}<span ng-show="$index < section.edit.length - 1">,</span>&nbsp;
+								</div>
+							</div>
+							<div class="just-flex">
+								<div>Read permissions:&nbsp;</div>
+								<div class="just-flex" ng-repeat="read in section.read">
+									{{read}}<span ng-show="$index < section.read.length - 1">,</span>&nbsp;
+								</div>
+							</div>
+						</div>
 						<hr ng-show="$index < sections.length - 1">
 					</div>
 				</div>
