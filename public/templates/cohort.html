@@ -1,6 +1,6 @@
 <header-directive scroll-top></header-directive>
 <loading-gif ng-if="loading"></loading-gif>
-<cohort-settings ng-if="settingsView"></cohort-settings>
+<cohort-settings ng-show="settingsView"></cohort-settings>
 
 <div class="width-container">
 
@@ -62,38 +62,8 @@
 				<span class="arrow-down"></span>
 			</span>
 		</div>
-		<div class="pic-container add-students" ng-if="user.userType !== 'student'" ng-click="openModal()">
-			<div class="flex-plus">
-				<i class="fa fa-user-plus"></i>
-			</div>
-		</div>
 	</div>
 </div>
-
-<!-- MODAL -->
-<span class="pic-modal" ng-show="studentModal">
-	<div class="modal-wrapper lesson-modal">
-		<div>
-			<div class="modal-cover flex-row content-center align-items-center" ng-click="closeModal()"></div>
-			<div class="modal flex-column align-items-center">
-				<div class="modal-header">
-					<h3>Invite students to this cohort</h3>
-					<i class="fa fa-times" ng-click="closeModal()"></i>
-				</div>
-
- 
-				<div class="width100">
-					<form ng-submit="sendStudentInvite(newStudents)">
-						<textarea ng-model="newStudents" class="form-control" placeholder="Comma-separated email(s)"></textarea>
-						<button class="btn btn-default">Submit</button>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</span>
-
-
 
 
 
@@ -137,7 +107,7 @@
 					<p ng-if="day.topic">{{ day.topic }}</p>
 				</div>
 			</div>
-			<div class="instructor-type" ng-show="!day.instructor && user.userType.indexOf('instructor') !== -1">available</div>
+			<div class="instructor-type" ng-show="!day.instructor && user.userType.instructor">available</div>
 			<div class="instructor-type" style="color: #2ecc71" ng-show="day.instructor == user._id">I'm teaching</div>
 
 	<!-- <div class="calendar-container" ng-click="viewDay(day)" ng-repeat="day in currentCohort.dates">

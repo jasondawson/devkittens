@@ -9,11 +9,11 @@
 
 			<button ng-click="activateInstructorSchedule()" class="btn btn-default"
 				ng-class="{active: instructorTab === 'instructorSchedule' }"
-				ng-if="user.userType.indexOf('instructor') !== -1">Schedule</button>
+				ng-if="user.userType.instructor">Schedule</button>
 
 			<button ng-click="activateCourses()" class="btn btn-default"
 					ng-class="{ active: activeTab === 'courses' }" 
-					ng-if="user.userType.indexOf('admin') !== -1 || user.userType.indexOf('mentor') !== -1">Courses</button>
+					ng-if="user.userType.admin || user.userType.mentor">Courses</button>
 			
 
 			<button ng-click="activateCohorts()" class="btn btn-default"
@@ -21,15 +21,15 @@
 
 			<button ng-click="activateMentors()" class="btn btn-default"
 					ng-class="{ active: activeTab === 'mentors' }"
-					ng-if="user.userType.indexOf('admin') !== -1 || user.userType.indexOf('mentor') !== -1">Mentors</button>
+					ng-if="user.userType.admin || user.userType.mentor">Mentors</button>
 
 			<button ng-click="activateTeachers()" class="btn btn-default"
 				ng-class="{active: activeTab === 'teachers' }"
-				ng-if="user.userType.indexOf('admin') !== -1 || user.userType.indexOf('mentor') !== -1">Instructors</button>
+				ng-if="user.userType.admin || user.userType.mentor">Instructors</button>
 
 			<button ng-click="activateSchedule()" class="btn btn-default"
 				ng-class="{active: activeTab === 'schedule' }"
-				ng-if="user.userType.indexOf('admin') !== -1 || user.userType.indexOf('mentor') !== -1">Schedule</button>
+				ng-if="user.userType.admin || user.userType.mentor">Schedule</button>
 
 		</div>
 
@@ -96,13 +96,13 @@
 				<i class="icon-dashboard fa fa-plus-circle"></i>
 			</div>
 
-			<div class="display-box add-new" ng-click="toggleSubscribeCohortModal()">
+		<!-- 	<div class="display-box add-new" ng-click="toggleSubscribeCohortModal()">
 				<span class="text-dashboard">Add Mentos to Mentors</span> <br />
 				<i class="icon-dashboard fa fa-plus-circle"></i>
-			</div>
+			</div> -->
 
 			<a class="mentors-link" href="#dashboard">
-				<div class="display-box" ng-click="toggleMentorModal(); setMentor(mentor)" ng-repeat="mentor in usersArray | filter: {userType: 'mentor'}">
+				<div class="display-box" ng-click="toggleMentorModal(); setMentor(mentor)" ng-repeat="mentor in usersArray | filter: {userType: {mentor: true}}">
 					<img class="mentor-image center" ng-src="{{mentor.avatar}}"</img>
 					<span class="text-dashboard center">{{ mentor.name }}</span>
 					<span class="text-dashboard name center">{{ mentor.location }}</span>
@@ -125,7 +125,7 @@
 
 			<!-- this lil guy toggles the modal -->
 			<a class="mentors-link" href="#dashboard">
-				<div class="display-box" ng-click="toggleTeacherModal(teacher._id); setTeacher(teacher)" ng-repeat="teacher in usersArray | filter: {userType: '!student'}">
+				<div class="display-box" ng-click="toggleTeacherModal(teacher._id); setTeacher(teacher)" ng-repeat="teacher in usersArray | filter: {userType: {instructor: true}}">
 					<img class="mentor-image center" ng-src="{{teacher.avatar}}"</img>
 					<span class="text-dashboard center">{{ teacher.name }}</span>
 					<span class="text-dashboard name center">{{ teacher.location }}</span>

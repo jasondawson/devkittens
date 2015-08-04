@@ -6,11 +6,11 @@
 	</div>
 
 	<div class="section right">
-		<a ng-show="user" ng-click="toggleStudentView()" ng-if="isCohort && user.userType === 'student'">
+		<a ng-show="user" ng-click="toggleStudentView()" ng-if="isCohort && user.userType.student">
 			<p ng-class="{'active-a': studentDisplay}">Students</p>
 		</a>
 
-		<a ng-show="user" ng-click="toggleSettingsView()" ng-if="isCohort && user.userType !== 'student'">
+		<a ng-show="user" ng-click="toggleSettingsView()" ng-if="isCohort && !user.userType.student">
 			<p ng-class="{'active-a': settingsView}">Cohort settings</p>
 
 		<a ng-show="user" ng-click="toggleMentorView(); getMentors()" ng-if="isCohort">

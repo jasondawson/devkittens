@@ -56,7 +56,6 @@ angular.module('devKittens')
 
 	}
 
-
 	// Modal related || TODO: refactor for make all modals consistent
 	$scope.openModal = function () {
 		$('body').css('overflow', 'hidden');
@@ -111,6 +110,7 @@ angular.module('devKittens')
 
 		$scope.studentDisplay = false;
 	}
+
 
 	// Send student invite
 	$scope.sendStudentInvite = function (studentEmails) {

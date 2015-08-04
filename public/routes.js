@@ -205,7 +205,7 @@ function getBlockedAuth ($http, $location, $q, userService, infoStorage) {
 			infoStorage.saveUser(response);
 
 			// Prevent student to login on protected page
-			if (response.userType === 'student')
+			if (response.userType.student)
 				return $location.path('/cohort/' + response.typeData.cohortId);
 
 			dfd.resolve(response);
