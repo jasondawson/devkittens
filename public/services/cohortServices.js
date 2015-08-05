@@ -86,6 +86,34 @@ angular.module("devKittens")
 		return dfrd.promise;
 	}
 
+	// ADDING INSTRUCTOR TO THE DAY
+
+	this.teachRequest = function(user, cohortId, dayIndex) {
+		var dfrd = $q.defer();
+		$http({
+			method: "POST",
+			url: "/api/requestify/" + cohortId + '/' + dayIndex,
+			data: user
+		})
+		.then(function(response) {
+			dfrd.resolve(response.data);
+		})
+		return dfrd.promise;
+	}
+
+	this.cancelRequest = function(user, cohortId, dayIndex) {
+		var dfrd = $q.defer();
+		$http({
+			method: "PUT",
+			url: "/api/requestify/" + cohortId + "/" + dayIndex,
+			data: user
+		})
+		.then(function(response) {
+			dfrd.resolve(response.data);
+		})
+		return dfrd.promise;
+	}
+
 	this.addInstructor = function(user, cohortId, lesson, dayId) {
 		var dfrd = $q.defer();
 		var req1 = $http({

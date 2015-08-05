@@ -157,9 +157,10 @@
 				</div>
 
 					<span style="float: right;">
-						<button ng-click="teachLesson(day)" ng-show="!day.instructor && user.userType.instructor && typeRef == 'cohort'" class="btn btn-default">Teach this lesson</button>
-
-						<button ng-click="removeLesson(lesson)" ng-show="(day.instructor == user._id && typeRef == 'cohort') || superShowThis" class="btn btn-default">Cancel teaching appointment</button> 
+						<!-- <button ng-click="teachLesson(day)" ng-if="!day.instructor && user.userType.instructor && typeRef == 'cohort'" class="btn btn-default">Teach this lesson</button> -->
+						<button ng-show="user.userType.instructor && !day.instructor && day.wantsToTeach.indexOf(user._id) === -1" ng-click="teachRequest()" class="btn btn-default">Request to teach this lesson</button>
+						<button ng-show="!day.instructor && day.wantsToTeach.indexOf(user._id) !== -1" ng-click="cancelRequest()" class="btn btn-default">Cancel teaching request</button>
+						<button ng-click="removeLesson(lesson)" ng-if="(day.instructor == user._id && typeRef == 'cohort') || superShowThis" class="btn btn-default">Cancel teaching appointment</button> 
 						
 						<i class="fa fa-pencil" ng-if="user.userType.admin" ng-click="lesson.edit=!lesson.edit"></i>
 					</span>
@@ -227,7 +228,9 @@
 						</div>
 
 					</div>
-	<!-- right here is where Kyle is working on marking things as donzo -->
+
+					<!-- students mark sections as completed -->
+
 					<div ng-show="user.userType.student && typeRef == 'cohort'" class="donzo-container">
 						<span>mark as done: </span>
 						<span ng-click="markAsCompleted($index, completedSection, section)">
@@ -235,6 +238,7 @@
 						</span>
 					</div>
 					<button ng-show="section.lesson.edit" class="btn btn-success" ng-click="updateLesson()">Submit changes</button>
+
 				</div>
 
 

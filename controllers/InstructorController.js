@@ -103,7 +103,6 @@ exports.deleteReserve = function(req, res) {
 	})
 }
 
-
 exports.assignToCohort = function (req, res) {
 	req.body.userIds.forEach(function (userId) {		
 		// Save to instructor's model
@@ -154,5 +153,34 @@ exports.getAllInstructors = function (req, res) {
 	.exec(function (err, instructors) {
 		if (err) return res.status(500).send(err);
 		return res.json(instructors);
+
+
+exports.teachRequest = function(req, res) {
+	Cohort.findById(req.params.cohortId, function(err, cohort) {
+		if (err) {
+			res.status(500).json(err);
+		} else {
+			cohort.curriculum[req.params.dayIndex].wantsToTeach.push(req.body._id)
+			cohort.save(function(err, data) {
+				if (!err) {
+					res.json(data);
+				}
+			})
+		}
+	})
+}
+
+exports.cancelRequest = function(req, res) {
+	Cohort.findById(req.params.cohortId, function(err, cohort) {
+		if (err) {
+			res.status(500).json(err);
+		} else {
+			cohort.curriculum[req.params.dayIndex].wantsToTeach.remove(req.body._id)
+			cohort.save(function(err, data) {
+				if (!err) {
+					res.json(data);
+				}
+			})
+		}
 	})
 }
