@@ -114,9 +114,9 @@ function ($scope, user, $location, infoStorage, cohortServices, currentCohortDat
 		$scope.settingsView = !$scope.settingsView;
 		
 		if ($scope.settingsView === false) {
-			$('body').css('overflow', 'auto');
+			// $('body').css('overflow', 'auto');
 		} else {
-			$('body').css('overflow', 'hidden');
+			// $('body').css('overflow', 'hidden');
 			$scope.getAllInstructors();
 		}
 

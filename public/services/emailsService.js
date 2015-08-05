@@ -133,6 +133,38 @@ angular.module('devKittens')
 	}
 
 
+	service.notifyInstructor = function (invitedEmails, cohortName) {
+		if (!invitedEmails || !cohortName) return console.warn('Missing critical information to send email invite');
+		
+		var deferred = $q.defer();
+		
+		var emailList = parseList(invitedEmails);
+		var html = '<p>You\'ve been invited to be teach ' + cohortName + ' cohort @ DevMoutain</p>'
+				  + '<p>Click on the following link to schedule your teaching:</p>'
+				  + '<p><a href="http://localhost:3000/#/">'
+				  + 'http://localhost:3000/#/'
+				  + '</a></p>';
+
+		var email = {
+			  html: html
+			, subject: 'DevMoutain\'s Invitation to teach ' + cohortName + ' | Course Management Software'
+			, to: emailList
+		}
+
+
+		$http.post('/api/email', email)
+		.success(function (response) {
+			deferred.resolve(response);
+		})
+		.error(function (err) {
+			deferred.reject(err);
+		});
+
+
+		return deferred.promise;
+	}
+
+
 	return service;
 })
 

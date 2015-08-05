@@ -61,13 +61,21 @@ angular.module('devKittens')
 			}
 
 			$scope.assignExistingInstructors = function (instructors) {
+				var invitedEmails = [];
 				var invitedIds = [];
+
 				instructors.forEach(function (instructor) {
-					if (instructor.selected) invitedIds.push(instructor._id);
+					if (instructor.selected) {
+						invitedEmails.push(instructor.userId.local.email);
+						invitedIds.push(instructor._id);
+					}
 				})
 
 				instructorServices.assignToCohort(invitedIds, $scope.currentCohort._id)
 				.then(function (response) {
+					// Send instructors an email notification
+					emailsService.notifyInstructor(invitedEmails, $scope.currentCohort.name);
+
 					// Cleaning front end
 					$scope.getAllInstructors();
 				})
@@ -75,7 +83,6 @@ angular.module('devKittens')
 					console.error(err);
 				})
 
-				
 			}
 		}
 	}

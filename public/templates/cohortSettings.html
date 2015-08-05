@@ -107,7 +107,7 @@
 					</span>
 				</div>
 
-				<button class="btn btn-default" ng-click="assignExistingInstructors(instructors)">Invite intructors</button>
+				<button class="btn btn-default" ng-click="assignExistingInstructors(instructors)">Assing instructors</button>
 			</div>
 		</div>
 
@@ -116,6 +116,7 @@
 
 		<div class="sub-dsh">
 			<div class="mini-header">Cohort instructors</div>
+			<div ng-if="!cohortInstructors.length">No instructors have been assigned to this cohort yet.</div>
 			<div class="student-display" ng-repeat="instructors in cohortInstructors">
 				<a ng-href="{{instructors.userId.githubUrl}}" target="_blank">
 					<img ng-src="{{instructors.userId.avatar}}"
