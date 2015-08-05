@@ -1193,15 +1193,23 @@ section.cohort-settings .sub-dsh .mini-header {
 section.cohort-settings .sub-dsh form .btn {
   margin-top: 15px;
 }
+section.cohort-settings .space-above {
+  margin-top: 40px;
+  padding-top: 10px;
+  border-top: 1px solid #eeeeee;
+}
+section.cohort-settings .space-above .student-display img {
+  margin-left: 10px;
+}
 section.cohort-settings .student-display {
   display: flex;
   position: relative;
   padding-bottom: 10px;
   margin-bottom: 10px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #eeeeee;
 }
 section.cohort-settings .student-display img {
-  max-width: 60px;
+  max-width: 50px;
   border-radius: 600px;
   display: inline-block;
 }

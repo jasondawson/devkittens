@@ -1,6 +1,7 @@
-var Cohort = require('../models/CohortModel.js'),
-	Instructor = require('../models/InstructorModel.js'),
-	ReservedLesson = require('../models/ReservedLessonModel.js');
+var Cohort 			= require('../models/CohortModel.js'),
+	User 			= require('../models/User.js'),
+	Instructor 		= require('../models/InstructorModel.js'),
+	ReservedLesson 	= require('../models/ReservedLessonModel.js');
 
 exports.getInstructorInfo = function(req, res) {
 	Instructor.findOne({"userId": req.params.userId}, function(err, data) {
@@ -99,5 +100,59 @@ exports.deleteReserve = function(req, res) {
 		} else {
 			res.json(data);
 		}
+	})
+}
+
+
+exports.assignToCohort = function (req, res) {
+	req.body.userIds.forEach(function (userId) {		
+		// Save to instructor's model
+		Instructor.findById(userId, function (err, result) {
+			result.cohorts.push(req.body.cohortId);
+
+			// TODO: this gets triggered a ton of times, make it async
+			result.save(function (err, saved) {
+				if (err) return res.status(500).send(err);
+				return res.json(saved);
+			})
+		})
+
+		// Push instructor id to
+		Cohort.findById(req.body.cohortId, function (err, result) {
+			if (err) return res.status(500).send(err);
+
+			result.instructors.push(userId);
+			result.save();
+		})
+	})
+}
+
+exports.getCohortInstructors = function (req, res) {
+	var cohortId = req.params.cohortId;
+	var populateQuery = [{path:'instructors'}];
+
+	Cohort.findById(cohortId)
+	.populate(populateQuery)
+	.exec(function (err, data) {
+		if (err) res.status(500).send(err);
+		
+		Cohort.populate(data, {
+			path: 'instructors.userId',
+			model: 'User'
+		},
+		function (err, cleanCohort) {
+			if (err) return res.status(500).send(err);
+			return res.json(cleanCohort);
+		})
+	})
+}
+
+
+exports.getAllInstructors = function (req, res) {
+	Instructor.find({})
+	.populate('userId')
+	.exec(function (err, instructors) {
+		if (err) return res.status(500).send(err);
+		return res.json(instructors);
 	})
 }

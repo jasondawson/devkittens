@@ -1,7 +1,7 @@
 angular.module('devKittens')
 
 .controller('CohortController', 
-	function ($scope, user, $location, infoStorage, cohortServices, currentCohortData, emailsService, mentorService, dayOfWeek) {
+function ($scope, user, $location, infoStorage, cohortServices, currentCohortData, emailsService, mentorService, dayOfWeek, instructorServices) {
 
 	// Init
 	$scope.user = user;
@@ -79,7 +79,6 @@ angular.module('devKittens')
 
 	$scope.getMentors = function() {
 		mentorService.getMentors().then(function(response){
-			console.log(response);
 		$scope.mentors = response.data;
 		}), function (error){
 			console.log(error);
@@ -99,6 +98,18 @@ angular.module('devKittens')
 		$scope.studentDisplay = !$scope.studentDisplay;
 	}
 
+	$scope.getAllInstructors = function () {
+		// Getting instructor data
+		instructorServices.getAll(currentCohortData._id)
+		.then(function (response) {
+			$scope.instructors = instructorServices.cleanInstructors(response[0], response[1].instructors);
+			$scope.cohortInstructors = response[1].instructors;
+		})
+		.catch(function (err) {
+			console.error(err);
+		})
+	}
+
 	$scope.toggleSettingsView = function () {
 		$scope.settingsView = !$scope.settingsView;
 		
@@ -106,6 +117,7 @@ angular.module('devKittens')
 			$('body').css('overflow', 'auto');
 		} else {
 			$('body').css('overflow', 'hidden');
+			$scope.getAllInstructors();
 		}
 
 		$scope.studentDisplay = false;
@@ -135,6 +147,6 @@ angular.module('devKittens')
 
 	$scope.toggleMentorView = function () {
 		$scope.mentorDisplay = !$scope.mentorDisplay;
-	}	
+	}
 
 })

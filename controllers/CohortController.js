@@ -1,7 +1,9 @@
-var Course = require('../models/CourseModel.js'),
-	Cohort = require('../models/CohortModel.js'),
-	Lesson = require('../models/LessonModel.js'),
-	User   = require('../models/User.js');
+var Course 		= require('../models/CourseModel.js'),
+	Cohort 		= require('../models/CohortModel.js'),
+	Instructor 	= require('../models/InstructorModel.js'),
+	Lesson 		= require('../models/LessonModel.js'),
+	User   		= require('../models/User.js');
+
 
 exports.createNewCohort = function(req, res) {
 	Course.findById(req.body.courseType._id)
@@ -55,11 +57,11 @@ exports.updateLessonOrder = function (req, res) {
 };
 
 exports.getCohort = function(req, res) {
+	var populateQuery = [{path:'students'}, {path:'instructors'}];
+
 	Cohort.findById(req.params.cohortId)
-	.populate('students')
+	.populate(populateQuery)
 	.exec(function (err, data) {
-		// var dates = populateCalendar(data.startDate.getTime(), data.curriculum.length);
-		// data.dates = dates;
 		res.json(data);
 	})
 };

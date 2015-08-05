@@ -22,7 +22,7 @@
 	</div>
 
 	<!-- STUDENT SECTION -->
-	<div class="flex-pants" ng-if="currentTab === 'students'">
+	<div class="flex-pants" ng-show="currentTab === 'students'">
 
 		<div class="sub-dsh">
 			<div class="mini-header">Registered students</div>
@@ -50,17 +50,99 @@
 
 	</div>
 
-	<!-- INSTRUCTOR'S SECTION -->
-	<div class="flex-pants" ng-if="currentTab === 'instructors'">
+
+	
+
+	<!-- MENTOR SECTION -->
+	<div class="flex-pants" ng-show="currentTab === 'mentors'">
 
 		<div class="sub-dsh">
-			<div class="mini-header">Invite instuctors</div>
-			<form ng-submit="sendStudentInvite(newStudents)">
-				<textarea ng-model="newStudents" class="form-control" placeholder="Comma-separated email(s)"></textarea>
-				<button class="btn btn-default">Submit</button>
-			</form>
+			<div class="mini-header">Cohort mentors</div>
+			<div class="student-display" ng-repeat="mentor in mentors">
+				<a ng-href="{{mentor.userId.githubUrl}}" target="_blank">
+					<img ng-src="{{mentor.userId.avatar}}"
+						 ng-class="{'has-github': mentor.userId.githubUrl}">
+				</a>
+				<span class="s-info">
+					<p class="s-name">{{mentor.userId.name}}</p>
+					<p class="s-email">{{mentor.userId.local.email}}</p>
+					<a ng-href="{{mentor.userId.githubUrl}}" ng-if="mentor.userId.githubUrl" target="_blank"><i class="fa fa-github-alt"></i></a>
+				</span>
+			</div>
+		</div>
+
+		<div class="sub-dsh">
+			<div class="mini-header">Assign mentors</div>
 		</div>
 
 	</div>
 
+
+
+
+	<!-- INSTRUCTOR SECTION -->
+	<div class="flex-pants" ng-show="currentTab === 'instructors'">
+
+
+		<div class="sub-dsh">
+			<!-- ASSIGN BY EMAIL -->
+			<div class="mini-header">Invite instuctors</div>
+			<form ng-submit="sentInstructorInvite(newInstructors)">
+				<textarea ng-model="newInstructors" class="form-control" placeholder="Comma-separated email(s)"></textarea>
+				<button class="btn btn-default">Send invite</button>
+			</form>
+
+			<!-- ASSIGN EXISTING INSTRUCTOR -->
+			<div class="space-above">
+				<div class="student-display" ng-repeat="instructor in instructors">
+					<input type="checkbox" ng-model="instructor.selected">
+					<a ng-href="{{instructor.userId.githubUrl}}" target="_blank">
+						<img ng-src="{{instructor.userId.avatar}}"
+							 ng-class="{'has-github': instructor.userId.githubUrl}">
+					</a>
+					<span class="s-info">
+						<p class="s-name">{{instructor.userId.name}}</p>
+						<p class="s-email">{{instructor.userId.local.email}}</p>
+						<a ng-href="{{instructor.userId.githubUrl}}" ng-if="instructor.userId.githubUrl" target="_blank"><i class="fa fa-github-alt"></i></a>
+					</span>
+				</div>
+
+				<button class="btn btn-default" ng-click="assignExistingInstructors(instructors)">Invite intructors</button>
+			</div>
+		</div>
+
+
+
+
+		<div class="sub-dsh">
+			<div class="mini-header">Cohort instructors</div>
+			<div class="student-display" ng-repeat="instructors in cohortInstructors">
+				<a ng-href="{{instructors.userId.githubUrl}}" target="_blank">
+					<img ng-src="{{instructors.userId.avatar}}"
+						 ng-class="{'has-github': instructors.userId.githubUrl}">
+				</a>
+				<span class="s-info">
+					<p class="s-name">{{instructors.userId.name}}</p>
+					<p class="s-email">{{instructors.userId.local.email}}</p>
+					<a ng-href="{{instructors.userId.githubUrl}}" ng-if="instructors.userId.githubUrl" target="_blank"><i class="fa fa-github-alt"></i></a>
+				</span>
+			</div>
+		</div>
+
+
+
+	</div>
+
+
+
+
+
+
+
 </section>
+
+
+
+
+
+

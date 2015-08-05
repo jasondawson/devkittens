@@ -54,7 +54,7 @@ angular.module('devKittens')
 
 		var email = {
 			  html: html
-			, subject: 'DevMoutain\'s Invitation to ' + cohort.name + ' | Project Management Software'
+			, subject: 'DevMoutain\'s Invitation to ' + cohort.name + ' | Course Management Software'
 			, to: emailList
 		}
 
@@ -85,7 +85,7 @@ angular.module('devKittens')
 
 		var email = {
 				html: html
-			, subject: 'DevMountain\'s Invitation to Join the Mentors Group | Project Management Software'
+			, subject: 'DevMountain\'s Invitation to Join the Mentors Group | Course Management Software'
 			, to: emailList
 		}
 
@@ -96,6 +96,38 @@ angular.module('devKittens')
 		.error(function(err) {
 			deferred.reject(err);
 		});
+
+		return deferred.promise;
+	}
+
+
+	service.sendInstuctorInvite = function (emailString, cohort) {
+		if (!emailString || !cohort.id || !cohort.name) return console.warn('Missing critical information to send email invite');
+		
+		var deferred = $q.defer();
+
+		var emailList = cleanList(emailString);
+		var html = '<p>You\'ve been invited to be teach at DevMoutain\'s ' + cohort.name + ' cohort!</p>'
+				  + '<p>Click on the following link to schedule your teaching:</p>'
+				  + '<p><a href="http://localhost:3000/#/registration/instructor/"' + cohort.id + ' target="_blank">'
+				  + 'http://localhost:3000/#/registration/instructor/' + cohort.id
+				  + '</a></p>';
+
+		var email = {
+			  html: html
+			, subject: 'DevMoutain\'s Invitation to ' + cohort.name + ' | Course Management Software'
+			, to: emailList
+		}
+
+
+		$http.post('/api/email', email)
+		.success(function (response) {
+			deferred.resolve(response);
+		})
+		.error(function (err) {
+			deferred.reject(err);
+		});
+
 
 		return deferred.promise;
 	}

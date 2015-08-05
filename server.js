@@ -96,6 +96,10 @@ app.post('/api/destructify/:dayId', InstructorController.removeInstructor);
 app.post('/api/reserved/:userId/:dayId', InstructorController.createReserve);
 app.put('/api/reserved/:userId/:dayId', InstructorController.deleteReserve);
 
+app.put('/api/instructor', InstructorController.assignToCohort);
+app.get('/api/instructors', InstructorController.getAllInstructors);
+app.get('/api/instructors/:cohortId', InstructorController.getCohortInstructors);
+
 // students completing sections
 app.post('/api/completed', StudentController.markAsCompleted);
 app.put('/api/completed', StudentController.markAsIncomplete);
