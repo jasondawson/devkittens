@@ -7,9 +7,9 @@ var cohortSchema = new Schema({
 	, courseType: { type: mongoose.Schema.Types.ObjectId, ref: "Course" }
 	, students: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }]
 	, curriculum: [{
-		topic: String,
-		lesson: {
 			topic: String,
+			lesson: {
+				topic: String,
 			sections: [{
 				read: [],
 				edit: [],
@@ -35,18 +35,37 @@ cohortSchema.pre('save', function(next, startDate, curriculum) {
 
 	var datesArr = [start];
 	var formattedDates = [];
+
 	for(var i = 1; i < this.curriculum.length; i++) {
 		var tomorrow = datesArr[i - 1] + (1000 * 60 * 60 * 24);
 		datesArr.push(tomorrow);
 	}
+
 	for(var i = 0; i < datesArr.length; i++) {
 		formattedDates.push(new Date(datesArr[i]));
 	}
 
+	console.log('last day in array ', formattedDates[formattedDates.length - 1].getDay());
+
+	var numDaysToAdd = 7 - (formattedDates[formattedDates.length - 1].getDay());
+	console.log('numDaysToAdd ', numDaysToAdd);
+
+	if(formattedDates[formattedDates.length - 1].getDay() !== 0) {
+		for(var i = 0; i < numDaysToAdd; i++) {
+			var endDate = (formattedDates[formattedDates.length - 1].getTime()) * (1000 * 60 * 60 * 24);
+			formattedDates.push(new Date(endDate));
+		}
+	}
+	
+	console.log('formattedDates ', formattedDates[formattedDates.length - 1]);
+	console.log('formattedDates.length ', formattedDates.length);
+	console.log('curriculum.length ', this.curriculum.length);
 
 	for(var i = 0; i < formattedDates.length; i++) {
 		this.curriculum[i].day = formattedDates[i];
 	}
+
+
 	next();
 })
 

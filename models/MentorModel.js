@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 
 var MentorSchema = mongoose.Schema({
 	  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
-	, cohortId: { type: mongoose.Schema.Types.ObjectId, ref: "Course" }
+	, cohortId: [{ type: mongoose.Schema.Types.ObjectId, ref: "Course" }]
 	, mentos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
 	, mentorType: String
 	, seniority: Number
