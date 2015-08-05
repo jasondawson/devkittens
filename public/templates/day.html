@@ -144,7 +144,17 @@
 	<div class="shift-wrapper larger-padding">	
 		<div ng-show="lesson" class="portlet-header">
 			<div ng-show="!lesson.edit && (lesson.sections.length || lesson.topic)">
-				<h2>{{lesson.topic || topicPlaceholder}} <img class="pic-container" ng-if="user.userType.admin || user.userType.mentor || user.userType.student" ng-src="{{day.instructor.avatar}}"/>
+				<h2>{{lesson.topic || topicPlaceholder}} <!-- <img class="pic-container" ng-if="user.userType.admin || user.userType.mentor || user.userType.student" ng-src="{{day.instructor.avatar}}" ng-attr-titletext="{{day.instructor.name}}" tio-tooltip/> -->
+				<div ng-if="user.userType.admin || user.userType.mentor || user.userType.student" class="pic-container" ng-attr-titletext="{{day.instructor.name}}" tio-tooltip>
+					<a ng-href="{{day.instructor.githubUrl}}" target="_blank">
+						<img ng-src="{{day.instructor.avatar}}"
+							 ng-class="{'has-github': day.instructor.githubUrl}">
+					</a>
+					<span class="tooltip-wrapper">
+						<p class="tooltip"></p>
+						<span class="arrow-down"></span>
+					</span>
+				</div>
 
 					<span style="float: right;">
 						<button ng-click="teachLesson(day)" ng-show="!day.instructor && user.userType.instructor && typeRef == 'cohort'" class="btn btn-default">Teach this lesson</button>
