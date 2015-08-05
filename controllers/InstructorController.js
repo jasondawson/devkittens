@@ -153,6 +153,8 @@ exports.getAllInstructors = function (req, res) {
 	.exec(function (err, instructors) {
 		if (err) return res.status(500).send(err);
 		return res.json(instructors);
+	})
+}
 
 
 exports.teachRequest = function(req, res) {
