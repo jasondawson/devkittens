@@ -6,8 +6,6 @@ exports.createNewCourse = function(req, res) {
 
 	var numDays = req.body.courseLength;
 	var daysToAdd = 7 - (numDays % 7);
-	console.log('days to add ', daysToAdd);
-	console.log('total length ', numDays + daysToAdd);
 
 	for (var i = 1; i <= (numDays + daysToAdd); i++) {
 		daysArray.push({day: i});

@@ -46,22 +46,6 @@ cohortSchema.pre('save', function(next, startDate, curriculum) {
 		formattedDates.push(new Date(datesArr[i]));
 	}
 
-	console.log('last day in array ', formattedDates[formattedDates.length - 1].getDay());
-
-	var numDaysToAdd = 7 - (formattedDates[formattedDates.length - 1].getDay());
-	console.log('numDaysToAdd ', numDaysToAdd);
-
-	if(formattedDates[formattedDates.length - 1].getDay() !== 0) {
-		for(var i = 0; i < numDaysToAdd; i++) {
-			var endDate = (formattedDates[formattedDates.length - 1].getTime()) * (1000 * 60 * 60 * 24);
-			formattedDates.push(new Date(endDate));
-		}
-	}
-	
-	console.log('formattedDates ', formattedDates[formattedDates.length - 1]);
-	console.log('formattedDates.length ', formattedDates.length);
-	console.log('curriculum.length ', this.curriculum.length);
-
 	for(var i = 0; i < formattedDates.length; i++) {
 		this.curriculum[i].day = formattedDates[i];
 	}

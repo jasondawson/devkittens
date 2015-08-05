@@ -91,10 +91,10 @@
 
 		<div class="container" ng-show="toggleViewToMentors">
 
-			<div class="display-box add-new" ng-click="openMentorModal()">
+			<!-- <div class="display-box add-new" ng-click="openMentorModal()">
 				<span class="text-dashboard">Add a new mentor</span> <br />
 				<i class="icon-dashboard fa fa-plus-circle"></i>
-			</div>
+			</div> -->
 
 		<!-- 	<div class="display-box add-new" ng-click="toggleSubscribeCohortModal()">
 				<span class="text-dashboard">Add Mentos to Mentors</span> <br />
@@ -103,10 +103,10 @@
 
 			<a class="mentors-link" href="#dashboard">
 				<div class="display-box" ng-click="toggleMentorModal(); setMentor(mentor)" ng-repeat="mentor in usersArray | filter: {userType: {mentor: true}}">
-					<img class="mentor-image center" ng-src="{{mentor.avatar}}"</img>
+					<img class="mentor-image center" ng-src="{{mentor.avatar}}"></img>
 					<span class="text-dashboard center">{{ mentor.name }}</span>
-					<span class="text-dashboard name center">{{ mentor.location }}</span>
-					<span class="text-dashboard name center">{{ mentor.mentorType }}</span>
+				<!-- 	<span class="text-dashboard name center">{{ mentor.location }}</span>
+					<span class="text-dashboard name center">{{ mentor.mentorType }}</span> -->
 				</div> <!-- End of 'display-box' -->
 			</a>
 		</div> <!-- End of 'container' -->
