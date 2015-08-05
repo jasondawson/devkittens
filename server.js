@@ -93,6 +93,8 @@ app.post('/api/instructify/:cohortId/:dayId', InstructorController.addInstructor
 app.get('/api/instructify/:userId', InstructorController.getInstructorInfo);
 app.put('/api/destructify/:userId/:dayId', InstructorController.removeFromInstructor);
 app.post('/api/destructify/:dayId', InstructorController.removeInstructor);
+app.post('/api/requestify/:cohortId/:dayIndex', InstructorController.teachRequest);
+app.put('/api/requestify/:cohortId/:dayIndex', InstructorController.cancelRequest);
 app.post('/api/reserved/:userId/:dayId', InstructorController.createReserve);
 app.put('/api/reserved/:userId/:dayId', InstructorController.deleteReserve);
 

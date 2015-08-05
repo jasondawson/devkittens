@@ -20,6 +20,7 @@ var cohortSchema = new Schema({
 			}]
 		},
 		day: Date,
+		wantsToTeach: [{ type: mongoose.Schema.Types.ObjectId, ref: "User"}],
 		instructor: { type: mongoose.Schema.Types.ObjectId, ref: "User" }
 	}]
 	, startDate: {type: Date, required: true}

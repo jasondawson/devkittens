@@ -2,7 +2,7 @@ angular.module('devKittens')
 
 .controller('DayController', function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStorage, lessonService, courseServices, cohortServices, studentServices, $location, $anchorScroll) {
 	$scope.user = user;
-	console.log(user)	
+	// console.log(user)	
 	if (typeRef == 'cohort') {
 		$scope.lesson = activeLesson.lesson;
 		$scope.day = activeLesson;
@@ -278,6 +278,20 @@ angular.module('devKittens')
 
 	//the stuff about instructors teaching classes, etc.
 	$scope.superShowThis = false;
+
+	$scope.teachRequest = function() {
+		cohortServices.teachRequest(user, typeId, dayIndex)
+		.then(function(response) {
+			$scope.day = response.curriculum[dayIndex];
+		})
+	}
+
+	$scope.cancelRequest = function() {
+		cohortServices.cancelRequest(user, typeId, dayIndex)
+		.then(function(response) {
+			$scope.day = response.curriculum[dayIndex];
+		})
+	}
 
 	$scope.teachLesson = function(lesson) {
 		cohortServices.addInstructor(user, typeId, lesson, dayId)
