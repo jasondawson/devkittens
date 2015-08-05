@@ -71,34 +71,65 @@ angular.module('devKittens')
 		return deferred.promise;
 	}
 
-
-	service.sendMentorInvite = function(emailString) {
-		if(!emailString) return console.log('Missing critical information to send email invite.');
-
+	service.sendMentorInvite = function (emailString, cohort) {
+		if (!emailString || !cohort.id || !cohort.name) return console.warn('Missing critical information to send email invite');
+		
 		var deferred = $q.defer();
 
 		var emailList = cleanList(emailString);
-		var html = '<p>You\'ve been invited to DevMountain\'s Mentor group!</p>'
-						+ '<p><a href="http://localhost:3000/#/registration/mentor" target="_blank">'
-						+ 'http://localhost:3000/#/registration/mentor'
-						+ '</a></p>';
+		var html = '<p>You\'ve been invited to DevMoutain\'s ' + cohort.name + ' Mentor Group!</p>'
+				  + '<p><a href="http://localhost:3000/#/registration/mentor' + cohort.id + '" target="_blank">'
+				  + 'http://localhost:3000/#/registration/mentor' + cohort.id
+				  + '</a></p>';
 
 		var email = {
-				html: html
-			, subject: 'DevMountain\'s Invitation to Join the Mentors Group | Course Management Software'
+			  html: html
+			, subject: 'DevMoutain\'s Invitation to join the ' + cohort.name + ' Mentors Group | Course Management Software'
 			, to: emailList
 		}
 
+
 		$http.post('/api/email', email)
-		.success(function(response) {
+		.success(function (response) {
 			deferred.resolve(response);
 		})
-		.error(function(err) {
+		.error(function (err) {
 			deferred.reject(err);
 		});
 
+
 		return deferred.promise;
 	}
+
+
+
+	// service.sendMentorInvite = function(emailString) {
+	// 	if(!emailString) return console.log('Missing critical information to send email invite.');
+
+	// 	var deferred = $q.defer();
+
+	// 	var emailList = cleanList(emailString);
+	// 	var html = '<p>You\'ve been invited to DevMountain\'s Mentor group!</p>'
+	// 					+ '<p><a href="http://localhost:3000/#/registration/mentor" target="_blank">'
+	// 					+ 'http://localhost:3000/#/registration/mentor'
+	// 					+ '</a></p>';
+
+	// 	var email = {
+	// 			html: html
+	// 		, subject: 'DevMountain\'s Invitation to Join the Mentors Group | Course Management Software'
+	// 		, to: emailList
+	// 	}
+
+	// 	$http.post('/api/email', email)
+	// 	.success(function(response) {
+	// 		deferred.resolve(response);
+	// 	})
+	// 	.error(function(err) {
+	// 		deferred.reject(err);
+	// 	});
+
+	// 	return deferred.promise;
+	// }
 
 
 	service.sendInstuctorInvite = function (emailString, cohort) {

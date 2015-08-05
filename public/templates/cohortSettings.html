@@ -72,7 +72,11 @@
 		</div>
 
 		<div class="sub-dsh">
-			<div class="mini-header">Assign mentors</div>
+			<div class="mini-header">Invite new mentors</div>
+			<form ng-submit="sendMentorInvite(newMentors)">
+				<textarea ng-model="newMentors" class="form-control" placeholder="Comma-separated email(s)"></textarea>
+				<button class="btn btn-default">Submit</button>
+			</form>
 		</div>
 
 	</div>

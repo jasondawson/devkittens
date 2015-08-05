@@ -110,6 +110,27 @@ function ($scope, user, $location, infoStorage, cohortServices, currentCohortDat
 		})
 	}
 
+		// Send mentor invite
+	$scope.sendMentorInvite = function (mentorEmails) {
+		$scope.loading = true;
+
+		if (!mentorEmails) return console.warn('Please add emails');
+		var cohortInfo = {
+			name: currentCohortData.name,
+			id: currentCohortData._id
+		}
+		emailsService.sendMentorInvite(mentorEmails, cohortInfo)
+		.then(function (response) {
+			$scope.loading = false;
+			$scope.mentors = '';
+			$scope.closeModal();
+		})
+		.catch(function (err) {
+			$scope.loading = false;
+			$scope.closeModal();
+		});
+	}
+
 	$scope.toggleSettingsView = function () {
 		$scope.settingsView = !$scope.settingsView;
 		
