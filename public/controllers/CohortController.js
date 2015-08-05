@@ -166,8 +166,4 @@ function ($scope, user, $location, infoStorage, cohortServices, currentCohortDat
 		});
 	}
 
-	$scope.toggleMentorView = function () {
-		$scope.mentorDisplay = !$scope.mentorDisplay;
-	}
-
 })
