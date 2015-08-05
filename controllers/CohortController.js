@@ -76,19 +76,20 @@ exports.getAllCohorts = function(req, res) {
 	})
 };
 
+
 exports.getCohortDay = function(req, res) {
-	Cohort.findOne({_id: req.params.cohortId}, function(err, data) {
+	Cohort.findOne({_id: req.params.cohortId})
+	.populate('curriculum.instructor')
+	.exec(function(err, data) {
 		if (err) {
 			res.status(500).json(err);
 		} else {
-			var lesson;
 			for (var i = 0; i < data.curriculum.length; i++) {
 				if (data.curriculum[i]._id == req.params.dayId) {
-					// lesson = data.curriculum[i].lesson;
+					
 					return res.json(data.curriculum[i]);
 				}
 			}
-			// res.json(lesson);
 		}
 	})
 };
