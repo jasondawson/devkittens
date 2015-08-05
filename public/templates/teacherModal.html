@@ -18,6 +18,8 @@
 
 			<button ng-click="activateSkills(); addSkillsView()" class="btn btn-default btn-horizontal"
 				ng-class="{ active: activeTab === 'Skills' }">Skills</button>
+			<button ng-click="activatePermissions(); addPermissionsView()" class="btn btn-default btn-horizontal"
+				ng-class="{ active: activeTab === 'Permissions' }">Permissions</button>
 		</div> <!-- End of 'menu-bar-horizontal' -->
 
 			<!-- Comments SECTION -->
@@ -64,5 +66,17 @@
 			</div> <!-- End of 'display-box-nonmodal' -->
 			<!-- END OF COHORT SECTION -->
 			
+			<!-- PERMISSIONS SECTION -->
+			<div class="display-box-nonmodal" ng-show="toggleViewToPermissions">
+				<h2 class="text-dashboard left">Edit this user's permissions</h2>
+				<form>
+					<label><input type="checkbox"ng-checked="currentTeacher.userType.admin"  ng-model="permissions.admin">Admin</label>
+					<label><input type="checkbox" ng-checked="currentTeacher.userType.mentor" ng-model="permissions.mentor">Mentor</label>
+					<button ng-click="editPermissions(permissions)">Save changes</button>
+				</form>
+			</div>
+			<!-- END OF PERMISSIONS SECTION -->
+
+
 	</div> <!-- End of 'mini-modal-cal' -->
 </div> <!-- End of 'add-cohort-modal' -->

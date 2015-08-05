@@ -1,4 +1,4 @@
-<!-- MENTOR MODAL VIEW -->
+MENTOR MODAL VIEW -->
 <div class="add-cohort-modal strict-modal" current-mentor="currentMentor">
 	<i class="close-mini-modal close-modal fa fa-times" ng-click="toggleMentorModal()"></i>
 	<br />
@@ -20,6 +20,8 @@
 
 			<button ng-click="activateNotes(); addNotesView()" class="btn btn-default btn-horizontal"
 				ng-class="{ active: activeTab === 'notes' }">Notes</button>
+			<button ng-click="activatePermissions(); addPermissionsView()" class="btn btn-default btn-horizontal"
+				ng-class="{ active: activeTab === 'Permissions' }">Permissions</button>
 		</div> <!-- End of 'menu-bar-horizontal' -->
 
 		<!-- MENTOR SECTION -->
@@ -76,6 +78,17 @@
 		</div> <!-- End of 'display-box-nonmodal' -->
 		<!-- END OF STUDENT NOTES SECTION -->
 
+		<!-- MENTOR PERMISSIONS -->
+		<div class="display-box-nonmodal" ng-show="toggleViewToPermissions">
+			<h2 class="text-dashboard left">Edit this user's permissions</h2>
+			<form>
+				<label><input type="checkbox"ng-checked="currentMentor.userType.admin"  ng-model="permissions.admin">Admin</label>
+				<label><input type="checkbox" ng-checked="currentMentor.userType.instructor" ng-model="permissions.instructor">Instructor</label>
+				<button ng-click="editPermissions(permissions)">Save changes</button>
+			</form>
+		</div>
+		<!-- END OF MENTOR PERMISSIONS -->
+
 	</div>
 </div>
 
@@ -102,4 +115,4 @@
 
 <div class="mini-modal-day day" make-active>
 	<h5 ng-class="other">Other</h5>
-</div> -->
+</div>

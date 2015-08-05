@@ -12,7 +12,7 @@ angular.module('devKittens')
 			currentMentor: '=',
 			options: '='
 		},
-		controller: function($scope) {
+		controller: function($scope, userService) {
 			$scope.studentSection = false;
 
 			$scope.showStudents = function() {
@@ -26,6 +26,7 @@ angular.module('devKittens')
 			$scope.toggleViewToSchedule = false;
 			$scope.toggleViewToTasks = false;
 			$scope.toggleViewToNotes = false;
+			$scope.toggleViewToPermissions = false;
 
 			$scope.activateMentos = function() {
 				$scope.activeTab = 'mentos';
@@ -34,6 +35,7 @@ angular.module('devKittens')
 				$scope.toggleViewToSchedule = false;
 				$scope.toggleViewToTasks = false;	
 				$scope.toggleViewToNotes = false;
+				$scope.toggleViewToPermissions = false;
 			}
 
 			$scope.activateSchedule = function() {
@@ -43,6 +45,7 @@ angular.module('devKittens')
 				$scope.toggleViewToTasks = false;
 				$scope.toggleViewToNotes = false;
 				$scope.toggleViewToMentos = false;
+				$scope.toggleViewToPermissions = false;
 			}
 
 			$scope.activateTasks = function() {
@@ -52,6 +55,7 @@ angular.module('devKittens')
 				$scope.toggleViewToNotes = false;
 				$scope.toggleViewToMentos = false;
 				$scope.toggleViewToSchedule = false;
+				$scope.toggleViewToPermissions = false;
 			}
 
 			$scope.activateNotes = function() {
@@ -61,6 +65,17 @@ angular.module('devKittens')
 				$scope.toggleViewToMentos = false;
 				$scope.toggleViewToSchedule = false;
 				$scope.toggleViewToTasks = false;
+				$scope.toggleViewToPermissions = false;
+			}
+
+			$scope.activatePermissions = function() {
+				$scope.activeTab = 'Permissions';
+				$scope.toggleViewToPermissions = true;
+
+				$scope.toggleViewToMentos = false;
+				$scope.toggleViewToSchedule = false;
+				$scope.toggleViewToTasks = false;
+				$scope.toggleViewToNotes = false;
 			}
 
 			$scope.addMentosView = function() {
@@ -77,6 +92,18 @@ angular.module('devKittens')
 
 			$scope.addNotesView = function() {
 				$scope.toggleAddNotes = !$scope.toggleAddNotes;
+			}
+
+			$scope.addPermissionsView = function() {
+				$scope.toggleAddPermissions = !$scope.toggleAddPermissions;
+			}
+
+			$scope.editPermissions = function(obj) {
+				// console.log(obj, $scope.currentTeacher);
+				userService.mentorPermissions(obj, $scope.currentMentor)
+				.then(function(response) {
+					console.log(response);
+				})
 			}
 
 		}

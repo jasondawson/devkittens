@@ -37,6 +37,7 @@ var EmailController = require('./controllers/EmailController.js');
 var InstructorController = require('./controllers/InstructorController.js');
 var StudentController = require('./controllers/StudentController.js');
 var MentorController = require('./controllers/MentorController.js');
+var PermissionsController = require('./controllers/PermissionsController.js');
 
 
 // required for passport
@@ -111,6 +112,10 @@ app.post('/api/email', EmailController.sendEmail);
 app.get('/api/users', User.getAll);
 app.put('/api/user/:id', User.put);
 app.post('/api/data-type', User.getTypeData);
+
+// Permissions
+app.put('/api/permissions/instructor/:userId', PermissionsController.instructorPermissions);
+app.put('/api/permissions/mentor/:userId', PermissionsController.mentorPermissions);
 
 // Auth
 app.post('/api/user', logout, passport.authenticate('local-signup'), function (req, res) {

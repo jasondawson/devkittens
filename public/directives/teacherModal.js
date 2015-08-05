@@ -12,7 +12,7 @@ angular.module('devKittens')
 			currentTeacher: '=',
 			instructorData: '='
 		},
-		controller: function($scope) {
+		controller: function($scope, userService) {
 			// $scope.studentSection = false;
 
 			// $scope.showStudents = function() {
@@ -22,10 +22,12 @@ angular.module('devKittens')
 			$scope.toggleAddComments = false;
 			$scope.toggleAddSchedule = false;
 			$scope.toggleAddSkills = false;
+			$scope.toggleAddPermissions = false;
 
 			$scope.toggleViewToComments = false;
 			$scope.toggleViewToSchedule = false;
 			$scope.toggleViewToSkills = false;
+			$scope.toggleViewToPermissions = false;
 
 			$scope.activateComments = function() {
 				$scope.activeTab = 'Comments';
@@ -33,6 +35,7 @@ angular.module('devKittens')
 
 				$scope.toggleViewToSkills = false;	
 				$scope.toggleViewToSchedule = false;
+				$scope.toggleViewToPermissions = false;
 			}
 
 			$scope.activateSchedule = function() {
@@ -42,6 +45,7 @@ angular.module('devKittens')
 
 				$scope.toggleViewToSkills = false;
 				$scope.toggleViewToComments = false;
+				$scope.toggleViewToPermissions = false;
 			}
 
 			$scope.activateSkills = function() {
@@ -50,6 +54,16 @@ angular.module('devKittens')
 
 				$scope.toggleViewToComments = false;
 				$scope.toggleViewToSchedule = false;
+				$scope.toggleViewToPermissions = false;
+			}
+
+			$scope.activatePermissions = function() {
+				$scope.activeTab = 'Permissions';
+				$scope.toggleViewToPermissions = true;
+
+				$scope.toggleViewToComments = false;
+				$scope.toggleViewToSchedule = false;
+				$scope.toggleViewToSkills = false;
 			}
 
 			$scope.addCommentsView = function() {
@@ -62,6 +76,18 @@ angular.module('devKittens')
 
 			$scope.addSkillsView = function() {
 				$scope.toggleAddSkills = !$scope.toggleAddSkills;
+			}
+
+			$scope.addPermissionsView = function() {
+				$scope.toggleAddSkills = !$scope.toggleAddSkills;
+			}
+
+			$scope.editPermissions = function(obj) {
+				// console.log(obj, $scope.currentTeacher);
+				userService.instructorPermissions(obj, $scope.currentTeacher)
+				.then(function(response) {
+					console.log(response);
+				})
 			}
 
 		}
