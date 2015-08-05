@@ -1261,3 +1261,10 @@ section.cohort-settings .dsh-menu .dsh-item.active-dsh {
 .just-flex {
   display: flex;
 }
+#top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1000;
+  opacity: 0;
+}
