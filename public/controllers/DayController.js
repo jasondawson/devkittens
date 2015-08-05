@@ -20,9 +20,7 @@ angular.module('devKittens')
 	}
 
 	$scope.permission = function(permissionTypes, userTypes){
-		console.log(permissionTypes, userTypes)
 		for(i = 0; i < permissionTypes.length; i ++){
-			console.log(22222222, userTypes[permissionTypes[i]])
 			if (userTypes[permissionTypes[i]]) return true;
 		}
 		return false;

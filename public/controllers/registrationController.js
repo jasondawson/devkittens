@@ -22,7 +22,6 @@ function ($scope, authService, $location, infoStorage, userType, cohortId) {
 			cohortId = userType;
 		}
 
-
 		authService.createUser(name, email, password, typeObj, cohortId)
 		.then(function (response) {
 			// Temp store user info
