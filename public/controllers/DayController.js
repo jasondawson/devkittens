@@ -1,6 +1,6 @@
 angular.module('devKittens')
 
-.controller('DayController', function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStorage, lessonService, courseServices, cohortServices, studentServices, $location) {
+.controller('DayController', function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStorage, lessonService, courseServices, cohortServices, studentServices, $location, $anchorScroll) {
 	$scope.user = user;
 	console.log(user)	
 	if (typeRef == 'cohort') {
@@ -320,5 +320,10 @@ angular.module('devKittens')
 		} else {
 			section.show = false;
 		}
+	}
+
+	$scope.scrollToTop = function() {
+		$location.hash('top');
+		$anchorScroll();
 	}
 });

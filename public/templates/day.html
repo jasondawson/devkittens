@@ -1,9 +1,10 @@
+<div id="top"></div>
 <header-directive></header-directive>
 
 	<!-- IF THERE IS NO LESSON -->
 	<section class="smaller-wrapper whole-thing" ng-show="!lesson.sections.length && !lesson.topic && user.userType.admin">
 
-		<div ng-show="sections.length" class="shift-wrapper smaller-padding">
+		<div class="shift-wrapper smaller-padding"> <!-- ng-show="sections.length"  -->
 			<div class="container">
 				<div class="profile-header">Sections <span class="lil-guy">(click to expand)</span></div>
 				<div class="profile-container-body">
@@ -24,13 +25,14 @@
 								</div>
 							</div>
 						</div>
-						<hr ng-show="$index < sections.length - 1">
+						<hr><!--   ng-show="$index < sections.length - 1" -->
 					</div>
+					<button class="btn btn-success" ng-click="createLesson(topic)">Save lesson</button>
 				</div>
 			</div>
 		</div>
 
-		<div class="shift-wrapper" ng-class="{'larger-padding': !sections.length, 'smaller-padding': sections.length}">
+		<div class="shift-wrapper smaller-padding"> <!-- ng-class="{'larger-padding': !sections.length, 'smaller-padding': sections.length}"> -->
 			<div class="container">
 				{{activeLesson}}
 				<div class="profile-header">Create a new lesson</div>
@@ -55,7 +57,7 @@
 						</div> -->
 
 						<label>New section name:</label>
-						<form ng-submit="addSection(newSection)">
+						<form ng-submit="addSection(newSection); scrollToTop()">
 							<input type="text" ng-model="newSection.title"
 								   placeholder="e.g. Variables and functions"
 								   class="form-control"/>
@@ -120,7 +122,7 @@
 						</div> -->
 
 						<br><br>
-						<button class="btn btn-success" ng-click="createLesson(topic)">Save lesson</button>
+						<!-- <button class="btn btn-success" ng-click="createLesson(topic)">Save lesson</button> -->
 					<!-- </form> -->
 				</div>
 
