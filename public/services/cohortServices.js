@@ -135,7 +135,7 @@ angular.module("devKittens")
 
 		var req4 = $http({
 			method: "DELETE",
-			url: '/api/requestify' + cohortId + '/' + dayIndex
+			url: '/api/requestify/' + cohortId + '/' + dayIndex
 		})
 
 		$q.all([req1, req2, req3, req4])
