@@ -192,7 +192,7 @@ exports.deleteRequests = function(req, res) {
 		if (err) {
 			res.status(500).json(err);
 		} else {
-			req.curriculum[req.params.dayIndex].wantsToTeach.remove()
+			cohort.curriculum[req.params.dayIndex].wantsToTeach.remove()
 			cohort.save(function(err, data) {
 				if (!err) {
 					res.json(data);
