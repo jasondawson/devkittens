@@ -158,8 +158,8 @@
 
 					<span style="float: right;">
 						<!-- <button ng-click="teachLesson(day)" ng-if="!day.instructor && user.userType.instructor && typeRef == 'cohort'" class="btn btn-default">Teach this lesson</button> -->
-						<button ng-show="user.userType.instructor && !day.instructor && day.wantsToTeach.indexOf(user._id) === -1" ng-click="teachRequest()" class="btn btn-default">Request to teach this lesson</button>
-						<button ng-show="!day.instructor && day.wantsToTeach.indexOf(user._id) !== -1" ng-click="cancelRequest()" class="btn btn-default">Cancel teaching request</button>
+						<button ng-show="user.userType.instructor && !day.instructor && !findMyId(day.wantsToTeach, user)" ng-click="teachRequest()" class="btn btn-default">Request to teach this lesson</button>
+						<button ng-show="!day.instructor && findMyId(day.wantsToTeach, user)" ng-click="cancelRequest()" class="btn btn-default">Cancel teaching request</button>
 						<button ng-click="removeLesson(lesson)" ng-if="(day.instructor._id == user._id && typeRef == 'cohort') || superShowThis" class="btn btn-default">Cancel teaching appointment</button> 
 						
 						<i class="fa fa-pencil" ng-if="user.userType.admin" ng-click="lesson.edit=!lesson.edit"></i>

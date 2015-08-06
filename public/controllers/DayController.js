@@ -7,7 +7,7 @@ angular.module('devKittens')
 		$scope.lesson = activeLesson.lesson;
 		$scope.day = activeLesson;
 		$scope.wantsToTeach = activeLesson.wantsToTeach;
-		console.log(activeLesson);
+		// console.log(activeLesson);
 	} else if (typeRef == 'course') {
 		$scope.lesson = activeLesson;
 		$scope.day = null;
@@ -94,10 +94,6 @@ angular.module('devKittens')
 	    }
   	}
   };
-
-
-
-
 
 
 	// $scope.newSection.readPermissions = [];
@@ -281,9 +277,28 @@ angular.module('devKittens')
 	//the stuff about instructors teaching classes, etc.
 	$scope.superShowThis = false;
 
+			// check if userId is in wantsToTeach in order to show correct button
+
+		  	$scope.findMyId = function(arr, user) {
+				for (var i = 0; i < arr.length; i++) {
+					if (typeof arr[i] == 'object') {
+						if (arr[i]._id == user._id) {
+							return true;
+						}
+					} else if (typeof arr[i] == 'string') {
+						if (arr[i] == user._id) {
+							return true;
+						}
+					}
+				}
+				return false;
+			}
+
+
 	$scope.teachRequest = function() {
 		cohortServices.teachRequest(user, typeId, dayIndex)
 		.then(function(response) {
+			// console.log(response.curriculum[dayIndex]);
 			$scope.day = response.curriculum[dayIndex];
 		})
 	}
@@ -291,6 +306,7 @@ angular.module('devKittens')
 	$scope.cancelRequest = function() {
 		cohortServices.cancelRequest(user, typeId, dayIndex)
 		.then(function(response) {
+			// console.log(response.curriculum[dayIndex]);
 			$scope.day = response.curriculum[dayIndex];
 		})
 	}
