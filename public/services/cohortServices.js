@@ -140,7 +140,7 @@ angular.module("devKittens")
 
 		$q.all([req1, req2, req3, req4])
 		.then(function(response) {
-			dfrd.resolve(response.data);
+			dfrd.resolve(response);
 		})
 		return dfrd.promise;
 	}

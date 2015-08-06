@@ -7,6 +7,7 @@ angular.module('devKittens')
 		$scope.lesson = activeLesson.lesson;
 		$scope.day = activeLesson;
 		$scope.wantsToTeach = activeLesson.wantsToTeach;
+		console.log(activeLesson);
 	} else if (typeRef == 'course') {
 		$scope.lesson = activeLesson;
 		$scope.day = null;
@@ -17,7 +18,7 @@ angular.module('devKittens')
 	//SECTION PERMISSIONS
 	$scope.newSection = {}
 	$scope.logNewSection = function(section){
-		console.log(section)
+		// console.log(section)
 	}
 
 	$scope.permission = function(permissionTypes, userTypes){
@@ -299,7 +300,7 @@ angular.module('devKittens')
 		.then(function(response) {
 			$scope.day.instructor = true;
 			$scope.day.wantsToTeach.length = 0;
-			console.log(response);
+			// console.log(response);
 		})
 	}
 
