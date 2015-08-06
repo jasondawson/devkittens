@@ -63,7 +63,7 @@
 					<p ng-if="day.topic">{{ day.topic }}</p>
 				</div>
 			</div>
-			<div class="instructor-type" ng-show="!day.instructor && ((user.userType.instructor && day.wantsToTeach.indexOf(user._id) == -1) || ((user.userType.mentor || user.userType.admin) && !day.wantsToTeach.length))">available</div>
+			<div class="instructor-type" ng-show="!day.instructor && (user.userType.instructor && day.wantsToTeach.indexOf(user._id) == -1)">available</div>
 			<div class="instructor-type" ng-show="day.wantsToTeach.length && (user.userType.mentor || user.userType.admin) && day.wantsToTeach.indexOf(user._id) == -1">requested</div>
 			<div class="instructor-type" ng-show="day.wantsToTeach.indexOf(user._id) != -1 && !day.instructor">pending</div>
 			<div class="instructor-type" style="color: #2ecc71" ng-show="day.instructor == user._id">I'm teaching</div>

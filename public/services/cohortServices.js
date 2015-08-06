@@ -30,7 +30,7 @@ angular.module("devKittens")
 
 		$http.put(uri, newOrderById)
 		.success(function (response) {
-			deferred.resolve(response);
+			deferred.resolve(response.data);
 		})
 		.error(function (err) {
 			deferred.resolve(err);
@@ -114,7 +114,7 @@ angular.module("devKittens")
 		return dfrd.promise;
 	}
 
-	this.addInstructor = function(user, cohortId, lesson, dayId) {
+	this.addInstructor = function(user, cohortId, lesson, dayId, dayIndex) {
 		var dfrd = $q.defer();
 		var req1 = $http({
 			method: "PUT",
@@ -133,9 +133,14 @@ angular.module("devKittens")
 			url: '/api/reserved/' + user._id + '/' + dayId
 		})
 
-		$q.all([req1, req2, req3])
+		var req4 = $http({
+			method: "DELETE",
+			url: '/api/requestify' + cohortId + '/' + dayIndex
+		})
+
+		$q.all([req1, req2, req3, req4])
 		.then(function(response) {
-			dfrd.resolve(response);
+			dfrd.resolve(response.data);
 		})
 		return dfrd.promise;
 	}
@@ -159,7 +164,7 @@ angular.module("devKittens")
 
 		$q.all([req1, req2])
 		.then(function(response) {
-			dfrd.resolve(response);
+			dfrd.resolve(response.data);
 		})
 		return dfrd.promise;
 	}

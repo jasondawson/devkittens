@@ -186,3 +186,18 @@ exports.cancelRequest = function(req, res) {
 		}
 	})
 }
+
+exports.deleteRequests = function(req, res) {
+	Cohort.findById(req.params.cohortId, function(err, cohort) {
+		if (err) {
+			res.status(500).json(err);
+		} else {
+			req.curriculum[req.params.dayIndex].wantsToTeach.remove()
+			cohort.save(function(err, data) {
+				if (!err) {
+					res.json(data);
+				}
+			})
+		}
+	})
+}

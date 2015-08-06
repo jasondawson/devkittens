@@ -82,6 +82,7 @@ exports.getAllCohorts = function(req, res) {
 exports.getCohortDay = function(req, res) {
 	Cohort.findOne({_id: req.params.cohortId})
 	.populate('curriculum.instructor')
+	.populate('curriculum.wantsToTeach')
 	.exec(function(err, data) {
 		if (err) {
 			res.status(500).json(err);

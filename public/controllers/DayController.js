@@ -6,6 +6,7 @@ angular.module('devKittens')
 	if (typeRef == 'cohort') {
 		$scope.lesson = activeLesson.lesson;
 		$scope.day = activeLesson;
+		$scope.wantsToTeach = activeLesson.wantsToTeach;
 	} else if (typeRef == 'course') {
 		$scope.lesson = activeLesson;
 		$scope.day = null;
@@ -293,11 +294,12 @@ angular.module('devKittens')
 		})
 	}
 
-	$scope.teachLesson = function(lesson) {
-		cohortServices.addInstructor(user, typeId, lesson, dayId)
+	$scope.teachLesson = function(lesson, instructor) {
+		cohortServices.addInstructor(instructor, typeId, lesson, dayId, dayIndex)
 		.then(function(response) {
 			$scope.day.instructor = true;
-			$scope.superShowThis = true;
+			$scope.day.wantsToTeach.length = 0;
+			console.log(response);
 		})
 	}
 
