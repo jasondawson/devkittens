@@ -9,8 +9,7 @@ angular.module('devKittens')
 		})
 	}
 
-	this.assignMentors = function(mentor, cohortId) {
-		console.log('assignMentors at mentorService ', mentor);
+	this.assignCohort = function(mentor, cohortId) {
 		return $http({
 			method: 'PUT',
 			url: '/api/mentors/' + cohortId,

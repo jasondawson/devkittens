@@ -10,9 +10,16 @@ angular.module('devKittens')
 			toggleMentorModal: '&',
 			mentor: '=',
 			currentMentor: '=',
-			options: '='
+			options: '=',
+			cohorts: '='
 		},
-		controller: function($scope, userService) {
+		controller: function($scope, userService, mentorService) {
+			$scope.addCohort = function(cohort){
+				mentorService.assignCohort($scope.currentMentor, cohort._id).then(function(response){
+					console.log(response);
+				})
+			}
+
 			$scope.studentSection = false;
 
 			$scope.showStudents = function() {

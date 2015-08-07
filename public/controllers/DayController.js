@@ -1,6 +1,6 @@
 angular.module('devKittens')
 
-.controller('DayController', function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStorage, lessonService, courseServices, cohortServices, studentServices, $location, $anchorScroll) {
+.controller('DayController', function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStorage, lessonService, courseServices, cohortServices, studentServices, $location, $anchorScroll, $document) {
 	$scope.user = user;
 	// console.log(user)	
 	if (typeRef == 'cohort') {
@@ -129,19 +129,33 @@ angular.module('devKittens')
 
 	// SECTION SPECIFIC
 	$scope.sections = [];
+	var top = 400;
+	var duration = 1000;
 	$scope.addSection = function(section){
-		$scope.sections.push(section)
-		$scope.newSection = {};
-		$scope.newSection.edit = ['admin', 'mentor'];
- 	 	$scope.newSection.read = ['admin', 'mentor', 'student', 'instructor'];
+			$scope.sections.push(section)
+			$scope.newSection = {};
+			$scope.newSection.edit = ['admin', 'mentor'];
+	 	 	$scope.newSection.read = ['admin', 'mentor', 'student', 'instructor'];
+ 	 	// $document.scrollTop().then(function(){
+ 	 	// 	console.log('it worked')
+ 	 	// })
 	}
 
+	// $scope.addSection = function(section){
+ // 	 	// $document.scrollTop(top, duration).then(function(section){
+	// 		$scope.sections.push(section)
+	// 		$scope.newSection = {};
+	// 		$scope.newSection.edit = ['admin', 'mentor'];
+	//  	 	$scope.newSection.read = ['admin', 'mentor', 'student', 'instructor'];
+ // 	 	// })
+	// }
 
-	$scope.addContent = function(i, item){
-		$scope.sections[i].content.push(item)
-		$scope.item = '';
-		item = ''
-	}
+
+	// $scope.addContent = function(i, item){
+	// 	$scope.sections[i].content.push(item)
+	// 	$scope.item = '';
+	// 	item = ''
+	// }
 
 
 	// STORE LESSON
@@ -280,18 +294,20 @@ angular.module('devKittens')
 			// check if userId is in wantsToTeach in order to show correct button
 
 		  	$scope.findMyId = function(arr, user) {
-				for (var i = 0; i < arr.length; i++) {
-					if (typeof arr[i] == 'object') {
-						if (arr[i]._id == user._id) {
-							return true;
-						}
-					} else if (typeof arr[i] == 'string') {
-						if (arr[i] == user._id) {
-							return true;
+		  		if(arr){
+					for (var i = 0; i < arr.length; i++) {
+						if (typeof arr[i] == 'object') {
+							if (arr[i]._id == user._id) {
+								return true;
+							}
+						} else if (typeof arr[i] == 'string') {
+							if (arr[i] == user._id) {
+								return true;
+							}
 						}
 					}
-				}
-				return false;
+					return false;
+		  		}
 			}
 
 
@@ -346,16 +362,16 @@ angular.module('devKittens')
 	}
 
 	// the creating a section part
-	$scope.showSection = function(section) {
-		if (!section.show) {
-			section.show = true;
-		} else {
-			section.show = false;
-		}
-	}
+	// $scope.showSection = function(section) {
+	// 	if (!section.show) {
+	// 		section.show = true;
+	// 	} else {
+	// 		section.show = false;
+	// 	}
+	// }
 
-	$scope.scrollToTop = function() {
-		$location.hash('top');
-		$anchorScroll();
-	}
+	// $scope.scrollToTop = function() {
+	// 	$location.hash('top');
+	// 	$anchorScroll();
+	// }
 });

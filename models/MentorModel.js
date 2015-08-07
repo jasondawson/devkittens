@@ -6,10 +6,13 @@ var mongoose = require('mongoose');
 
 var MentorSchema = mongoose.Schema({
 	  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
-	, cohortId: [{ type: mongoose.Schema.Types.ObjectId, ref: "Course" }]
-	, mentos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
-	, mentorType: String
-	, seniority: Number
+	, cohorts: [{
+		  cohortId: { type: mongoose.Schema.Types.ObjectId, ref: "Course" }
+		, mentos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
+		
+	  }]
+	, schedule: []
+	, tasks: []
 });
 
 module.exports = mongoose.model('Mentor', MentorSchema);

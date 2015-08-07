@@ -8,7 +8,7 @@
 			<div class="container">
 				<div class="profile-header">Sections <span class="lil-guy">(click to expand)</span></div>
 				<div class="profile-container-body">
-					<div ng-repeat="section in sections" ng-click="showSection(section)">
+					<div ng-repeat="section in sections" ng-click="section.show = !section.show">
 						<label>{{section.title}}</label>
 						<div ng-show="section.show">
 							<div ng-show="section.show" ng-bind-html="section.content | unsafe"></div>
@@ -57,7 +57,7 @@
 						</div> -->
 
 						<label>New section name:</label>
-						<form ng-submit="addSection(newSection); scrollToTop()">
+						<form ng-submit="addSection(newSection)">
 							<input type="text" ng-model="newSection.title"
 								   placeholder="e.g. Variables and functions"
 								   class="form-control"/>

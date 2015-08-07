@@ -1,4 +1,4 @@
-angular.module('devKittens', ['textAngular', 'ngRoute'])
+angular.module('devKittens', ['textAngular', 'ngRoute', 'duScroll'])
 
 
 

@@ -13,8 +13,8 @@
 	<div class="mini-modal-cal cal">
 
 		<div class="menu-bar-horizontal">
-			<button ng-click="activateMentos(); addMentosView()" class="btn btn-default btn-horizontal"
-				ng-class="{ active: activeTab === 'mentos' }">Mentos</button>
+			<!-- <button ng-click="activateMentos(); addMentosView()" class="btn btn-default btn-horizontal"
+				ng-class="{ active: activeTab === 'mentos' }">Mentos</button> -->
 
 			<button ng-click="activateSchedule(); addScheduleView()" class="btn btn-default btn-horizontal"
 				ng-class="{ active: activeTab === 'schedule' }">Schedule</button>
@@ -29,7 +29,7 @@
 		</div>
 
 		<!-- MENTOR SECTION -->
-		<div class="display-box-nonmodal" ng-show="toggleViewToMentos">
+		<!-- <div class="display-box-nonmodal" ng-show="toggleViewToMentos">
 			<h2 class="text-dashboard left">Your mentos</h2>
 
 			<div class="mentos-list">
@@ -39,7 +39,7 @@
 				<h5>Bob</h5>
 				<h5>Kyle</h5>
 			</div>
-		</div>
+		</div> -->
 
 		<!-- SCHEDULE SECTION -->
 		<div class="display-box-nonmodal" ng-show="toggleViewToSchedule">
@@ -86,6 +86,9 @@
 				<button ng-click="editPermissions(currentMentor.userType)">Save changes</button>
 			</form>
 		</div>
+		<h4>Add Mentor to Cohort</h4>
+		<select ng-options="cohort.name for cohort in cohorts" ng-model="selectedCohort"></select>
+		<button ng-click="addCohort(selectedCohort)">submit</button>
 
 	</div>
 </div>

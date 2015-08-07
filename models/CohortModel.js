@@ -1,5 +1,8 @@
 var mongoose = require('mongoose'),
 	Course = require('../models/CourseModel.js'),
+	User = require('../models/User.js'),
+	Instructor = require('../models/InstructorModel.js'),
+	Mentor = require('../models/MentorModel.js'),
 	Schema = mongoose.Schema;
 
 var cohortSchema = new Schema({
@@ -7,6 +10,7 @@ var cohortSchema = new Schema({
 	, courseType: { type: mongoose.Schema.Types.ObjectId, ref: "Course" }
 	, students: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }]
 	, instructors: [{ type: mongoose.Schema.Types.ObjectId, ref: "Instructor" }]
+	, mentors: [{ type: mongoose.Schema.Types.ObjectId, ref: "Mentor" }]
 	, curriculum: [{
 			topic: String,
 			lesson: {

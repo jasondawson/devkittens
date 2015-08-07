@@ -28,6 +28,12 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
         	case 'schedule':
 		        $scope.currentTab = 'schedule';
 		        break;
+		    case 'admin':
+		        $scope.currentTab = 'admin';
+		        break;
+		    case 'students':
+		        $scope.currentTab = 'students';
+		        break;
 		}
 	}
 
@@ -124,7 +130,8 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 	$scope.courseArray = courseData;
 	$scope.usersArray = usersData;
 	$scope.backdropVisible = false;
-
+	console.log('cohorts', cohortData
+		)
 
 	//loading gif
 	$scope.openLoader = function () {
