@@ -1,11 +1,15 @@
-MENTOR MODAL VIEW -->
+<!-- MENTOR MODAL VIEW -->
 <div class="add-cohort-modal strict-modal" current-mentor="currentMentor">
+	
 	<i class="close-mini-modal close-modal fa fa-times" ng-click="toggleMentorModal()"></i>
+	
 	<br />
+
 	<img class="mentor-image" ng-src="{{ currentMentor.avatar }}">
 	<h2 class="name">{{ currentMentor.name }}</h2>
 	<h4 class="text">{{ currentMentor.mentorType }}</h4>
 	<h5>{{ currentMentor.duties }}</h5>
+
 	<div class="mini-modal-cal cal">
 
 		<div class="menu-bar-horizontal">
@@ -22,13 +26,12 @@ MENTOR MODAL VIEW -->
 				ng-class="{ active: activeTab === 'notes' }">Notes</button>
 			<button ng-click="activatePermissions(); addPermissionsView()" class="btn btn-default btn-horizontal"
 				ng-class="{ active: activeTab === 'Permissions' }">Permissions</button>
-		</div> <!-- End of 'menu-bar-horizontal' -->
+		</div>
 
 		<!-- MENTOR SECTION -->
 		<div class="display-box-nonmodal" ng-show="toggleViewToMentos">
 			<h2 class="text-dashboard left">Your mentos</h2>
 
-			<!-- NEEDS AN NG-REPEAT FOR MENTOR LIST -->
 			<div class="mentos-list">
 				<h5>Joe</h5>
 				<h5>Mark</h5>
@@ -36,47 +39,41 @@ MENTOR MODAL VIEW -->
 				<h5>Bob</h5>
 				<h5>Kyle</h5>
 			</div>
-		</div> <!-- End of 'display-box-nonmodal' -->
-		<!-- END OF MENTOR SECTION -->
+		</div>
 
 		<!-- SCHEDULE SECTION -->
 		<div class="display-box-nonmodal" ng-show="toggleViewToSchedule">
 			<h2 class="text-dashboard left">Your schedule</h2>
 
-			<!-- NEEDS AN NG-REPEAT FOR SCHEDULE DATES -->
 			<div class="mentos-list">
 				<h5>Teach - 7/31</h5>
 				<h5>Meeting - 7/29</h5>
 				<h5>Teach - 8/3</h5>
 			</div>
-		</div> <!-- End of 'display-box-nonmodal' -->
-		<!-- END OF SCHEDULE SECTION -->
+		</div>
 
 		<!-- TASKS SECTION -->
 		<div class="display-box-nonmodal" ng-show="toggleViewToTasks">
 			<h2 class="text-dashboard left">Your Tasks</h2>
 
-			<!-- NEEDS AN NG-REPEAT FOR DUTIES LIST -->
 			<div class="mentos-list">
 				<h5>Review Web DM4 Curriculum</h5>
 				<h5>Review Web DM5 Curriculum</h5>
 				<h5>Review After Hours Web Dev Curriculum</h5>
 				<h5>Buy Monsters</h5>
 			</div>
-		</div> <!-- End of 'display-box-nonmodal' -->
-		<!-- END OF TASKS SECTION -->
+		</div>
 
 		<!-- STUDENT NOTES SECTION -->
 		<div class="display-box-nonmodal" ng-show="toggleViewToNotes">
 			<h2 class="text-dashboard left">Student Notes</h2>
 
-			<!-- NEEDS AN NG-REPEAT FOR DUTIES LIST -->
 			<div class="mentos-list">
 				<h5>Students have had a hard time grasping the basics of Node/Mongo</h5>
 				<h5>There is an issue with the instructor not connecting with the students, ask questions to keep the instructor on task.</h5>
 			</div>
-		</div> <!-- End of 'display-box-nonmodal' -->
-		<!-- END OF STUDENT NOTES SECTION -->
+		</div>
+		
 
 		<!-- MENTOR PERMISSIONS -->
 		<div class="display-box-nonmodal" ng-show="toggleViewToPermissions">
@@ -89,32 +86,6 @@ MENTOR MODAL VIEW -->
 				<button ng-click="editPermissions(currentMentor.userType)">Save changes</button>
 			</form>
 		</div>
-		<!-- END OF MENTOR PERMISSIONS -->
 
 	</div>
-</div>
-
-
-<!-- <div class="mini-modal-day day" make-active>
-	<h5 ng-class="schedule">Schedule</h5>
-</div>
-
-<div class="mini-modal-day day"  make-active>
-	<h5 ng-click="showStudents()">Mentos</h5>
-	<div ng-repeat="student in currentMentor.mentorData.mentos">
-		<h5 ng-show="studentSection">
-			{{ student.name }} - 
-			{{ student.heartbeat }} - 
-			{{ student.email }}
-		</h5>
-	</div>
-</div>
-
-<div class="mini-modal-day day" make-active>
-	<h5 ng-class="extra">Extra Duties</h5>
-
-</div>
-
-<div class="mini-modal-day day" make-active>
-	<h5 ng-class="other">Other</h5>
 </div>

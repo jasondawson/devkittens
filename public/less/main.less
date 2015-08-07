@@ -84,11 +84,23 @@ i:hover{
 	float: left;
 }
 
-.form-control, .form-control:focus {
+.form-control, .form-input {
+	border: 1px solid #ccc;
+	padding-left: 20px;
+}
+
+.form-control, .form-control:focus, .form-input, .form-input:focus {
 	border-radius: 2px;
 	box-shadow: none;
 	outline: none;
+}
+
+.form-control, .form-control:focus {
 	padding: 20px 15px;
+}
+
+.form-input:focus {
+	border-color: #66afe9;
 }
 
 .mentor-image {

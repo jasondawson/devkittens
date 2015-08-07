@@ -86,11 +86,24 @@ i:hover {
   float: left;
 }
 .form-control,
-.form-control:focus {
+.form-input {
+  border: 1px solid #ccc;
+  padding-left: 20px;
+}
+.form-control,
+.form-control:focus,
+.form-input,
+.form-input:focus {
   border-radius: 2px;
   box-shadow: none;
   outline: none;
+}
+.form-control,
+.form-control:focus {
   padding: 20px 15px;
+}
+.form-input:focus {
+  border-color: #66afe9;
 }
 .mentor-image {
   max-width: 60px;
@@ -314,7 +327,6 @@ section.dashboard {
   /*
 	 * Modal Section
 	*/
-  /* TODO needs to be fixed. 70 is crazy */
 }
 section.dashboard .display-box {
   float: left;
@@ -369,25 +381,11 @@ section.dashboard .calendar-link {
   text-decoration: none;
   color: #000;
 }
-section.dashboard .new-cohort-form {
-  width: 75%;
-  margin: 5% auto;
-  display: flex;
-  flex-direction: column;
-}
 section.dashboard .form-input {
   height: 3em;
   padding: 10px;
   margin: 10px 0;
-}
-section.dashboard .form-btn-container {
-  margin: 0 70px 0 0;
-  float: right;
-}
-section.dashboard .form-btn {
-  height: 3em;
-  width: 8em;
-  margin: 20px;
+  width: 145px;
 }
 section.dashboard .title {
   float: left;
@@ -1167,6 +1165,7 @@ section.cohort-settings .flex-pants {
   width: 100%;
   display: flex;
   justify-content: space-around;
+  align-items: flex-start;
 }
 section.cohort-settings .sub-dsh {
   width: 450px;
@@ -1192,6 +1191,22 @@ section.cohort-settings .sub-dsh .mini-header {
 }
 section.cohort-settings .sub-dsh form .btn {
   margin-top: 15px;
+}
+section.cohort-settings .sub-dsh .sub-section {
+  background-color: #eeeeee;
+  padding: 15px;
+  margin-bottom: 10px;
+  color: #333333;
+  border: 1px solid #DEDEDE;
+}
+section.cohort-settings .sub-dsh .sub-section:hover {
+  background-color: #e1e1e1;
+}
+section.cohort-settings .sub-dsh form.cohort-section .form-control {
+  margin-bottom: 10px;
+}
+section.cohort-settings .sub-dsh form.cohort-section .btn.btn-default {
+  margin-top: 0;
 }
 section.cohort-settings .space-above {
   margin-top: 40px;

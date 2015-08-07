@@ -4,6 +4,50 @@ angular.module('devKittens')
 function ($scope, $location, cohortData, courseData, usersData, courseServices, dashboardService, cohortServices, emailsService, instructorServices, infoStorage, user) {
 
 	$scope.user = user;
+	$scope.currentTab = 'courses';
+
+	//////////////////////////////////////////////////
+	////////////// DASHBOARD REDESIGN ////////////////
+	//////////////////////////////////////////////////
+
+	$scope.activateMenu = function (tabName) {
+		switch(tabName) {
+		    case 'courses':
+		    	$scope.currentTab = 'courses';
+		        break;
+		    case 'cohorts':
+		        $scope.currentTab = 'cohorts';
+		        break;
+        	case 'mentors':
+		        $scope.currentTab = 'mentors';
+		        break;
+        	case 'instructors':
+		        $scope.currentTab = 'instructors';
+		        break;
+        	case 'schedule':
+		        $scope.currentTab = 'schedule';
+		        break;
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	//////////////////////////////////////////////////
+	//////////////////////////////////////////////////
+	//////////////////////////////////////////////////
+
+
 	
 	
 	// TODO: This controller is doing things a controller shouldn't do.
@@ -32,17 +76,6 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 	//loading gif
 	$scope.openLoader = function () {
 		$scope.loading = true;
-	}
-
-	$scope.addCohortView = function() {
-		$scope.toggleAddCohort = !$scope.toggleAddCohort;
-		// $scope.backdropVisible = !$scope.backdropVisible;
-	}
-
-
-	$scope.addCourseView = function() {
-		$scope.toggleAddCourse = !$scope.toggleAddCourse;
-		// $scope.backdropVisible = !$scope.backdropVisible;
 	}
 
 	$scope.addMentorView = function() {
@@ -181,16 +214,18 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 	}
 
 	// Send an email to new mentors inviting them to join DevMtn
-	$scope.sendMentorInvite = function(mentorEmails) {
+	$scope.sendGeneralMentorInvite = function(mentorEmails) {
+		if(!mentorEmails) return console.warn('Please add emails');
 		$scope.loading = true;
 
-		if(!mentorEmails) return console.warn('Please add emails');
-
-		emailsService.sendMentorInvite(mentorEmails)
+		emailsService.sendGeneralMentorInvite(mentorEmails)
 		.then(function(response) {
-			console.log('response', response);
-		}, function(err) {
-			console.log('error ', err);
+			$scope.loading = false;
+			$scope.newMentors = '';
+		})
+		.catch(function(err) {
+			$scope.loading = false;
+			console.error(err);
 		})
 	}
 
@@ -215,8 +250,6 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 	$scope.createNewCourse = function(obj) {
 		courseServices.createNewCourse(obj)
 		.then(function(response) {
-			$scope.courseInfo.title = '';
-			$scope.courseInfo.courseLength = '';
 			infoStorage.setCurrentCourse(response);
 			$location.path('/course/' + response._id);
 		})

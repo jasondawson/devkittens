@@ -25,6 +25,7 @@ section.cohort-settings {
     	width: 100%;
     	display: flex;
     	justify-content: space-around;
+    	align-items: flex-start;
     }
 
     .sub-dsh {
@@ -55,6 +56,29 @@ section.cohort-settings {
 		form {
 			.btn {
 				margin-top: 15px;
+			}
+		}
+
+		.sub-section {
+			@sub-section-bg: #eee;
+			background-color: @sub-section-bg;
+			padding: 15px;
+			margin-bottom: 10px;
+			color: @font-color;
+			border: 1px solid #DEDEDE;
+
+			&:hover {
+				background-color: darken(@sub-section-bg, 5%);
+			}
+		}
+
+		form.cohort-section {
+			.form-control {
+				margin-bottom: 10px;
+			}
+
+			.btn.btn-default {
+		    	margin-top: 0;
 			}
 		}
     }
