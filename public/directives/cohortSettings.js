@@ -19,6 +19,9 @@ angular.module('devKittens')
 		        	case 'instructors':
 				        $scope.currentTab = 'instructors';
 				        break;
+			        case 'requests':
+				        $scope.currentTab = 'requests';
+				        break;
 				}
 			}
 

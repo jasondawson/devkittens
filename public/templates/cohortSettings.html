@@ -19,6 +19,11 @@
 			<p>Instructors</p>
 		</div>
 
+		<div class="dsh-item" ng-click="activateMenu('requests')" ng-if="!user.userType.instructor && !user.userType.student" active-menu>
+			<i class="fa fa-diamond"></i>
+			<p>Teaching requests</p>
+		</div>
+
 	</div>
 
 	<!-- STUDENT SECTION -->
@@ -136,6 +141,25 @@
 
 				<button class="btn btn-default" ng-click="assignExistingInstructors(instructors)">Assing instructors</button>
 			</div>
+		</div>
+
+	</div>
+
+
+
+
+
+	<!-- MENTOR SECTION -->
+	<div class="flex-pants" ng-show="currentTab === 'requests'">
+
+		<div class="sub-dsh">
+			<div class="mini-header">Teaching request list</div>
+			Other things go here
+		</div>
+
+		<div class="sub-dsh" ng-if="!user.userType.instructor">
+			<div class="mini-header">Not sure what this part is</div>
+			Things go here
 		</div>
 
 	</div>
