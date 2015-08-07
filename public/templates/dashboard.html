@@ -25,7 +25,7 @@
 			<p>Mentors</p>
 		</div>
 
-		<div class="dsh-item" ng-click="activateMenu('instructors')" active-menu>
+		<div class="dsh-item" ng-click="activateMenu('instructors')" ng-if="!user.userType.instructor && !user.userType.student" active-menu>
 			<i class="fa fa-hand-spock-o"></i>
 			<p>Instructors</p>
 		</div>
@@ -154,7 +154,7 @@
 			</div>
 		</div>
 
-		<div class="sub-dsh" ng-if="!user.userType.instructor">
+		<div class="sub-dsh">
 			<div class="mini-header">Invite new mentors to DevMountain</div>
 			<form ng-submit="sendGeneralMentorInvite(newMentors)">
 				<textarea ng-model="newMentors" class="form-control" placeholder="Comma-separated email(s)"></textarea>
@@ -171,7 +171,7 @@
 	<!-- INSTRUCTOR SECTION -->
 	<div class="flex-pants" ng-show="currentTab === 'instructors'">
 
-		<div class="sub-dsh">
+		<div class="sub-dsh" ng-if="!user.userType.instructor">
 			<div class="mini-header">Cohort instructors</div>
 			<div class="student-display" ng-repeat="instructor in usersArray | filter: {userType: {instructor: true}}">
 
