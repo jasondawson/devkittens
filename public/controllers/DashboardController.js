@@ -35,7 +35,7 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 
 
 	$scope.createNewCohort = function(obj) {
-		if (!obj.name || !obj.courseType || !obj.startDate || !obj.location) {
+		if (!obj || !obj.name || !obj.courseType || !obj.startDate || !obj.location) {
 			$scope.messageText = "Missing information to create cohort.";
 			return $scope.displayAlert = true;
 		}
@@ -57,7 +57,7 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 
 
 	$scope.createNewCourse = function(obj) {
-		if (!obj.title || !obj.courseLength || obj.courseLength < 1) {
+		if (!obj || !obj.title || !obj.courseLength || obj.courseLength < 1) {
 			$scope.messageText = "Missing information to create course.";
 			return $scope.displayAlert = true;
 		}
