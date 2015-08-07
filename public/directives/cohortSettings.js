@@ -1,6 +1,6 @@
 angular.module('devKittens')
 
-.directive('cohortSettings', function (emailsService, instructorServices) {
+.directive('cohortSettings', function (emailsService, instructorServices, cohortServices) {
 	return {
 		restrict: 'E',
 		templateUrl: '/public/templates/cohortSettings.html',
@@ -86,6 +86,19 @@ angular.module('devKittens')
 					console.error(err);
 				})
 
+			}
+
+
+			$scope.logger = function(x) {console.log(x)};
+			
+			$scope.assignInstructor = function(day, instructor, dayIndex) {
+				console.log(dayIndex);
+				cohortServices.addInstructor(instructor, $scope.currentCohort._id, day.lesson, day._id, dayIndex)
+				.then(function(response) {
+					// console.log(response, dayIndex);
+					$scope.currentCohort.curriculum[0][dayIndex].instructor = instructor;
+					$scope.currentCohort.curriculum[0][dayIndex].wantsToTeach.length = 0;
+				})
 			}
 		}
 	}

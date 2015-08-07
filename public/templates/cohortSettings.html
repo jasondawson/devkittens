@@ -154,7 +154,28 @@
 
 		<div class="sub-dsh">
 			<div class="mini-header">Teaching request list</div>
-			Other things go here
+			<div ng-repeat="day in currentCohort.curriculum[0]">
+				<div ng-if="day.wantsToTeach.length">
+					<div ng-click="logger(day)">{{day.topic}}</div>
+					<div ng-click="logger(day)">{{day.day | date: 'shortDate'}}</div>
+					<div ng-repeat="instructor in day.wantsToTeach">
+						<!-- <img ng-src="{{instructor.avatar}}"/>
+						<div ng-click="logger(instructor)">{{instructor.name}}</div>
+						<button>Assign lesson</button> -->
+						<div class="pic-container" ng-attr-titletext="{{instructor.name}}" style="flex" tio-tooltip>
+							<a ng-href="{{instructor.githubUrl}}" target="_blank">
+								<img ng-src="{{instructor.avatar}}"
+									 ng-class="{'has-github': instructor.githubUrl}">
+							</a>
+							<span class="tooltip-wrapper">
+								<p class="tooltip"></p>
+								<span class="arrow-down"></span>
+							</span>
+						</div>
+						<button ng-click="assignInstructor(day, instructor, $parent.$index)">Assign</button>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<div class="sub-dsh" ng-if="!user.userType.instructor">

@@ -61,6 +61,7 @@ exports.getCohort = function(req, res) {
 
 	Cohort.findById(req.params.cohortId)
 	.populate(populateQuery)
+	.populate('curriculum.wantsToTeach')
 	.exec(function (err, data) {
 		res.json(data);
 	})
