@@ -125,7 +125,7 @@
 			</form>
 
 			<!-- ASSIGN EXISTING INSTRUCTOR -->
-			<div class="space-above">
+			<div class="space-above" ng-if="instructors.length > 0">
 				<div class="student-display" ng-repeat="instructor in instructors">
 					<input type="checkbox" ng-model="instructor.selected">
 					<a ng-href="{{instructor.userId.githubUrl}}" target="_blank">
@@ -139,7 +139,7 @@
 					</span>
 				</div>
 
-				<button class="btn btn-default" ng-click="assignExistingInstructors(instructors)">Assing instructors</button>
+				<button ng-if="instructors.length > 0" class="btn btn-default" ng-click="assignExistingInstructors(instructors)">Assign instructors</button>
 			</div>
 		</div>
 

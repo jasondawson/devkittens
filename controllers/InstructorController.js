@@ -104,6 +104,8 @@ exports.deleteReserve = function(req, res) {
 }
 
 exports.assignToCohort = function (req, res) {
+	var teacherCount = req.body.userIds.length;
+
 	req.body.userIds.forEach(function (userId) {		
 		// Save to instructor's model
 		Instructor.findById(userId, function (err, result) {
@@ -112,7 +114,11 @@ exports.assignToCohort = function (req, res) {
 			// TODO: this gets triggered a ton of times, make it async
 			result.save(function (err, saved) {
 				if (err) return res.status(500).send(err);
-				return res.json(saved);
+
+				teacherCount--
+				if (teacherCount <= 0) {
+					return res.json(saved);
+				}
 			})
 		})
 
