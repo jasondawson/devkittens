@@ -57,7 +57,7 @@ exports.updateLessonOrder = function (req, res) {
 };
 
 exports.getCohort = function(req, res) {
-	var populateQuery = [{path:'students'}, {path:'instructors'}];
+	var populateQuery = [{path:'students.userId'}, {path:'students.mentor'}, {path:'instructors'}];
 
 	Cohort.findById(req.params.cohortId)
 	.populate(populateQuery)

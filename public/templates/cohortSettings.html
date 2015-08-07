@@ -36,14 +36,14 @@
 			<div ng-if="!mentors.length">No students have been assigned to this cohort yet.</div>
 
 			<div class="student-display" ng-repeat="student in currentCohort.students">
-				<a ng-href="{{student.githubUrl}}" target="_blank">
-					<img ng-src="{{student.avatar}}"
-						 ng-class="{'has-github': student.githubUrl}">
+				<a ng-href="{{student.userId.githubUrl}}" target="_blank">
+					<img ng-src="{{student.userId.avatar}}"
+						 ng-class="{'has-github': student.userId.githubUrl}">
 				</a>
 				<span class="s-info">
-					<p class="s-name">{{student.name}}</p>
-					<p class="s-email">{{student.local.email}}</p>
-					<a ng-href="{{student.githubUrl}}" ng-if="student.githubUrl" target="_blank"><i class="fa fa-github-alt"></i></a>
+					<p class="s-name">{{student.userId.name}}</p>
+					<p class="s-email">{{student.userId.local.email}}</p>
+					<a ng-href="{{student.userId.githubUrl}}" ng-if="student.userId.githubUrl" target="_blank"><i class="fa fa-github-alt"></i></a>
 				</span>
 			</div>
 		</div>
@@ -64,6 +64,15 @@
 
 	<!-- MENTOR SECTION -->
 	<div class="flex-pants" ng-show="currentTab === 'mentors'">
+		<div ng-show="show">
+			<div ng-repeat="student in currentCohort.students">
+				<input
+					type="checkbox"
+					ng-click="toggleStudentSelection(student.userId)"
+					> {{student.userId.name}}
+				</input>
+			</div>
+		</div>
 
 		<div class="sub-dsh">
 			<div class="mini-header">Cohort mentors</div>
@@ -81,7 +90,7 @@
 				</span>
 
 				<div class="btn-container">
-					<button class="btn btn-default" type="submit">Assign</button>
+					<button class="btn btn-default" ng-click="showStudents()">Assign Students</button>
 				</div>
 
 			</div>

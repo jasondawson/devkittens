@@ -16,15 +16,23 @@ exports.assignMentorCohortId = function(req, res){
 	console.log(1111111, req.body)
 	var cohort = {
 		cohortId: req.params.cohortId,
-		mentos: []
+		students: []
 	}
 	Mentor.findOne({ userId: req.body._id }, function (err, mentor) {
 		if (err) return res.status(500).send(err);
 		console.log(2222222222222, mentor)
-		mentor.cohorts.push(cohort);
-		mentor.save(function (err, savedMentor) {
-			if (err) return res.status(500).send(err);
-			return res.json(savedMentor);
-		})
+		if(mentor.cohorts && mentor.cohorts.length > 0){
+			for (i = 0; i < mentor.cohorts.length; i++){
+				if(mentor.cohorts[i].cohortId == cohort.cohortId){
+					return res.send('Mentor is already added to this cohort')
+				} 
+			}
+		} else {
+			mentor.cohorts.push(cohort);
+			mentor.save(function (err, savedMentor) {
+				if (err) return res.status(500).send(err);
+				return res.json(savedMentor);
+			})
+		}
 	})
 }
