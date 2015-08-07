@@ -4,7 +4,7 @@ angular.module('devKittens')
 function ($scope, $location, cohortData, courseData, usersData, courseServices, dashboardService, cohortServices, emailsService, instructorServices, infoStorage, user) {
 
 	$scope.user = user;
-	$scope.currentTab = 'courses';
+	$scope.currentTab = 'cohorts';
 
 	//////////////////////////////////////////////////
 	////////////// DASHBOARD REDESIGN ////////////////
@@ -12,11 +12,11 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 
 	$scope.activateMenu = function (tabName) {
 		switch(tabName) {
-		    case 'courses':
-		    	$scope.currentTab = 'courses';
-		        break;
 		    case 'cohorts':
 		        $scope.currentTab = 'cohorts';
+		        break;
+		    case 'courses':
+		    	$scope.currentTab = 'courses';
 		        break;
         	case 'mentors':
 		        $scope.currentTab = 'mentors';

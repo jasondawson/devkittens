@@ -1202,14 +1202,13 @@ section.cohort-settings .sub-dsh form .btn {
   margin-top: 15px;
 }
 section.cohort-settings .sub-dsh .sub-section {
-  background-color: #eeeeee;
   padding: 15px;
   margin-bottom: 10px;
   color: #333333;
-  border: 1px solid #d5d5d5;
+  border: 1px solid #e1e1e1;
 }
 section.cohort-settings .sub-dsh .sub-section:hover {
-  background-color: #e1e1e1;
+  background-color: #eeeeee;
 }
 section.cohort-settings .sub-dsh .sub-section img {
   max-width: 50px;
