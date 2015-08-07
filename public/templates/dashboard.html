@@ -1,11 +1,13 @@
 <header-directive></header-directive>
 <loading-gif ng-if="loading"></loading-gif>
+<display-message></display-message>
+
 <div class="backdrop" ng-show="backdropVisible"></div>
 
 
 
 <!-- NEW DASHBOARD DESIGN -->
-<section class="cohort-settings">
+<section class="cohort-settings main-dashboard">
 
 	<!-- MENU -->
 	<div class="dsh-menu">
@@ -117,7 +119,7 @@
 			<div class="mini-header">Create a new course</div>
 				<form name="newCourseForm">
 					<input class="form-control" type="text" placeholder="Course Title" ng-model="courseInfo.title"/>
-					<input class="form-input" type="number" placeholder="Course Length" ng-model="courseInfo.courseLength" />
+					<input class="form-input" type="number" min="1" max="140" placeholder="Course Length" ng-model="courseInfo.courseLength" />
 				</form>
 
 				<div>

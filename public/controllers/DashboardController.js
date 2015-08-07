@@ -5,6 +5,7 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 
 	$scope.user = user;
 	$scope.currentTab = 'cohorts';
+	$scope.locationOptions = ['Provo', 'Salt Lake City', 'Dallas'];
 
 	//////////////////////////////////////////////////
 	////////////// DASHBOARD REDESIGN ////////////////
@@ -33,12 +34,64 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 
 
 
+	$scope.createNewCohort = function(obj) {
+		if (!obj.name || !obj.courseType || !obj.startDate || !obj.location) {
+			$scope.messageText = "Missing information to create cohort.";
+			return $scope.displayAlert = true;
+		}
+
+		cohortServices.createNewCohort(obj)
+		.then(function(response) {
+			infoStorage.setCurrentCohort(response);
+			for (var key in $scope.cohortInfo) {
+				$scope.cohortInfo[key] = "";
+			};
+			$scope.toggleAddCohort = false;
+			$location.path('/cohort/' + response._id);
+		})
+		.catch(function (err) {
+			console.error(err);
+		})
+	}
 
 
 
+	$scope.createNewCourse = function(obj) {
+		if (!obj.title || !obj.courseLength || obj.courseLength < 1) {
+			$scope.messageText = "Missing information to create course.";
+			return $scope.displayAlert = true;
+		}
+		
+		courseServices.createNewCourse(obj)
+		.then(function(response) {
+			infoStorage.setCurrentCourse(response);
+			$location.path('/course/' + response._id);
+		})
+		.catch(function (err) {
+			console.error(err);
+		})
+	}
 
 
+	// Send an email to new mentors inviting them to join DevMtn
+	$scope.sendGeneralMentorInvite = function(mentorEmails) {
+		if(!mentorEmails) {
+			$scope.messageText = "Please add at least one email.";
+			return $scope.displayAlert = true;
+		}
+		
+		$scope.loading = true;
 
+		emailsService.sendGeneralMentorInvite(mentorEmails)
+		.then(function(response) {
+			$scope.loading = false;
+			$scope.newMentors = '';
+		})
+		.catch(function(err) {
+			$scope.loading = false;
+			console.error(err);
+		})
+	}
 
 
 
@@ -213,22 +266,6 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 		infoStorage.setCurrentCohort($scope.currentCohort);
 	}
 
-	// Send an email to new mentors inviting them to join DevMtn
-	$scope.sendGeneralMentorInvite = function(mentorEmails) {
-		if(!mentorEmails) return console.warn('Please add emails');
-		$scope.loading = true;
-
-		emailsService.sendGeneralMentorInvite(mentorEmails)
-		.then(function(response) {
-			$scope.loading = false;
-			$scope.newMentors = '';
-		})
-		.catch(function(err) {
-			$scope.loading = false;
-			console.error(err);
-		})
-	}
-
 
 	$scope.getInstructorInfo = function() {
 		dashboardService.getInstructorInfo($scope.user).then(function(response) {
@@ -244,32 +281,6 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 
 
 
-
-	// All that biz for creating a new Course, etc.
-
-	$scope.createNewCourse = function(obj) {
-		courseServices.createNewCourse(obj)
-		.then(function(response) {
-			infoStorage.setCurrentCourse(response);
-			$location.path('/course/' + response._id);
-		})
-	}
-
-	// All that biz for creating a new cohort, etc. authored by Kyle, the handsomest hunk to ever use toilet paper.
-
-	$scope.locationOptions = ['Provo', 'Salt Lake City', 'Dallas'];
-
-	$scope.createNewCohort = function(obj) {
-		cohortServices.createNewCohort(obj)
-		.then(function(response) {
-			infoStorage.setCurrentCohort(response);
-			for (var key in $scope.cohortInfo) {
-				$scope.cohortInfo[key] = "";
-			};
-			$scope.toggleAddCohort = false;
-			$location.path('/cohort/' + response._id);
-		})
-	}
 
 
 });

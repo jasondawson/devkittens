@@ -173,6 +173,17 @@ i:hover {
   top: -53px;
   margin-left: 19px;
 }
+.alert-display {
+  position: fixed;
+  z-index: 9999;
+  border-radius: 2px;
+  top: 30px;
+  right: 60px;
+  box-shadow: 0 0 7px -4px #040404;
+}
+.alert-display .close {
+  margin-left: 20px;
+}
 .portlet-placeholder {
   margin: 0;
   width: 13%;
@@ -1148,6 +1159,11 @@ section.lesson .topic-wrapper input:focus {
 }
 section.lesson .ta-toolbar {
   margin-bottom: 10px;
+}
+section.cohort-settings.main-dashboard {
+  position: absolute;
+  max-height: none;
+  overflow: inherit;
 }
 section.cohort-settings {
   position: fixed;

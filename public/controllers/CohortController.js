@@ -80,7 +80,6 @@ function ($scope, user, $location, infoStorage, cohortServices, currentCohortDat
 	$scope.getMentors = function() {
 		mentorService.getMentors().then(function(response){
 		$scope.mentors = response.data;
-		console.log($scope.mentors);
 		}), function (error){
 			console.log(error);
 		}
