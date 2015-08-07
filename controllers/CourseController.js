@@ -4,12 +4,22 @@ var Lesson = require('../models/LessonModel.js'),
 exports.createNewCourse = function(req, res) {
 	var daysArray = [];
 
+	// numDays is the length of the course 
 	var numDays = req.body.courseLength;
+
+	// daysToAdd is used to make sure that all courses end on Sunday.
 	var daysToAdd = 7 - (numDays % 7);
 
+	// If daysToAdd is 7 then you do not want to add any days, set it to 0.
+	if(daysToAdd === 7) {
+		daysToAdd = 0;
+	}
+
+	// Pushes all days into the curriculum.
 	for (var i = 1; i <= (numDays + daysToAdd); i++) {
 		daysArray.push({day: i});
 	}
+
 	new Course({title: req.body.title, courseLength: req.body.courseLength, curriculum: daysArray})
 	.save(function(err, data) {
 		if (err) {

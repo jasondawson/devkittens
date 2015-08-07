@@ -80,6 +80,7 @@ function ($scope, user, $location, infoStorage, cohortServices, currentCohortDat
 	$scope.getMentors = function() {
 		mentorService.getMentors().then(function(response){
 		$scope.mentors = response.data;
+		console.log($scope.mentors);
 		}), function (error){
 			console.log(error);
 		}
@@ -139,6 +140,7 @@ function ($scope, user, $location, infoStorage, cohortServices, currentCohortDat
 		} else {
 			$('body').css('overflow', 'hidden');
 			$scope.getAllInstructors();
+			$scope.getMentors();
 		}
 
 		$scope.studentDisplay = false;
