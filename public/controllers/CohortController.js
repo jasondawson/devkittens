@@ -15,7 +15,6 @@ function ($scope, user, $location, infoStorage, cohortServices, currentCohortDat
 	$scope.studentDisplay = false;
 	$scope.mentorDisplay = false;
 	$scope.isCohort = true;
-	
 
 	$scope.viewDay = function(day, index) {
 		// var currentCohort = infoStorage.getCurrentCohort()
@@ -165,6 +164,23 @@ function ($scope, user, $location, infoStorage, cohortServices, currentCohortDat
 			$scope.loading = false;
 			$scope.closeModal();
 		});
+	}
+
+	$scope.findMyId = function(arr, user) {
+  		if(arr){
+			for (var i = 0; i < arr.length; i++) {
+				if (typeof arr[i] == 'object') {
+					if (arr[i]._id == user._id) {
+						return true;
+					}
+				} else if (typeof arr[i] == 'string') {
+					if (arr[i] == user._id) {
+						return true;
+					}
+				}
+			}
+			return false;
+  		}
 	}
 
 })
