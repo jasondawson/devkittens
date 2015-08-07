@@ -8,7 +8,10 @@ var mongoose = require('mongoose'),
 var cohortSchema = new Schema({
 	  name: {type: String, index: true, unique: true, required: true}
 	, courseType: { type: mongoose.Schema.Types.ObjectId, ref: "Course" }
-	, students: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }]
+	, students: [{ 
+		userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+		mentor: { type: mongoose.Schema.Types.ObjectId, ref: "Mentor" }
+		}]
 	, instructors: [{ type: mongoose.Schema.Types.ObjectId, ref: "Instructor" }]
 	, mentors: [{ type: mongoose.Schema.Types.ObjectId, ref: "Mentor" }]
 	, curriculum: [{

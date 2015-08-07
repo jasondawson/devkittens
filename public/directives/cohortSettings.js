@@ -7,6 +7,9 @@ angular.module('devKittens')
 		controller: function ($scope) {
 			
 			$scope.currentTab = 'students';
+			$scope.showStudents= function(){
+				$scope.show = !$scope.show;
+			}
 
 			$scope.activateMenu = function (tabName) {
 				switch(tabName) {

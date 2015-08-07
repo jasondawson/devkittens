@@ -133,7 +133,7 @@ module.exports = function(passport) {
                                         if (err) return res.status(500).send(err);
                                         if (!foundCohort.students) foundCohort.students = [];
                                         
-                                        foundCohort.students.push(result._id);
+                                        foundCohort.students.push({ userId: result._id });
                                         foundCohort.save();
                                     })
                                 }
