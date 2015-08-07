@@ -88,8 +88,18 @@
 			<a class="calendar-link" ng-repeat="cohort in cohortArray" 
 				ng-href="/#/cohort/{{cohort._id}}" ng-click="setCohort(cohort)">
 				<div class="sub-section">
-					<div class="text-dashboard name">{{ cohort.name }}</div>
-					<div class="text-dashboard">{{ cohort.location }}</div>
+					
+					<img ng-if="cohort.location === 'Dallas'"
+						 src="/public/images/dallas.png">
+					<img ng-if="cohort.location === 'Provo'"
+						 src="/public/images/provo.png">
+					<img ng-if="cohort.location === 'Salt Lake City'"
+						 src="/public/images/saltlake.png">
+
+					<span class="text-wrapper">
+						<div class="text-dashboard name">{{ cohort.name }}</div>
+						<div class="text-dashboard">{{ cohort.location }}</div>
+					</span>
 				</div>
 			</a>
 		</div>
@@ -100,12 +110,16 @@
 				<form class="cohort-section" ng-submit="createNewCohort(cohortInfo)">
 
 					<input class="form-control" type="text" placeholder="Cohort Name" ng-model="cohortInfo.name" />
-					
-					<select class="form-control" ng-options="item.title for item in courseArray" ng-model="cohortInfo.courseType"></select>
+
+					<select class="select-control" ng-options="item.title for item in courseArray" ng-model="cohortInfo.courseType">
+						<option value="">Choose a course</option>
+					</select>
 						
 					<input class="form-control" type="date" ng-model="cohortInfo.startDate" />
 
-					<select class="form-control" placeholder="location" ng-options="item for item in locationOptions" ng-model="cohortInfo.location"></select>
+					<select class="select-control" placeholder="location" ng-options="item for item in locationOptions" ng-model="cohortInfo.location">
+						<option value="">Choose cohort location</option>
+					</select>
 
 					<button class="btn btn-default" type="submit">Create cohort</button>
 						

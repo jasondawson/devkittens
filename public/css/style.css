@@ -73,6 +73,7 @@ i:hover {
 }
 .btn {
   border-radius: 2px;
+  min-height: 42px;
 }
 .page-title {
   text-align: center;
@@ -101,6 +102,13 @@ i:hover {
 .form-control,
 .form-control:focus {
   padding: 20px 15px;
+}
+.select-control {
+  margin-bottom: 10px;
+  width: 100%;
+  height: 42px;
+  border-radius: 2px;
+  padding-left: 20px;
 }
 .form-input:focus {
   border-color: #66afe9;
@@ -1179,7 +1187,8 @@ section.cohort-settings .sub-dsh {
   border-radius: 2px;
 }
 section.cohort-settings .sub-dsh .mini-header {
-  background-color: #e4e3e3;
+  background-color: #1481e3;
+  color: #fff;
   height: 50px;
   line-height: 50px;
   width: 100%;
@@ -1197,10 +1206,20 @@ section.cohort-settings .sub-dsh .sub-section {
   padding: 15px;
   margin-bottom: 10px;
   color: #333333;
-  border: 1px solid #DEDEDE;
+  border: 1px solid #d5d5d5;
 }
 section.cohort-settings .sub-dsh .sub-section:hover {
   background-color: #e1e1e1;
+}
+section.cohort-settings .sub-dsh .sub-section img {
+  max-width: 50px;
+  border-radius: 600px;
+  display: inline-block;
+}
+section.cohort-settings .sub-dsh .sub-section .text-wrapper {
+  display: inline-block;
+  padding: 10px;
+  vertical-align: middle;
 }
 section.cohort-settings .sub-dsh form.cohort-section .form-control {
   margin-bottom: 10px;
