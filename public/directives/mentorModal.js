@@ -102,7 +102,7 @@ angular.module('devKittens')
 				// console.log(obj, $scope.currentTeacher);
 				userService.mentorPermissions(obj, $scope.currentMentor)
 				.then(function(response) {
-					console.log(response);
+					// console.log(response);
 				})
 			}
 

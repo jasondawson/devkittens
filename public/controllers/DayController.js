@@ -314,7 +314,8 @@ angular.module('devKittens')
 	$scope.teachLesson = function(lesson, instructor) {
 		cohortServices.addInstructor(instructor, typeId, lesson, dayId, dayIndex)
 		.then(function(response) {
-			$scope.day.instructor = true;
+			console.log(response);
+			$scope.day.instructor = instructor;
 			$scope.day.wantsToTeach.length = 0;
 			// console.log(response);
 		})

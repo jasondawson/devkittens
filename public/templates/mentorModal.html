@@ -82,9 +82,11 @@ MENTOR MODAL VIEW -->
 		<div class="display-box-nonmodal" ng-show="toggleViewToPermissions">
 			<h2 class="text-dashboard left">Edit this user's permissions</h2>
 			<form>
-				<label><input type="checkbox"ng-checked="currentMentor.userType.admin"  ng-model="permissions.admin">Admin</label>
-				<label><input type="checkbox" ng-checked="currentMentor.userType.instructor" ng-model="permissions.instructor">Instructor</label>
-				<button ng-click="editPermissions(permissions)">Save changes</button>
+				<label><input type="checkbox" ng-model="currentMentor.userType.admin">Admin</label>
+				<label><input type="checkbox" ng-model="currentMentor.userType.mentor">Mentor</label>
+				<label><input type="checkbox" ng-model="currentMentor.userType.instructor">Instructor</label>
+				<label><input type="checkbox" ng-model="currentMentor.userType.student">Student</label>
+				<button ng-click="editPermissions(currentMentor.userType)">Save changes</button>
 			</form>
 		</div>
 		<!-- END OF MENTOR PERMISSIONS -->

@@ -70,9 +70,11 @@
 			<div class="display-box-nonmodal" ng-show="toggleViewToPermissions">
 				<h2 class="text-dashboard left">Edit this user's permissions</h2>
 				<form>
-					<label><input type="checkbox"ng-checked="currentTeacher.userType.admin"  ng-model="permissions.admin">Admin</label>
-					<label><input type="checkbox" ng-checked="currentTeacher.userType.mentor" ng-model="permissions.mentor">Mentor</label>
-					<button ng-click="editPermissions(permissions)">Save changes</button>
+					<label><input type="checkbox"ng-model="currentTeacher.userType.admin">Admin</label>
+					<label><input type="checkbox" ng-model="currentTeacher.userType.mentor">Mentor</label>
+					<label><input type="checkbox" ng-model="currentTeacher.userType.instructor">Instructor</label>
+					<label><input type="checkbox" ng-model="currentTeacher.userType.student">Student</label>
+					<button ng-click="editPermissions(currentMentor.userType)">Save changes</button>
 				</form>
 			</div>
 			<!-- END OF PERMISSIONS SECTION -->
