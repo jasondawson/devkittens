@@ -932,6 +932,9 @@ select {
 #student-list {
   width: 150px;
 }
+.shift-wrapper.limited-width {
+  padding: 0 150px;
+}
 .shift-wrapper {
   overflow: auto;
   width: 850px;
@@ -948,6 +951,18 @@ select {
   border-radius: 2px;
   border-bottom: 2px solid #DFDFDF;
   padding: 3% 0 0 0;
+}
+.shift-wrapper .container .newer-section {
+  border: 1px solid #DCDCDC;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  padding-left: 20px;
+  border-radius: 2px;
+}
+.shift-wrapper .container .newer-section:hover {
+  cursor: pointer;
+  background-color: #eee;
 }
 .shift-wrapper .menu-bar {
   position: absolute;

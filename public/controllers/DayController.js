@@ -1,6 +1,7 @@
 angular.module('devKittens')
 
-.controller('DayController', function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStorage, lessonService, courseServices, cohortServices, studentServices, $location, $anchorScroll, $document) {
+.controller('DayController',
+function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStorage, lessonService, courseServices, cohortServices, studentServices, $location, $document) {
 	$scope.user = user;
 	// console.log(user)	
 	if (typeRef == 'cohort') {
@@ -59,8 +60,6 @@ angular.module('devKittens')
 	    	}
   		}
   	};
-
-	// selected read type
   
 
   // toggle selection for a given type
@@ -96,16 +95,6 @@ angular.module('devKittens')
   };
 
 
-	// $scope.newSection.readPermissions = [];
-	// $scope.newSection.writePermissions = [];
-
-	// $scope.addWritePermissions = function(type){
-	// 	$scope.newSection.writePermissions.push(type);
-	// }
-
-	// $scope.addReadPermissions = function(type){
-	// 	$scope.newSection.readPermissions.push(type);
-	// }
 
 
 	//TYPEREF REFERS TO COURSE OR COHORT
@@ -136,20 +125,8 @@ angular.module('devKittens')
 			$scope.newSection = {};
 			$scope.newSection.edit = ['admin', 'mentor'];
 	 	 	$scope.newSection.read = ['admin', 'mentor', 'student', 'instructor'];
- 	 	// $document.scrollTop().then(function(){
- 	 	// 	console.log('it worked')
- 	 	// })
+	 	 	window.scrollTo(0, 0);
 	}
-
-	// $scope.addSection = function(section){
- // 	 	// $document.scrollTop(top, duration).then(function(section){
-	// 		$scope.sections.push(section)
-	// 		$scope.newSection = {};
-	// 		$scope.newSection.edit = ['admin', 'mentor'];
-	//  	 	$scope.newSection.read = ['admin', 'mentor', 'student', 'instructor'];
- // 	 	// })
-	// }
-
 
 	// $scope.addContent = function(i, item){
 	// 	$scope.sections[i].content.push(item)
@@ -168,8 +145,6 @@ angular.module('devKittens')
 
 			lessonService.createLesson(data)
 			.then(function (response){
-
-				// var curriculumRef = infoStorage.serveLessonRef()._id;
 				courseServices.updateCourseCurriculum(dayId, response.data._id, topic)
 				.then(function(response){
 					$location.path('/' + typeRef + '/' + typeId);
@@ -178,11 +153,6 @@ angular.module('devKittens')
 					console.error(err);
 				});
 
-				// $scope.preReadings = [];
-				// $scope.objectives = [];
-				// $scope.miniProjects = [];
-				// $scope.projects = [];
-				// $scope.readings = [];
 			})
 			.catch(function (err) {
 				throw new Error(err);
@@ -255,9 +225,9 @@ angular.module('devKittens')
 			})
 		}
 	} else if ($scope.typeRef === 'cohort') {
+		
 		// CRUDY COHORT
 		$scope.updateLesson = function(){
-			// var lessonId = $scope.lesson._id;
 			var topic = $scope.lesson.topic;
 			var sections = $scope.lesson.sections
 			cohortServices.updateLesson($scope.cohortId, $scope.dayId, topic, sections)
@@ -269,11 +239,10 @@ angular.module('devKittens')
 
 		$scope.addLessonSection = function(section){
 			section.show = !section.show
-			cohortServices.addLessonSection($scope.cohortId, $scope.dayId, section).then(function(response){
-				// $scope.lesson.sections.push(response.data.sections[response.data.sections.length - 1]);
-				
+			cohortServices.addLessonSection($scope.cohortId, $scope.dayId, section)
+			.then(function(response){				
 				$scope.lesson.sections.push(response.data.lesson.sections[response.data.lesson.sections.length - 1]);
-				
+
 				section.title = '';
 				section.content = '';
 			})
@@ -292,7 +261,6 @@ angular.module('devKittens')
 	$scope.superShowThis = false;
 
 			// check if userId is in wantsToTeach in order to show correct button
-
 		  	$scope.findMyId = function(arr, user) {
 		  		if(arr){
 					for (var i = 0; i < arr.length; i++) {
@@ -370,8 +338,4 @@ angular.module('devKittens')
 	// 	}
 	// }
 
-	// $scope.scrollToTop = function() {
-	// 	$location.hash('top');
-	// 	$anchorScroll();
-	// }
 });

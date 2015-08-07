@@ -12,14 +12,14 @@
 	<!-- MENU -->
 	<div class="dsh-menu">
 
-		<div class="dsh-item active-dsh" ng-click="activateMenu('courses')" active-menu>
-			<i class="fa fa-file-text-o"></i>
-			<p>Courses</p>
-		</div>
-
-		<div class="dsh-item" ng-click="activateMenu('cohorts')" active-menu>
+		<div class="dsh-item active-dsh" ng-click="activateMenu('cohorts')" active-menu>
 			<i class="fa fa-laptop"></i>
 			<p>Cohorts</p>
+		</div>
+
+		<div class="dsh-item" ng-click="activateMenu('courses')" active-menu>
+			<i class="fa fa-file-text-o"></i>
+			<p>Courses</p>
 		</div>
 
 		<div class="dsh-item" ng-click="activateMenu('mentors')" ng-if="!user.userType.instructor && !user.userType.student" active-menu>
@@ -84,7 +84,6 @@
 
 	<!-- COHORT SECTION -->
 	<div class="flex-pants" ng-show="currentTab === 'cohorts'">
-
 		<div class="sub-dsh">
 			<div class="mini-header">Current cohort</div>
 			<a class="calendar-link" ng-repeat="cohort in cohortArray" 

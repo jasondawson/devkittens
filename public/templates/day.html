@@ -7,54 +7,50 @@
 		<div class="shift-wrapper smaller-padding"> <!-- ng-show="sections.length"  -->
 			<div class="container">
 				<div class="profile-header">Sections <span class="lil-guy">(click to expand)</span></div>
+
 				<div class="profile-container-body">
 					<div ng-repeat="section in sections" ng-click="section.show = !section.show">
-						<label>{{section.title}}</label>
-						<div ng-show="section.show">
-							<div ng-show="section.show" ng-bind-html="section.content | unsafe"></div>
+
+						<label class="newer-section">{{section.title}}</label>
+						<div ng-show="section.show" style="padding-left: 20px;">
+							
+							<div ng-bind-html="section.content | unsafe"></div>
+
 							<div class="just-flex">
 								<div>Edit permissions:&nbsp;</div>
 								<div class="just-flex" ng-repeat="edit in section.edit">
 									{{edit}}<span ng-show="$index < section.edit.length - 1">,</span>&nbsp;
 								</div>
 							</div>
+
 							<div class="just-flex">
 								<div>Read permissions:&nbsp;</div>
 								<div class="just-flex" ng-repeat="read in section.read">
 									{{read}}<span ng-show="$index < section.read.length - 1">,</span>&nbsp;
 								</div>
 							</div>
+							
 						</div>
-						<hr><!--   ng-show="$index < sections.length - 1" -->
+						<hr>
 					</div>
+
 					<button class="btn btn-success" ng-click="createLesson(topic)">Save lesson</button>
 				</div>
+
 			</div>
 		</div>
 
-		<div class="shift-wrapper smaller-padding"> <!-- ng-class="{'larger-padding': !sections.length, 'smaller-padding': sections.length}"> -->
+		<div class="shift-wrapper smaller-padding">
 			<div class="container">
 				{{activeLesson}}
 				<div class="profile-header">Create a new lesson</div>
 
 				<div class="profile-container-body">
-					<!-- <form ng-submit="updateUser(user, newPassword)"> -->
-						<!-- <div class="alert alert-success" role="alert" ng-if="displayMessage" hide-essage>Settings have been updated.</div> -->
 						<label>Lesson topic: *</label>
 						<form ng-submit="setTopic(topic)">
 							<input class="form-control" placeholder="e.g. Javascript 101" ng-model="topic" required/>
 						</form>
 						<hr>
-
-						<!-- <div ng-repeat="section in sections">
-							<br>
-							<hr ng-if="$index === 0">
-
-							<h4>{{section.title}}</h4>
-							<div ng-bind-html="section.content | unsafe"></div>
-
-							<hr>
-						</div> -->
 
 						<label>New section name:</label>
 						<form ng-submit="addSection(newSection)">
@@ -63,7 +59,6 @@
 								   class="form-control"/>
 
 						   <text-angular ng-model="newSection.content"></text-angular>
-
 						   
 						   <p>edit permissions:</p>
 							<label ng-repeat="type in types">
@@ -89,41 +84,10 @@
 							<br>
 
 
-
-						   
-							   <!-- <span style="display:inline-block">
-									edit permissions:<br>
-									<input type="checkbox" ng-checked="newSection.edit.push(admin)" ng-click="logNewSection(newSection)"/>admin<br>
-									<input type="checkbox" ng-checked="newSection.edit.push(mentor)"/>mentor<br>
-									<input type="checkbox" ng-checked="newSection.edit.push(instructor)"/>instructor<br>
-									<input type="checkbox" ng-checked="newSection.edit.push(student)"/>student<br>
-								</span> 
-								<span style="display:inline-block">
-									read permissions:<br>
-									<input type="checkbox" />admin<br>
-									<input type="checkbox" />mentor<br>
-									<input type="checkbox" />instructor<br>
-									<input type="checkbox" />student<br>
-								</span> -->
 							
 						   <button class="btn btn-default">Create section</button>
 						</form>
-
-						<!-- <div ng-repeat="section in sections">
-							<br>
-							<hr ng-if="$index === 0">
-
-							<h4>{{section.title}}</h4>
-							<div ng-bind-html="section.content | unsafe"></div>
-
-							<hr>
-							{{section.edit}}
-							{{section.read}}
-						</div> -->
-
 						<br><br>
-						<!-- <button class="btn btn-success" ng-click="createLesson(topic)">Save lesson</button> -->
-					<!-- </form> -->
 				</div>
 
 			</div>
@@ -144,26 +108,13 @@
 	<div class="shift-wrapper larger-padding">	
 		<div ng-show="lesson" class="portlet-header">
 			<div ng-show="!lesson.edit && (lesson.sections.length || lesson.topic)">
-				<h2>{{lesson.topic || topicPlaceholder}} <!-- <img class="pic-container" ng-if="user.userType.admin || user.userType.mentor || user.userType.student" ng-src="{{day.instructor.avatar}}" ng-attr-titletext="{{day.instructor.name}}" tio-tooltip/> -->
-				<div ng-if="user.userType.admin || user.userType.mentor || user.userType.student" class="pic-container" ng-attr-titletext="{{day.instructor.name}}" tio-tooltip>
-					<a ng-href="{{day.instructor.githubUrl}}" target="_blank">
-						<img ng-src="{{day.instructor.avatar}}"
-							 ng-class="{'has-github': day.instructor.githubUrl}">
-					</a>
-					<span class="tooltip-wrapper">
-						<p class="tooltip"></p>
-						<span class="arrow-down"></span>
-					</span>
-				</div>
-
-					<span style="float: right;">
-						<!-- <button ng-click="teachLesson(day)" ng-if="!day.instructor && user.userType.instructor && typeRef == 'cohort'" class="btn btn-default">Teach this lesson</button> -->
-						<button ng-show="user.userType.instructor && !day.instructor && !findMyId(day.wantsToTeach, user)" ng-click="teachRequest()" class="btn btn-default">Request to teach this lesson</button>
-						<button ng-show="!day.instructor && findMyId(day.wantsToTeach, user)" ng-click="cancelRequest()" class="btn btn-default">Cancel teaching request</button>
-						<button ng-click="removeLesson(lesson)" ng-if="(day.instructor._id == user._id && typeRef == 'cohort') || superShowThis" class="btn btn-default">Cancel teaching appointment</button> 
+				<h2>
+					{{lesson.topic || topicPlaceholder}}
+					<button ng-show="user.userType.instructor && !day.instructor && !findMyId(day.wantsToTeach, user)" ng-click="teachRequest()" class="btn btn-default">Request to teach this lesson</button>
+					<button ng-show="!day.instructor && findMyId(day.wantsToTeach, user)" ng-click="cancelRequest()" class="btn btn-default">Cancel teaching request</button>
+					<button ng-click="removeLesson(lesson)" ng-if="(day.instructor._id == user._id && typeRef == 'cohort') || superShowThis" class="btn btn-default">Cancel teaching appointment</button> 
 						
-						<i class="fa fa-pencil" ng-if="user.userType.admin" ng-click="lesson.edit=!lesson.edit"></i>
-					</span>
+					<i class="fa fa-pencil" ng-if="user.userType.admin" ng-click="lesson.edit=!lesson.edit"></i>
 				</h2>
 			</div>
 			
@@ -173,7 +124,6 @@
 				<div ng-show="lesson.edit" class="topic-wrapper">
 					<h3>Lesson topic:&nbsp;&nbsp;</h3>
 					<input type="text" ng-model="lesson.topic"/>
-					<!-- <button ng-click="updateLesson()">submit change</button> -->
 				</div>
 
 				<!-- LESSON INFO -->
