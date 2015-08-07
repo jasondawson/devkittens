@@ -100,6 +100,13 @@ angular.module('devKittens')
 					$scope.currentCohort.curriculum[0][dayIndex].wantsToTeach.length = 0;
 				})
 			}
+
+			$scope.wantsToTeach = [];
+			$scope.importantIndex;
+			$scope.selectDay = function(index) {
+				$scope.wantsToTeach = $scope.currentCohort.curriculum[0][index].wantsToTeach;
+				$scope.importantIndex = index;
+			}
 		}
 	}
 })
