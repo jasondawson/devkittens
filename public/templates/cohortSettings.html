@@ -31,6 +31,8 @@
 
 		<div class="sub-dsh">
 			<div class="mini-header">Registered students</div>
+			<div ng-if="!mentors.length">No students have been assigned to this cohort yet.</div>
+
 			<div class="student-display" ng-repeat="student in currentCohort.students">
 				<a ng-href="{{student.githubUrl}}" target="_blank">
 					<img ng-src="{{student.avatar}}"
@@ -63,6 +65,8 @@
 
 		<div class="sub-dsh">
 			<div class="mini-header">Cohort mentors</div>
+			<div ng-if="!mentors.length">No mentors have been assigned to this cohort yet.</div>
+
 			<div class="student-display" ng-repeat="mentor in mentors">
 				<a ng-href="{{mentor.userId.githubUrl}}" target="_blank">
 					<img ng-src="{{mentor.userId.avatar}}"
@@ -100,6 +104,7 @@
 		<div class="sub-dsh">
 			<div class="mini-header">Cohort instructors</div>
 			<div ng-if="!cohortInstructors.length">No instructors have been assigned to this cohort yet.</div>
+
 			<div class="student-display" ng-repeat="instructors in cohortInstructors">
 				<a ng-href="{{instructors.userId.githubUrl}}" target="_blank">
 					<img ng-src="{{instructors.userId.avatar}}"
@@ -154,6 +159,7 @@
 
 		<div class="sub-dsh">
 			<div class="mini-header">Teaching request list</div>
+
 			<div ng-repeat="day in currentCohort.curriculum[0]">
 				<div ng-if="day.wantsToTeach.length">
 					<div ng-click="logger($index); selectDay($index)">{{day.topic}}</div>

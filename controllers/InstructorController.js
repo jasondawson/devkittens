@@ -115,7 +115,7 @@ exports.assignToCohort = function (req, res) {
 			result.save(function (err, saved) {
 				if (err) return res.status(500).send(err);
 
-				teacherCount--
+				teacherCount--;
 				if (teacherCount <= 0) {
 					return res.json(saved);
 				}

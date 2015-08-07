@@ -197,6 +197,8 @@
 
 		<div class="sub-dsh">
 			<div class="mini-header">Your teaching schedule</div>
+			<div ng-if="!instructorSchedule.length">Your teaching schedule will be displayed here once your are scheduled to teach.</div>
+
 			<div ng-repeat="schedule in instructorSchedule" class="sub-section">
 				<span class="text">{{ schedule.day | date: fullDate }}</span>
 				<span class="text">{{ schedule.topic }}</span>
