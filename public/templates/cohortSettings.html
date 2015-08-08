@@ -78,15 +78,15 @@
 			<div class="mini-header">Cohort mentors</div>
 			<div ng-if="!mentors.length">No mentors have been assigned to this cohort yet.</div>
 
-			<div class="student-display" ng-repeat="mentor in mentors">
-				<a ng-href="{{mentor.userId.githubUrl}}" target="_blank">
-					<img ng-src="{{mentor.userId.avatar}}"
-						 ng-class="{'has-github': mentor.userId.githubUrl}">
+			<div class="student-display" ng-repeat="mentor in currentCohort.mentors">
+				<a ng-href="{{mentor.githubUrl}}" target="_blank">
+					<img ng-src="{{mentor.avatar}}"
+						 ng-class="{'has-github': mentor.githubUrl}">
 				</a>
 				<span class="s-info">
-					<p class="s-name">{{mentor.userId.name}}</p>
-					<p class="s-email">{{mentor.userId.local.email}}</p>
-					<a ng-href="{{mentor.userId.githubUrl}}" ng-if="mentor.userId.githubUrl" target="_blank"><i class="fa fa-github-alt"></i></a>
+					<p class="s-name">{{mentor.name}}</p>
+					<p class="s-email">{{mentor.local.email}}</p>
+					<a ng-href="{{mentor.githubUrl}}" ng-if="mentor.githubUrl" target="_blank"><i class="fa fa-github-alt"></i></a>
 				</span>
 
 				<div class="btn-container">

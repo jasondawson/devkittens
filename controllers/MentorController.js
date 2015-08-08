@@ -27,12 +27,17 @@ exports.assignMentorCohortId = function(req, res){
 					return res.send('Mentor is already added to this cohort')
 				} 
 			}
-		} else {
-			mentor.cohorts.push(cohort);
-			mentor.save(function (err, savedMentor) {
-				if (err) return res.status(500).send(err);
-				return res.json(savedMentor);
-			})
 		}
+		mentor.cohorts.push(cohort);
+		mentor.save(function (err, savedMentor) {
+			if (err) return res.status(500).send(err);
+			Cohort.findById(cohort.cohortId, function (err, cohort) {
+				if (err) return res.status(500).send(err);
+				cohort.mentors.push(mentor.userId);
+				cohort.save(function (err, data) {
+					return res.json(data);
+				})
+			})
+		})
 	})
 }
