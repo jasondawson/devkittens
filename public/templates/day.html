@@ -109,7 +109,19 @@
 		<div ng-show="lesson" class="portlet-header">
 			<div ng-show="!lesson.edit && (lesson.sections.length || lesson.topic)">
 				<h2 class="flex-between">
-					<div>{{lesson.topic || topicPlaceholder}}</div>
+					<div class="just-flex">
+						<div>{{lesson.topic || topicPlaceholder}}</div>
+						<div class="pic-container" ng-attr-titletext="{{day.instructor.name}}" tio-tooltip>
+							<a ng-href="{{day.instructor.githubUrl}}" target="_blank">
+								<img ng-src="{{day.instructor.avatar}}"
+									 ng-class="{'has-github': day.instructor.githubUrl}">
+							</a>
+							<span class="tooltip-wrapper">
+								<p class="tooltip"></p>
+								<span class="arrow-down"></span>
+							</span>
+						</div>
+					</div>
 					<div ng-if="typeRef == 'cohort'">
 						<button ng-show="user.userType.instructor && !day.instructor && !findMyId(day.wantsToTeach, user)" ng-click="teachRequest()" class="btn btn-default">Request to teach this lesson</button>
 						<button ng-show="!day.instructor && findMyId(day.wantsToTeach, user)" ng-click="cancelRequest()" class="btn btn-default">Cancel teaching request</button>
