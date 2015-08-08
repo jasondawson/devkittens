@@ -99,6 +99,20 @@ exports.getCohortDay = function(req, res) {
 };
 
 
+exports.updateMentorGroup = function (req, res) {
+	Cohort.findById(req.params.cohortId, function (err, cohort) {
+		if (err) {
+			res.status(500).send(err);
+		}
+		cohort.mentors.id(req.body._id).set({ 'students' : req.body.students })
+		cohort.save(function(err, data){
+			if (err) res.status(500).send(err);
+			res.send(data);
+		})
+	})
+}
+
+
 exports.updateLesson = function (req, res) {
 	var topic = req.body.topic;
 	var sections = req.body.sections

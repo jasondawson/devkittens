@@ -188,15 +188,15 @@ function ($scope, user, $location, infoStorage, cohortServices, currentCohortDat
 		if(!mentor.students){
 			mentor.students = [];
 		}
-		if (mentor.students.indexOf(student) > -1) {
-			return mentor.students.splice(mentor.students.indexOf(student), 1);
+		if (mentor.students.indexOf(student._id) > -1) {
+			return mentor.students.splice(mentor.students.indexOf(student._id), 1);
 		}
 
-		mentor.students.push(student)
+		mentor.students.push(student._id)
 	}
 
 	$scope.addStudents = function (mentor) {
-		mentorService.assignStudents(mentor, $scope.currentCohort._id).then(function(response){
+		cohortServices.assignStudents(mentor, $scope.currentCohort._id).then(function(response){
 			console.log(response);
 		})
 	}

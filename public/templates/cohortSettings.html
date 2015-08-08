@@ -87,7 +87,7 @@
 					<div ng-repeat="student in currentCohort.students">
 						<input
 							type="checkbox"
-							ng-clicked="mentor.students.indexOf(student.userId) > -1"
+							ng-checked="mentor.students.indexOf(student.userId._id) > -1"
 							ng-click="toggleStudentSelection(mentor, student.userId)"
 							> <img class="pic-container" ng-src="{{student.userId.avatar}}"/> {{student.userId.name}}
 						</input>

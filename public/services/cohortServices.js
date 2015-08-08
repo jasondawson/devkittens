@@ -86,6 +86,16 @@ angular.module("devKittens")
 		return dfrd.promise;
 	}
 
+	// CREATE MENTRO GROUPS
+
+	this.assignStudents = function(mentor, cohortId) {
+		return $http({
+			method: 'PUT',
+			url: '/api/cohort/mentor-groups/' + cohortId,
+			data: mentor
+		})
+	}
+
 	// ADDING INSTRUCTOR TO THE DAY
 
 	this.teachRequest = function(user, cohortId, dayIndex) {

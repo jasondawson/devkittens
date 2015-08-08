@@ -79,6 +79,7 @@ app.put('/api/cohort/:cohortId', CohortController.updateLessonOrder);
 app.get('/api/cohort/:cohortId', CohortController.getCohort);
 app.get('/api/all-cohorts', CohortController.getAllCohorts);
 app.get('/api/cohort-day/:cohortId/:dayId', CohortController.getCohortDay);
+app.put('/api/cohort/mentor-groups/:cohortId', CohortController.updateMentorGroup);
 
 //Cohort Lessons
 app.post('/api/cohort/lesson/sections/:cohortId/:dayId', CohortController.addSection);
