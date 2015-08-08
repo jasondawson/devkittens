@@ -236,10 +236,24 @@
 			</span>
 			<div ng-if="!day.instructor && (user.userType.admin || user.userType.mentor) && typeRef == 'cohort' && day.wantsToTeach.length">
 				<div >Requests to teach this lesson</div>
-				<div style="display: flex" class="pic-container" ng-repeat="instructor in wantsToTeach">
-					<img ng-src="{{instructor.avatar}}" />
+				<div class="just-flex flex-wrap">
+					<!-- <img ng-src="{{instructor.avatar}}" />
 					<div>
 						<div>{{instructor.name}}</div>
+						<button ng-click="teachLesson(day, instructor)">Assign</button>
+					</div> -->
+					<div ng-repeat="instructor in wantsToTeach">
+						<div class="pic-container" ng-attr-titletext="{{instructor.name}}" tio-tooltip>
+							<a ng-href="{{instructor.githubUrl}}" target="_blank">
+								<img ng-src="{{instructor.avatar}}"
+									 ng-class="{'has-github': instructor.githubUrl}">
+							</a>
+							<span class="tooltip-wrapper">
+								<p class="tooltip"></p>
+								<span class="arrow-down"></span>
+							</span>
+						</div>
+						<br/>
 						<button ng-click="teachLesson(day, instructor)">Assign</button>
 					</div>
 				</div>

@@ -1336,6 +1336,9 @@ section.cohort-settings .dsh-menu .dsh-item.active-dsh {
 .just-flex {
   display: flex;
 }
+.flex-wrap {
+  flex-wrap: wrap;
+}
 #top {
   position: absolute;
   top: 0;
