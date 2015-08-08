@@ -134,7 +134,7 @@
 
 		<div class="sub-dsh">
 			<!-- ASSIGN BY EMAIL -->
-			<div class="mini-header">Invite instuctors</div>
+			<div class="mini-header">Invite instructors</div>
 			<form ng-submit="sentInstructorInvite(newInstructors)">
 				<textarea ng-model="newInstructors" class="form-control" placeholder="Comma-separated email(s)"></textarea>
 				<button class="btn btn-default">Send invite</button>
@@ -171,31 +171,22 @@
 		<div class="sub-dsh">
 			<div class="mini-header">Teaching request list</div>
 
-			<div ng-repeat="day in currentCohort.curriculum[0]">
+			<div ng-repeat="day in currentCohort.curriculum[0]" ng-click="selectDay($index)">
 				<div ng-if="day.wantsToTeach.length">
-					<div ng-click="logger($index); selectDay($index)">{{day.topic}}</div>
-					<div>{{day.day | date: 'shortDate'}}</div>
-					<!-- <div ng-repeat="instructor in day.wantsToTeach">
-						<div class="pic-container" ng-attr-titletext="{{instructor.name}}" style="flex" tio-tooltip>
-							<a ng-href="{{instructor.githubUrl}}" target="_blank">
-								<img ng-src="{{instructor.avatar}}"
-									 ng-class="{'has-github': instructor.githubUrl}">
-							</a>
-							<span class="tooltip-wrapper">
-								<p class="tooltip"></p>
-								<span class="arrow-down"></span>
-							</span>
-						</div>
-						<button ng-click="assignInstructor(day, instructor, $parent.$index)">Assign</button>
-					</div> -->
+					<hr ng-if="$index !== evilIndex()">
+					<div class="flex-between">
+						<div class="be-bold">{{day.topic}}</div>
+						<div>{{day.day | date: 'shortDate'}}</div>
+					</div>
 				</div>
 			</div>
+
 		</div>
 
 		<div class="sub-dsh" ng-if="!user.userType.instructor">
 			<div class="mini-header">Instructors</div>
 			<div ng-repeat="instructor in wantsToTeach">
-				<div class="pic-container" ng-attr-titletext="{{instructor.name}}" style="flex" tio-tooltip>
+				<div class="pic-container" ng-attr-titletext="{{instructor.name}}" tio-tooltip>
 					<a ng-href="{{instructor.githubUrl}}" target="_blank">
 						<img ng-src="{{instructor.avatar}}"
 							 ng-class="{'has-github': instructor.githubUrl}">
@@ -206,6 +197,7 @@
 					</span>
 				</div>
 				<button ng-click="assignInstructor(currentCohort.curriculum[0][importantIndex], instructor, importantIndex)">Assign</button>
+				<hr ng-if="$index < wantsToTeach.length - 1"
 			</div>
 		</div>
 

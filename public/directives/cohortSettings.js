@@ -112,6 +112,14 @@ angular.module('devKittens')
 
 			$scope.wantsToTeach = [];
 			$scope.importantIndex;
+			$scope.evilIndex = function() {
+				for (var i = 0; i < $scope.currentCohort.curriculum[0].length; i++) {
+					if ($scope.currentCohort.curriculum[0][i].wantsToTeach.length > 0) {
+						return i;
+					}
+				}
+			}
+
 			$scope.selectDay = function(index) {
 				$scope.wantsToTeach = $scope.currentCohort.curriculum[0][index].wantsToTeach;
 				$scope.importantIndex = index;

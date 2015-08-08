@@ -108,11 +108,13 @@
 	<div class="shift-wrapper larger-padding">	
 		<div ng-show="lesson" class="portlet-header">
 			<div ng-show="!lesson.edit && (lesson.sections.length || lesson.topic)">
-				<h2>
-					{{lesson.topic || topicPlaceholder}}
-					<button ng-show="user.userType.instructor && !day.instructor && !findMyId(day.wantsToTeach, user)" ng-click="teachRequest()" class="btn btn-default">Request to teach this lesson</button>
-					<button ng-show="!day.instructor && findMyId(day.wantsToTeach, user)" ng-click="cancelRequest()" class="btn btn-default">Cancel teaching request</button>
-					<button ng-click="removeLesson(lesson)" ng-if="(day.instructor._id == user._id && typeRef == 'cohort') || superShowThis" class="btn btn-default">Cancel teaching appointment</button> 
+				<h2 class="flex-between">
+					<div>{{lesson.topic || topicPlaceholder}}</div>
+					<div ng-if="typeRef == 'cohort'">
+						<button ng-show="user.userType.instructor && !day.instructor && !findMyId(day.wantsToTeach, user)" ng-click="teachRequest()" class="btn btn-default">Request to teach this lesson</button>
+						<button ng-show="!day.instructor && findMyId(day.wantsToTeach, user)" ng-click="cancelRequest()" class="btn btn-default">Cancel teaching request</button>
+						<button ng-click="removeLesson(lesson)" ng-if="(day.instructor._id == user._id && typeRef == 'cohort') || superShowThis" class="btn btn-default">Cancel teaching appointment</button> 
+					</div>
 						
 					<i class="fa fa-pencil" ng-if="user.userType.admin" ng-click="lesson.edit=!lesson.edit"></i>
 				</h2>

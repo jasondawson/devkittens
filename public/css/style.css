@@ -1343,3 +1343,10 @@ section.cohort-settings .dsh-menu .dsh-item.active-dsh {
   z-index: -1000;
   opacity: 0;
 }
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+.be-bold {
+  font-weight: bold;
+}
