@@ -15,8 +15,12 @@ angular.module('devKittens')
 		},
 		controller: function($scope, userService, mentorService) {
 			$scope.addCohort = function(cohort){
-				mentorService.assignCohort($scope.currentMentor, cohort._id).then(function(response){
-					console.log(response);
+				mentorService.assignCohort($scope.currentMentor, cohort._id)
+				.success(function(response) {
+					console.info(response);
+				})
+				.error(function(err) {
+					console.error(err);
 				})
 			}
 

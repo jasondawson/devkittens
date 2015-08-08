@@ -93,42 +93,40 @@ module.exports = function(passport) {
                             newUser.avatar         = req.body.avatar;
                             newUser.userType       = req.body.userType;
 
-                            // if (req.body.permissions) {
-                            //     newUser.permissions = req.body.permissions;
-                            // }
-
                             newUser.save(function (err, result) {
                                 if (err) return done(err);
-                                // Pushing student id to cohort student array
+
                                 if (req.body.userType.instructor) {
+                                   // User is a new instructor
                                     new Instructor({
                                         userId: result._id
                                     }).save();
+
                                 } else if (req.body.userType.mentor) {
+                                    // User is a new mentor
                                     new Mentor({
                                         userId: result._id,
                                         cohortId: req.body.cohortId
                                     }).save();
-                                    // new Instructor({
-                                    //     userId: result._id
-                                    // }).save();
-                                    Cohort.findOne({'_id': req.body.cohortId}, function (err, foundCohort) {
-                                        if (err) return res.status(500).send(err);
 
-                                        if (!foundCohort.mentors) foundCohort.mentors = [];
-                                        
-                                        foundCohort.mentors.push(result._id);
-                                        foundCohort.save();
-                                    })
-                                // } else if (req.body.userType.indexOf("admin") !== -1) {
-                                //     // new Instructor({
-                                //     //     userId: result._id
-                                //     // }).save();
+                                    if (req.body.cohortId) {
+                                        Cohort.findOne({'_id': req.body.cohortId}, function (err, foundCohort) {
+                                            if (err) return res.status(500).send(err);
+
+                                            if (!foundCohort.mentors) foundCohort.mentors = [];
+                                            
+                                            foundCohort.mentors.push(result._id);
+                                            foundCohort.save();
+                                        })
+                                    }
+
                                 } else if (req.body.userType.student) {
+                                   // User is a new student
                                     new Student({
                                         userId: result._id,
                                         cohortId: req.body.cohortId
                                     }).save();
+
                                     Cohort.findOne({'_id': req.body.cohortId}, function (err, foundCohort) {
                                         if (err) return res.status(500).send(err);
                                         if (!foundCohort.students) foundCohort.students = [];
@@ -136,6 +134,7 @@ module.exports = function(passport) {
                                         foundCohort.students.push({ userId: result._id });
                                         foundCohort.save();
                                     })
+
                                 }
                                 return done(null, newUser);
                             });

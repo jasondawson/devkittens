@@ -17,7 +17,7 @@
 			<p>Cohorts</p>
 		</div>
 
-		<div class="dsh-item" ng-click="activateMenu('courses')" active-menu>
+		<div class="dsh-item" ng-click="activateMenu('courses')" ng-if="!user.userType.instructor" active-menu>
 			<i class="fa fa-file-text-o"></i>
 			<p>Courses</p>
 		</div>
@@ -44,10 +44,10 @@
 
 
 	<!-- COURSES SECTION -->
-	<div class="flex-pants" ng-show="currentTab === 'courses'">
+	<div class="flex-pants" ng-show="currentTab === 'courses'" ng-if="!user.userType.instructor">
 
 		<div class="sub-dsh">
-			<div class="mini-header">Current courses</div>
+			<div class="mini-header">Existing courses</div>
 			<a ng-repeat="course in courseArray"
 			   ng-href="/#/course/{{course._id}}" ng-click="setCourse(course)">
 				<div class="sub-section">
@@ -85,7 +85,7 @@
 	<!-- COHORT SECTION -->
 	<div class="flex-pants" ng-show="currentTab === 'cohorts'">
 		<div class="sub-dsh">
-			<div class="mini-header">Current cohort</div>
+			<div class="mini-header">Existing cohorts</div>
 			<a class="calendar-link" ng-repeat="cohort in cohortArray" 
 				ng-href="/#/cohort/{{cohort._id}}" ng-click="setCohort(cohort)">
 				<div class="sub-section">
@@ -96,7 +96,7 @@
 		</div>
 
 
-		<div class="sub-dsh" ng-if="!user.userType.instructor">
+		<div class="sub-dsh" ng-if="user.userType.admin">
 			<div class="mini-header">Create a new cohort</div>
 				<form class="cohort-section" ng-submit="createNewCohort(cohortInfo)">
 
@@ -143,7 +143,7 @@
 			</div>
 		</div>
 
-		<div class="sub-dsh">
+		<div class="sub-dsh" ng-if="user.userType.admin">
 			<div class="mini-header">Invite new mentors to DevMountain</div>
 			<form ng-submit="sendGeneralMentorInvite(newMentors)">
 				<textarea ng-model="newMentors" class="form-control" placeholder="Comma-separated email(s)"></textarea>
@@ -178,8 +178,8 @@
 			</div>
 		</div>
 
-		<div class="sub-dsh">
-			<div class="mini-header">Invite instuctors</div>
+		<div class="sub-dsh" ng-if="user.userType.admin">
+			<div class="mini-header">Invite instructors</div>
 			<form ng-submit="sentInstructorInvite(newInstructors)">
 				<textarea ng-model="newInstructors" class="form-control" placeholder="Comma-separated email(s)"></textarea>
 				<button class="btn btn-default">Send invite</button>

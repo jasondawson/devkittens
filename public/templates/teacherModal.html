@@ -1,12 +1,15 @@
 <!-- TEACHER MODAL VIEW -->
 <div class="add-cohort-modal strict-modal" current-teacher="currentTeacher">
+	
 	<i class="close-mini-modal close-modal fa fa-times" ng-click="toggleTeacherModal()"></i>
 	<br />
+
 	<img class="mentor-image" ng-src="{{ currentTeacher.avatar }}">
 	<h2 class="name">{{ currentTeacher.name }}</h2>
-	<!-- <h4 class="text">{{ currentTeacher.mentorType }}</h4>
-	<h5>{{ currentTeacher.duties }}</h5> -->
+
+
 	<div class="mini-modal-cal cal">
+
 
 		<div class="menu-bar-horizontal">
 			<!-- TODO: CHANGE FROM MENTOS TO Comments -->
@@ -20,26 +23,25 @@
 				ng-class="{ active: activeTab === 'Skills' }">Skills</button>
 			<button ng-click="activatePermissions(); addPermissionsView()" class="btn btn-default btn-horizontal"
 				ng-class="{ active: activeTab === 'Permissions' }">Permissions</button>
-		</div> <!-- End of 'menu-bar-horizontal' -->
+		</div>
 
-			<!-- Comments SECTION -->
+
+
+			<!-- COMMENTS SECTION -->
 			<div class="display-box-nonmodal" ng-show="toggleViewToComments">
 				<h2 class="text-dashboard left">Use these terms in your lesson</h2>
 
-				<!-- NEEDS AN NG-REPEAT FOR Comments LIST -->
 				<div class="mentos-list">
 					<div ng-repeat="comment in instructorData.comments">
 						<div>{{comment}}</div>
 					</div>
 				</div>
-			</div> <!-- End of 'display-box-nonmodal' -->
-			<!-- END OF Comments SECTION -->
+			</div>
 
 			<!-- SCHEDULE SECTION -->
 			<div class="display-box-nonmodal" ng-show="toggleViewToSchedule">
-				<h2 class="text-dashboard left">Your schedule</h2>
+				<h2 class="text-dashboard left">Schedule</h2>
 
-				<!-- NEEDS AN NG-REPEAT FOR SCHEDULE DATES -->
 				<div class="mentos-list" ng-repeat="day in instructorData.schedule">
 					<div style="margin: 5px; border: 1px solid black">
 						<div>{{day.topic}}</div>
@@ -50,22 +52,21 @@
 						</div>
 					</div>
 				</div>
-			</div> <!-- End of 'display-box-nonmodal' -->
-			<!-- END OF SCHEDULE SECTION -->
+			</div>
+			
 
 			<!-- MINI-PROBLEM SECTION -->
 			<div class="display-box-nonmodal" ng-show="toggleViewToSkills">
 				<h2 class="text-dashboard left">Students Mini-problem for the day</h2>
 
-				<!-- NEEDS AN NG-REPEAT FOR COHORT LIST -->
 				<div class="mentos-list">
 					<div ng-repeat="skill in instructorData.skills">
 						<div>{{skill}}</div>
 					</div>
 				</div>
-			</div> <!-- End of 'display-box-nonmodal' -->
-			<!-- END OF COHORT SECTION -->
+			</div>
 			
+
 			<!-- PERMISSIONS SECTION -->
 			<div class="display-box-nonmodal" ng-show="toggleViewToPermissions">
 				<h2 class="text-dashboard left">Edit this user's permissions</h2>
@@ -77,8 +78,7 @@
 					<button ng-click="editPermissions(currentMentor.userType)">Save changes</button>
 				</form>
 			</div>
-			<!-- END OF PERMISSIONS SECTION -->
 
 
-	</div> <!-- End of 'mini-modal-cal' -->
-</div> <!-- End of 'add-cohort-modal' -->
+	</div>
+</div>

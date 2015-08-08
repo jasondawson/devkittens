@@ -130,8 +130,6 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 	$scope.courseArray = courseData;
 	$scope.usersArray = usersData;
 	$scope.backdropVisible = false;
-	console.log('cohort', cohortData
-		)
 
 	//loading gif
 	$scope.openLoader = function () {

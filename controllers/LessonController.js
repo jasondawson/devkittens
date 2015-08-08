@@ -7,7 +7,6 @@ module.exports = {
 		new Lesson(req.body)
 		.save(function(err, data){
 			if (err) {
-				console.log(err);
 				res.status(500).send(err);
 			} else {
 				res.send(data);

@@ -13,14 +13,9 @@
 	<div class="mini-modal-cal cal">
 
 		<div class="menu-bar-horizontal">
-			<!-- <button ng-click="activateMentos(); addMentosView()" class="btn btn-default btn-horizontal"
-				ng-class="{ active: activeTab === 'mentos' }">Mentos</button> -->
 
 			<button ng-click="activateSchedule(); addScheduleView()" class="btn btn-default btn-horizontal"
 				ng-class="{ active: activeTab === 'schedule' }">Schedule</button>
-
-<!-- 			<button ng-click="activateTasks(); addTasksView()" class="btn btn-default btn-horizontal"
-				ng-class="{ active: activeTab === 'tasks' }">Tasks</button> -->
 
 			<button ng-click="activateNotes(); addNotesView()" class="btn btn-default btn-horizontal"
 				ng-class="{ active: activeTab === 'notes' }">Notes</button>
@@ -28,22 +23,9 @@
 				ng-class="{ active: activeTab === 'Permissions' }">Permissions</button>
 		</div>
 
-		<!-- MENTOR SECTION -->
-		<!-- <div class="display-box-nonmodal" ng-show="toggleViewToMentos">
-			<h2 class="text-dashboard left">Your mentos</h2>
-
-			<div class="mentos-list">
-				<h5>Joe</h5>
-				<h5>Mark</h5>
-				<h5>Daniel</h5>
-				<h5>Bob</h5>
-				<h5>Kyle</h5>
-			</div>
-		</div> -->
-
 		<!-- SCHEDULE SECTION -->
 		<div class="display-box-nonmodal" ng-show="toggleViewToSchedule">
-			<h2 class="text-dashboard left">Your schedule</h2>
+			<h2 class="text-dashboard left">Schedule</h2>
 
 			<div class="mentos-list">
 				<h5>Teach - 7/31</h5>
@@ -52,17 +34,6 @@
 			</div>
 		</div>
 
-		<!-- TASKS SECTION -->
-<!-- 		<div class="display-box-nonmodal" ng-show="toggleViewToTasks">
-			<h2 class="text-dashboard left">Your Tasks</h2>
-
-			<div class="mentos-list">
-				<h5>Review Web DM4 Curriculum</h5>
-				<h5>Review Web DM5 Curriculum</h5>
-				<h5>Review After Hours Web Dev Curriculum</h5>
-				<h5>Buy Monsters</h5>
-			</div>
-		</div> -->
 
 		<!-- STUDENT NOTES SECTION -->
 		<div class="display-box-nonmodal" ng-show="toggleViewToNotes">

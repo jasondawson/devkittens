@@ -4,7 +4,6 @@ angular.module('devKittens')
 function ($scope, user, $location, infoStorage, cohortServices, currentCohortData, emailsService, mentorService, dayOfWeek, instructorServices) {
 
 	// Init
-	console.log(currentCohortData)
 	$scope.user = user;
 	$scope.currentCohort = currentCohortData;
 	$scope.dayOfWeek = dayOfWeek;

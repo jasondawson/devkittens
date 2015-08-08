@@ -41,19 +41,16 @@ exports.put = function (req, res) {
 exports.getTypeData = function (req, res) {
 	if (req.body.userType.student) {
         Student.find({'userId':req.body._id}, function (err, student) {
-        	console.log(student);
         	if (err) return res.status(500).send(err);
         	return res.json(student);
         })
 	} else if (req.body.userType.mentor) {
         Mentor.find({'userId':req.body._id}, function (err, mentor) {
-        	console.log(mentor);
         	if (err) return res.status(500).send(err);
         	return res.json(mentor);
         })
 	} else if (req.body.userType.instructor) {
         Instructor.find({'userId':req.body._id}, function (err, instructor) {
-        	console.log(instructor);
         	if (err) return res.status(500).send(err);
         	return res.json(instructor);
         })
