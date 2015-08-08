@@ -17,4 +17,11 @@ angular.module('devKittens')
 		})
 	}
 
+	this.assignStudents = function(mentor, student, cohortId) {
+		return $http({
+			method: 'PUT',
+			url: '/api/mentors/students'
+		})
+	}
+
 });

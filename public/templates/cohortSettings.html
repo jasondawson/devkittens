@@ -64,33 +64,35 @@
 
 	<!-- MENTOR SECTION -->
 	<div class="flex-pants" ng-show="currentTab === 'mentors'">
-		<div ng-show="show">
-			<div ng-repeat="student in currentCohort.students">
-				<input
-					type="checkbox"
-					ng-click="toggleStudentSelection(student.userId)"
-					> <img class="pic-container" ng-src="{{student.userId.avatar}}"/> {{student.userId.name}}
-				</input>
-			</div>
-		</div>
-
 		<div class="sub-dsh">
 			<div class="mini-header">Cohort mentors</div>
 			<div ng-if="!mentors.length">No mentors have been assigned to this cohort yet.</div>
 
 			<div class="student-display" ng-repeat="mentor in currentCohort.mentors">
-				<a ng-href="{{mentor.githubUrl}}" target="_blank">
-					<img ng-src="{{mentor.avatar}}"
-						 ng-class="{'has-github': mentor.githubUrl}">
+
+				<a ng-href="{{mentor.userId.githubUrl}}" target="_blank">
+					<img ng-src="{{mentor.userId.avatar}}"
+						 ng-class="{'has-github': mentor.userId.githubUrl}">
 				</a>
 				<span class="s-info">
-					<p class="s-name">{{mentor.name}}</p>
-					<p class="s-email">{{mentor.local.email}}</p>
-					<a ng-href="{{mentor.githubUrl}}" ng-if="mentor.githubUrl" target="_blank"><i class="fa fa-github-alt"></i></a>
+					<p class="s-name">{{mentor.userId.name}}</p>
+					<p class="s-email">{{mentor.userId.local.email}}</p>
+					<a ng-href="{{mentor.userId.githubUrl}}" ng-if="mentor.userId.githubUrl" target="_blank"><i class="fa fa-github-alt"></i></a>
 				</span>
 
 				<div class="btn-container">
-					<button class="btn btn-default" ng-click="showStudents()">Assign Students</button>
+					<button class="btn btn-default" ng-click="mentor.showStudents=!mentor.showStudents">Assign Students</button>
+				</div>
+				<div ng-show="mentor.showStudents">
+					<div ng-repeat="student in currentCohort.students">
+						<input
+							type="checkbox"
+							ng-clicked="mentor.students.indexOf(student.userId) > -1"
+							ng-click="toggleStudentSelection(mentor, student.userId)"
+							> <img class="pic-container" ng-src="{{student.userId.avatar}}"/> {{student.userId.name}}
+						</input>
+					</div>
+					<button class="btn btn-default" ng-click="addStudents(mentor)">submit</button>
 				</div>
 
 			</div>

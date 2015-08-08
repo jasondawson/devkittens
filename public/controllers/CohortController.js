@@ -2,7 +2,7 @@ angular.module('devKittens')
 
 .controller('CohortController', 
 function ($scope, user, $location, infoStorage, cohortServices, currentCohortData, emailsService, mentorService, dayOfWeek, instructorServices) {
-
+	console.log(currentCohortData)
 	// Init
 	$scope.user = user;
 	$scope.currentCohort = currentCohortData;
@@ -181,6 +181,24 @@ function ($scope, user, $location, infoStorage, cohortServices, currentCohortDat
 			}
 			return false;
   		}
+	}
+
+	// ASSIGN STUDENTS TO MENTORS
+	$scope.toggleStudentSelection = function (mentor, student) {
+		if(!mentor.students){
+			mentor.students = [];
+		}
+		if (mentor.students.indexOf(student) > -1) {
+			return mentor.students.splice(mentor.students.indexOf(student), 1);
+		}
+
+		mentor.students.push(student)
+	}
+
+	$scope.addStudents = function (mentor) {
+		mentorService.assignStudents(mentor, $scope.currentCohort._id).then(function(response){
+			console.log(response);
+		})
 	}
 
 })

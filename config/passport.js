@@ -129,7 +129,7 @@ module.exports = function(passport) {
 
                                             if (!foundCohort.mentors) foundCohort.mentors = [];
                                             
-                                            foundCohort.mentors.push(result._id);
+                                            foundCohort.mentors.push({ userId: result._id });
                                             foundCohort.save();
                                         })
                                     }
