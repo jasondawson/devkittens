@@ -246,15 +246,13 @@
 				<button ng-show="lesson.edit" class="btn btn-success" ng-click="updateLesson()">Submit changes</button>
 				<button class="btn btn-default" style="float: right;" ng-show="lesson.edit" ng-click="newSection.show=!newSection.show"><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;add section</button>
 			</span>
-			<div ng-if="!day.instructor && (user.userType.admin || user.userType.mentor) && typeRef == 'cohort' && day.wantsToTeach.length">
-				<div >Requests to teach this lesson</div>
-				<div class="just-flex flex-wrap">
-					<!-- <img ng-src="{{instructor.avatar}}" />
-					<div>
-						<div>{{instructor.name}}</div>
-						<button ng-click="teachLesson(day, instructor)">Assign</button>
-					</div> -->
-					<div ng-repeat="instructor in wantsToTeach">
+			<div ng-show="toggleRequests" class="popup-list-left" ng-if="!day.instructor && (user.userType.admin || user.userType.mentor) && typeRef == 'cohort' && day.wantsToTeach.length">
+				<div class="the-coolest-header">
+					<div>Teaching requests</div>
+					<i class="fa fa-compress top-right-icon" ng-click="toggleRequestsFunc()"></i>
+				</div>
+				<div>
+					<div class="just-flex align-center"ng-repeat="instructor in wantsToTeach">
 						<div class="pic-container" ng-attr-titletext="{{instructor.name}}" tio-tooltip>
 							<a ng-href="{{instructor.githubUrl}}" target="_blank">
 								<img ng-src="{{instructor.avatar}}"
@@ -265,11 +263,11 @@
 								<span class="arrow-down"></span>
 							</span>
 						</div>
-						<br/>
-						<button ng-click="teachLesson(day, instructor)">Assign</button>
+						<button class="btn btn-default" ng-click="teachLesson(day, instructor)">Assign</button>
 					</div>
 				</div>
 			</div>
+			<div class="bottom-left-bubble" ng-click="toggleRequestsFunc()" ng-show="!toggleRequests">Teaching Requests<i class="fa fa-expand top-right-icon"></i></div>
 		</div>
 	</div>
 </section>

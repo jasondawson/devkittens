@@ -14,7 +14,11 @@ function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStor
 		$scope.day = null;
 	}
 
-	$scope.topicPlaceholder = "topic goes here"
+	$scope.topicPlaceholder = "topic goes here";
+	$scope.toggleRequests = true;
+	$scope.toggleRequestsFunc = function() {
+		$scope.toggleRequests = !$scope.toggleRequests;
+	}
 
 	//SECTION PERMISSIONS
 	$scope.newSection = {}
