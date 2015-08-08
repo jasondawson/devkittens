@@ -98,9 +98,23 @@ module.exports = function(passport) {
 
                                 if (req.body.userType.instructor) {
                                    // User is a new instructor
-                                    new Instructor({
-                                        userId: result._id
-                                    }).save();
+                                    var data = { userId: result._id };
+                                    if (req.body.cohortId) data.cohorts = [req.body.cohortId];
+
+                                    new Instructor(data).save(function (error, newInstructor) {
+                                        if (error) return res.status(500).send(error);
+
+                                        if (req.body.cohortId) {
+                                            Cohort.findOne({'_id': req.body.cohortId}, function (cohortError, foundCohort) {
+                                                if (cohortError) return res.status(500).send(cohortError);
+
+                                                if (!foundCohort.instructors) foundCohort.instructors = [];
+                                                
+                                                foundCohort.instructors.push(newInstructor._id);
+                                                foundCohort.save();
+                                            })
+                                        }
+                                    });
 
                                 } else if (req.body.userType.mentor) {
                                     // User is a new mentor

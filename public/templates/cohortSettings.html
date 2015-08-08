@@ -33,7 +33,7 @@
 
 		<div class="sub-dsh">
 			<div class="mini-header">Registered students</div>
-			<div ng-if="!mentors.length">No students have been assigned to this cohort yet.</div>
+			<div ng-if="!currentCohort.students.length">No students have been assigned to this cohort yet.</div>
 
 			<div class="student-display" ng-repeat="student in currentCohort.students">
 				<a ng-href="{{student.userId.githubUrl}}" target="_blank">

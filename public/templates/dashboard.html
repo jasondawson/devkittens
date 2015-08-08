@@ -89,8 +89,18 @@
 			<a class="calendar-link" ng-repeat="cohort in cohortArray" 
 				ng-href="/#/cohort/{{cohort._id}}" ng-click="setCohort(cohort)">
 				<div class="sub-section">
-					<div class="text-dashboard name">{{ cohort.name }}</div>
-					<div class="text-dashboard">{{ cohort.location }}</div>
+
+					<img ng-if="cohort.location === 'Dallas'"
+						 src="/public/images/dallas.png">
+					<img ng-if="cohort.location === 'Provo'"
+						 src="/public/images/provo.png">
+					<img ng-if="cohort.location === 'Salt Lake City'"
+						 src="/public/images/saltlake.png">
+
+					<span class="text-wrapper">
+						<div class="text-dashboard name">{{ cohort.name }}</div>
+						<div class="text-dashboard">{{ cohort.location }}</div>
+					</span>
 				</div>
 			</a>
 		</div>

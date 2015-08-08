@@ -152,6 +152,19 @@ angular.module('devKittens')
 		}
 	})
 
+	.when('/registration/instructor/:cohortId', {
+		templateUrl: '/public/templates/registration.html',
+		controller: 'registrationController',
+		resolve: {
+			userType: function ($route) {
+				return "instructor";
+			},
+			cohortId: function ($route) {
+				return $route.current.params.cohortId;
+			}
+		}
+	})
+
 	.when('/user-settings', {
 		templateUrl: '/public/templates/userSettings.html',
 		controller: 'UserSettingsController',
