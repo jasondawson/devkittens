@@ -12,9 +12,9 @@ function ($scope, authService, $location, infoStorage, userType, cohortId) {
 
 		var typeObj;
 		if (userType == 'admin') {
-			typeObj = {admin: true};
+			typeObj = {admin: true, instructor: true};
 		} else if (userType == 'mentor') {
-			typeObj = {mentor: true, instructor: true};
+			typeObj = {mentor: true};
 		} else if (userType == 'instructor') {
 			typeObj = {instructor: true};
 		} else {

@@ -84,7 +84,7 @@ module.exports = function(passport) {
                         if (user) {
                             return done(null, false);
                         } else {
-
+                            console.log(req.body.userType);
                             // create the user
                             var newUser            = new User();
                             newUser.local.email    = email;
@@ -134,10 +134,10 @@ module.exports = function(passport) {
                                         })
                                     }
 
-                                } else if (req.body.userType.admin) {
-                                    new Instructor({
-                                        userId: result._id
-                                    }).save();
+                                // } else if (req.body.userType.admin) {
+                                //     new Instructor({
+                                //         userId: result._id
+                                //     }).save();
                                 } else if (req.body.userType.student) {
                                    // User is a new student
                                     new Student({
