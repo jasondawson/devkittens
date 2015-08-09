@@ -10,7 +10,8 @@ var cohortSchema = new Schema({
 	, courseType: { type: mongoose.Schema.Types.ObjectId, ref: "Course" }
 	, students: [{ 
 		userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-		mentor: { type: mongoose.Schema.Types.ObjectId, ref: "User" }
+		mentor: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+		assigned: Boolean
 	}]
 	, instructors: [{ type: mongoose.Schema.Types.ObjectId, ref: "Instructor" }]
 	, mentors: [{

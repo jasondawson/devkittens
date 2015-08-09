@@ -2,7 +2,7 @@ angular.module('devKittens')
 
 .controller('CohortController', 
 function ($scope, user, $location, infoStorage, cohortServices, currentCohortData, emailsService, mentorService, dayOfWeek, instructorServices) {
-	console.log(currentCohortData)
+	
 	// Init
 	$scope.user = user;
 	$scope.currentCohort = currentCohortData;
@@ -188,16 +188,24 @@ function ($scope, user, $location, infoStorage, cohortServices, currentCohortDat
 		if(!mentor.students){
 			mentor.students = [];
 		}
-		if (mentor.students.indexOf(student._id) > -1) {
-			return mentor.students.splice(mentor.students.indexOf(student._id), 1);
+		if (mentor.students.indexOf(student.userId._id) > -1) {
+			student.mentor = null;
+			student.assigned = false;
+			return mentor.students.splice(mentor.students.indexOf(student.userId._id), 1);
 		}
 
-		mentor.students.push(student._id)
+		mentor.students.push(student.userId._id);
+		student.mentor = mentor.userId._id;
 	}
 
-	$scope.addStudents = function (mentor) {
-		cohortServices.assignStudents(mentor, $scope.currentCohort._id).then(function(response){
-			console.log(response);
+	$scope.addStudents = function (mentor, students) {
+		cohortServices.assignStudents(mentor, students, $scope.currentCohort._id).then(function(response){
+			cohortServices.getCohort(response.data._id).then(function(data){
+				infoStorage.saveCalendarId(data._id);
+				infoStorage.setCurrentCohort(data);
+				$scope.currentCohort = infoStorage.getCurrentCohort();
+				mentor.showStudents = !mentor.showStudents		
+			})
 		})
 	}
 

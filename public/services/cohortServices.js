@@ -88,11 +88,14 @@ angular.module("devKittens")
 
 	// CREATE MENTRO GROUPS
 
-	this.assignStudents = function(mentor, cohortId) {
+	this.assignStudents = function(mentor, students, cohortId) {
 		return $http({
 			method: 'PUT',
 			url: '/api/cohort/mentor-groups/' + cohortId,
-			data: mentor
+			data: {
+				mentor: mentor,
+				students: students
+			}
 		})
 	}
 

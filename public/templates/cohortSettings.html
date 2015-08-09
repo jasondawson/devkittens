@@ -83,16 +83,17 @@
 				<div class="btn-container">
 					<button class="btn btn-default" ng-click="mentor.showStudents=!mentor.showStudents">Assign Students</button>
 				</div>
-				<div ng-show="mentor.showStudents">
+				<div class="modal" ng-show="mentor.showStudents">
 					<div ng-repeat="student in currentCohort.students">
 						<input
 							type="checkbox"
 							ng-checked="mentor.students.indexOf(student.userId._id) > -1"
-							ng-click="toggleStudentSelection(mentor, student.userId)"
-							> <img class="pic-container" ng-src="{{student.userId.avatar}}"/> {{student.userId.name}}
+							ng-click="toggleStudentSelection(mentor, student)"
+							ng-disabled="student.assigned && student.mentor._id !== mentor.userId._id"
+							> <img class="pic-container" ng-src="{{student.userId.avatar}}"/> {{student.userId.name}} mentor: {{student.mentor.name}}
 						</input>
 					</div>
-					<button class="btn btn-default" ng-click="addStudents(mentor)">submit</button>
+					<button class="btn btn-default" ng-click="addStudents(mentor, currentCohort.students)">submit</button>
 				</div>
 
 			</div>

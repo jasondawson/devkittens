@@ -101,14 +101,34 @@ exports.getCohortDay = function(req, res) {
 
 
 exports.updateMentorGroup = function (req, res) {
+	var students = [];
+	for(var i = 0; i < req.body.students.length; i++){
+		if(req.body.students[i].mentor){
+			req.body.students[i].assigned = true;
+		} else {
+			req.body.students[i].assigned = false;
+		}
+		students.push({
+			userId: req.body.students[i].userId,
+			mentor: req.body.students[i].mentor,
+			assigned: req.body.students[i].assigned
+		})
+	}
+
 	Cohort.findById(req.params.cohortId, function (err, cohort) {
 		if (err) {
 			res.status(500).send(err);
 		}
-		cohort.mentors.id(req.body._id).set({ 'students' : req.body.students })
+
+		
+		cohort.mentors.id(req.body.mentor._id).set({ 'students' : req.body.mentor.students })
 		cohort.save(function(err, data){
 			if (err) res.status(500).send(err);
-			res.send(data);
+			data.set({ students : students })
+			data.save(function(err, result){
+
+				res.send(result);
+			})
 		})
 	})
 }
@@ -135,6 +155,7 @@ exports.updateLesson = function (req, res) {
 		cohort.curriculum.id(req.body.dayId).set({topic: topic});
 		cohort.curriculum.id(req.body.dayId).set({ lesson: { topic: topic, sections: sections } });
 		cohort.save(function(err, data){
+			if (err) res.status(500).send(err);
 			res.send(data)
 		})
 	})
