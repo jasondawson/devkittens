@@ -1,4 +1,6 @@
 <!-- TEACHER MODAL VIEW -->
+<display-message></display-message>
+
 <div class="add-cohort-modal strict-modal" current-teacher="currentTeacher">
 	
 	<i class="close-mini-modal close-modal fa fa-times" ng-click="toggleTeacherModal()"></i>
@@ -75,7 +77,7 @@
 					<label><input type="checkbox" ng-model="currentTeacher.userType.mentor">Mentor</label>
 					<label><input type="checkbox" ng-model="currentTeacher.userType.instructor">Instructor</label>
 					<label><input type="checkbox" ng-model="currentTeacher.userType.student">Student</label>
-					<button ng-click="editPermissions(currentTeacher.userType)">Save changes</button>
+					<button class="btn btn-default" ng-click="editPermissions(currentTeacher.userType)">Save changes</button>
 				</form>
 			</div>
 

@@ -1435,8 +1435,13 @@ section.cohort-settings .dsh-menu .dsh-item.active-dsh {
   left: -65px;
 }
 .grey-hover-party {
+  box-sizing: border-box;
   cursor: pointer;
+  height: 50px;
+  line-height: 60px;
+  padding: 0 20px 20px 20px;
 }
 .grey-hover-party:hover {
   background-color: #eeeeee;
+  border: 1px solid rgba(0, 0, 0, 0);
 }

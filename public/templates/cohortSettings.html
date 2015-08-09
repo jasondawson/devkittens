@@ -185,10 +185,10 @@
 		<div class="sub-dsh">
 			<div class="mini-header">Teaching request list</div>
 
-			<div class="grey-hover-party" ng-repeat="day in currentCohort.curriculum[0]" ng-click="selectDay($index)">
-				<div ng-if="day.wantsToTeach.length">
+			<div ng-repeat="day in currentCohort.curriculum[0]" ng-click="selectDay($index)">
+				<div ng-class="{underlined: $index != evilIndex()}" ng-if="day.wantsToTeach.length">
 					<hr ng-if="$index !== evilIndex()">
-					<div class="flex-between">
+					<div class="grey-hover-party flex-between">
 						<div class="be-bold">{{day.topic}}</div>
 						<div>{{day.day | date: 'shortDate'}}</div>
 					</div>

@@ -86,7 +86,8 @@ angular.module('devKittens')
 				console.log(obj, $scope.currentTeacher);
 				userService.instructorPermissions(obj, $scope.currentTeacher)
 				.then(function(response) {
-					// console.log(response);
+					$scope.messageText = "Success! " + $scope.currentTeacher.name + "'s permissions have been updated."
+					$scope.displayAlert = true;
 				})
 			}
 
