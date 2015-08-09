@@ -1417,3 +1417,11 @@ section.cohort-settings .dsh-menu .dsh-item.active-dsh {
   font-weight: bold;
   color: #f9f9f9;
 }
+.relative {
+  position: relative;
+}
+.relative .hang-to-the-left {
+  position: absolute;
+  top: -10px;
+  left: -65px;
+}
