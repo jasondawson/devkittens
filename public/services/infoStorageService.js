@@ -98,5 +98,6 @@ angular.module('devKittens')
 		return daysOfWeek;
 	}
 
+
 	return service;
 })

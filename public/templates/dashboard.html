@@ -17,22 +17,22 @@
 			<p>Cohorts</p>
 		</div>
 
-		<div class="dsh-item" ng-click="activateMenu('courses')" ng-if="!user.userType.instructor" active-menu>
+		<div class="dsh-item" ng-click="activateMenu('courses')" ng-if="(!user.userType.instructor || (user.userType.instructor && user.userType.admin))" active-menu>
 			<i class="fa fa-file-text-o"></i>
 			<p>Courses</p>
 		</div>
 
-		<div class="dsh-item" ng-click="activateMenu('mentors')" ng-if="!user.userType.instructor && !user.userType.student" active-menu>
+		<div class="dsh-item" ng-click="activateMenu('mentors')" ng-if="(!user.userType.instructor || (user.userType.instructor && user.userType.admin)) && !user.userType.student" active-menu>
 			<i class="fa fa-hand-lizard-o"></i>
 			<p>Mentors</p>
 		</div>
 
-		<div class="dsh-item" ng-click="activateMenu('instructors')" ng-if="!user.userType.instructor && !user.userType.student" active-menu>
+		<div class="dsh-item" ng-click="activateMenu('instructors')" ng-if="(!user.userType.instructor || (user.userType.instructor && user.userType.admin)) && !user.userType.student" active-menu>
 			<i class="fa fa-hand-spock-o"></i>
 			<p>Instructors</p>
 		</div>
 
-		<div class="dsh-item" ng-click="activateMenu('schedule')" active-menu>
+		<div class="dsh-item" ng-click="activateMenu('schedule'); getUserInstructor()" active-menu>
 			<i class="fa fa-calendar-check-o"></i>
 			<p>Schedule</p>
 		</div>
@@ -44,7 +44,7 @@
 
 
 	<!-- COURSES SECTION -->
-	<div class="flex-pants" ng-show="currentTab === 'courses'" ng-if="!user.userType.instructor">
+	<div class="flex-pants" ng-show="currentTab === 'courses'" ng-if="(!user.userType.instructor || (user.userType.instructor && user.userType.admin))">
 
 		<div class="sub-dsh">
 			<div class="mini-header">Existing courses</div>
@@ -60,7 +60,7 @@
 		</div>
 
 
-		<div class="sub-dsh" ng-if="!user.userType.instructor">
+		<div class="sub-dsh" ng-if="(!user.userType.instructor || (user.userType.instructor && user.userType.admin))">
 			<div class="mini-header">Create a new course</div>
 				<form name="newCourseForm">
 					<input class="form-control" type="text" placeholder="Course Title" ng-model="courseInfo.title"/>
@@ -170,7 +170,7 @@
 	<!-- INSTRUCTOR SECTION -->
 	<div class="flex-pants" ng-show="currentTab === 'instructors'">
 
-		<div class="sub-dsh" ng-if="!user.userType.instructor">
+		<div class="sub-dsh" ng-if="(!user.userType.instructor || (user.userType.instructor && user.userType.admin))">
 			<div class="mini-header">Cohort instructors</div>
 			<div class="student-display" ng-repeat="instructor in usersArray | filter: {userType: {instructor: true}}">
 
@@ -207,9 +207,9 @@
 
 		<div class="sub-dsh">
 			<div class="mini-header">Your teaching schedule</div>
-			<div ng-if="!instructorSchedule.length">Your teaching schedule will be displayed here once your are scheduled to teach.</div>
+			<div ng-if="">Your teaching schedule will be displayed here once your are scheduled to teach.</div>
 
-			<div ng-repeat="schedule in instructorSchedule" class="sub-section">
+			<div ng-repeat="schedule in userInstructor.schedule" class="sub-section">
 				<span class="text">{{ schedule.day | date: fullDate }}</span>
 				<span class="text">{{ schedule.topic }}</span>
 			</div>

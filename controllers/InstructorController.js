@@ -42,11 +42,10 @@ exports.addInstructor = function(req, res) {
 }
 
 exports.removeFromInstructor = function(req, res) {
-	Instructor.findOne({"userId": req.params.userId}, function(err, data) {
+	Instructor.findOne({"userId": req.params.userId}, function(err, instructor) {
 		if (err) {
 			res.status(500).json(err);
 		} else {
-			var instructor = data;
 			for (var i = 0; i < instructor.schedule.length; i++) {
 				if (instructor.schedule[i]._id == req.params.dayId) {
 					instructor.schedule.splice(i, 1);

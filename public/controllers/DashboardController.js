@@ -285,6 +285,18 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 	}
 
 
+	$scope.userInstructor = null;
+	$scope.getUserInstructor = function() {
+		if ($scope.userInstructor) {
+			return;
+		} else {
+			dashboardService.getInstructorInfo($scope.user)
+			.then(function(response) {
+				console.log(response);
+				return $scope.userInstructor = response;
+			})
+		}
+	}
 
 
 

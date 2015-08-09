@@ -16,12 +16,12 @@
 			<p>Mentors</p>
 		</div>
 
-		<div class="dsh-item" ng-click="activateMenu('instructors')" ng-if="!user.userType.instructor && !user.userType.student" active-menu>
+		<div class="dsh-item" ng-click="activateMenu('instructors')" ng-if="(!user.userType.instructor || (user.userType.instructor && user.userType.admin)) && !user.userType.student" active-menu>
 			<i class="fa fa-hand-spock-o"></i>
 			<p>Instructors</p>
 		</div>
 
-		<div class="dsh-item" ng-click="activateMenu('requests')" ng-if="!user.userType.instructor && !user.userType.student" active-menu>
+		<div class="dsh-item" ng-click="activateMenu('requests')" ng-if="(!user.userType.instructor || (user.userType.instructor && user.userType.admin)) && !user.userType.student" active-menu>
 			<i class="fa fa-diamond"></i>
 			<p>Teaching requests</p>
 		</div>
@@ -185,7 +185,7 @@
 		<div class="sub-dsh">
 			<div class="mini-header">Teaching request list</div>
 
-			<div ng-repeat="day in currentCohort.curriculum[0]" ng-click="selectDay($index)">
+			<div class="grey-hover-party" ng-repeat="day in currentCohort.curriculum[0]" ng-click="selectDay($index)">
 				<div ng-if="day.wantsToTeach.length">
 					<hr ng-if="$index !== evilIndex()">
 					<div class="flex-between">
@@ -197,7 +197,7 @@
 
 		</div>
 
-		<div class="sub-dsh" ng-if="!user.userType.instructor">
+		<div class="sub-dsh">
 			<div class="mini-header">Instructors</div>
 			<div ng-repeat="instructor in wantsToTeach">
 				<div class="pic-container" ng-attr-titletext="{{instructor.name}}" tio-tooltip>

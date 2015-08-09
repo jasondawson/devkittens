@@ -13,14 +13,14 @@
 
 		<div class="menu-bar-horizontal">
 			<!-- TODO: CHANGE FROM MENTOS TO Comments -->
-			<button ng-click="activateComments(); addCommentsView()" class="btn btn-default btn-horizontal"
-				ng-class="{ active: activeTab === 'Comments' }">Comments</button>
+			<!-- <button ng-click="activateComments(); addCommentsView()" class="btn btn-default btn-horizontal"
+				ng-class="{ active: activeTab === 'Comments' }">Comments</button> -->
 
 			<button ng-click="activateSchedule(); addScheduleView()" class="btn btn-default btn-horizontal"
 				ng-class="{ active: activeTab === 'schedule' }">Schedule</button>
 
-			<button ng-click="activateSkills(); addSkillsView()" class="btn btn-default btn-horizontal"
-				ng-class="{ active: activeTab === 'Skills' }">Skills</button>
+			<!-- <button ng-click="activateSkills(); addSkillsView()" class="btn btn-default btn-horizontal"
+				ng-class="{ active: activeTab === 'Skills' }">Skills</button> -->
 			<button ng-click="activatePermissions(); addPermissionsView()" class="btn btn-default btn-horizontal"
 				ng-class="{ active: activeTab === 'Permissions' }">Permissions</button>
 		</div>
@@ -28,7 +28,7 @@
 
 
 			<!-- COMMENTS SECTION -->
-			<div class="display-box-nonmodal" ng-show="toggleViewToComments">
+			<!-- <div class="display-box-nonmodal" ng-show="toggleViewToComments">
 				<h2 class="text-dashboard left">Use these terms in your lesson</h2>
 
 				<div class="mentos-list">
@@ -36,7 +36,7 @@
 						<div>{{comment}}</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 
 			<!-- SCHEDULE SECTION -->
 			<div class="display-box-nonmodal" ng-show="toggleViewToSchedule">
@@ -56,7 +56,7 @@
 			
 
 			<!-- MINI-PROBLEM SECTION -->
-			<div class="display-box-nonmodal" ng-show="toggleViewToSkills">
+			<!-- <div class="display-box-nonmodal" ng-show="toggleViewToSkills">
 				<h2 class="text-dashboard left">Students Mini-problem for the day</h2>
 
 				<div class="mentos-list">
@@ -64,7 +64,7 @@
 						<div>{{skill}}</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 			
 
 			<!-- PERMISSIONS SECTION -->
@@ -75,7 +75,7 @@
 					<label><input type="checkbox" ng-model="currentTeacher.userType.mentor">Mentor</label>
 					<label><input type="checkbox" ng-model="currentTeacher.userType.instructor">Instructor</label>
 					<label><input type="checkbox" ng-model="currentTeacher.userType.student">Student</label>
-					<button ng-click="editPermissions(currentMentor.userType)">Save changes</button>
+					<button ng-click="editPermissions(currentTeacher.userType)">Save changes</button>
 				</form>
 			</div>
 

@@ -1434,3 +1434,9 @@ section.cohort-settings .dsh-menu .dsh-item.active-dsh {
   top: -10px;
   left: -65px;
 }
+.grey-hover-party {
+  cursor: pointer;
+}
+.grey-hover-party:hover {
+  background-color: #eeeeee;
+}

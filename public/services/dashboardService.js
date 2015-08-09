@@ -1,6 +1,6 @@
 	angular.module('devKittens')
 
-	.factory('dashboardService', function($http) {
+	.factory('dashboardService', function($q, $http) {
 
 		var service = {};
 
@@ -19,10 +19,15 @@
 		}
 
 		service.getInstructorInfo = function(user) {
-			return $http({
+			var dfrd = $q.defer();
+			$http({
 				method: 'GET',
 				url: '/api/instructify/' + user._id
 			})
+			.then(function(response) {
+				dfrd.resolve(response.data);
+			})
+			return dfrd.promise;
 		}
 		
 		return service;
