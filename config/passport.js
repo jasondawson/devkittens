@@ -84,7 +84,7 @@ module.exports = function(passport) {
                         if (user) {
                             return done(null, false);
                         } else {
-                            console.log(req.body.userType);
+                    
                             // create the user
                             var newUser            = new User();
                             newUser.local.email    = email;

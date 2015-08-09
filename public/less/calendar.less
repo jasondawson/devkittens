@@ -280,12 +280,24 @@
     flex-wrap: wrap;
     justify-content: center;
 
-    .instructor-type {
-	    position: absolute;
-	    bottom: -2px;
+    .type-holder {
+    	position: absolute;
+		bottom: -2px;
 	    right: 0;
 	    color: #ccc;
-    }
+
+	    .instructor-type {
+		    display: block;
+	    }
+
+	    .pending {
+	    	color: @orange;
+	    }
+
+	    .scheduled {
+	    	color: @blue;
+	    }
+	}
 }
 
 .calendar-title {

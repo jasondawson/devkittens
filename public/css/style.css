@@ -649,11 +649,20 @@ section.dashboard .right {
   flex-wrap: wrap;
   justify-content: center;
 }
-.overall-container .instructor-type {
+.overall-container .type-holder {
   position: absolute;
   bottom: -2px;
   right: 0;
   color: #ccc;
+}
+.overall-container .type-holder .instructor-type {
+  display: block;
+}
+.overall-container .type-holder .pending {
+  color: #ff611a;
+}
+.overall-container .type-holder .scheduled {
+  color: #1a75ff;
 }
 .calendar-title {
   text-align: center;

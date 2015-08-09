@@ -123,13 +123,15 @@
 							</div>
 						</div>
 					</div>
-					<div ng-if="typeRef == 'cohort'">
-						<button ng-show="user.userType.instructor && !day.instructor && !findMyId(day.wantsToTeach, user)" ng-click="teachRequest()" class="btn btn-default">Request to teach this lesson</button>
-						<button ng-show="!day.instructor && findMyId(day.wantsToTeach, user)" ng-click="cancelRequest()" class="btn btn-default">Cancel teaching request</button>
-						<button ng-click="removeLesson(lesson)" ng-if="(day.instructor._id == user._id && typeRef == 'cohort') || superShowThis" class="btn btn-default">Cancel teaching appointment</button> 
+					<div class="just-flex">
+						<div ng-if="typeRef == 'cohort'">
+							<button ng-show="user.userType.instructor && !day.instructor && !findMyId(day.wantsToTeach, user)" ng-click="teachRequest()" class="btn btn-default">Request to teach this lesson</button>
+							<button ng-show="!day.instructor && findMyId(day.wantsToTeach, user)" ng-click="cancelRequest()" class="btn btn-default">Cancel teaching request</button>
+							<button ng-click="removeLesson(lesson)" ng-if="(day.instructor._id == user._id && typeRef == 'cohort') || superShowThis" class="btn btn-default">Cancel teaching appointment</button> 
+						</div>
+							
+						<i class="fa fa-pencil" ng-if="user.userType.admin" ng-click="lesson.edit=!lesson.edit"></i>
 					</div>
-						
-					<i class="fa fa-pencil" ng-if="user.userType.admin" ng-click="lesson.edit=!lesson.edit"></i>
 				</h2>
 			</div>
 			

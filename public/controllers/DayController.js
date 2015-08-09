@@ -288,6 +288,7 @@ function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStor
 		.then(function(response) {
 			// console.log(response.curriculum[dayIndex]);
 			$scope.day = response.curriculum[dayIndex];
+			$scope.wantsToTeach.push(user);
 		})
 	}
 
@@ -296,6 +297,11 @@ function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStor
 		.then(function(response) {
 			// console.log(response.curriculum[dayIndex]);
 			$scope.day = response.curriculum[dayIndex];
+			for (var i = 0; i < $scope.wantsToTeach.length; i++) {
+				if ($scope.wantsToTeach[i]._id == user._id) {
+					return $scope.wantsToTeach.splice(i, 1);
+				}
+			}
 		})
 	}
 
