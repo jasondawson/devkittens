@@ -14,7 +14,7 @@ function ($scope, authService, $location, infoStorage, userType, cohortId) {
 		if (userType == 'admin') {
 			typeObj = {admin: true};
 		} else if (userType == 'mentor') {
-			typeObj = {mentor: true};
+			typeObj = {mentor: true, instructor: true};
 		} else if (userType == 'instructor') {
 			typeObj = {instructor: true};
 		} else {
