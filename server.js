@@ -81,6 +81,9 @@ app.get('/api/all-cohorts', CohortController.getAllCohorts);
 app.get('/api/cohort-day/:cohortId/:dayId', CohortController.getCohortDay);
 app.put('/api/cohort/mentor-groups/:cohortId', CohortController.updateMentorGroup);
 
+//Cohort app
+app.get('/api/app-cohort/:userId', CohortController.getCohortForApp);
+
 //Cohort Lessons
 app.post('/api/cohort/lesson/sections/:cohortId/:dayId', CohortController.addSection);
 app.put('/api/cohort/lessons/:cohortId', CohortController.updateLesson);

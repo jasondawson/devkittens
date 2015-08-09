@@ -2,7 +2,8 @@ var Course 		= require('../models/CourseModel.js'),
 	Cohort 		= require('../models/CohortModel.js'),
 	Instructor 	= require('../models/InstructorModel.js'),
 	Lesson 		= require('../models/LessonModel.js'),
-	User   		= require('../models/User.js');
+	User   		= require('../models/User.js'),
+	Student 	= require('../models/StudentModel.js');
 
 
 exports.createNewCohort = function(req, res) {
@@ -111,6 +112,20 @@ exports.updateMentorGroup = function (req, res) {
 		})
 	})
 }
+
+
+exports.getCohortForApp = function (req, res) {
+	var userId = req.params.userId;
+
+	Student.findOne({'userId': userId})
+	.populate('cohortId')
+	.exec(function (err, result) {
+		if (err) return res.status(500).send(err);
+		res.json(result);
+	})
+
+}
+
 
 
 exports.updateLesson = function (req, res) {
