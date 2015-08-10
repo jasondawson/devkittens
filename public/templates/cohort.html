@@ -54,7 +54,7 @@
 
 <div class="overall-container">
 
-	<div class="calendar-container" ng-click="viewDay(day, $index)" ng-repeat="day in activeMonth">
+	<div class="calendar-container" ng-click="viewDay(day, $index)" ng-repeat="day in activeMonth" highlight day="day">
 	<hr><hr><hr><hr><hr><hr>
 		<div class="display-box add-new column">
 			<span class="text-dashboard calendar-text">{{ day.day | date: 'MMM d' }}</span>
