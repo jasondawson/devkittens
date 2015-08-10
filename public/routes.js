@@ -89,7 +89,7 @@ angular.module('devKittens')
 			dayIndex: function (infoStorage, $location, $route) {
 				if ($route.current.params.type == 'cohort') {
 					var index = infoStorage.serveDayIndex();
-					if (!index) return $location.path('/dashboard');
+					if (index < 0) return $location.path('/dashboard');
 					return index;
 				} else {
 					return null;
