@@ -844,7 +844,7 @@ section.registration .right .inner-right .btn {
   margin: 10px 0;
 }
 .add-cohort-modal {
-  min-height: 70%;
+  min-height: 50px;
   width: 45%;
   position: absolute;
   top: 15%;
@@ -856,6 +856,40 @@ section.registration .right .inner-right .btn {
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
+}
+.add-cohort-modal .modal-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+.add-cohort-modal .modal-title img {
+  max-height: 100%;
+}
+.add-cohort-modal .modal-title i {
+  float: right;
+}
+.add-cohort-modal .modal-divider {
+  display: flex;
+  width: 100%;
+  margin-top: 70px;
+}
+.add-cohort-modal .modal-divider .divided {
+  width: 50%;
+  margin: 20px;
+}
+.add-cohort-modal .modal-divider .divided label {
+  display: block;
+  margin-left: 20px;
+}
+.add-cohort-modal .modal-divider .divided label input {
+  margin-right: 10px;
+}
+.add-cohort-modal .modal-divider .divided-left {
+  border-right: 1px solid #eee;
 }
 .strict-modal {
   overflow: hidden;

@@ -11,16 +11,20 @@ angular.module('devKittens')
 			mentor: '=',
 			currentMentor: '=',
 			options: '=',
-			cohorts: '='
+			cohorts: '=',
+			user: '='
 		},
 		controller: function($scope, userService, mentorService) {
 			$scope.addCohort = function(cohort){
 				mentorService.assignCohort($scope.currentMentor, cohort._id)
 				.success(function(response) {
-					console.info(response);
+					$scope.messageText = "Successfully assigned mentor to cohort.";
+					return $scope.displaySuccess = true;
 				})
 				.error(function(err) {
 					console.error(err);
+					$scope.messageText = "There was an error with your request.";
+					return $scope.displayAlert = true;
 				})
 			}
 
@@ -59,16 +63,6 @@ angular.module('devKittens')
 				$scope.toggleViewToPermissions = false;
 			}
 
-			$scope.activatePermissions = function() {
-				$scope.activeTab = 'Permissions';
-				$scope.toggleViewToPermissions = true;
-
-				$scope.toggleViewToMentos = false;
-				$scope.toggleViewToSchedule = false;
-				$scope.toggleViewToTasks = false;
-				$scope.toggleViewToNotes = false;
-			}
-
 			$scope.addMentosView = function() {
 				$scope.toggleAddMentos = !$scope.toggleAddMentos;
 			}
@@ -77,15 +71,11 @@ angular.module('devKittens')
 				$scope.toggleAddTasks = !$scope.toggleAddTasks;
 			}
 
-			$scope.addPermissionsView = function() {
-				$scope.toggleAddPermissions = !$scope.toggleAddPermissions;
-			}
-
 			$scope.editPermissions = function(obj) {
-				// console.log(obj, $scope.currentTeacher);
 				userService.mentorPermissions(obj, $scope.currentMentor)
 				.then(function(response) {
-					// console.log(response);
+					$scope.messageText = "User permissions have been successfully updated.";
+					return $scope.displaySuccess = true;
 				})
 			}
 

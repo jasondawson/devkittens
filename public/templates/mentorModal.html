@@ -1,36 +1,44 @@
+<display-message></display-message>
+
 <!-- MENTOR MODAL VIEW -->
 <div class="add-cohort-modal strict-modal" current-mentor="currentMentor">
 	
-	<i class="close-mini-modal close-modal fa fa-times" ng-click="toggleMentorModal()"></i>
-	
-	<br />
+	<div class="modal-title">
+		<img class="mentor-image" ng-src="{{ currentMentor.avatar }}">
+		<h4 class="name">{{ currentMentor.name }}</h4>
 
-	<img class="mentor-image" ng-src="{{ currentMentor.avatar }}">
-	<h2 class="name">{{ currentMentor.name }}</h2>
-	<h4 class="text">{{ currentMentor.mentorType }}</h4>
-	<h5>{{ currentMentor.duties }}</h5>
+		<i class="close-mini-modal close-modal fa fa-times" ng-click="toggleMentorModal()"></i>
+	</div>
 
-	<div class="mini-modal-cal cal">
+	<div class="modal-divider">
 
-		<div class="menu-bar-horizontal">
-			<button ng-click="activatePermissions(); addPermissionsView()" class="btn btn-default btn-horizontal"
-				ng-class="{ active: activeTab === 'Permissions' }">Permissions</button>
-		</div>		
 
 		<!-- MENTOR PERMISSIONS -->
-		<div class="display-box-nonmodal" ng-show="toggleViewToPermissions">
-			<h2 class="text-dashboard left">Edit this user's permissions</h2>
+		<div class="divided divided-left" ng-if="user.userType.admin">
+			<h4 class="text-dashboard left">Edit user permissions</h4>
 			<form>
 				<label><input type="checkbox" ng-model="currentMentor.userType.admin">Admin</label>
 				<label><input type="checkbox" ng-model="currentMentor.userType.mentor">Mentor</label>
 				<label><input type="checkbox" ng-model="currentMentor.userType.instructor">Instructor</label>
 				<label><input type="checkbox" ng-model="currentMentor.userType.student">Student</label>
-				<button ng-click="editPermissions(currentMentor.userType)">Save changes</button>
+				<br>
+				<button class="btn btn-default" ng-click="editPermissions(currentMentor.userType)">Save changes</button>
 			</form>
 		</div>
-		<h4>Add Mentor to Cohort</h4>
-		<select ng-options="cohort.name for cohort in cohorts" ng-model="selectedCohort"></select>
-		<button ng-click="addCohort(selectedCohort)">submit</button>
+
+
+		<!-- ASSIGN MENTOR TO COHORT -->
+		<div class="divided divided-right">
+			<h4>Add Mentor to Cohort</h4>
+			<select class="select-control" ng-options="cohort.name for cohort in cohorts" ng-model="selectedCohort">
+				<option value="">Choose a cohort</option>
+			</select>
+			<button ng-click="addCohort(selectedCohort)" class="btn btn-default">Submit</button>
+		</div>
+
+
+
+
 
 	</div>
 </div>

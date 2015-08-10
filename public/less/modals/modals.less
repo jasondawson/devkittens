@@ -71,11 +71,11 @@
 }
 
 .add-cohort-modal {
-  min-height: 70%;
-  width: 45%;
-  position: absolute;
-  top: 15%;
-  left: 30%;
+	min-height: 50px;
+	width: 45%;
+	position: absolute;
+	top: 15%;
+	left: 30%;
 	z-index: 1000;
 	background: #fff;
 	border-radius: 3px;
@@ -83,6 +83,51 @@
 	box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
 	-webkit-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
 	-moz-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
+
+	@title-height: 70px;
+
+	.modal-title {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: @title-height;
+		padding: 10px;
+		border-bottom: 1px solid #eee;
+
+		img {
+			max-height: 100%;
+			// border-radius: 1000px;
+		}
+
+		i {
+			float: right;
+		}
+	}
+
+	.modal-divider {
+		display: flex;
+		width: 100%;
+		margin-top: @title-height;
+
+		.divided {
+			width: 50%;
+			margin: 20px;
+
+			label {
+				display: block;
+				margin-left: 20px;
+				input {
+					margin-right: 10px;
+				}
+			}
+		}
+
+		.divided-left {
+			border-right: 1px solid #eee;
+		}
+	}
+
 }
 
 	.strict-modal {
