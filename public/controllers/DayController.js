@@ -136,6 +136,11 @@ function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStor
 	// STORE LESSON
 	if (typeRef == 'course') {
 		$scope.createLesson = function(topic) {
+			if (!topic) {
+				$scope.messageText = "Please add a lesson topic.";
+				return $scope.displayAlert = true;
+			}
+
 			data = {
 				topic: topic,
 				sections: $scope.sections
@@ -153,7 +158,7 @@ function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStor
 
 			})
 			.catch(function (err) {
-				throw new Error(err);
+				console.error(err);
 			});
 		}
 	} else if (typeRef == 'cohort') {
