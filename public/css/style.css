@@ -1417,14 +1417,22 @@ section.cohort-settings .dsh-menu .dsh-item.active-dsh {
 }
 .popup-list-left {
   position: fixed;
-  bottom: -2px;
+  bottom: -1px;
   left: -1px;
   padding: 70px 20px 20px 20px;
-  border: 1px solid #e4e3e3;
-  border-bottom: 2px solid #dcdbdb;
   border-radius: 2px;
   background-color: #fff;
   width: 250px;
+  box-shadow: 0 0 20px 0px #C8C8C8;
+}
+.popup-list-left .just-flex.align-center {
+  position: relative;
+}
+.popup-list-left .btn {
+  float: right;
+  position: absolute;
+  right: 30px;
+  top: 4px;
 }
 .the-coolest-header {
   background-color: #1481e3;

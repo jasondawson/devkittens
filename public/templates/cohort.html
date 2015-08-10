@@ -68,17 +68,10 @@
 				<div class="instructor-type" ng-show="!day.instructor && (user.userType.instructor && !findMyId(day.wantsToTeach, user))">available</div>
 				<div class="instructor-type pending" ng-show="findMyId(day.wantsToTeach, user) && !day.instructor">pending</div>
 				<div class="instructor-type pending" ng-show="day.wantsToTeach.length && (user.userType.mentor || user.userType.admin)">requested</div>
-				<div class="instructor-type scheduled" ng-show="(user.userType.mentor || user.userType.admin) && day.instructor && day.instructor != user._id">scheduled</div> <!-- !day.wantsToTeach.length && --> 
+				<div class="instructor-type scheduled" ng-show="(user.userType.mentor || user.userType.admin) && day.instructor && day.instructor != user._id">scheduled</div>
 				<div class="instructor-type" style="color: #2ecc71" ng-show="day.instructor == user._id">I'm teaching</div>
 			</div>
 
-	<!-- <div class="calendar-container" ng-click="viewDay(day)" ng-repeat="day in currentCohort.dates">
-		<hr><hr><hr><hr><hr><hr>
-		
-		<div class="display-box add-new">
-			<span class="text-dashboard calendar-text">{{ day | date: 'd' }}</span>
-			<p>{{ day.name }}</p>
-			<div ng-show="!day.instructor && user.userType !== 'student'">available</div> -->
 
 		</div>
 	</div>
