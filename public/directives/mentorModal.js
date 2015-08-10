@@ -18,7 +18,8 @@ angular.module('devKittens')
 			$scope.addCohort = function(cohort){
 				mentorService.assignCohort($scope.currentMentor, cohort._id)
 				.success(function(response) {
-					$scope.messageText = "Successfully assigned mentor to cohort.";
+					console.log(response)
+					$scope.messageText = response;
 					return $scope.displaySuccess = true;
 				})
 				.error(function(err) {

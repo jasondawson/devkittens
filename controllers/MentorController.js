@@ -31,9 +31,9 @@ exports.assignMentorCohortId = function(req, res){
 			if (err) return res.status(500).send(err);
 			Cohort.findById(cohort.cohortId, function (err, cohort) {
 				if (err) return res.status(500).send(err);
-				cohort.mentors.push(mentor.userId);
+				cohort.mentors.push({ userId: mentor.userId });
 				cohort.save(function (err, data) {
-					return res.json(data);
+					return res.send('Successfully assigned mentor to cohort.')
 				})
 			})
 		})
