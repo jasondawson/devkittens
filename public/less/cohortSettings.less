@@ -119,8 +119,7 @@ section.cohort-settings {
     .student-display {
     	display: flex;
     	position: relative;
-    	padding-bottom: 10px;
-    	margin-bottom: 10px;
+    	padding: 10px 0;
     	border-bottom: @light-border;
 
     	img {
@@ -149,6 +148,12 @@ section.cohort-settings {
 	    		top: 5px;
 	    		right: 5px;
 	    	}
+    	}
+    }
+
+    .student-display.pointer {
+    	&:hover {
+    		background-color: #eee;
     	}
     }
 

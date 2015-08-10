@@ -206,6 +206,9 @@ i:hover {
 .full-height.column {
   height: 85%;
 }
+.pointer {
+  cursor: pointer;
+}
 header.white {
   background-color: #fff;
   border-bottom: 1px solid #B9B9B9;
@@ -1311,8 +1314,7 @@ section.cohort-settings .space-above .student-display img {
 section.cohort-settings .student-display {
   display: flex;
   position: relative;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
+  padding: 10px 0;
   border-bottom: 1px solid #eeeeee;
 }
 section.cohort-settings .student-display img {
@@ -1338,6 +1340,9 @@ section.cohort-settings .student-display .s-info a {
   position: absolute;
   top: 5px;
   right: 5px;
+}
+section.cohort-settings .student-display.pointer:hover {
+  background-color: #eee;
 }
 section.cohort-settings .dsh-menu {
   width: 250px;

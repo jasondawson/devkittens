@@ -140,8 +140,8 @@
 
 		<div class="sub-dsh">
 			<div class="mini-header">Cohort mentors</div>
-			<div class="student-display" ng-repeat="mentor in usersArray | filter: {userType: {mentor: true}}">
-				<a ng-click="toggleMentorModal(); setMentor(mentor)">
+			<div class="student-display pointer" ng-repeat="mentor in usersArray | filter: {userType: {mentor: true}}" ng-click="toggleMentorModal(); setMentor(mentor)">
+				<a>
 					<img ng-src="{{mentor.avatar}}"
 						 ng-class="{'has-github': mentor.githubUrl}">
 				</a>
@@ -172,9 +172,9 @@
 
 		<div class="sub-dsh" ng-if="(!user.userType.instructor || (user.userType.instructor && user.userType.admin))">
 			<div class="mini-header">Cohort instructors</div>
-			<div class="student-display" ng-repeat="instructor in usersArray | filter: {userType: {instructor: true}}">
+			<div class="student-display pointer" ng-repeat="instructor in usersArray | filter: {userType: {instructor: true}}" ng-click="toggleTeacherModal(instructor._id); setTeacher(instructor)">
 
-				<a ng-click="toggleTeacherModal(instructor._id); setTeacher(instructor)">
+				<a>
 					<img ng-src="{{instructor.avatar}}"
 						 ng-class="{'has-github': instructor.githubUrl}">
 				</a>
@@ -209,7 +209,7 @@
 			<div class="mini-header">Your teaching schedule</div>
 			<div ng-if="!userInstructor.schedule">You are not currently scheduled to teach any classes.</div>
 
-			<div ng-repeat="schedule in userInstructor.schedule" class="sub-section" ng-click="showSections = !showSections">
+			<div ng-repeat="schedule in userInstructor.schedule" class="sub-section pointer" ng-click="showSections = !showSections">
 				<div class="flex-between">
 					<div class="text">{{ schedule.topic }}</div>
 					<div class="text">{{ schedule.day | date: fullDate }}</div>
