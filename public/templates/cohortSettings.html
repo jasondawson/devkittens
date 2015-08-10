@@ -49,9 +49,9 @@
 		</div>
 
 
-		<div class="sub-dsh" ng-if="!user.userType.instructor">
+		<div class="sub-dsh" ng-if="user.userType.admin || user.userType.mentor">
 			<div class="mini-header">Invite new students</div>
-			<form ng-submit="sendStudentInvite(newStudents)">
+			<form ng-submit="sendStudentInvite(newStudents); newStudents='' ">
 				<textarea ng-model="newStudents" class="form-control" placeholder="Comma-separated email(s)"></textarea>
 				<button class="btn btn-default">Submit</button>
 			</form>
@@ -110,9 +110,9 @@
 			</div>
 		</div>
 
-		<div class="sub-dsh" ng-if="!user.userType.instructor">
+		<div class="sub-dsh" ng-if="user.userType.admin || user.userType.mentor">
 			<div class="mini-header">Invite new mentors</div>
-			<form ng-submit="sendMentorInvite(newMentors)">
+			<form ng-submit="sendMentorInvite(newMentors); newMentors = '' ">
 				<textarea ng-model="newMentors" class="form-control" placeholder="Comma-separated email(s)"></textarea>
 				<button class="btn btn-default">Submit</button>
 			</form>
