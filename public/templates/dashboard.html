@@ -207,11 +207,18 @@
 
 		<div class="sub-dsh">
 			<div class="mini-header">Your teaching schedule</div>
-			<div ng-if="">Your teaching schedule will be displayed here once your are scheduled to teach.</div>
+			<div ng-if="!userInstructor.schedule">You are not currently scheduled to teach any classes.</div>
 
-			<div ng-repeat="schedule in userInstructor.schedule" class="sub-section">
-				<span class="text">{{ schedule.day | date: fullDate }}</span>
-				<span class="text">{{ schedule.topic }}</span>
+			<div ng-repeat="schedule in userInstructor.schedule" class="sub-section" ng-click="showSections = !showSections">
+				<div class="flex-between">
+					<div class="text">{{ schedule.topic }}</div>
+					<div class="text">{{ schedule.day | date: fullDate }}</div>
+				</div>
+				<hr ng-show="showSections">
+				<div ng-show="showSections" ng-repeat="section in schedule.lesson.sections">
+					<div class="be-bold">{{section.title}}</div>
+					<div ng-bind-html="section.content | unsafe"></div>
+				</div>
 			</div>
 		</div>
 

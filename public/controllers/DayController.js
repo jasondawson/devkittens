@@ -336,6 +336,4 @@ function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStor
 			})
 		}
 	}
-
-
 });

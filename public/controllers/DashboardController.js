@@ -284,7 +284,7 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 		})
 	}
 
-
+	//schedule section
 	$scope.userInstructor = null;
 	$scope.getUserInstructor = function() {
 		if ($scope.userInstructor) {
@@ -292,13 +292,17 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 		} else {
 			dashboardService.getInstructorInfo($scope.user)
 			.then(function(response) {
-				console.log(response);
+				// console.log(response);
 				return $scope.userInstructor = response;
 			})
 		}
 	}
 
-
+	$scope.logger = function(arr) {
+		for (var i = 0; i < arr.length; i++) {
+			console.log(arr[i]);
+		}
+	}
 
 });
 

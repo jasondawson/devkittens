@@ -112,7 +112,7 @@
 				<h2 class="flex-between">
 					<div class="just-flex">
 						<div class="relative">{{lesson.topic || topicPlaceholder}}
-							<div class="pic-container hang-to-the-left" ng-attr-titletext="{{day.instructor.name}}" tio-tooltip>
+							<div ng-show="day.instructor" class="pic-container hang-to-the-left" ng-attr-titletext="{{day.instructor.name}}" tio-tooltip>
 								<a ng-href="{{day.instructor.githubUrl}}" target="_blank">
 									<img ng-src="{{day.instructor.avatar}}"
 										 ng-class="{'has-github': day.instructor.githubUrl}">
