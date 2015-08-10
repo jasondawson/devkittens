@@ -871,6 +871,7 @@ section.registration .right .inner-right .btn {
   margin: 5px;
 }
 .mini-modal-cal {
+  max-width: 100%;
   width: 650px;
   margin: 5% auto;
 }
