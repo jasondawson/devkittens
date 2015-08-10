@@ -69,16 +69,6 @@ angular.module('devKittens')
 				$scope.toggleViewToPermissions = false;
 			}
 
-			$scope.activateNotes = function() {
-				$scope.activeTab = 'notes';
-				$scope.toggleViewToNotes = true;
-
-				$scope.toggleViewToMentos = false;
-				$scope.toggleViewToSchedule = false;
-				$scope.toggleViewToTasks = false;
-				$scope.toggleViewToPermissions = false;
-			}
-
 			$scope.activatePermissions = function() {
 				$scope.activeTab = 'Permissions';
 				$scope.toggleViewToPermissions = true;
@@ -99,10 +89,6 @@ angular.module('devKittens')
 
 			$scope.addTasksView = function() {
 				$scope.toggleAddTasks = !$scope.toggleAddTasks;
-			}
-
-			$scope.addNotesView = function() {
-				$scope.toggleAddNotes = !$scope.toggleAddNotes;
 			}
 
 			$scope.addPermissionsView = function() {

@@ -17,8 +17,6 @@
 			<button ng-click="activateSchedule(); addScheduleView()" class="btn btn-default btn-horizontal"
 				ng-class="{ active: activeTab === 'schedule' }">Schedule</button>
 
-			<button ng-click="activateNotes(); addNotesView()" class="btn btn-default btn-horizontal"
-				ng-class="{ active: activeTab === 'notes' }">Notes</button>
 			<button ng-click="activatePermissions(); addPermissionsView()" class="btn btn-default btn-horizontal"
 				ng-class="{ active: activeTab === 'Permissions' }">Permissions</button>
 		</div>
@@ -31,17 +29,6 @@
 				<h5>Teach - 7/31</h5>
 				<h5>Meeting - 7/29</h5>
 				<h5>Teach - 8/3</h5>
-			</div>
-		</div>
-
-
-		<!-- STUDENT NOTES SECTION -->
-		<div class="display-box-nonmodal" ng-show="toggleViewToNotes">
-			<h2 class="text-dashboard left">Student Notes</h2>
-
-			<div class="mentos-list">
-				<h5>Students have had a hard time grasping the basics of Node/Mongo</h5>
-				<h5>There is an issue with the instructor not connecting with the students, ask questions to keep the instructor on task.</h5>
 			</div>
 		</div>
 		
