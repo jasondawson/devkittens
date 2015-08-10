@@ -1,7 +1,7 @@
 angular.module('devKittens')
 
 .controller('DayController',
-function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStorage, lessonService, courseServices, cohortServices, studentServices, $location, $document) {
+function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStorage, lessonService, courseServices, cohortServices, studentServices, instructorEmailsService, $location, $document) {
 	$scope.user = user;
 	
 	if (typeRef == 'cohort') {
@@ -294,6 +294,7 @@ function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStor
 	}
 
 	$scope.teachLesson = function(lesson, instructor) {
+		instructorEmailsService.sendAcceptEmail(instructor, $scope.day);
 		cohortServices.addInstructor(instructor, typeId, lesson, dayId, dayIndex)
 		.then(function(response) {
 			$scope.day.instructor = instructor;
@@ -305,10 +306,9 @@ function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStor
 	}
 
 	$scope.removeLesson = function(lesson) {
-		cohortServices.sendCancelEmail(user, $scope.day);
+		instructorEmailsService.sendCancelEmail(user, $scope.day);
 		cohortServices.removeInstructor(user, lesson, dayId)
 		.then(function(response) {
-			console.log(response);
 			$scope.day.instructor = false;
 			$scope.superShowThis = false;
 		})

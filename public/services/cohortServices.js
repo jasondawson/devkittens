@@ -182,26 +182,6 @@ angular.module("devKittens")
 		return dfrd.promise;
 	}
 
-	this.sendCancelEmail = function(user, day) {
-		var dfrd = $q.defer()
-		$http({
-			method: "POST",
-			url: "api/email",
-			data: {
-				html: '<p>Warning: ' + user.name + ' has canceled his/her teaching appointment on ' + day.day + '.</p>'
-					+ '<p>Please find a new instructor.',
-				subject: "Lesson Cancellation",
-				to: [{
-					email: "jeremy@gmail.com",
-					type: "to"
-				}]
-			}
-		})
-		.then(function(response) {
-			console.log(response.data);
-		})
-	}
-
 
 	//-------------------- UPDATING LESSON ----------------
 
