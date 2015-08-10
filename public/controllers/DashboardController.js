@@ -146,11 +146,6 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 		// $scope.backdropVisible = !$scope.backdropVisible;
 	}
 
-	$scope.addScheduleView = function() {
-		$scope.toggleSchedule = !$scope.toggleSchedule;
-		// $scope.backdropVisible = !$scope.backdropVisible;
-	}
-
 	// Toggling between dashboard views
 	$scope.activateCourses = function() {
 		$scope.activeTab = 'courses';
@@ -192,16 +187,6 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 		$scope.toggleViewToCourses = false;
 		$scope.toggleViewToMentors = false;
 		$scope.toggleViewToSchedule = false;
-	}
-
-	$scope.activateSchedule = function() {
-		$scope.activeTab = 'schedule';
-		$scope.toggleViewToSchedule = true;
-
-		$scope.toggleViewToTeachers = false;
-		$scope.toggleViewToCohorts = false;
-		$scope.toggleViewToCourses = false;
-		$scope.toggleViewToMentors = false;
 	}
 
 	$scope.activateInstructorSchedule = function() {

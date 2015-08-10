@@ -49,16 +49,6 @@ angular.module('devKittens')
 				$scope.toggleViewToPermissions = false;
 			}
 
-			$scope.activateSchedule = function() {
-				$scope.activeTab = 'schedule';
-				$scope.toggleViewToSchedule = true;
-
-				$scope.toggleViewToTasks = false;
-				$scope.toggleViewToNotes = false;
-				$scope.toggleViewToMentos = false;
-				$scope.toggleViewToPermissions = false;
-			}
-
 			$scope.activateTasks = function() {
 				$scope.activeTab = 'tasks';
 				$scope.toggleViewToTasks = true;
@@ -81,10 +71,6 @@ angular.module('devKittens')
 
 			$scope.addMentosView = function() {
 				$scope.toggleAddMentos = !$scope.toggleAddMentos;
-			}
-
-			$scope.addScheduleView = function() {
-				$scope.toggleAddSchedule = !$scope.toggleAddSchedule;
 			}
 
 			$scope.addTasksView = function() {

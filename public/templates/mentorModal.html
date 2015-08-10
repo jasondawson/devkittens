@@ -13,25 +13,9 @@
 	<div class="mini-modal-cal cal">
 
 		<div class="menu-bar-horizontal">
-
-			<button ng-click="activateSchedule(); addScheduleView()" class="btn btn-default btn-horizontal"
-				ng-class="{ active: activeTab === 'schedule' }">Schedule</button>
-
 			<button ng-click="activatePermissions(); addPermissionsView()" class="btn btn-default btn-horizontal"
 				ng-class="{ active: activeTab === 'Permissions' }">Permissions</button>
-		</div>
-
-		<!-- SCHEDULE SECTION -->
-		<div class="display-box-nonmodal" ng-show="toggleViewToSchedule">
-			<h2 class="text-dashboard left">Schedule</h2>
-
-			<div class="mentos-list">
-				<h5>Teach - 7/31</h5>
-				<h5>Meeting - 7/29</h5>
-				<h5>Teach - 8/3</h5>
-			</div>
-		</div>
-		
+		</div>		
 
 		<!-- MENTOR PERMISSIONS -->
 		<div class="display-box-nonmodal" ng-show="toggleViewToPermissions">
