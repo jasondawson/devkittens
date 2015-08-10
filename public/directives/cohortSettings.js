@@ -98,7 +98,6 @@ angular.module('devKittens')
 			$scope.displayAlert = false;
 
 			$scope.assignInstructor = function(day, instructor, dayIndex) {
-				console.log(dayIndex);
 				cohortServices.addInstructor(instructor, $scope.currentCohort._id, day.lesson, day._id, dayIndex)
 				.then(function(response) {
 					// console.log(response, dayIndex);

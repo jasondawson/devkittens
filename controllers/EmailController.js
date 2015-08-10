@@ -17,7 +17,6 @@ exports.sendEmail = function (req, res) {
     if (!body.html && !body.subject) return res.status(500).send('No message to send.');
 
     // TODO: correct from info once it's live
-    // Create message:
     var message = {
 	    text: "Ooops! The original message was not sent correctly.",
 	    html: body.html,
@@ -46,9 +45,22 @@ exports.sendEmail = function (req, res) {
 };
 
 exports.sendReminder = function (email) {
+	var keepIndex = email.html.day.toString().indexOf('00:00:00');
+    var teachingDate = email.html.day.toString().substring(0, keepIndex);
+
+
+	var html = '<p>We just wanted to remind you of your upcoming teaching appointment on '
+				+ teachingDate + '</p>'
+				+ '<p>The lesson topic is: ' + email.html.lesson.topic + '</p>'
+				+ '<p>To see the full lesson description and learning objectives, please log in: '
+				+ '<p><a href="http://localhost:3000">http://localhost:3000</a></p>'
+				+ '<p>We are looking forward to having you teach soon!<br>-DevMountain</p>'
+				+ '<br><p>P.S. If by any reason you need to cancel, you can do that through the dashboard or simply send the lead instructor en email.</p>'
+
+
 	var message = {
 	    text: "Ooops! The original message was not sent correctly.",
-	    html: email.html,
+	    html: html,
 	    subject: email.subject,
 	    to: email.to,
 		from_name: 'DevMountain',
@@ -62,8 +74,6 @@ exports.sendReminder = function (email) {
 
     mandrill_client.messages.send({"message": message, "async": async, "ip_pool": ip_pool}, function(result) {
         console.log(result);
-
-  
     }, function(e) {
         console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
         

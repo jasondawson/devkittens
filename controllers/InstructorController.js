@@ -77,6 +77,7 @@ exports.removeInstructor = function(req, res) {
 }
 
 exports.createReserve = function(req, res) {
+	console.log(req.params.dayId);
 	new ReservedLesson({
 		userId: req.params.userId,
 		dayId: req.params.dayId

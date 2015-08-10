@@ -3,12 +3,12 @@ angular.module('devKittens')
 .controller('DayController',
 function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStorage, lessonService, courseServices, cohortServices, studentServices, $location, $document) {
 	$scope.user = user;
-	// console.log(user)	
+	
 	if (typeRef == 'cohort') {
 		$scope.lesson = activeLesson.lesson;
 		$scope.day = activeLesson;
 		$scope.wantsToTeach = activeLesson.wantsToTeach;
-		// console.log(activeLesson);
+
 	} else if (typeRef == 'course') {
 		$scope.lesson = activeLesson;
 		$scope.day = null;
@@ -23,7 +23,7 @@ function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStor
 	//SECTION PERMISSIONS
 	$scope.newSection = {}
 	$scope.logNewSection = function(section){
-		// console.log(section)
+
 	}
 
 	$scope.permission = function(permissionTypes, userTypes){
@@ -132,12 +132,6 @@ function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStor
 	 	 	window.scrollTo(0, 0);
 	}
 
-	// $scope.addContent = function(i, item){
-	// 	$scope.sections[i].content.push(item)
-	// 	$scope.item = '';
-	// 	item = ''
-	// }
-
 
 	// STORE LESSON
 	if (typeRef == 'course') {
@@ -187,29 +181,10 @@ function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStor
 			.then(function(response){
 				$scope.lesson.edit = !$scope.lesson.edit;
 			})
+			.catch(function (err) {
+				console.error(err);
+			})
 		}
-
-		//////////////////////////////////////////////////
-		//////////////////////////////////////////////////
-		//////////////////////////////////////////////////
-		// MAJOR TODO: REPLACE EVENT FOR THE RIGHT THING//
-		//////////////////////////////////////////////////
-		//////////////////////////////////////////////////
-		//////////////////////////////////////////////////
-
-
-		// $scope.updateLessonSection = function(id, title, content){
-		// $scope.updateLessonSection = function(section){
-		// 	console.log(section);
-		// 	var id = section._id
-		// 	var data = {
-		// 		'sections.$.title' : section.title,
-		// 		'sections.$.content': section.content
-		// 	}
-		// 	lessonService.updateLessonSection(id, data).then(function(response){
-		// 		section.editSection = !section.editSection;
-		// 	})
-		// }
 
 		$scope.addLessonSection = function(section){
 			var id = $scope.lesson._id;
@@ -228,6 +203,7 @@ function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStor
 				$scope.sections.splice(index, 1);
 			})
 		}
+
 	} else if ($scope.typeRef === 'cohort') {
 		
 		// CRUDY COHORT
@@ -237,6 +213,9 @@ function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStor
 			cohortServices.updateLesson($scope.cohortId, $scope.dayId, topic, sections)
 			.then(function(response){
 				$scope.lesson.edit = !$scope.lesson.edit;
+			})
+			.catch(function (err) {
+				console.error(err);
 			})
 		}
 
@@ -286,16 +265,17 @@ function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStor
 	$scope.teachRequest = function() {
 		cohortServices.teachRequest(user, typeId, dayIndex)
 		.then(function(response) {
-			// console.log(response.curriculum[dayIndex]);
 			$scope.day = response.curriculum[dayIndex];
 			$scope.wantsToTeach.push(user);
+		})
+		.catch(function (err) {
+			console.error(err);
 		})
 	}
 
 	$scope.cancelRequest = function() {
 		cohortServices.cancelRequest(user, typeId, dayIndex)
 		.then(function(response) {
-			// console.log(response.curriculum[dayIndex]);
 			$scope.day = response.curriculum[dayIndex];
 			for (var i = 0; i < $scope.wantsToTeach.length; i++) {
 				if ($scope.wantsToTeach[i]._id == user._id) {
@@ -303,15 +283,19 @@ function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStor
 				}
 			}
 		})
+		.catch(function (err) {
+			console.error(err);
+		})
 	}
 
 	$scope.teachLesson = function(lesson, instructor) {
 		cohortServices.addInstructor(instructor, typeId, lesson, dayId, dayIndex)
 		.then(function(response) {
-			console.log(response);
 			$scope.day.instructor = instructor;
 			$scope.day.wantsToTeach.length = 0;
-			// console.log(response);
+		})
+		.catch(function (err) {
+			console.error(err);
 		})
 	}
 
@@ -320,6 +304,9 @@ function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStor
 		.then(function(response) {
 			$scope.day.instructor = false;
 			$scope.superShowThis = false;
+		})
+		.catch(function (err) {
+			console.error(err);
 		})
 	}
 
@@ -330,22 +317,20 @@ function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStor
 			.then(function(response) {
 				$scope.lesson.sections[sectionIndex].finishedStudents.push(user._id);
 			})
+			.catch(function (err) {
+				console.error(err);
+			})
 		} else {
 			studentServices.markAsIncomplete(user._id, dayIndex, sectionIndex, dayId)
 			.then(function(response) {
 				var index = $scope.lesson.sections[sectionIndex].finishedStudents.indexOf(user._id);
 				$scope.lesson.sections[sectionIndex].finishedStudents.splice(index, 1);
 			})
+			.catch(function (err) {
+				console.error(err);
+			})
 		}
 	}
 
-	// the creating a section part
-	// $scope.showSection = function(section) {
-	// 	if (!section.show) {
-	// 		section.show = true;
-	// 	} else {
-	// 		section.show = false;
-	// 	}
-	// }
 
 });
