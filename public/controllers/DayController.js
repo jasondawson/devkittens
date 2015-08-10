@@ -305,8 +305,10 @@ function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStor
 	}
 
 	$scope.removeLesson = function(lesson) {
+		cohortServices.sendCancelEmail(user, $scope.day);
 		cohortServices.removeInstructor(user, lesson, dayId)
 		.then(function(response) {
+			console.log(response);
 			$scope.day.instructor = false;
 			$scope.superShowThis = false;
 		})
