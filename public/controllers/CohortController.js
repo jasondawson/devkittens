@@ -20,7 +20,7 @@ function ($scope, user, $location, infoStorage, cohortServices, currentCohortDat
 	$scope.viewDay = function(day, index) {
 		// var currentCohort = infoStorage.getCurrentCohort()
 		infoStorage.storeDayIndex(index);
-		if(!day.lesson.sections.length > 0 && (user.userType.student ===true || user.userType.instructor === true)){
+		if(day.lesson.sections.length <= 0 && (!user.userType.admin && !user.userType.mentor)){
 			$scope.messageText = "There is nothing scheduled for this day";
 			$scope.displayAlert = true;
 			return;
