@@ -10,10 +10,10 @@
 <!-- SEE STUDENTS VIEW -->
 <div class="user-pics" ng-if="studentDisplay">
 	<div class="width-container">
-		<div class="pic-container" ng-repeat="student in currentCohort.students" ng-attr-titletext="{{student.name}}" tio-tooltip>
-			<a ng-href="{{student.githubUrl}}" target="_blank">
-				<img ng-src="{{student.avatar}}"
-					 ng-class="{'has-github': student.githubUrl}">
+		<div class="pic-container" ng-repeat="student in currentCohort.students" ng-attr-titletext="{{student.userId.name}}" tio-tooltip>
+			<a ng-href="{{student.userId.githubUrl}}" target="_blank">
+				<img ng-src="{{student.userId.avatar}}"
+					 ng-class="{'has-github': student.userId.githubUrl}">
 			</a>
 			<span class="tooltip-wrapper">
 				<p class="tooltip"></p>
