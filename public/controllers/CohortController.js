@@ -12,7 +12,6 @@ function ($scope, user, $location, infoStorage, cohortServices, currentCohortDat
 	$scope.segmentLength = $scope.currentCohort.curriculum.length;
 	$scope.currentSegment = openToCurrentDay;
 	$scope.activeMonth = $scope.currentCohort.curriculum[$scope.currentSegment];
-	$scope.today = new Date();
 	$scope.studentDisplay = false;
 	$scope.mentorDisplay = false;
 	$scope.isCohort = true;

@@ -67,13 +67,12 @@ angular.module('devKittens')
 					var curriculum = cohortData.curriculum;
 					var today = new Date();
 					today = today.setHours(0, 0, 0, 0);
-					console.log('today ', today);
 
+					// Loops through the curriculum to find the current Day and sets the currentSegment accordingly
 					for(var i = 0; i < curriculum.length; i++) {
 						for(var j = 0; j < curriculum[i].length; j++) {
 							if(today === Date.parse(curriculum[i][j].day)) {
 								currentSegment = i;
-								console.log(currentSegment);
 							}
 						}
 					}

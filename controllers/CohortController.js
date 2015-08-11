@@ -184,6 +184,17 @@ exports.removeSection = function(req, res){
 	// })
 };
 
+exports.removeCohort = function(req, res) {
+	Cohort.findByIdAndRemove(req.params.cohortId, function(err, cohort) {
+		if (err) {
+			console.log(err);
+			res.status(500).json(err);
+		} else {
+			res.json("POW!", cohort);
+		}
+	})
+}
+
 
 
 

@@ -212,6 +212,12 @@ i:hover {
 .pointer {
   cursor: pointer;
 }
+.delete-stuff {
+  float: right;
+}
+.delete-stuff:hover {
+  color: red !important;
+}
 header.white {
   background-color: #fff;
   border-bottom: 1px solid #B9B9B9;

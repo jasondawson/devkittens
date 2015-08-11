@@ -51,6 +51,7 @@
 			<a ng-repeat="course in courseArray"
 			   ng-href="/#/course/{{course._id}}" ng-click="setCourse(course)">
 				<div class="sub-section">
+					<i class="delete-stuff fa fa-trash-o" ng-click="removeCourse(course)"></i>
 					<div class="text-dashboard name">{{ course.title }}</div>
 					<div class="text-dashboard">
 						{{ course.courseLength }} days
@@ -90,6 +91,7 @@
 				ng-href="/#/cohort/{{cohort._id}}" ng-click="setCohort(cohort)"
 				ng-if="user.userType.admin || user.userType.mentor || cohort.instructors.toString().indexOf(user.typeData._id) >= 0">
 				<div class="sub-section">
+					<i class="delete-stuff fa fa-trash-o" ng-click="removeCohort(cohort)"></i>
 
 					<img ng-if="cohort.location === 'Dallas'"
 						 src="/public/images/dallas.png">

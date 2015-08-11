@@ -71,7 +71,8 @@ app.get('/api/course', CourseController.getCourse);
 app.get('/api/course/:courseId', CourseController.getCourse);
 app.get('/api/all-courses', CourseController.getAllCourses);
 app.put('/api/course/:curriculumId', CourseController.updateCourseCurriculum);
-app.put('/api/update-course/:curriculumId', CourseController.updateLessonOrder)
+app.put('/api/update-course/:curriculumId', CourseController.updateLessonOrder);
+app.put('/api/course/remove/:courseId', CourseController.removeCourse);
 
 // Cohorts lolz
 app.post('/api/cohort', CohortController.createNewCohort);
@@ -80,6 +81,7 @@ app.get('/api/cohort/:cohortId', CohortController.getCohort);
 app.get('/api/all-cohorts', CohortController.getAllCohorts);
 app.get('/api/cohort-day/:cohortId/:dayId', CohortController.getCohortDay);
 app.put('/api/cohort/mentor-groups/:cohortId', CohortController.updateMentorGroup);
+app.put('/api/cohort/remove/:cohortId', CohortController.removeCohort);
 
 //Cohort app
 app.get('/api/app-cohort/:userId', CohortController.getCohortForApp);

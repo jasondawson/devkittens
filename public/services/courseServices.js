@@ -21,6 +21,23 @@ angular.module('devKittens')
 		return dfrd.promise;
 	};
 
+
+	this.removeCourse = function(course) {
+		var deferred = $q.defer();
+
+		$http({
+			method: 'PUT',
+			url: '/api/course/remove/' + course._id
+		}).then(function(response) {
+			deferred.resolve(response.data);
+		})
+		.catch(function(err) {
+			deferred.reject(err);
+		})
+
+		return deferred.promise;
+	}
+
 	this.getCourse = function(courseId) {
 		var dfrd = $q.defer();
 		var uri = '/api/course/' + courseId;

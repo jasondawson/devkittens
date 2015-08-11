@@ -40,6 +40,16 @@ exports.getCourse = function(req, res) {
 	})
 };
 
+exports.removeCourse = function(req, res) {
+	Course.findByIdAndRemove(req.params.courseId, function(err, course) {
+		if(err) {
+			res.status(500).json(err);
+		} else {
+			res.json('Bye bye! ', course);
+		}
+	})
+}
+
 exports.getAllCourses = function(req, res) {
 	Course.find({}, function(err, data) {
 		if (err) {

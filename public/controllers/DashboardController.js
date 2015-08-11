@@ -60,6 +60,19 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 		})
 	}
 
+	$scope.removeCohort = function(obj) {
+		var result = confirm('Confirm delete');
+		if(result) {
+			cohortServices.removeCohort(obj)
+			.then(function(response) {
+				console.log('deleted ', response);
+			})
+			.catch(function(err) {
+				console.log(err)
+			})
+		}
+	}
+
 
 
 	$scope.createNewCourse = function(obj) {
@@ -76,6 +89,20 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 		.catch(function (err) {
 			console.error(err);
 		})
+	}
+
+	$scope.removeCourse = function(obj) {
+		var result = confirm('Confirm delete');
+		if(result) {
+			console.log(result);
+			courseServices.removeCourse(obj)
+			.then(function(response) {
+				console.log('deleted ', response);
+			})
+			.catch(function(err) {
+				console.log(err);
+			})
+		}
 	}
 
 

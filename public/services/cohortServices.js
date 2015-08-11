@@ -71,6 +71,22 @@ angular.module("devKittens")
 		return dfrd.promise;
 	}
 
+	this.removeCohort = function(cohort) {
+		console.log('cohort in cohortService ', cohort._id);
+		var deferred = $q.defer();
+
+		$http({
+			method: 'PUT',
+			url: '/api/cohort/remove/' + cohort._id
+		}).then(function(response) {
+			deferred.resolve(response.data);
+		})
+		.catch(function(err) {
+			deferred.reject(err);
+		})
+		return deferred.promise;
+	}
+
 	this.getCohortLesson = function(cohortId, dayId) {
 		var dfrd = $q.defer();
 
