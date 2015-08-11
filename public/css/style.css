@@ -173,6 +173,9 @@ i:hover {
   top: -53px;
   margin-left: 19px;
 }
+.ta-toolbar {
+  margin-bottom: 10px;
+}
 .alert-display {
   position: fixed;
   z-index: 9999;

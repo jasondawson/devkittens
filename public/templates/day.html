@@ -101,7 +101,7 @@
 <span class="go-back">
 	<button ng-click="toCalendar()" class="btn btn-default"><i class="fa fa-long-arrow-left"></i>&nbsp;&nbsp;&nbsp;back to calendar</button>
 	<br>
-	<button class="btn btn-default" ng-show="lesson.edit" ng-click="lesson.edit=!lesson.edit"><i class="fa fa-long-arrow-left"></i>&nbsp;&nbsp;&nbsp;back to day</button>
+	<button class="btn btn-default" ng-show="lesson.edit" ng-click="lesson.edit=!lesson.edit; newSection.show = false"><i class="fa fa-long-arrow-left"></i>&nbsp;&nbsp;&nbsp;back to day</button>
 </span>
 
 <section class="lesson smaller-wrapper">
@@ -148,7 +148,7 @@
 				<!-- LESSON INFO -->
 				<div ng-repeat="section in lesson.sections track by $index" class="portlet-content container extra-padding" ng-class="{'done-border': section.finishedStudents.indexOf(user._id) > -1}" ng-if="permission(section.read, user.userType)">
 					<i class="fa fa-pencil" ng-if="permission(section.edit, user.userType) && !user.userType.admin" ng-click="section.lesson.edit=!section.lesson.edit"></i>
-					<div ng-show="!section.lesson.edit">
+					<div ng-show="!lesson.edit">
 						<h3 ng-show="section.title">
 							{{section.title}}
 						</h3>
@@ -213,43 +213,48 @@
 
 				<!-- ADDS NEW SECTION TO A LESSON -->
 				<br>
-				<form ng-show="newSection.show" ng-submit="addLessonSection(newSection)">
-					<input type="text" ng-model="newSection.title"
-						   placeholder="Section title"
-						   class="form-control"/>
+				<div class="portlet-content container extra-padding"
+					 ng-show="newSection.show" >
+				
+					<form ng-submit="addLessonSection(newSection)">
+						<input type="text" ng-model="newSection.title"
+							   placeholder="Section title"
+							   class="form-control"/>
+					   <br>
 
-				   	<text-angular ng-model="newSection.content"></text-angular>
-				   	<div ng-if="user.userType.admin">
-				   		<p>edit permissions:</p>
-							<label ng-repeat="type in types">
-							  <input
-							    type="checkbox"
-							    name="selectedTypes[]"
-							    value="{{type}}"
-							    ng-checked="newSection.edit.indexOf(type) > -1"
-							    ng-click="toggleEditSelection(type)"
-							  > {{type}}
-							</label>
-							<br>
-							<p>read permissions:</p>
-							<label ng-repeat="type in types">
-							  <input
-							    type="checkbox"
-							    name="selectedTypes[]"
-							    value="{{type}}"
-							    ng-checked="newSection.read.indexOf(type) > -1"
-							    ng-click="toggleReadSelection(type)"
-							  > {{type}}
-							</label>
-							<br>
-						</div>
+					   	<text-angular ng-model="newSection.content"></text-angular>
+					   	<div ng-if="user.userType.admin">
+					   		<p>edit permissions:</p>
+								<label ng-repeat="type in types">
+								  <input
+								    type="checkbox"
+								    name="selectedTypes[]"
+								    value="{{type}}"
+								    ng-checked="newSection.edit.indexOf(type) > -1"
+								    ng-click="toggleEditSelection(type)"
+								  > {{type}}
+								</label>
+								<br>
+								<p>read permissions:</p>
+								<label ng-repeat="type in types">
+								  <input
+								    type="checkbox"
+								    name="selectedTypes[]"
+								    value="{{type}}"
+								    ng-checked="newSection.read.indexOf(type) > -1"
+								    ng-click="toggleReadSelection(type)"
+								  > {{type}}
+								</label>
+								<br>
+							</div>
 
-				   <button class="btn btn-default">Create section</button>
-				</form>
+					   <button class="btn btn-default">Create section</button>
+					</form>
+				</div>
 				
 				<br>
-				<button ng-show="lesson.edit" class="btn btn-success" ng-click="updateLesson()">Submit changes</button>
-				<button class="btn btn-default" style="float: right;" ng-show="lesson.edit" ng-click="newSection.show=!newSection.show"><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;add section</button>
+				<button ng-show="lesson.edit" class="btn btn-success" ng-click="updateLesson()">Save changes</button>
+				<button class="btn btn-default" style="float: right;" ng-show="lesson.edit" ng-click="newSection.show=!newSection.show"><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;Add section</button>
 			</span>
 			<div ng-show="toggleRequests" class="popup-list-left" ng-if="!day.instructor && (user.userType.admin || user.userType.mentor) && typeRef == 'cohort' && day.wantsToTeach.length">
 				<div class="the-coolest-header">
