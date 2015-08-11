@@ -128,7 +128,7 @@ angular.module("devKittens")
 	}
 
 	this.addInstructor = function(user, cohortId, lesson, dayId, dayIndex) {
-		console.log('fired again', lesson);
+		// console.log('fired again', lesson);
 		var dfrd = $q.defer();
 		var req1 = $http({
 			method: "PUT",

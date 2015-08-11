@@ -294,18 +294,16 @@ function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStor
 	}
 
 	$scope.teachLesson = function(lesson, instructor) {
-		console.log('fired');
-		console.log(lesson);
+		// console.log('fired');
+		// console.log(lesson);
 		instructorEmailsService.sendAcceptEmail(instructor, $scope.day)
 		.then(function(response) {
-			console.log(response);
 		})
 		.catch(function(err) {
 			console.warn(err);
 		})
 		cohortServices.addInstructor(instructor, typeId, lesson, dayId, dayIndex)
 		.then(function(response) {
-			console.log(response);
 			$scope.day.instructor = instructor;
 			$scope.day.wantsToTeach.length = 0;
 		})

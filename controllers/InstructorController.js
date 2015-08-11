@@ -1,7 +1,8 @@
 var Cohort 			= require('../models/CohortModel.js'),
 	User 			= require('../models/User.js'),
 	Instructor 		= require('../models/InstructorModel.js'),
-	ReservedLesson 	= require('../models/ReservedLessonModel.js');
+	ReservedLesson 	= require('../models/ReservedLessonModel.js'),
+	mongoose 		= require('mongoose');
 
 exports.getInstructorInfo = function(req, res) {
 	Instructor.findOne({"userId": req.params.userId}, function(err, data) {
@@ -26,15 +27,17 @@ exports.addToInstructor = function(req, res) {
 }
 
 exports.addInstructor = function(req, res) {
-	Cohort.findOne({"curriculum._id": req.params.dayId}, function(err, data) {
+	Cohort.findById(req.params.cohortId, function(err, cohort) {
+		var id = mongoose.Types.ObjectId(req.params.dayId);
 		if(err) {
 			res.status(500).json(err);
 		} else {
-			var cohort = data;
-			cohort.curriculum.id(req.params.dayId).set({instructor: req.body._id})
-			cohort.save(function(err, newDay) {
-				if(!err) {
-					res.json(newDay);
+			cohort.curriculum.id(id).set({instructor: req.body._id})
+			cohort.save(function(err, data) {
+				if(err) {
+					res.status(500).json(err);
+				} else {
+					res.json(data);
 				}
 			})
 		}
@@ -77,7 +80,6 @@ exports.removeInstructor = function(req, res) {
 }
 
 exports.createReserve = function(req, res) {
-	console.log(req.params.dayId);
 	new ReservedLesson({
 		userId: req.params.userId,
 		dayId: req.params.dayId
@@ -200,7 +202,9 @@ exports.deleteRequests = function(req, res) {
 		} else {
 			cohort.curriculum[req.params.dayIndex].wantsToTeach = [];
 			cohort.save(function(err, data) {
-				if (!err) {
+				if (err) {
+					res.status(500).json(err);
+				} else {
 					res.json(data);
 				}
 			})

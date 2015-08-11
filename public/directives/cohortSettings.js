@@ -97,17 +97,15 @@ angular.module('devKittens')
 			$scope.messageText;
 
 			$scope.assignInstructor = function(day, instructor, dayIndex) {
-				console.log('fired', day);
+				// console.log('fired', day);
 				instructorEmailsService.sendAcceptEmail(instructor, day)
 				.then(function(response) {
-					console.log(response);
 				})
 				.catch(function(err) {
 					console.warn(err);
 				})
 				cohortServices.addInstructor(instructor, $scope.currentCohort._id, day, day._id, dayIndex)
 				.then(function(response) {
-					console.log(response);
 					$scope.currentCohort.curriculum[0][dayIndex].instructor = instructor;
 					$scope.currentCohort.curriculum[0][dayIndex].wantsToTeach.length = 0;
 					$scope.messageText = "Success! On " + $scope.currentCohort.curriculum[0][dayIndex].day + ", " + instructor.name + " will teach your class about " + $scope.currentCohort.curriculum[0][dayIndex].topic + "."
