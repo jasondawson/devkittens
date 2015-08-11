@@ -120,7 +120,9 @@ module.exports = function(passport) {
                                     // User is a new mentor
                                     new Mentor({
                                         userId: result._id,
-                                        cohortId: req.body.cohortId
+                                        cohorts: [{
+                                            cohortId : req.body.cohortId
+                                        }]
                                     }).save();
 
                                     if (req.body.cohortId) {
