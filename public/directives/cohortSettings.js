@@ -95,7 +95,6 @@ angular.module('devKittens')
 			$scope.logger = function(x) {console.log(x)};
 			
 			$scope.messageText;
-			$scope.displayAlert = false;
 
 			$scope.assignInstructor = function(day, instructor, dayIndex) {
 				cohortServices.addInstructor(instructor, $scope.currentCohort._id, day.lesson, day._id, dayIndex)
@@ -104,7 +103,7 @@ angular.module('devKittens')
 					$scope.currentCohort.curriculum[0][dayIndex].instructor = instructor;
 					$scope.currentCohort.curriculum[0][dayIndex].wantsToTeach.length = 0;
 					$scope.messageText = "Success! On " + $scope.currentCohort.curriculum[0][dayIndex].day + ", " + instructor.name + " will teach your class about " + $scope.currentCohort.curriculum[0][dayIndex].topic + "."
-					$scope.displayAlert = true;
+					$scope.displaySuccess = true;
 
 				})
 			}
