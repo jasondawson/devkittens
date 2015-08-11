@@ -2,6 +2,7 @@ var User = require('../models/User.js'),
 	Mentor = require('../models/MentorModel.js'),
 	Instructor = require('../models/InstructorModel.js'),
 	Student = require('../models/StudentModel.js');
+	Cohorts = require('../models/CohortModel.js');
 
 exports.instructorPermissions = function(req, res) {
 	User.findById(req.params.userId, function(err, user) {
@@ -97,6 +98,22 @@ exports.mentorPermissions = function(req, res) {
 					}
 				})
 			} else if (!req.body.mentor) {
+				Cohorts.find({'mentors.userId': req.params.userId}, function(err, cohorts) {
+					if (!err && cohorts) {
+						console.log(cohorts)
+						for (var i = 0; i < cohorts.length; i++) {
+							for (var j = 0; j < cohorts[i].students.length; j++) {
+								if (cohorts[i].students[j].mentor == req.params.userId) {
+									console.log('we have a match')
+									cohorts[i].students[j].set({ mentor : null, assigned: false});
+									cohorts[i].save(function(err, data){
+										console.log('error', err, 'data', data)
+									});
+								}
+							}
+						}
+					}
+				})
 				Mentor.findOne({"userId": req.params.userId}, function(err, mentor) {
 					if (!err && mentor) {
 						mentor.remove();
