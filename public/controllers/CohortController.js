@@ -1,8 +1,8 @@
 angular.module('devKittens')
 
 .controller('CohortController', 
-function ($scope, user, $location, infoStorage, cohortServices, currentCohortData, emailsService, mentorService, dayOfWeek, instructorServices) {
-	
+function ($scope, user, $location, infoStorage, cohortServices, currentCohortData, emailsService, mentorService, dayOfWeek, instructorServices, openToCurrentDay) {
+
 	// Init
 	$scope.user = user;
 	$scope.currentCohort = currentCohortData;
@@ -10,8 +10,8 @@ function ($scope, user, $location, infoStorage, cohortServices, currentCohortDat
 	$scope.arrayLength = $scope.currentCohort.curriculum[$scope.currentCohort.curriculum.length - 1]
 
 	$scope.segmentLength = $scope.currentCohort.curriculum.length;
-	$scope.currentSegment = 0;
-	$scope.activeMonth = $scope.currentCohort.curriculum[0];
+	$scope.currentSegment = openToCurrentDay;
+	$scope.activeMonth = $scope.currentCohort.curriculum[$scope.currentSegment];
 	$scope.today = new Date();
 	$scope.studentDisplay = false;
 	$scope.mentorDisplay = false;
@@ -58,7 +58,6 @@ function ($scope, user, $location, infoStorage, cohortServices, currentCohortDat
 			$('.fa-chevron-right').css('color', '#DFDFDF')
 			return;
 		}
-
 	}
 
 	// Modal related || TODO: refactor for make all modals consistent

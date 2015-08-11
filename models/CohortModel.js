@@ -62,7 +62,6 @@ cohortSchema.pre('save', function(next, startDate, curriculum) {
 		this.curriculum[i].day = formattedDates[i];
 	}
 
-
 	next();
 })
 

@@ -11,8 +11,6 @@ angular.module('devKittens')
 			today = today.setHours(0, 0, 0, 0);
 			
 			if(today === Date.parse(scope.day.day)) {
-				// console.log('it\'s a match! ', scope.day.day);
-
 				elem.addClass('current-day');
 			}
 

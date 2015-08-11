@@ -60,6 +60,28 @@ angular.module('devKittens')
 			dayOfWeek: function(infoStorage) {
 				return infoStorage.getDayOfWeek();
 			},
+			openToCurrentDay: function(infoStorage) {
+				var cohortData = infoStorage.getCurrentCohort();
+				var currentSegment = 0;
+				if(cohortData) {
+					var curriculum = cohortData.curriculum;
+					var today = new Date();
+					today = today.setHours(0, 0, 0, 0);
+					console.log('today ', today);
+
+					for(var i = 0; i < curriculum.length; i++) {
+						for(var j = 0; j < curriculum[i].length; j++) {
+							if(today === Date.parse(curriculum[i][j].day)) {
+								currentSegment = i;
+								console.log(currentSegment);
+							}
+						}
+					}
+				}
+
+				return currentSegment;
+				
+			},
 			user: getAuth
 		}
 	})
