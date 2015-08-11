@@ -18,13 +18,21 @@
 			<!-- <button ng-click="activateComments(); addCommentsView()" class="btn btn-default btn-horizontal"
 				ng-class="{ active: activeTab === 'Comments' }">Comments</button> -->
 
-			<button ng-click="activateSchedule(); addScheduleView()" class="btn btn-default btn-horizontal"
-				ng-class="{ active: activeTab === 'schedule' }">Schedule</button>
+			<button ng-click="activateSchedule(); addScheduleView()"
+					class="btn btn-default btn-horizontal"
+					ng-if="user.userType.admin"
+					ng-class="{ active: activeTab === 'schedule' }">
+				Schedule
+			</button>
 
 			<!-- <button ng-click="activateSkills(); addSkillsView()" class="btn btn-default btn-horizontal"
 				ng-class="{ active: activeTab === 'Skills' }">Skills</button> -->
-			<button ng-click="activatePermissions(); addPermissionsView()" class="btn btn-default btn-horizontal"
-				ng-class="{ active: activeTab === 'Permissions' }">Permissions</button>
+			<button ng-click="activatePermissions(); addPermissionsView()"
+					class="btn btn-default btn-horizontal"
+					ng-class="{ active: activeTab === 'Permissions' }"
+					ng-if="user.userType.admin">
+				Permissions
+			</button>
 		</div>
 
 

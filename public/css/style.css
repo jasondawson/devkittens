@@ -1352,8 +1352,25 @@ section.cohort-settings .student-display .s-info a {
   top: 5px;
   right: 5px;
 }
+section.cohort-settings .student-display .btn.align-right {
+  position: absolute;
+  right: 0;
+}
 section.cohort-settings .student-display.pointer:hover {
   background-color: #eee;
+}
+section.cohort-settings .student-to-assign {
+  border-bottom: 1px solid #c3c3c3;
+}
+section.cohort-settings .student-to-assign .flex-row-space-between {
+  justify-content: space-around;
+}
+section.cohort-settings .student-to-assign .flex-row-space-between div {
+  width: 49%;
+  display: inline-block;
+}
+section.cohort-settings .student-to-assign .flex-row-space-between div h4 {
+  font-size: 16px;
 }
 section.cohort-settings .dsh-menu {
   width: 250px;
@@ -1487,11 +1504,6 @@ section.cohort-settings .dsh-menu .dsh-item.active-dsh {
 }
 .relative {
   position: relative;
-}
-.relative .hang-to-the-left {
-  position: absolute;
-  top: -10px;
-  left: -65px;
 }
 .grey-hover-party {
   box-sizing: border-box;

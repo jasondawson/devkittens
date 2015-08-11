@@ -9,7 +9,8 @@ angular.module('devKittens')
 			toggleSubscribeCohortModal: '&',
 			toggleSubscribeCohort: '=',
 			cohortArray: '=',
-			usersArray: '='
+			usersArray: '=',
+			user: '='
 		},
 		controller: function($scope) {
 

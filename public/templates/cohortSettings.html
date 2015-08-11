@@ -81,7 +81,7 @@
 				</span>
 
 				<div class="btn-container">
-					<button class="btn btn-default" ng-click="mentor.showStudents=!mentor.showStudents">Assign Students</button>
+					<button class="btn btn-default align-right" ng-click="mentor.showStudents=!mentor.showStudents">Assign Students</button>
 				</div>
 				<div class="modal-cover" ng-show="mentor.showStudents">
 					<div class="lesson-modal modal">
@@ -89,7 +89,11 @@
 							<i class="fa fa-times" ng-click="mentor.showStudents=!mentor.showStudents"></i>
 							<h4>Assign Students to {{mentor.userId.name}}'s Mentor Group:</h4>
 						</div>
-						<div ng-repeat="student in currentCohort.students">
+
+						<button class="btn btn-default" ng-click="addStudents(mentor, currentCohort.students)">Submit Changes</button>
+						<hr>
+
+						<div ng-repeat="student in currentCohort.students" class="student-to-assign">
 							<div class="flex-row-space-between">
 								<div>
 									<h4><input
@@ -100,10 +104,12 @@
 										> <img class="pic-container" ng-src="{{student.userId.avatar}}"/> {{student.userId.name}}
 									</input></h4>
 								</div>
-								<h4>mentor: {{student.mentor.name}}</h4>
+
+								<div>
+									<h4><span ng-if="student.mentor.name">w/ </span>{{student.mentor.name}}</h4>
+								</div>
 							</div>
 						</div>
-						<button class="btn btn-default" ng-click="addStudents(mentor, currentCohort.students)">submit</button>
 					</div>
 				</div>
 

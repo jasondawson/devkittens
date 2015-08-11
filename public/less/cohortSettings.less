@@ -149,6 +149,11 @@ section.cohort-settings {
 	    		right: 5px;
 	    	}
     	}
+
+    	.btn.align-right {
+    		position: absolute;
+    		right: 0;
+    	}
     }
 
     .student-display.pointer {
@@ -157,6 +162,22 @@ section.cohort-settings {
     	}
     }
 
+    .student-to-assign {
+    	border-bottom: @main-border;
+
+    	.flex-row-space-between {
+    		justify-content: space-around;
+
+    		div {
+    			width: 49%;
+    			display: inline-block;
+
+    			h4 {
+    				font-size: 16px;
+    			}
+    		}
+    	}
+    }
 
     .dsh-menu {
 		width: @menu-width;

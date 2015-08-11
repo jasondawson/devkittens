@@ -10,14 +10,15 @@ angular.module('devKittens')
 			toggleTeacherModal: '&',
 			teacher: '=',
 			currentTeacher: '=',
-			instructorData: '='
+			instructorData: '=',
+			user: '='
 		},
 		controller: function($scope, userService) {
 
 			$scope.toggleAddSchedule = false;
 			$scope.toggleAddPermissions = false;
 
-			$scope.toggleViewToSchedule = false;
+			$scope.toggleViewToSchedule = true;
 			$scope.toggleViewToPermissions = false;
 
 			$scope.activateSchedule = function() {

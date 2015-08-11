@@ -111,7 +111,7 @@
 			<div ng-show="!lesson.edit && (lesson.sections.length || lesson.topic)">
 				<h2 class="flex-between">
 					<div class="just-flex">
-						<div class="relative">{{lesson.topic || topicPlaceholder}}
+						<div class="relative">
 							<div ng-show="day.instructor" class="pic-container hang-to-the-left" ng-attr-titletext="{{day.instructor.name}}" tio-tooltip>
 								<a ng-href="{{day.instructor.githubUrl}}" target="_blank">
 									<img ng-src="{{day.instructor.avatar}}"
@@ -122,6 +122,7 @@
 									<span class="arrow-down"></span>
 								</span>
 							</div>
+							{{lesson.topic || topicPlaceholder}}
 						</div>
 					</div>
 					<div class="just-flex">
