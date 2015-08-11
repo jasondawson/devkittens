@@ -1,9 +1,10 @@
 angular.module('devKittens')
 
 .controller('UserSettingsController',
-function ($scope, $timeout, user, userService) {
+function ($scope, $timeout, user, userService, $location) {
 
 	$scope.user = user;
+
 	$scope.updateUser = function (user, newPassword) {
 		var updatedInfo = {
 			name: user.name,
@@ -28,6 +29,13 @@ function ($scope, $timeout, user, userService) {
 		.catch(function (err) {
 			throw new Error(err);
 		});
+	}
+
+	// BACK TO CALENDAR
+	$scope.toCalendar = function(){
+		if (!user.userType.student) return;
+
+		$location.path('/cohort/' + user.typeData.cohortId);
 	}
 
 
