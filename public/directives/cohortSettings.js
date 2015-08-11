@@ -1,6 +1,6 @@
 angular.module('devKittens')
 
-.directive('cohortSettings', function (emailsService, instructorServices, cohortServices) {
+.directive('cohortSettings', function (emailsService, instructorServices, instructorEmailsService, cohortServices) {
 	return {
 		restrict: 'E',
 		templateUrl: '/public/templates/cohortSettings.html',
@@ -97,14 +97,24 @@ angular.module('devKittens')
 			$scope.messageText;
 
 			$scope.assignInstructor = function(day, instructor, dayIndex) {
-				cohortServices.addInstructor(instructor, $scope.currentCohort._id, day.lesson, day._id, dayIndex)
+				console.log('fired', day);
+				instructorEmailsService.sendAcceptEmail(instructor, day)
 				.then(function(response) {
-					// console.log(response, dayIndex);
+					console.log(response);
+				})
+				.catch(function(err) {
+					console.warn(err);
+				})
+				cohortServices.addInstructor(instructor, $scope.currentCohort._id, day, day._id, dayIndex)
+				.then(function(response) {
+					console.log(response);
 					$scope.currentCohort.curriculum[0][dayIndex].instructor = instructor;
 					$scope.currentCohort.curriculum[0][dayIndex].wantsToTeach.length = 0;
 					$scope.messageText = "Success! On " + $scope.currentCohort.curriculum[0][dayIndex].day + ", " + instructor.name + " will teach your class about " + $scope.currentCohort.curriculum[0][dayIndex].topic + "."
 					$scope.displaySuccess = true;
-
+				})
+				.catch(function(err) {
+					console.warn(err);
 				})
 			}
 
