@@ -43,7 +43,7 @@ angular.module('devKittens')
 		var dfrd = $q.defer();
 		$http({
 			method: "PUT",
-			url: "/api/permissions/instructor/" + user._id,
+			url: "/api/permissions/" + user._id,
 			data: obj
 		})
 		.then(function(response) {
@@ -56,7 +56,20 @@ angular.module('devKittens')
 		var dfrd = $q.defer();
 		$http({
 			method: "PUT",
-			url: "/api/permissions/mentor/" + user._id,
+			url: "/api/permissions/" + user._id,
+			data: obj
+		})
+		.then(function(response) {
+			dfrd.resolve(response);
+		})
+		return dfrd.promise;
+	}
+
+	service.permissions = function(obj, user) {
+		var dfrd = $q.defer();
+		$http({
+			method: "PUT",
+			url: "/api/permissions/" + user._id,
 			data: obj
 		})
 		.then(function(response) {

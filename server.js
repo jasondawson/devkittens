@@ -128,8 +128,8 @@ app.put('/api/user/:id', User.put);
 app.post('/api/data-type', User.getTypeData);
 
 // Permissions
-app.put('/api/permissions/instructor/:userId', PermissionsController.instructorPermissions);
-app.put('/api/permissions/mentor/:userId', PermissionsController.mentorPermissions);
+// app.put('/api/permissions/instructor/:userId', PermissionsController.permissions);
+app.put('/api/permissions/:userId', PermissionsController.permissions);
 
 // Auth
 app.post('/api/user', logout, passport.authenticate('local-signup'), function (req, res) {

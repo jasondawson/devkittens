@@ -22,6 +22,11 @@
 			<p>Courses</p>
 		</div>
 
+		<div class="dsh-item" ng-click="activateMenu('students')" ng-if="(!user.userType.instructor || (user.userType.instructor && user.userType.admin)) && !user.userType.student" active-menu>
+			<i class="fa fa-paw"></i>
+			<p>Students</p>
+		</div>
+
 		<div class="dsh-item" ng-click="activateMenu('mentors')" ng-if="(!user.userType.instructor || (user.userType.instructor && user.userType.admin)) && !user.userType.student" active-menu>
 			<i class="fa fa-hand-lizard-o"></i>
 			<p>Mentors</p>
@@ -136,6 +141,29 @@
 
 
 
+	<!-- STUDENT SECTION -->
+	<div class="flex-pants" ng-show="currentTab === 'students'">
+
+		<div class="sub-dsh">
+			<input type="text" ng-model="filterStudents" placeholder="find student"/>
+			<div class="mini-header">Students</div>
+			<div class="student-display pointer" ng-repeat="student in usersArray | filter: {userType: {student: true}} | filter: filterStudents" ng-click="toggleStudentModal(); setStudent(student)">
+				<a>
+					<img ng-src="{{student.avatar}}"
+						 ng-class="{'has-github': student.githubUrl}">
+				</a>
+				<span class="s-info">
+					<p class="s-name">{{student.name}}</p>
+					<p class="s-email">{{student.local.email}}</p>
+					<a ng-href="{{student.githubUrl}}" ng-if="student.githubUrl" target="_blank"><i class="fa fa-github-alt"></i></a>
+				</span>
+			</div>
+		</div>
+
+	</div>
+
+
+
 
 
 	<!-- MENTOR SECTION -->
@@ -237,6 +265,18 @@
 
 
 <!-- Modal for mentor profile -->
+<student-modal
+	ng-show="toggleViewToStudentProfile"
+	toggle-view-to-student-profile="toggleViewToStudentProfile"
+	current-student="currentStudent"
+	options="options"
+	student="student"
+	user="user"
+	cohorts="cohortArray"
+	set-student="setStudent(student)"
+	toggle-student-modal="toggleStudentModal()">
+</student-modal>
+
 <mentor-modal
 	ng-show="toggleViewToMentorProfile"
 	toggle-view-to-mentor-profile="toggleViewToMentorProfile"

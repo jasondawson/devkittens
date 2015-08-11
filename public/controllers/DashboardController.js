@@ -151,9 +151,11 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 	$scope.toggleSchedule = false;
 	$scope.toggleViewToCohorts = false;
 	$scope.toggleViewToCourses = true;
+	$scope.toggleViewToStudents = false;
 	$scope.toggleViewToMentors = false;
 	$scope.toggleViewToTeachers = false;
 	$scope.toggleViewToSchedule = false;
+	$scope.toggleViewToStudentProfile = false;
 	$scope.toggleViewToMentorProfile = false;
 	$scope.toggleViewToTeacherProfile = false;
 	$scope.toggleSubscribeCohort = false;
@@ -188,6 +190,7 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 		$scope.toggleViewToMentors = false;
 		$scope.toggleViewToTeachers = false;
 		$scope.toggleViewToSchedule = false;
+		$scope.toggleViewToStudents = false;
 	}
 
 	$scope.activateCohorts = function() {
@@ -199,7 +202,19 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 		$scope.toggleViewToMentors = false;
 		$scope.toggleViewToTeachers = false;
 		$scope.toggleViewToSchedule = false;
+		$scope.toggleViewToStudents = false;
 
+	}
+
+	$scope.activateStudents = function() {
+		$scope.activeTab = 'students';
+		$scope.toggleViewToStudents = true;
+		$scope.toggleViewToMentors = false;
+
+		$scope.toggleViewToCohorts = false;
+		$scope.toggleViewToCourses = false;
+		$scope.toggleViewToTeachers = false;
+		$scope.toggleViewToSchedule = false;
 	}
 
 	$scope.activateMentors = function() {
@@ -210,6 +225,7 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 		$scope.toggleViewToCourses = false;
 		$scope.toggleViewToTeachers = false;
 		$scope.toggleViewToSchedule = false;
+		$scope.toggleViewToStudents = false;
 	}
 
 	$scope.activateTeachers = function() {
@@ -220,6 +236,7 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 		$scope.toggleViewToCourses = false;
 		$scope.toggleViewToMentors = false;
 		$scope.toggleViewToSchedule = false;
+		$scope.toggleViewToStudents = false;
 	}
 
 	$scope.activateInstructorSchedule = function() {
@@ -231,6 +248,7 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 		$scope.toggleViewToCohorts = false;
 		$scope.toggleViewToCourses = false;
 		$scope.toggleViewToMentors = false;	
+		$scope.toggleViewToStudents = false;
 	}
 
 	// Open/close mentor modal - invites mentors to join DevMtn
@@ -268,11 +286,20 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 		$scope.toggleViewToMentorProfile = !$scope.toggleViewToMentorProfile;
 		$scope.backdropVisible = !$scope.backdropVisible;
 	}
+
+	$scope.toggleStudentModal = function() {
+		$scope.toggleViewToStudentProfile = !$scope.toggleViewToStudentProfile;
+		$scope.backdropVisible = !$scope.backdropVisible;
+	}
 	
 
 	// Sets currentMentor through an ng-click on dashboard-mentors.html
 	$scope.setMentor = function(mentor) {
 		$scope.currentMentor = mentor
+	}
+
+	$scope.setStudent = function(student) {
+		$scope.currentStudent = student
 	}
 
 	$scope.setTeacher = function(teacher) {
