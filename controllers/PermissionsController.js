@@ -101,12 +101,16 @@ exports.permissions = function(req, res) {
 				Cohorts.find({'mentors.userId': req.params.userId}, function(err, cohorts) {
 					if (!err && cohorts) {
 						for (var i = 0; i < cohorts.length; i++) {
+							for (var j = 0; j < cohorts[i].mentors.length; j++) {
+								if (cohorts[i].mentors[j].userId == req.params.userId) {
+									cohorts[i].mentors.splice(j, 1);
+									cohorts[i].save();
+								}
+							}
 							for (var j = 0; j < cohorts[i].students.length; j++) {
 								if (cohorts[i].students[j].mentor == req.params.userId) {
 									cohorts[i].students[j].set({ mentor : null, assigned: false});
-									cohorts[i].save(function(err, data){
-										console.log('error', err, 'data', data)
-									});
+									cohorts[i].save();
 								}
 							}
 						}
