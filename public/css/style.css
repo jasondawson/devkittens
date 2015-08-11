@@ -898,15 +898,23 @@ section.registration .right .inner-right .btn {
   width: 50%;
   margin: 20px;
 }
-.add-cohort-modal .modal-divider .divided label {
+.add-cohort-modal .modal-divider .divided-left {
+  border-right: 1px solid #eee;
+}
+.modal-padding {
+  padding: 20px;
+}
+.modal-padding .schedule-section {
+  padding: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+.divided label {
   display: block;
   margin-left: 20px;
 }
-.add-cohort-modal .modal-divider .divided label input {
+.divided label input {
   margin-right: 10px;
-}
-.add-cohort-modal .modal-divider .divided-left {
-  border-right: 1px solid #eee;
 }
 .strict-modal {
   overflow: hidden;

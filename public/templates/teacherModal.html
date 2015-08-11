@@ -10,7 +10,7 @@
 	<h2 class="name">{{ currentTeacher.name }}</h2>
 
 
-	<div class="mini-modal-cal cal">
+	<div class="modal-padding">
 
 
 		<div class="menu-bar-horizontal">
@@ -18,76 +18,72 @@
 			<!-- <button ng-click="activateComments(); addCommentsView()" class="btn btn-default btn-horizontal"
 				ng-class="{ active: activeTab === 'Comments' }">Comments</button> -->
 
-			<button ng-click="activateSchedule(); addScheduleView()"
-					class="btn btn-default btn-horizontal"
-					ng-if="user.userType.admin"
-					ng-class="{ active: activeTab === 'schedule' }">
-				Schedule
-			</button>
+
+			<ul class="nav nav-tabs">
+				<li ng-class="{ active: activeTab === 'schedule' }">
+					<a ng-click="activateSchedule(); addScheduleView()">Schedule</a>
+				</li>
+
+				<li ng-if="user.userType.admin" ng-class="{ active: activeTab === 'Permissions' }">
+					<a ng-click="activatePermissions(); addPermissionsView()">Permissions</a>
+				</li>
+			</ul>
 
 			<!-- <button ng-click="activateSkills(); addSkillsView()" class="btn btn-default btn-horizontal"
 				ng-class="{ active: activeTab === 'Skills' }">Skills</button> -->
-			<button ng-click="activatePermissions(); addPermissionsView()"
-					class="btn btn-default btn-horizontal"
-					ng-class="{ active: activeTab === 'Permissions' }"
-					ng-if="user.userType.admin">
-				Permissions
-			</button>
 		</div>
 
 
 
-			<!-- COMMENTS SECTION -->
-			<!-- <div class="display-box-nonmodal" ng-show="toggleViewToComments">
-				<h2 class="text-dashboard left">Use these terms in your lesson</h2>
+		<!-- COMMENTS SECTION -->
+		<!-- <div class="display-box-nonmodal" ng-show="toggleViewToComments">
+			<h2 class="text-dashboard left">Use these terms in your lesson</h2>
 
-				<div class="mentos-list">
-					<div ng-repeat="comment in instructorData.comments">
-						<div>{{comment}}</div>
-					</div>
+			<div class="mentos-list">
+				<div ng-repeat="comment in instructorData.comments">
+					<div>{{comment}}</div>
 				</div>
-			</div> -->
+			</div>
+		</div> -->
 
-			<!-- SCHEDULE SECTION -->
-			<div class="display-box-nonmodal" ng-show="toggleViewToSchedule">
-				<h2 class="text-dashboard left">Schedule</h2>
-
-				<div class="mentos-list" ng-repeat="day in instructorData.schedule">
-					<div style="margin: 5px; border: 1px solid black">
-						<div>{{day.topic}}</div>
-						<div>{{day.day | date: 'longDate'}}</div>
-						<div ng-repeat="section in day.lesson.sections">
-							<div>{{section.title}}</div>
-							<div ng-bind-html="section.content | unsafe"></div>
-						</div>
+		<!-- SCHEDULE SECTION -->
+		<div ng-show="toggleViewToSchedule">
+			<div ng-repeat="day in instructorData.schedule">
+				<div class="schedule-section">
+					<h3>{{day.topic}}</h3>
+					<div>{{day.day | date: 'mediumDate'}}</div>
+					<div ng-repeat="section in day.lesson.sections">
+						<h4>{{section.title}}</h4>
+						<div ng-bind-html="section.content | unsafe"></div>
 					</div>
 				</div>
 			</div>
-			
+		</div>
+		
 
-			<!-- MINI-PROBLEM SECTION -->
-			<!-- <div class="display-box-nonmodal" ng-show="toggleViewToSkills">
-				<h2 class="text-dashboard left">Students Mini-problem for the day</h2>
+		<!-- MINI-PROBLEM SECTION -->
+		<!-- <div class="display-box-nonmodal" ng-show="toggleViewToSkills">
+			<h2 class="text-dashboard left">Students Mini-problem for the day</h2>
 
-				<div class="mentos-list">
-					<div ng-repeat="skill in instructorData.skills">
-						<div>{{skill}}</div>
-					</div>
+			<div class="mentos-list">
+				<div ng-repeat="skill in instructorData.skills">
+					<div>{{skill}}</div>
 				</div>
-			</div> -->
-			
-
-			<!-- PERMISSIONS SECTION -->
-			<div class="display-box-nonmodal" ng-show="toggleViewToPermissions">
-				<h2 class="text-dashboard left">Edit this user's permissions</h2>
-				<form>
-					<label><input type="checkbox"ng-model="currentTeacher.userType.admin">Admin</label>
-					<label><input type="checkbox" ng-model="currentTeacher.userType.mentor">Mentor</label>
-					<label><input type="checkbox" ng-model="currentTeacher.userType.instructor">Instructor</label>
-					<label><input type="checkbox" ng-model="currentTeacher.userType.student">Student</label>
-					<button class="btn btn-default" ng-click="editPermissions(currentTeacher.userType)">Save changes</button>
-				</form>
 			</div>
+		</div> -->
+		
+
+		<!-- PERMISSIONS SECTION -->
+		<div class="display-box-nonmodal divided" ng-show="toggleViewToPermissions">
+			<h4 class="text-dashboard left">Edit this user's permissions</h4>
+			<form>
+				<label><input type="checkbox"ng-model="currentTeacher.userType.admin">Admin</label>
+				<label><input type="checkbox" ng-model="currentTeacher.userType.mentor">Mentor</label>
+				<label><input type="checkbox" ng-model="currentTeacher.userType.instructor">Instructor</label>
+				<label><input type="checkbox" ng-model="currentTeacher.userType.student">Student</label>
+				<button class="btn btn-default" ng-click="editPermissions(currentTeacher.userType)">Save changes</button>
+			</form>
+		</div>
 
 
 	</div>
