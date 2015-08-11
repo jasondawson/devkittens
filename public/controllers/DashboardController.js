@@ -100,6 +100,12 @@ function ($scope, $location, cohortData, courseData, usersData, courseServices, 
 	}
 
 
+	$scope.closeAllModals = function () {
+		$scope.backdropVisible = false;
+		$scope.toggleViewToTeacherProfile = false;
+		$scope.toggleViewToMentorProfile = false;
+	}
+
 
 
 	//////////////////////////////////////////////////
