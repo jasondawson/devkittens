@@ -161,7 +161,7 @@ app.get('/logout', function(req, res) {
 
 
 // Connections
-var portNum = 3000;
+var portNum = 80;
 
 var mongooseUri = 'mongodb://localhost/devkittens';
 mongoose.connect(mongooseUri);

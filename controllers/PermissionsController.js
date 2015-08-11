@@ -104,7 +104,6 @@ exports.mentorPermissions = function(req, res) {
 						for (var i = 0; i < cohorts.length; i++) {
 							for (var j = 0; j < cohorts[i].students.length; j++) {
 								if (cohorts[i].students[j].mentor == req.params.userId) {
-									console.log('we have a match')
 									cohorts[i].students[j].set({ mentor : null, assigned: false});
 									cohorts[i].save(function(err, data){
 										console.log('error', err, 'data', data)
