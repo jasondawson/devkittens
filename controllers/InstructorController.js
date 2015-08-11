@@ -211,3 +211,28 @@ exports.deleteRequests = function(req, res) {
 		}
 	})
 }
+
+exports.updateSchedule = function(req, res) {
+	Instructor.findOne({"userId": req.params.instructorId})
+	.lean()
+	.exec(function(err, instructor) {
+		if (err) { 
+			res.status(500).json(err);
+		} else {
+			for (var i = 0; i < instructor.schedule.length; i++) {
+				if (instructor.schedule[i]._id == req.params.dayId) {
+					instructor.schedule[i].topic = req.body.topic;
+					instructor.schedule[i].lesson.sections = req.body.sections;
+					break;
+				}
+			}
+			Instructor.update({_id: instructor._id}, instructor, function(err, result){
+				if (err) {
+					res.status(500).json(err);
+				} else {
+					res.json(result);
+				}
+			})
+		}
+	})
+}

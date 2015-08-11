@@ -87,6 +87,23 @@ angular.module('devKittens')
 		return allInst;
 	}
 
+	service.updateSchedule = function(topic, sections, instructor, dayId) {
+		var dfrd = $q.defer();
+		$http({
+			method: "PUT",
+			url: "/api/instructor/schedule/" + instructor + "/" + dayId,
+			data: {
+				topic: topic,
+				sections: sections
+			}
+		})
+		.then(function(response) {
+			console.log(response)
+			dfrd.resolve(response.data);
+		})
+		return dfrd.promise;
+	}
+
 
 	return service;
 });

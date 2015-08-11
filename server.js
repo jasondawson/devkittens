@@ -108,6 +108,7 @@ app.put('/api/reserved/:userId/:dayId', InstructorController.deleteReserve);
 app.put('/api/instructor', InstructorController.assignToCohort);
 app.get('/api/instructors', InstructorController.getAllInstructors);
 app.get('/api/instructors/:cohortId', InstructorController.getCohortInstructors);
+app.put('/api/instructor/schedule/:instructorId/:dayId', InstructorController.updateSchedule);
 
 // students completing sections
 app.post('/api/completed', StudentController.markAsCompleted);
@@ -171,12 +172,12 @@ mongoose.connect(mongooseUri);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function (callback) {
-  console.log('Mongoose listening to your soul on:', mongooseUri);
+  console.log('Mongoose caressing your soul on:', mongooseUri);
 });
 
 
 app.listen(portNum, function () {
-    console.log('Making some pancakes on port:', portNum);
+    console.log('Making some funcakes on port:', portNum);
 });
 
 

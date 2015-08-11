@@ -1,7 +1,7 @@
 angular.module('devKittens')
 
 .controller('DayController',
-function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStorage, lessonService, courseServices, cohortServices, studentServices, instructorEmailsService, $location, $document) {
+function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStorage, lessonService, courseServices, cohortServices, studentServices, instructorServices, instructorEmailsService, $location, $document) {
 	$scope.user = user;
 	
 	if (typeRef == 'cohort') {
@@ -210,11 +210,14 @@ function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStor
 		}
 
 	} else if ($scope.typeRef === 'cohort') {
-		
+//this is it kyle do cool stuff here		
 		// CRUDY COHORT
 		$scope.updateLesson = function(){
 			var topic = $scope.lesson.topic;
-			var sections = $scope.lesson.sections
+			var sections = $scope.lesson.sections;
+			if($scope.day.instructor) {
+				instructorServices.updateSchedule(topic, sections, $scope.day.instructor._id, dayId);
+			}
 			cohortServices.updateLesson($scope.cohortId, $scope.dayId, topic, sections)
 			.then(function(response){
 				$scope.lesson.edit = !$scope.lesson.edit;
