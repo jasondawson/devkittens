@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var passport = require('passport');
 var CronJob = require('cron').CronJob;
+var config = require('./config.js');
 // var keys = require('./models/keys.js');
 
 
@@ -164,7 +165,7 @@ app.get('/logout', function(req, res) {
 
 
 // Connections
-var portNum = 3000;
+var portNum = config.portNum;
 
 var mongooseUri = 'mongodb://localhost/devkittens';
 mongoose.connect(mongooseUri);
