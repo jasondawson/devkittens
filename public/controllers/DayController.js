@@ -270,8 +270,9 @@ function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStor
 	$scope.teachRequest = function() {
 		cohortServices.teachRequest(user, typeId, dayIndex)
 		.then(function(response) {
-			$scope.day = response.curriculum[dayIndex];
+			// $scope.day = response.curriculum[dayIndex];
 			$scope.wantsToTeach.push(user);
+			console.log($scope.wantsToTeach);
 		})
 		.catch(function (err) {
 			console.error(err);
