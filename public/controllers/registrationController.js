@@ -32,6 +32,8 @@ function ($scope, authService, $location, infoStorage, userType, cohortId) {
 		})
 		.catch(function (err) {
 			console.error(err);
+			$scope.messageText = "User already exists. Try loggin in instead.";
+			return $scope.displayAlert = true;
 		});
 
 	};
