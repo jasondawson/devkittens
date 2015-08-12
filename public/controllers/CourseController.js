@@ -14,6 +14,11 @@ function ($scope, calendarService, user, infoStorage, emailsService, cohortServi
 	$scope.currentSegment = 0;
 	$scope.activeMonth = $scope.currentCourse.curriculum[0];
 
+	if($scope.segmentLength === 1) {
+		$('.fa-chevron-right').css('color', '#DFDFDF');
+		$('.fa-chevron-right').css('cursor', 'not-allowed');
+	};
+
 	$scope.viewDay = function (day) {
 		infoStorage.saveLessonRef(day);
 		$location.path('/day/course/' + currentCourseData._id + '/' + day._id);

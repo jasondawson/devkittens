@@ -18,6 +18,7 @@ function ($scope, user, $location, infoStorage, cohortServices, currentCohortDat
 
 	if($scope.segmentLength === 1) {
 		$('.fa-chevron-right').css('color', '#DFDFDF');
+		$('.fa-chevron-right').css('cursor', 'not-allowed');
 	};
 
 	$scope.viewDay = function(day, index) {
