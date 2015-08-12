@@ -1179,6 +1179,25 @@ section.smaller-wrapper .shift-wrapper .container .profile-container-body form .
 section.smaller-wrapper .shift-wrapper .container .profile-container-body form .btn {
   height: 42px;
 }
+section.smaller-wrapper .shift-wrapper .container .permissions-control {
+  margin: 20px 0;
+}
+section.smaller-wrapper .shift-wrapper .container .permissions-control .mini-title {
+  font-weight: 600;
+}
+section.smaller-wrapper .shift-wrapper .container .permissions-control .divide-in-two {
+  width: 48%;
+  display: inline-block;
+}
+section.smaller-wrapper .shift-wrapper .container .permissions-control .divide-in-two label {
+  font-weight: 100;
+  padding-left: 10px;
+  display: block;
+}
+section.smaller-wrapper .shift-wrapper .container .permissions-control .to-left {
+  border-right: 1px solid #eee;
+  margin-right: 3%;
+}
 section.lesson .shift-wrapper {
   width: 1000px;
 }
