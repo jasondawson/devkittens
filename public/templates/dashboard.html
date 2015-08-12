@@ -48,47 +48,6 @@
 
 
 
-	<!-- COURSES SECTION -->
-	<div class="flex-pants" ng-show="currentTab === 'courses'" ng-if="(!user.userType.instructor || (user.userType.instructor && user.userType.admin))">
-
-		<div class="sub-dsh">
-			<div class="mini-header">Existing courses</div>
-			<a ng-repeat="course in courseArray"
-			   ng-href="/#/course/{{course._id}}" ng-click="setCourse(course)">
-				<div class="sub-section">
-					<i class="delete-stuff fa fa-trash-o" ng-click="removeCourse(course)"
-					   ng-if="user.userType.admin"></i>
-					<div class="text-dashboard name">{{ course.title }}</div>
-					<div class="text-dashboard">
-						{{ course.courseLength }} days
-					</div>
-				</div>
-			</a>
-		</div>
-
-
-		<div class="sub-dsh" ng-if="(!user.userType.instructor || (user.userType.instructor && user.userType.admin))">
-			<div class="mini-header">Create a new course</div>
-				<form name="newCourseForm">
-					<input class="form-control" type="text" placeholder="Course Title" ng-model="courseInfo.title"/>
-					<input class="form-input" type="number" min="1" max="140" placeholder="Course Length" ng-model="courseInfo.courseLength" />
-				</form>
-
-				<div>
-					<button class="btn btn-default" type="submit"
-							ng-click="createNewCourse(courseInfo)"
-							ng-disabled="newCourseForm.$invalid">
-							Create course
-					</button>
-				</div>
-		</div>
-
-	</div>
-
-
-
-
-
 	<!-- COHORT SECTION -->
 	<div class="flex-pants" ng-show="currentTab === 'cohorts'">
 		<div class="sub-dsh">
@@ -97,8 +56,9 @@
 				ng-href="/#/cohort/{{cohort._id}}" ng-click="setCohort(cohort)"
 				ng-if="user.userType.admin || user.userType.mentor || cohort.instructors.toString().indexOf(user.typeData._id) >= 0">
 				<div class="sub-section">
-					<i class="delete-stuff fa fa-trash-o" ng-click="removeCohort(cohort)"
-					   ng-if="user.userType.admin"></i>
+					<!-- <i class="delete-stuff fa fa-trash-o" ng-click="removeCohort(cohort)"
+					   ng-if="user.userType.admin">
+					</i> -->
 
 					<img ng-if="cohort.location === 'Dallas'"
 						 src="/public/images/dallas.png">
@@ -139,6 +99,49 @@
 		</div>
 
 	</div>
+
+
+
+
+
+	<!-- COURSES SECTION -->
+	<div class="flex-pants" ng-show="currentTab === 'courses'" ng-if="(!user.userType.instructor || (user.userType.instructor && user.userType.admin))">
+
+		<div class="sub-dsh">
+			<div class="mini-header">Existing courses</div>
+			<a ng-repeat="course in courseArray"
+			   ng-href="/#/course/{{course._id}}" ng-click="setCourse(course)">
+				<div class="sub-section">
+					<i class="delete-stuff fa fa-trash-o" ng-click="removeCourse(course)"
+					   ng-if="user.userType.admin"></i>
+					<div class="text-dashboard name">{{ course.title }}</div>
+					<div class="text-dashboard">
+						{{ course.courseLength }} days
+					</div>
+				</div>
+			</a>
+		</div>
+
+
+		<div class="sub-dsh" ng-if="(!user.userType.instructor || (user.userType.instructor && user.userType.admin))">
+			<div class="mini-header">Create a new course</div>
+				<form name="newCourseForm">
+					<input class="form-control" type="text" placeholder="Course Title" ng-model="courseInfo.title"/>
+					<input class="form-input" type="number" min="1" max="140" placeholder="Course Length" ng-model="courseInfo.courseLength" />
+				</form>
+
+				<div>
+					<button class="btn btn-default" type="submit"
+							ng-click="createNewCourse(courseInfo)"
+							ng-disabled="newCourseForm.$invalid">
+							Create course
+					</button>
+				</div>
+		</div>
+
+	</div>
+
+
 
 
 
