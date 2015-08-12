@@ -206,18 +206,20 @@
 		<div class="sub-dsh">
 			<div class="mini-header">Instructors</div>
 			<div ng-repeat="instructor in wantsToTeach">
-				<div class="pic-container" ng-attr-titletext="{{instructor.name}}" tio-tooltip>
-					<a ng-href="{{instructor.githubUrl}}" target="_blank">
-						<img ng-src="{{instructor.avatar}}"
-							 ng-class="{'has-github': instructor.githubUrl}">
-					</a>
-					<span class="tooltip-wrapper">
-						<p class="tooltip"></p>
-						<span class="arrow-down"></span>
-					</span>
+				<div class="just-flex">
+					<div class="pic-container">
+						<a ng-href="{{instructor.githubUrl}}" target="_blank">
+							<img ng-src="{{instructor.avatar}}"
+								 ng-class="{'has-github': instructor.githubUrl}">
+						</a>
+					</div>
+					<div class="margin-L-R">
+						<div class="be-bold">{{instructor.name}}</div>
+						<div class="">{{instructor.local.email}}</div>
+					</div>
+					<button class="btn btn-default float-left" ng-click="assignInstructor(currentCohort.curriculum[0][importantIndex], instructor, importantIndex)">Assign</button>
 				</div>
-				<button class="btn btn-default" ng-click="assignInstructor(currentCohort.curriculum[0][importantIndex], instructor, importantIndex)">Assign</button>
-				<hr ng-if="$index < wantsToTeach.length - 1"
+				<hr ng-if="$index < wantsToTeach.length - 1">
 			</div>
 		</div>
 

@@ -108,7 +108,7 @@ angular.module('devKittens')
 				.then(function(response) {
 					$scope.currentCohort.curriculum[0][dayIndex].instructor = instructor;
 					$scope.currentCohort.curriculum[0][dayIndex].wantsToTeach.length = 0;
-					$scope.messageText = "Success! On " + $scope.currentCohort.curriculum[0][dayIndex].day + ", " + instructor.name + " will teach your class about " + $scope.currentCohort.curriculum[0][dayIndex].topic + "."
+					$scope.messageText = "Awesome! "+ instructor.name + " was successfully assigned to teach this class."
 					$scope.displaySuccess = true;
 				})
 				.catch(function(err) {
