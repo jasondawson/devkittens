@@ -275,7 +275,6 @@ function ($scope, dayId, typeRef, typeId, user, dayIndex, activeLesson, infoStor
 		.then(function(response) {
 			// $scope.day = response.curriculum[dayIndex];
 			$scope.wantsToTeach.push(user);
-			console.log($scope.wantsToTeach);
 		})
 		.catch(function (err) {
 			console.error(err);

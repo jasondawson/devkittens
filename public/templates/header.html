@@ -14,7 +14,7 @@
 		<a ng-show="user" ng-click="toggleSettingsView()" ng-if="isCohort && !user.userType.student">
 			<p ng-class="{'active-a': settingsView}">Cohort settings</p>
 
-		<a ng-show="user" href="/#/dashboard" ng-if="!user.userType.student"><p>Dashboard</p></a>
+		<a ng-show="user" href="/#/dashboard" ng-click="autoBody()" ng-if="!user.userType.student"><p>Dashboard</p></a>
 
 
 		<div class="pic-container" ng-show="user" ng-click="toggleHeaderDropdown()">

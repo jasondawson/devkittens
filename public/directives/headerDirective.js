@@ -12,6 +12,10 @@ angular.module('devKittens')
 			scope.toggleHeaderDropdown = function () {
 				scope.openHeaderDropdown = !scope.openHeaderDropdown;
 			}
+
+			scope.autoBody = function () {
+				$('body').css('overflow', 'auto');
+			}
 		}
 	}
 })
