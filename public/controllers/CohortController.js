@@ -16,6 +16,10 @@ function ($scope, user, $location, infoStorage, cohortServices, currentCohortDat
 	$scope.mentorDisplay = false;
 	$scope.isCohort = true;
 
+	if($scope.segmentLength === 1) {
+		$('.fa-chevron-right').css('color', '#DFDFDF');
+	};
+
 	$scope.viewDay = function(day, index) {
 		// var currentCohort = infoStorage.getCurrentCohort()
 		infoStorage.storeDayIndex(index);
@@ -42,6 +46,7 @@ function ($scope, user, $location, infoStorage, cohortServices, currentCohortDat
 	}
 
 	$scope.nextMonth = function() {
+
 		if($scope.currentSegment === $scope.segmentLength - 1){
 			return;
 		}
