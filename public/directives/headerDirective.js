@@ -1,6 +1,6 @@
 angular.module('devKittens')
 
-.directive('headerDirective', function () {
+.directive('headerDirective', function ($location) {
 	return {
 		restrict: 'E',
 		scope: true,
@@ -15,6 +15,7 @@ angular.module('devKittens')
 
 			scope.autoBody = function () {
 				$('body').css('overflow', 'auto');
+				$location.path('/dashboard');
 			}
 		}
 	}
