@@ -353,6 +353,9 @@ section.home .banner .inline.btn-default {
   border: none;
   border-radius: 2px;
 }
+section.home .banner .demo-h1 {
+  font-size: 20px;
+}
 section.dashboard {
   min-height: 60%;
   /*
@@ -861,7 +864,7 @@ section.registration .right .inner-right .btn {
   margin: 10px 0;
 }
 .add-cohort-modal {
-  min-height: 50px;
+  min-height: 400px;
   width: 45%;
   position: absolute;
   top: 15%;
