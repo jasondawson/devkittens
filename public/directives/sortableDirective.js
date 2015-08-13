@@ -26,7 +26,19 @@ angular.module('devKittens')
 
 		      	var location = $location.$$url.split('/')[1];
 
-		      	cohortServices.updateCoursesOrder(udpatedPositions, infoStorage.serveCalendarId(), location)
+		      	var calendarGroups = [];
+		      	scope.currentCourse.curriculum.forEach(function (group) {
+		      		var tempArray = [];
+		      		group.forEach(function (day) {
+		      			tempArray.push(day._id);
+		      		})
+		      		calendarGroups.push(tempArray)
+		      	})
+
+		      	calendarGroups[scope.currentSegment] = udpatedPositions;
+		      	calendarGroups = calendarGroups.toString().split(",");
+
+		      	cohortServices.updateCoursesOrder(calendarGroups, infoStorage.serveCalendarId(), location)
 		      	.then(function (response) {
 		      		// console.info(response);
 		      	})
