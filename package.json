@@ -29,8 +29,11 @@
     "passport": "^0.2.2",
     "passport-local": "^1.0.0",
     "q": "^1.4.1",
+    "sails-mongo": "^0.11.2",
     "session": "^0.1.0",
-    "textangular": "^1.4.2"
+    "textangular": "^1.4.2",
+    "waterline": "^0.10.26",
+    "waterline-mysql": "^0.6.0"
   },
   "devDependencies": {
     "grunt": "^0.4.5",

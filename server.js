@@ -7,7 +7,17 @@ var session = require('express-session');
 var passport = require('passport');
 var CronJob = require('cron').CronJob;
 var config = require('./config.js');
+
+//db dependencies and config
+var Waterline = require('waterline');
+var ormConfig = require('./config/ormConfig.js');
+var myMongoAdapter = require('sails-mongo');
+// var myMysqlAdapter = require('sails-mysql');
+
+
 // var keys = require('./models/keys.js');
+
+
 
 
 // App definition
@@ -167,19 +177,34 @@ app.get('/logout', function(req, res) {
 // Connections
 var portNum = config.portNum;
 
-var mongooseUri = 'mongodb://localhost/devkittens';
-mongoose.connect(mongooseUri);
+//orm connection
+var orm = new Waterline();
+orm.initialize(ormConfig, function(err, models) {
+    console.log(models);
+  if(err) throw err;
 
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function (callback) {
-  console.log('Mongoose caressing your soul on:', mongooseUri);
+//TODO comment out mongoose/mongo stuff after creating Waterline models
+  var mongooseUri = 'mongodb://localhost/devkittens';
+    mongoose.connect(mongooseUri);
+
+    var db = mongoose.connection;
+    db.on('error', console.error.bind(console, 'connection error:'));
+    db.once('open', function (callback) {
+      console.log('Mongoose caressing your soul on:', mongooseUri);
 });
 
+//TODO uncomment after creating Waterline models
+  //app.models = models.collections;
+  app.connections = models.connections;
 
-app.listen(portNum, function () {
-    console.log('Making some funcakes on port:', portNum);
+  // Start Server
+    app.listen(portNum, function () {
+        console.log('Making some funcakes on port:', portNum);
+    });
+
+  console.log("To see saved users, visit http://localhost:3000/users");
 });
+
 
 
 // Custom middleware
@@ -192,7 +217,7 @@ function logout (req, res, next) {
 
 
 function isAuth(req, res, next) {
-    // if user is authenticated in the session, carry on 
+    // if user is authenticated in the session, carry on
     if (req.user){
         next();
     } else {
@@ -213,7 +238,7 @@ new CronJob('00 00 06 * * *', function() {
         .populate('userId')
         .exec(function (err, reservations) {
             reservations.forEach(function (reservation) {
-                
+
                 Cohort.findOne({ 'curriculum._id': reservation.dayId }, function (err, day) {
 
                     name = reservation.userId.name;
@@ -228,7 +253,7 @@ new CronJob('00 00 06 * * *', function() {
                     currentDate48.setDate(currentDate48.getDate()+2);
                     currentDate48.setHours(0, 0, 0, 0);
 
-                    if (currentDate48.valueOf() == teachingDate.valueOf()) {                        
+                    if (currentDate48.valueOf() == teachingDate.valueOf()) {
                         var email = {
                             html: day,
                             subject: "DevMountain teaching reminder",

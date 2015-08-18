@@ -1,9 +1,9 @@
 var config = module.exports = {};
-
-if (process.env.NODE_ENV == "dev") {
+config.portNum = 3000;
+/*if (process.env.NODE_ENV == "dev") {
 	// DEVELOPMENT-SPECIFIC CONFIG //
-	config.portNum = 3000;	
+	config.portNum = 3000;
 } else {
 	// PRODUCTION-SPECIFIC CONFIG //
 	config.portNum = 80;
-}
+}*/
